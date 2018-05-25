@@ -1,0 +1,1038 @@
+13<@>&&*&&tw**&**
+36<@> for (var i=0; i<str.length; i++) {
+57<@>  if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+53<@>   (str.charAt(i) >= 'a' && str.charAt(i) <= 'f') ||
+52<@>   (str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+13<@>   continue;
+1<@>
+63<@>  alert("無效的金鑰格式! 格式必須為0-9或a-f。");
+12<@>  return 0;
+3<@> }
+1<@>
+11<@> return 1;
+2<@>}
+1<@>
+23<@>function saveChanges()
+2<@>{
+58<@> if(document.wlanBasicSetup.hiddenSSID.checked == false){
+113<@>  if (confirm("若停用SSID廣播的功能，則WPS的功能將會被停用。\n您確定要執行嗎?") == 0){
+17<@>   return false;
+4<@>  }
+3<@> }
+1<@>
+62<@> if(!checkSpecialChar(document.wlanBasicSetup.ssid.value,1)){
+64<@>  alert('無效的SSID! 不可以使用某些特殊字元。');
+40<@>  document.wlanBasicSetup.ssid.focus();
+16<@>  return false;
+3<@> }
+1<@>
+11<@> var band;
+54<@> if (document.wlanBasicSetup.band.selectedIndex == 0)
+12<@>  band = 1;
+59<@> else if (document.wlanBasicSetup.band.selectedIndex == 1)
+12<@>  band = 2;
+59<@> else if (document.wlanBasicSetup.band.selectedIndex == 2)
+12<@>  band = 3;
+51<@> else if (document.wlanBasicSetup.band.value == 7)
+12<@>  band = 8;
+51<@> else if (document.wlanBasicSetup.band.value == 9)
+13<@>  band = 10;
+52<@> else if (document.wlanBasicSetup.band.value == 10)
+13<@>  band = 11;
+6<@> else
+12<@>  band = 4;
+1<@>
+14<@> basicRate=0;
+13<@> operRate=0;
+17<@> if (band & 1) {
+18<@>  basicRate|=0xf;
+17<@>  operRate|=0xf;
+3<@> }
+35<@> if ( (band & 2) || (band & 4) ) {
+19<@>  operRate|=0xff0;
+21<@>  if (!(band & 1)) {
+17<@>   if (WiFiTest)
+21<@>    basicRate=0x15f;
+8<@>   else
+21<@>    basicRate=0x1f0;
+4<@>  }
+3<@> }
+17<@> if (band & 8) {
+19<@>  if (!(band & 3))
+20<@>   operRate|=0xfff;
+16<@>  if (band & 1)
+18<@>   basicRate=0xf;
+21<@>  else if (band & 2)
+20<@>   basicRate=0x1f0;
+7<@>  else
+18<@>   basicRate=0xf;
+3<@> }
+22<@> operRate|=basicRate;
+1<@>
+55<@> document.wlanBasicSetup.basicrates.value = basicRate;
+53<@> document.wlanBasicSetup.operrates.value = operRate;
+1<@>
+51<@> if(document.wlanBasicSetup.checkWPS2.value == 1){
+96<@>  if(document.wlanBasicSetup.method.selectedIndex != document.wlanBasicSetup.method_cur.value){
+59<@>   if (document.wlanBasicSetup.method.selectedIndex == 1){
+111<@>    if (confirm("若無線安全設為WEP，則WPS的功能將會被停用。\n您確定要執行嗎?") == 0){
+19<@>     return false;
+6<@>    }
+65<@>   }else if (document.wlanBasicSetup.method.selectedIndex == 2){
+116<@>    if (confirm("若無線安全設為WPA-TKIP，則WPS的功能將會被停用。\n您確定要執行嗎?") == 0){
+19<@>     return false;
+6<@>    }
+5<@>   }
+4<@>  }
+3<@> }
+1<@>
+56<@> if (document.wlanBasicSetup.method.selectedIndex>=2) {
+52<@>  var str = document.wlanBasicSetup.pskValue.value;
+26<@>  if (str.length != 64) {
+1<@>
+25<@>   if (str.length < 8) {
+59<@>    alert('Pre-Shared金鑰必須為8個字元以上。');
+46<@>    document.wlanBasicSetup.pskValue.focus();
+18<@>    return false;
+5<@>   }
+26<@>   if (str.length > 63) {
+60<@>    alert('Pre-Shared金鑰必須為63個字元以內。');
+46<@>    document.wlanBasicSetup.pskValue.focus();
+18<@>    return false;
+5<@>   }
+1<@>
+1<@>
+30<@>   if(!isValidWPAPasswd(str))
+5<@>   {
+74<@>    alert("Pre-Shared金鑰不可以使用特殊字元，如\\\'“。");
+18<@>    return false;
+5<@>   }
+1<@>
+46<@>   document.wlanBasicSetup.pskFormat.value=0;
+4<@>  }
+7<@>  else
+4<@>  {
+1<@>
+36<@>   for (var i=0; i<str.length; i++)
+5<@>   {
+59<@>    if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+55<@>     (str.charAt(i) >= 'a' && str.charAt(i) <= 'f') ||
+54<@>     (str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+15<@>     continue;
+75<@>    alert("無效的Pre-Shared金鑰格式! 格式必須為0-9或a-f。");
+46<@>    document.wlanBasicSetup.pskValue.focus();
+18<@>    return false;
+5<@>   }
+1<@>
+46<@>   document.wlanBasicSetup.pskFormat.value=1;
+4<@>  }
+3<@> }
+1<@>
+1<@>
+55<@> if (document.wlanBasicSetup.method.selectedIndex ==1)
+3<@> {
+66<@>  if ( document.wlanBasicSetup.defaultTxKeyId[0].checked ==true){
+65<@>   if(validateWepKey(0,document.wlanBasicSetup.key1.value)==0) {
+42<@>    document.wlanBasicSetup.key1.focus();
+18<@>    return false;
+5<@>   }
+4<@>  }
+66<@>  if ( document.wlanBasicSetup.defaultTxKeyId[1].checked ==true){
+66<@>   if (validateWepKey(1,document.wlanBasicSetup.key2.value)==0) {
+42<@>    document.wlanBasicSetup.key2.focus();
+18<@>    return false;
+5<@>   }
+4<@>  }
+66<@>  if ( document.wlanBasicSetup.defaultTxKeyId[2].checked ==true){
+66<@>   if (validateWepKey(2,document.wlanBasicSetup.key3.value)==0) {
+42<@>    document.wlanBasicSetup.key3.focus();
+18<@>    return false;
+5<@>   }
+4<@>  }
+66<@>  if ( document.wlanBasicSetup.defaultTxKeyId[3].checked ==true){
+66<@>   if (validateWepKey(3,document.wlanBasicSetup.key4.value)==0) {
+42<@>    document.wlanBasicSetup.key4.focus();
+18<@>    return false;
+5<@>   }
+4<@>  }
+3<@> }
+1<@>
+14<@> return true;
+2<@>}
+1<@>
+24<@>function updateTxRate()
+2<@>{
+47<@> <VWS_SCREEN (char*) webShowWlanAdvanInit1[];>
+1<@>
+54<@> if (document.wlanBasicSetup.band.selectedIndex == 0)
+12<@>  band = 1;
+59<@> else if (document.wlanBasicSetup.band.selectedIndex == 1)
+12<@>  band = 2;
+59<@> else if (document.wlanBasicSetup.band.selectedIndex == 2)
+12<@>  band = 3;
+51<@> else if (document.wlanBasicSetup.band.value == 7)
+12<@>  band = 8;
+51<@> else if (document.wlanBasicSetup.band.value == 9)
+13<@>  band = 10;
+52<@> else if (document.wlanBasicSetup.band.value == 10)
+13<@>  band = 11;
+6<@> else
+12<@>  band = 4;
+1<@>
+1<@>
+52<@> var txRateOption = document.wlanBasicSetup.txRate;
+34<@> txRateOption.options.length = 0;
+1<@>
+75<@> rate_mask = [15,1,1,1,1,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,8,8,8,8,8,8,8,8];
+1<@>
+201<@> rate_name_s_40 =["Auto","1M","2M","5.5M","11M","6M","9M","12M","18M","24M","36M","48M","54M", "15M","30M","45M","60M","90M","120M","135M","150M","30M","60M","90M","120M","180M","240M","270M","300M"];
+207<@> rate_name_l_40 =["Auto","1M","2M","5.5M","11M","6M","9M","12M","18M","24M","36M","48M","54M", "13.5M","27M","40.5M","54M","81M","108M","121.5M","135M","27M","54M","81M","108M","162M","216M","243M","270M"];
+223<@> rate_name_s_20 =["Auto","1M","2M","5.5M","11M","6M","9M","12M","18M","24M","36M","48M","54M", "7.2M","14.4M","21.7M","28.9M","43.3M","57.8M","65M","72.2M","14.4M","28.9M","43.3M","57.8M","86.7M","115.6M","130M","144.4M"];
+201<@> rate_name_l_20 =["Auto","1M","2M","5.5M","11M","6M","9M","12M","18M","24M","36M","48M","54M", "6.5M","13M","19.5M","26M","39M","52M","58.5M","65M","13M","26M","39M","52M","78M","104M","117M","130M"];
+1<@>
+1<@>
+54<@> rate_option_enable=[1,0,0,0,1,0,0,0,0,0,0,0,1, 0, 0,
+45<@>  0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1];
+9<@> mask=0;
+80<@> if(PreambleValue == '0' && document.wlanBasicSetup.chanwid.selectedIndex == 1)
+3<@> {
+30<@>  rate_name = rate_name_s_40;
+3<@> }
+85<@> else if(PreambleValue == '1' && document.wlanBasicSetup.chanwid.selectedIndex == 1)
+3<@> {
+30<@>  rate_name = rate_name_l_40;
+3<@> }
+85<@> else if(PreambleValue == '0' && document.wlanBasicSetup.chanwid.selectedIndex == 0)
+3<@> {
+30<@>  rate_name = rate_name_s_20;
+3<@> }
+85<@> else if(PreambleValue == '1' && document.wlanBasicSetup.chanwid.selectedIndex == 0)
+3<@> {
+30<@>  rate_name = rate_name_l_20;
+3<@> }
+1<@>
+11<@> if (auto)
+12<@>  txrate=0;
+15<@> if (band & 1)
+13<@>  mask |= 1;
+27<@> if ((band&2) || (band&4))
+13<@>  mask |= 2;
+17<@> if (band & 8) {
+19<@>  if (rf_num == 2)
+15<@>   mask |= 12;
+7<@>  else
+14<@>   mask |= 4;
+3<@> }
+11<@> defidx=0;
+20<@> var optionindex=0;
+32<@> for (idx=0, i=0; i<=28; i++) {
+29<@>  if (rate_mask[i] & mask) {
+15<@>   if (i == 0)
+14<@>    rate = 0;
+8<@>   else
+25<@>    rate = (1 << (i-1));
+23<@>   if (txrate == rate)
+5<@>   {
+1<@>
+26<@>    defidx = optionindex;
+5<@>   }
+1<@>
+1<@>
+29<@>   if(rate_option_enable[i])
+5<@>   {
+59<@>    txRateOption.options.add(new Option(rate_name[i], i));
+18<@>    optionindex++
+5<@>   }
+10<@>   idx++;
+4<@>  }
+3<@> }
+54<@> document.wlanBasicSetup.txRate.selectedIndex=defidx;
+2<@>}
+1<@>
+27<@>function updateIputState()
+2<@>{
+55<@> if (document.wlanBasicSetup.band.selectedIndex == 0||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 1||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 2){
+1<@>
+53<@>  document.wlanBasicSetup.chanwid.selectedIndex = 0;
+53<@>  disableTextField(document.wlanBasicSetup.chanwid);
+3<@> }
+60<@> else if (document.wlanBasicSetup.band.selectedIndex == 3||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 4||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 5){
+1<@>
+52<@>  enableTextField(document.wlanBasicSetup.chanwid);
+3<@> }
+1<@>
+17<@> updateTxRate();
+1<@>
+27<@> updateChan_channebound();
+1<@>
+15<@> checkState();
+17<@> updateFormat();
+2<@>}
+1<@>
+25<@>function showChannel5G()
+2<@>{
+40<@> document.wlanBasicSetup.chan.length=0;
+1<@>
+50<@> for (idx=0, chan=36; chan<=64; idx++, chan+=4) {
+1<@>
+28<@>  if (chan == defaultChan){
+53<@>   document.wlanBasicSetup.chan.selectedIndex = idx;
+84<@>   document.wlanBasicSetup.chan.options[idx] = new Option(chan, chan, true, false);
+9<@>  }else{
+85<@>   document.wlanBasicSetup.chan.options[idx] = new Option(chan, chan, false, false);
+4<@>  }
+3<@> }
+44<@> document.wlanBasicSetup.chan.length = idx;
+2<@>}
+1<@>
+1<@>
+39<@>function showChannel2G(bound_40, band)
+2<@>{
+12<@> start = 0;
+10<@> end = 0;
+37<@> if (regDomain==1 || regDomain==2) {
+13<@>  start = 1;
+12<@>  end = 11;
+3<@> }
+26<@> else if (regDomain==3) {
+1<@>
+58<@>  if(document.wlanBasicSetup.domain.selectedIndex == 47){
+1<@>
+14<@>   start = 3;
+12<@>   end = 9;
+9<@>  }else{
+14<@>   start = 1;
+13<@>   end = 13;
+4<@>  }
+1<@>
+3<@> }
+26<@> else if (regDomain==4) {
+14<@>  start = 10;
+12<@>  end = 11;
+3<@> }
+26<@> else if (regDomain==5) {
+14<@>  start = 10;
+12<@>  end = 13;
+3<@> }
+1<@>
+26<@> else if (regDomain==6) {
+44<@>  if(band == 0 || band == 2 || band == 10){
+1<@>
+14<@>   start = 1;
+13<@>   end = 14;
+9<@>  }else{
+14<@>   start = 1;
+13<@>   end = 13;
+4<@>  }
+3<@> }
+1<@>
+8<@> else {
+13<@>  start = 1;
+12<@>  end = 11;
+3<@> }
+1<@>
+40<@> document.wlanBasicSetup.chan.length=0;
+8<@> idx=0;
+1<@>
+25<@> if (0 == defaultChan) {
+50<@>  document.wlanBasicSetup.chan.selectedIndex = 0;
+81<@>  document.wlanBasicSetup.chan.options[idx] = new Option("Auto", 0, true, true);
+8<@> }else{
+83<@>  document.wlanBasicSetup.chan.options[idx] = new Option("Auto", 0, false, false);
+3<@> }
+8<@> idx++;
+1<@>
+46<@> for (chan=start; chan<=end; chan++, idx++) {
+1<@>
+28<@>  if (chan == defaultChan){
+83<@>   document.wlanBasicSetup.chan.options[idx] = new Option(chan, chan, true, true);
+9<@>  }else{
+85<@>   document.wlanBasicSetup.chan.options[idx] = new Option(chan, chan, false, false);
+4<@>  }
+60<@>  document.wlanBasicSetup.chan.selectedIndex = defaultChan;
+3<@> }
+44<@> document.wlanBasicSetup.chan.length = idx;
+2<@>}
+1<@>
+22<@>function updateChan()
+2<@>{
+60<@> var idx_value= document.wlanBasicSetup.band.selectedIndex;
+72<@> var band_value= document.wlanBasicSetup.band.options[idx_value].value;
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+22<@>     currentBand = 1;
+1<@>
+1<@>
+55<@> if(band_value==9 || band_value==10 || band_value==7){
+28<@>  updateChan_channebound();
+3<@> }
+8<@> else {
+33<@>  if (lastBand != currentBand) {
+29<@>     lastBand = currentBand;
+27<@>     if (currentBand == 2)
+21<@>    showChannel5G();
+10<@>     else
+34<@>    showChannel2G(0, band_value);
+4<@>  }
+9<@>  else {
+1<@>
+5<@>   {
+34<@>    showChannel2G(0, band_value);
+5<@>   }
+4<@>  }
+3<@> }
+24<@> lastMode = band_value;
+1<@>
+55<@> if (document.wlanBasicSetup.band.selectedIndex == 0||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 1||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 2){
+54<@>   document.wlanBasicSetup.chanwid.selectedIndex = 0;
+54<@>   disableTextField(document.wlanBasicSetup.chanwid);
+3<@> }
+60<@> else if (document.wlanBasicSetup.band.selectedIndex == 3||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 4||
+52<@>  document.wlanBasicSetup.band.selectedIndex == 5){
+54<@>   document.wlanBasicSetup.chanwid.selectedIndex = 1;
+53<@>   enableTextField(document.wlanBasicSetup.chanwid);
+3<@> }
+1<@>
+19<@>   updateTxRate();
+2<@>}
+1<@>
+34<@>function updateChan_channebound()
+2<@>{
+60<@> var idx_value= document.wlanBasicSetup.band.selectedIndex;
+72<@> var band_value= document.wlanBasicSetup.band.options[idx_value].value;
+60<@> var bound = document.wlanBasicSetup.chanwid.selectedIndex;
+18<@> var adjust_chan;
+1<@>
+18<@> currentBand = 1;
+1<@>
+56<@> if(band_value==9 || band_value==10 || band_value ==7){
+16<@>  if(bound ==0)
+18<@>   adjust_chan=0;
+16<@>  if(bound ==1)
+18<@>   adjust_chan=1;
+7<@> }else
+17<@>  adjust_chan=0;
+1<@>
+25<@>   if (currentBand == 1)
+42<@>  showChannel2G(adjust_chan, band_value);
+1<@>
+21<@>   if(lastMode == 0)
+27<@>    lastMode = band_value;
+1<@>
+17<@> updateTxRate();
+2<@>}
+1<@>
+27<@>function updateChanWidth()
+2<@>{
+29<@>   updateChan_channebound();
+2<@>}
+1<@>
+25<@>function updateRegChan()
+2<@>{
+74<@> regDomain = regDomainList[document.wlanBasicSetup.domain.selectedIndex];
+15<@> updateChan();
+2<@>}
+1<@>
+24<@>function WepKeyChange()
+2<@>{
+26<@> for (var i=1; i<=4; i++)
+3<@> {
+59<@>  var radiogroup = document.wlanBasicSetup.defaultTxKeyId;
+51<@>  var keyfiled = document.getElementById('key'+i);
+37<@>  if(radiogroup[i-1].checked==true){
+30<@>   enableTextField(keyfiled);
+9<@>  }else{
+31<@>   disableTextField(keyfiled);
+4<@>  }
+3<@> }
+2<@>}
+1<@>
+22<@>function checkState()
+2<@>{
+50<@> var obj_method = document.wlanBasicSetup.method;
+69<@> var key_value = obj_method.options[obj_method.selectedIndex].value;
+1<@>
+119<@> document.getElementById('optionforwep').style.display = (document.wlanBasicSetup.method.selectedIndex==1)? '':'none';
+17<@> WepKeyChange();
+1<@>
+119<@> document.getElementById('optionforwpa').style.display = (document.wlanBasicSetup.method.selectedIndex>=2)? '':'none';
+61<@> document.getElementById('wpainfo1').style.display = 'none';
+61<@> document.getElementById('wpainfo2').style.display = 'none';
+61<@> document.getElementById('wpainfo3').style.display = 'none';
+36<@> if(key_value == 2 || key_value==3)
+56<@>  document.getElementById('wpainfo1').style.display="";
+39<@> else if(key_value==4 || key_value==5)
+56<@>  document.getElementById('wpainfo2').style.display="";
+23<@> else if(key_value==6)
+56<@>  document.getElementById('wpainfo3').style.display="";
+2<@>}
+1<@>
+23<@>function lengthClick()
+2<@>{
+55<@> if (document.wlanBasicSetup.length.selectedIndex==0){
+1<@>
+20<@>  var keysize = 10;
+1<@>
+27<@>  for (var i=1; i<=4; i++)
+4<@>  {
+56<@>   document.getElementById('key'+i).size =keysize + 2 ;
+1<@>
+57<@>   if (document.getElementById('key'+i).value.length>10)
+101<@>    document.getElementById('key'+i).value = document.getElementById('key'+i).value.substring(0,10);
+1<@>
+50<@>   document.getElementById('key'+i).maxLength=10;
+4<@>  }
+61<@> }else if (document.wlanBasicSetup.length.selectedIndex==1){
+1<@>
+20<@>  var keysize = 26;
+1<@>
+27<@>  for (var i=1; i<=4; i++)
+4<@>  {
+56<@>   document.getElementById('key'+i).size =keysize + 8 ;
+1<@>
+57<@>   if (document.getElementById('key'+i).value.length>26)
+101<@>    document.getElementById('key'+i).value = document.getElementById('key'+i).value.substring(0,26);
+1<@>
+50<@>   document.getElementById('key'+i).maxLength=26;
+4<@>  }
+3<@> }
+1<@>
+17<@> updateFormat();
+2<@>}
+1<@>
+24<@>function updateFormat()
+2<@>{
+58<@> if (document.wlanBasicSetup.length.selectedIndex == 0) {
+71<@>  document.wlanBasicSetup.format.options[0].text = 'ASCII (5 字符)';
+79<@>  document.wlanBasicSetup.format.options[1].text = '十六進制 (10 字符)';
+3<@> }
+8<@> else {
+72<@>  document.wlanBasicSetup.format.options[0].text = 'ASCII (13 字符)';
+79<@>  document.wlanBasicSetup.format.options[1].text = '十六進制 (26 字符)';
+3<@> }
+1<@>
+23<@> setDefaultKeyValue();
+2<@>}
+1<@>
+30<@>function setDefaultKeyValue()
+2<@>{
+14<@> var idx = 0;
+1<@>
+58<@> if (document.wlanBasicSetup.length.selectedIndex == 0) {
+47<@>  document.wlanBasicSetup.key1.maxLength = 10;
+47<@>  document.wlanBasicSetup.key2.maxLength = 10;
+47<@>  document.wlanBasicSetup.key3.maxLength = 10;
+47<@>  document.wlanBasicSetup.key4.maxLength = 10;
+1<@>
+60<@>  document.wlanBasicSetup.key1.value = wepkeys64_key1[idx];
+60<@>  document.wlanBasicSetup.key2.value = wepkeys64_key2[idx];
+60<@>  document.wlanBasicSetup.key3.value = wepkeys64_key3[idx];
+60<@>  document.wlanBasicSetup.key4.value = wepkeys64_key4[idx];
+3<@> }
+10<@>   else {
+47<@>  document.wlanBasicSetup.key1.maxLength = 26;
+47<@>  document.wlanBasicSetup.key2.maxLength = 26;
+47<@>  document.wlanBasicSetup.key3.maxLength = 26;
+47<@>  document.wlanBasicSetup.key4.maxLength = 26;
+1<@>
+61<@>  document.wlanBasicSetup.key1.value = wepkeys128_key1[idx];
+61<@>  document.wlanBasicSetup.key2.value = wepkeys128_key2[idx];
+61<@>  document.wlanBasicSetup.key3.value = wepkeys128_key3[idx];
+61<@>  document.wlanBasicSetup.key4.value = wepkeys128_key4[idx];
+5<@>   }
+2<@>}
+1<@>
+22<@>function resetClick()
+2<@>{
+1<@>
+115<@> document.getElementById('optionforwep').style.display = (document.wlanBasicSetup.method_cur.value==1)? '':'none';
+17<@> WepKeyChange();
+1<@>
+115<@> document.getElementById('optionforwpa').style.display = (document.wlanBasicSetup.method_cur.value>=2)? '':'none';
+1<@>
+109<@> document.getElementById('wpainfo1').style.display=(document.wlanBasicSetup.method_cur.value)==2? '':'none';
+109<@> document.getElementById('wpainfo2').style.display=(document.wlanBasicSetup.method_cur.value)==4? '':'none';
+109<@> document.getElementById('wpainfo3').style.display=(document.wlanBasicSetup.method_cur.value)==6? '':'none';
+2<@>}
+1<@>
+34<@>function jsRemoveItemFromSelect()
+2<@>{
+55<@> var objSelect = document.getElementById('methodSel');
+48<@>    for(var i=0;i<objSelect.options.length;i++)
+5<@>   {
+82<@>       if(objSelect.options[i].value == "3" || objSelect.options[i].value == "5")
+9<@>       {
+41<@>            objSelect.options.remove(i);
+9<@>       }
+5<@>   }
+2<@>}
+10<@></SCRIPT>
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@> TabHeader="無線";
+32<@> SideItem="無線基本設定";
+23<@> HelpItem="wlanbasic";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+1<@>
+74<@><form action="form2WlanBasicSetup.cgi" method=POST name="wlanBasicSetup">
+46<@> <table id=box_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+23<@>    無線基本設定
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+129<@>    <p>此頁面是用來做無線網路的相關設定，您可以在此更改無線的細部項目和無線加密設定。</p>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+1<@>
+68<@> <table id=body_header border=0 cellSpacing=0 style="display:none">
+7<@>  <tr>
+36<@>   <td class=topheader>區域選擇
+9<@>   </td>
+8<@>  </tr>
+1<@>
+7<@>  <tr>
+22<@>   <td class=content>
+81<@>    <table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>     <tr>
+45<@>     <td class=form_label_40>地區 ：</td>
+68<@>     <td><select size="1" name="domain" onChange="updateRegChan()">
+62<@>         <VWS_SCREEN (char*) webShowWlanCountryDomainList[];>
+19<@>         </select>
+11<@>     </td>
+11<@>     </tr>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+1<@>
+10<@> </table>
+1<@>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+36<@>   <td class=topheader>無線網絡
+9<@>   </td>
+8<@>  </tr>
+1<@>
+7<@>  <tr>
+22<@>   <td class=content>
+97<@>    <table id="basicSetup" class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>     <tr>
+56<@>      <td class=form_label_40>啟用SSID廣播 ：</td>
+11<@>      <td>
+48<@>       <input type="checkbox" name="hiddenSSID"
+53<@>       <VWS_SCREEN (char*) webShowWlanHiddenSSID[];>
+9<@>       >
+12<@>      </td>
+11<@>     </tr>
+10<@>     <tr>
+58<@>      <td class=form_label_40>啟用無線隔離 ：</td>
+11<@>      <td>
+43<@>       <input type="checkbox" name="block"
+48<@>       <VWS_SCREEN (char*) webShowWlanBlock[];>
+9<@>       >
+12<@>      </td>
+11<@>     </tr>
+10<@>     <tr>
+52<@>      <td class=form_label_40>名稱(SSID) ：</td>
+11<@>      <td>
+59<@>       <input type=text name=ssid size="25" maxlength="32"
+53<@>             <VWS_SCREEN (char*) webShowWlanSSID[];>
+15<@>             >
+12<@>      </td>
+11<@>     </tr>
+10<@>     <tr>
+51<@>     <td class=form_label_40>802.11模式 ：</td>
+59<@>     <td><select size=1 name=band onChange="updateChan()">
+50<@>      <VWS_SCREEN (char*) webShowWlanBandList[];>
+16<@>      </select>
+11<@>     </td>
+11<@>     </tr>
+10<@>     <tr>
+45<@>     <td class=form_label_40>頻道 ：</td>
+49<@>     <td><select size="1" name="chan"> </select>
+35<@> <b>&nbsp; &nbsp;目前頻道:</b>
+44<@> <VWS_SCREEN (char*) webShowCurrentChan[];>
+11<@>     </td>
+11<@>     </tr>
+10<@>     <tr>
+51<@>     <td class=form_label_40>頻帶寬度 ：</td>
+71<@>     <td><select size="1" name="chanwid" onChange="updateChanWidth()">
+1<@>
+53<@>      <VWS_SCREEN (char*) webShowWlanChanwidList[];>
+1<@>
+16<@>      </select>
+11<@>     </td>
+11<@>     </tr>
+31<@>     <tr style="display:none">
+54<@>     <td class=form_label_40>最大傳輸率 ：</td>
+41<@>     <td><select size="1" name="txRate">
+16<@>      </select>
+11<@>     </td>
+11<@>     </tr>
+14<@>     <SCRIPT>
+49<@>      <VWS_SCREEN (char*) webShowWlanDomChan[];>
+20<@>      updateChan();
+15<@>     </SCRIPT>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+36<@>   <td class=topheader>安全選項
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+81<@>    <table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>     <tr>
+52<@>      <input type="hidden" name="method_cur" value=
+49<@>        <VWS_SCREEN (char*)webShowWlanMethod[];>
+9<@>       >
+47<@>      <td class=form_label_40>安全選項 ：
+12<@>      </td>
+81<@>      <td><select size="1" id="methodSel" name="method" onChange="checkState()">
+53<@>       <VWS_SCREEN (char*) webShowWlanMethodList[];>
+17<@>       </select>
+12<@>      </td>
+11<@>     </tr>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+46<@> <div id="optionforwep" style="display:none">
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+46<@>   <td class=topheader>安全加密(WEP)</td>
+8<@>  </tr>
+7<@>  <tr>
+35<@>   <td class=content align=center>
+81<@>    <table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>     <tr>
+52<@>      <td class=form_label_40>驗證類型 ：</td>
+11<@>      <td>
+41<@>       <select size="1" name="authType">
+9<@>        
+41<@>        <option value=2 >自動</option>
+46<@>        <option value=1 >Shared Keys</option>
+17<@>       </select>
+12<@>      </td>
+11<@>     </tr>
+10<@>     <tr>
+52<@>      <td class=form_label_40>加密強度 ：</td>
+65<@>      <td><select size="1" name="length" ONCHANGE=lengthClick()>
+41<@>       <option value=1>64位元</option>
+42<@>       <option value=2>128位元</option>
+17<@>       </select>
+12<@>      </td>
+11<@>     </tr>
+31<@>     <tr style="display:none">
+49<@>      <td class=form_label_40>金鑰格式:</td>
+72<@>      <td><select size="1" name="format" ONCHANGE=setDefaultKeyValue()>
+38<@>       <option value=1>ASCII</option>
+36<@>       <option value=2>Hex</option>
+17<@>       </select>
+12<@>      </td>
+11<@>     </tr>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+52<@>   <td class=topheader>安全加密(WEP)金鑰</td>
+8<@>  </tr>
+7<@>  <tr>
+35<@>   <td class=content align=center>
+81<@>    <table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>     <tr>
+47<@>      <td class=form_label_40>金鑰1 ：</td>
+11<@>      <td>
+86<@>       <input type="radio" name="defaultTxKeyId" value="1" onclick="WepKeyChange();">
+59<@>       <input type="text" name="key1" id="key1" size="26">
+12<@>      </td>
+11<@>     </tr>
+10<@>     <tr>
+47<@>      <td class=form_label_40>金鑰2 ：</td>
+11<@>      <td>
+86<@>       <input type="radio" name="defaultTxKeyId" value="2" onclick="WepKeyChange();">
+59<@>       <input type="text" name="key2" id="key2" size="26">
+12<@>      </td>
+11<@>     </tr>
+10<@>     <tr>
+47<@>      <td class=form_label_40>金鑰3 ：</td>
+11<@>      <td>
+86<@>       <input type="radio" name="defaultTxKeyId" value="3" onclick="WepKeyChange();">
+59<@>       <input type="text" name="key3" id="key3" size="26">
+12<@>      </td>
+11<@>     </tr>
+10<@>     <tr>
+47<@>      <td class=form_label_40>金鑰4 ：</td>
+11<@>      <td>
+86<@>       <input type="radio" name="defaultTxKeyId" value="4" onclick="WepKeyChange();">
+59<@>       <input type="text" name="key4" id="key4" size="26">
+12<@>      </td>
+11<@>     </tr>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+8<@> </div>
+46<@> <div id="optionforwpa" style="display:none">
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+98<@>   <td class=topheader id="wpainfo1" name = "wpainfo1" style="display:none">安全選項(WPA-PSK)
+9<@>   </td>
+99<@>   <td class=topheader id="wpainfo2" name = "wpainfo2" style="display:none">安全選項(WPA2-PSK)
+9<@>   </td>
+107<@>   <td class=topheader id="wpainfo3" name = "wpainfo3" style="display:none">安全選項(WPA-PSK+WPA2-PSK)
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+35<@>   <td class=content align=center>
+81<@>    <table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+31<@>     <tr style="display:none">
+60<@>      <td class=form_label_40>Pre-Shared 金鑰格式:</td>
+45<@>      <td><select size="1" name="pskFormat">
+40<@>       <option value=0 >密碼</option>
+50<@>       <option value=1 >Hex(64個字元)</option>
+17<@>       </select>
+19<@>             </td>
+11<@>     </tr>
+29<@>     <tr id=tr_psk style="">
+46<@>      <td class=form_label_40>密碼 ：</td>
+11<@>      <td>
+67<@>       <input type="text" name="pskValue" size="32" maxlength="64"
+46<@>       <VWS_SCREEN (char*) webShowWlanPSK[];>
+38<@>       >(8-63個字元或64個hex碼)
+19<@>             </td>
+11<@>     </tr>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+8<@> </div>
+18<@> <p align=center>
+42<@> <VWS_SCREEN (char*) webShowWPS2Check[];>
+93<@> <input type="submit" value="套用" name="save" onClick="return saveChanges()">&nbsp;&nbsp;
+73<@> <input type="reset" value="取消" name="reset" onClick="resetClick()">
+6<@> </p>
+49<@> <input type="hidden" name="basicrates" value=0>
+48<@> <input type="hidden" name="operrates" value=0>
+99<@> <INPUT TYPE="hidden" NAME="submit.htm?wlan_basic.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+10<@> <script>
+53<@> <VWS_SCREEN (char*) webShowWlanNewUI_Basic_INIT[];>
+20<@> updateIputState();
+11<@> </script>
+9<@> </form>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+32<@><script type='text/javascript'>
+27<@> jsRemoveItemFromSelect();
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+28<@>&*#@wlan_guest.htm@#*&24480
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+28<@><title>訪客網絡</title>
+8<@><style>
+17<@>.on {display:on}
+20<@>.off {display:none}
+9<@></style>
+9<@><SCRIPT>
+39<@><VWS_FUNCTION (void*)webGetWepKeys();>
+42<@><VWS_FUNCTION (void*)webGetMbssidInfo();>
+1<@>
+35<@> function isValidWPAPasswd(str)   
+5<@>{   
+1<@>
+159<@>	var patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>]{1}[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>\x20]{6,62}[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>]{1}$/;   
+40<@>	if (!patrn.exec(str)) return false  ; 
+1<@>
+29<@>	if(str.indexOf("  ") != -1)
+16<@>		return false;
+2<@>	
+15<@>	return true;	
+2<@>}
+1<@>
+34<@>function validateWepKey(idx, str)
+2<@>{
+84<@>	if (document.wlanGuestSetup.defaultTxKeyId[idx].checked ==true && str.length==0) {
+9<@>		idx++;
+60<@>		alert('您所選擇的密鑰' + idx + '不能為空。');
+12<@>		return 0;
+3<@>	}
+21<@>	if (str.length ==0)
+12<@>		return 1;
+1<@>
+13<@>	var keylen;
+56<@>	if(document.wlanGuestSetup.length.selectedIndex == 0){
+30<@>		//64 bit, 5 ASCII or 10 Hex
+26<@>		if ( str.length == 5) {
+11<@>			//ASCII
+45<@>			document.wlanGuestSetup.format.value = 1;
+15<@>			keylen = 5;
+33<@>		}else if ( str.length == 10) {
+9<@>			//Hex
+45<@>			document.wlanGuestSetup.format.value = 2;
+16<@>			keylen = 10;
+10<@>		}else {
+10<@>			idx++;
+119<@>			alert('無效的密鑰' + idx + '長度。請輸入13個ASCII字符或者26個十六進制數字(0-9 或 a-f)。');
+13<@>			return 0;
+5<@>		}	
+8<@>	}else{
+32<@>		//128 bit, 13 ASCII or 26 Hex
+27<@>		if ( str.length == 13) {
+11<@>			//ASCII
+45<@>			document.wlanGuestSetup.format.value = 1;
+16<@>			keylen = 13;
+33<@>		}else if ( str.length == 26) {
+9<@>			//Hex
+45<@>			document.wlanGuestSetup.format.value = 2;
+16<@>			keylen = 26;
+10<@>		}else {
+10<@>			idx++;
+119<@>			alert('無效的密鑰' + idx + '長度。請輸入13個ASCII字符或者26個十六進制數字(0-9 或 a-f)。');
+13<@>			return 0;
+4<@>		}
+3<@>	}
+1<@>
+24<@>	if ( str == "*****" ||
+25<@>		str == "**********" ||
+28<@>		str == "*************" ||
+40<@>		str == "**************************" )
+12<@>		return 1;
+1<@>
+48<@>	if (document.wlanGuestSetup.format.value == 1)
+3<@>	{
+31<@>		//add by ramen 20090604     
+151<@>		var patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>]{1}[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>\x20]*[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>]{1}$/;  
+7<@>		   	
+26<@>		if (!patrn.exec(str)) {
+64<@>			alert('無效的字符!不能包含\\\'"? 特殊字符。');
+16<@>			return 0  ; 
+4<@>		}
+30<@>		if(str.indexOf("  ",0)!=-1)
+4<@>		{
+60<@>			alert("密鑰中不能包含一個以上連續空格!");
+13<@>			return 0;
+4<@>		}
+3<@>		
+12<@>		return 1;
+3<@>	}
+1<@>
+36<@>	for (var i=0; i<str.length; i++) {
+57<@>		if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+53<@>			(str.charAt(i) >= 'a' && str.charAt(i) <= 'f') ||
+52<@>			(str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+13<@>			continue;
+1<@>
+72<@>		alert("無效的密鑰.請輸入十六進制數字(0-9 或 a-f)。");
+12<@>		return 0;
+3<@>	}
+1<@>
+11<@>	return 1;
+2<@>}
+1<@>
+37<@>function postWlanGuestSecurity(idx) 
+2<@>{
+61<@>	document.wlanGuestSetup.method.value = mbssid_encrypt[idx];
+69<@>	document.wlanGuestSetup.pskFormat.value = mbssid_wpaPSKFormat[idx];
+62<@>	document.wlanGuestSetup.pskValue.value = mbssid_wpaPSK[idx];
+34<@>	if (mbssid_disable1Vap[idx] ==1)
+52<@>		document.wlanGuestSetup.En_vap.checked = false;		
+6<@>	else
+50<@>		document.wlanGuestSetup.En_vap.checked = true;	
+1<@>
+60<@>	document.wlanGuestSetup.ssid_vap.value = mbssid_SSID[idx];
+85<@>	//alert("111"+document.wlanGuestSetup.ssid_vap.value+"222"+mbssid_SSID[idx]+"333");
+67<@>        defPskLen = document.wlanGuestSetup.pskValue.value.length;
+66<@>	defPskFormat = document.wlanGuestSetup.pskFormat.selectedIndex;	
+1<@>
+60<@>	document.wlanGuestSetup.length.value = mbssid_wepLen[idx];
+64<@>	document.wlanGuestSetup.format.value = mbssid_wepKeyType[idx];
+1<@>
+75<@>	document.wlanGuestSetup.defaultTxKeyId.value = mbssid_wepDefaultKey[idx];
+24<@>	for(var i=1; i<=4;i++)
+3<@>	{
+37<@>		if(i == mbssid_wepDefaultKey[idx])
+63<@>			document.wlanGuestSetup.defaultTxKeyId[i-1].checked = true;
+7<@>		else
+64<@>			document.wlanGuestSetup.defaultTxKeyId[i-1].checked = false;
+3<@>	}
+2<@>	
+29<@>	if(mbssid_brssid[idx] == 0)
+49<@>		document.wlanGuestSetup.brssid.checked = true;
+6<@>	else
+50<@>		document.wlanGuestSetup.brssid.checked = false;
+1<@>
+38<@>	if(mbssid_vap_relay_block[idx] == 0)
+48<@>		document.wlanGuestSetup.block.checked = true;
+6<@>	else
+49<@>		document.wlanGuestSetup.block.checked = false;
+3<@>		
+64<@>	document.wlanGuestSetup.authType.value = mbssid_authType[idx];
+1<@>
+42<@>	if(mbssid_local_access_enable[idx] == 1)
+62<@>		document.wlanGuestSetup.local_access_enable.checked = true;
+6<@>	else
+63<@>		document.wlanGuestSetup.local_access_enable.checked = false;
+3<@>		
+20<@>	updateIputState();
+2<@>}
+1<@>
+23<@>function saveChanges()
+2<@>{
+74<@>	if(!checkSpecialCharAllSpace(document.wlanGuestSetup.ssid_vap.value,1)){
+59<@>		alert('無效的SSID.不能包含特殊字符 \\\'"? ');
+44<@>		document.wlanGuestSetup.ssid_vap.focus();
+19<@>		return false;  	
+3<@>	}
+1<@>
+1<@>
+50<@>	if (document.wlanGuestSetup.wpaSSID[0].checked){
+64<@>		if((document.wlanGuestSetup.ssid_vap.value == mbssid_SSID[0])
+65<@>			||(document.wlanGuestSetup.ssid_vap.value == mbssid_SSID[2]) 
+65<@>			||(document.wlanGuestSetup.ssid_vap.value == mbssid_SSID[3]) 
+66<@>			||(document.wlanGuestSetup.ssid_vap.value == mbssid_SSID[4])){
+30<@>			alert('無效的SSID 1.');
+45<@>			document.wlanGuestSetup.ssid_vap.focus();
+19<@>			return false;		
+4<@>		}
+3<@>	}
+1<@>
+50<@>	if (document.wlanGuestSetup.wpaSSID[1].checked){

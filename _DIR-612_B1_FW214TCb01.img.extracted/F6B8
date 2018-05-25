@@ -1,0 +1,1159 @@
+13<@>&&*&&tw**&**
+22<@>	HelpItem="datetime";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+45<@>		<td class="topheader">時間與日期</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+81<@>			<p>此頁面用來設定系統時間和NTP(Network Time Protocol)伺服器。
+85<@>    您可以在此瀏覽或更改系統時間和NTP伺服器的相關設定。.</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+57<@><form method=POST Action="form2systime.cgi" name="time">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+42<@>		<td class="topheader">系統時間</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+21<@>                <tr>
+67<@>                    <td class="form_label_left">系統時間:</td>
+50<@>                    <td class="form_label_right">
+49<@>						<VWS_SCREEN (char*) xscrnSetSystemTime[];>
+26<@>                    </td>
+22<@>                </tr>
+55<@>				<VWS_SCREEN (char*) xscrnSetDaylightSavingTime[];>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+1<@>
+67<@><input type="submit" value="套用"  onClick="return checkTime()">
+49<@><INPUT TYPE="RESET" NAME="reset" VALUE="取消">
+92<@><INPUT TYPE="hidden" NAME="submit.htm?time.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+5<@></p>
+8<@></form>
+1<@>
+52<@><form method=POST Action="form2ntp.cgi" name="ntp">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+40<@>		<td class="topheader">NTP設定:</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+46<@>					<td class="form_label_left">狀態:</td>
+61<@>					<td class="form_label_radio" style="text-align: left;">
+42<@>						<VWS_SCREEN (char*) setNtpState[];>
+26<@>                    </td>
+10<@>				</tr>
+1<@>
+21<@>                <tr>
+64<@>                    <td class="form_label_left">伺服器:</td>
+50<@>                    <td class="form_label_right">
+43<@>						<VWS_SCREEN (char*) setNtpServer[];>
+26<@>                    </td>
+22<@>                </tr>
+1<@>
+21<@>                <tr>
+65<@>                    <td class="form_label_left">伺服器2:</td>
+50<@>                    <td class="form_label_right">
+44<@>						<VWS_SCREEN (char*) setNtpServer2[];>
+26<@>                    </td>
+22<@>                </tr>
+1<@>
+21<@>                <tr>
+73<@>                    <td class="form_label_left">更新間隔時間:</td>
+50<@>                    <td class="form_label_right">
+45<@>						<VWS_SCREEN (char*) setNtpInterval[];>
+26<@>                    </td>
+22<@>                </tr>
+1<@>
+21<@>                <tr>
+61<@>                    <td class="form_label_left">時區:</td>
+50<@>                    <td class="form_label_right">
+49<@>						<VWS_FUNCTION (void*)getTimeZoneOption();>
+7<@>						
+26<@>                    </td>
+22<@>                </tr>
+1<@>
+21<@>                <tr>
+65<@>                    <td class="form_label_left">GMT 時間:</td>
+50<@>                    <td class="form_label_right">
+49<@>						<VWS_SCREEN (char*) showNtpGmtTimeHttp[];>
+26<@>                    </td>
+22<@>                </tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+69<@><input type="submit" value="套用"  onClick="return saveChanges()">
+49<@><INPUT TYPE="RESET" NAME="reset" VALUE="取消">
+92<@><INPUT TYPE="hidden" NAME="submit.htm?time.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+5<@></p>
+8<@></form>
+1<@>
+46<@><form method=POST Action="form2ntpstart.cgi">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+40<@>		<td class="topheader">開始NTP:</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+49<@>					<td class="form_label_left">NTP開始:</td>
+35<@>					<td class="form_label_right">
+96<@>						<INPUT TYPE="BUTTON" VALUE="更新系統時間" onClick="ntpStartFunc( this.form, '1');">
+26<@>                    </td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+53<@><INPUT TYPE="HIDDEN" NAME="ntpstart" VALUE="start" >
+92<@><INPUT TYPE="hidden" NAME="submit.htm?time.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+23<@>&*#@reboot.htm@#*&1735
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+28<@><title>重新啟動</title>
+1<@>
+9<@><SCRIPT>
+22<@>function resetClick()
+2<@>{
+46<@>	if(!confirm('確定恢復默認配置嗎?'))
+3<@>	{
+16<@>		return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="維護";
+20<@>	SideItem="系統";
+20<@>	HelpItem="reboot";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+34<@>		<td class=topheader>系統</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+79<@>			<p>您可在此將路由器重新啟動或將設定回復出廠預設值。
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+58<@><form action="form2Reboot.cgi" method=POST name="cmboot">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+34<@>		<td class=topheader>系統</td>
+7<@>	</tr>
+6<@>	<tr>
+38<@>		<td class="content" align="center">
+60<@>			<input type="submit" value="重新啟動" name="reboot">
+68<@>			<input type="submit" value="回復出廠預設值" name="reset">
+97<@>			<input type="hidden" NAME="submit.htm?reboot.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@>		</td>
+7<@>	</tr>
+11<@></table>  
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+25<@>&*#@autoboot.htm@#*&1973
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+24<@><title>Autoboot</title>
+9<@><script>
+15<@>var wtime=180;
+16<@>function stop()
+2<@>{
+22<@>   clearTimeout(id); 
+2<@>}
+18<@>function start() 
+3<@>{ 
+16<@>	if(wtime==180)
+3<@>	{
+49<@>		wtime = parseInt(document.frm.waitTime.value);
+3<@>	}
+12<@>   wtime--;
+19<@>   if (wtime >= 0)
+6<@>   { 
+30<@>      frm.time.value = wtime;
+37<@>      id=setTimeout("start()",1000);
+5<@>   }
+19<@>   if (wtime == 0)
+6<@>   { 
+20<@>      window.open( 
+43<@><VWS_FUNCTION (void*)httpMgmtIPAddrUrl();>
+20<@>,target="_parent");
+5<@>   }
+2<@>}
+10<@></script>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+44<@><body onLoad="start();" onUnload="stop();">
+13<@><blockquote>
+31<@><script language="JavaScript">
+12<@>	TabHeader=
+46<@><VWS_SCREEN (char*)xscrnShowTabHeaderInfo[];>
+2<@>;
+11<@>	SideItem=
+45<@><VWS_SCREEN (char*)xscrnShowSideItemInfo[];>
+2<@>;
+11<@>	HelpItem=
+45<@><VWS_SCREEN (char*)xscrnShowHelpItemInfo[];>
+2<@>;
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+16<@><form name=frm>
+48<@>	<table id="box_header" border=0 cellSpacing=0>
+7<@>		<tr>
+44<@>			<td class="topheader">系統重啟!</td>
+8<@>		</tr>
+7<@>		<tr>
+24<@>			<td class="content">
+7<@>			<p>
+47<@>			<VWS_SCREEN (char*) xscrnShowRebootInfo[];>
+8<@>			</p>
+17<@>			<p>請等待 
+38<@>			<INPUT TYPE=text NAME=time size=2>
+12<@>			 秒</p>
+93<@>			<input style="display:none;" type="text" name="waitTime" size="15" maxlength="15" value="
+46<@>			<VWS_SCREEN (char*)xscrnRebootWaitTime[];>
+6<@>			">
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+8<@></form>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+27<@>&*#@uploadError.htm@#*&980
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+27<@><title>UploadError</title>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+20<@>TabHeader="維護";
+25<@>SideItem="韌體更新";
+27<@>HelpItem="firmwareupdate";
+10<@></script>
+32<@><script type='text/javascript'>
+18<@>mainTableStart();
+8<@>logo();
+10<@>TopNav();
+17<@>ThirdRowStart();
+21<@>Write_Item_Images();
+17<@>mainBodyStart();
+10<@></script>
+1<@>
+5<@><h3>
+44<@><VWS_FUNCTION (void*)GetUploadErrorInfo();>
+6<@></h3>
+7<@><form>
+53<@><input onclick="history.go (-1)" value="&nbsp;&nbsp;
+44<@><VWS_FUNCTION (void*)GetUploadErrorBack();>
+41<@>&nbsp;&nbsp;" name="Back" type="button">
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+25<@>&*#@saveconf.htm@#*&2631
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+29<@><title>備份/還原</title>
+9<@><script>
+19<@>var uploadClick=0;
+22<@>function resetClick()
+2<@>{
+80<@>   if ( !confirm('您確定要還原目前的設定到出廠預設值嗎?') ) {
+15<@>	return false;
+4<@>  }
+7<@>  else
+14<@>	return true;
+2<@>}
+23<@>function sendClicked()
+2<@>{
+47<@>	if (!confirm('您確定要更新設定嗎?'))
+16<@>		return false;
+6<@>	else
+3<@>	{
+21<@>		if(uploadClick==0)
+4<@>		{
+18<@>			uploadClick=1;
+4<@>		}
+7<@>		else
+4<@>		{
+48<@>			alert("程序正在執行中，請稍候!");
+17<@>			return false;
+4<@>		}
+15<@>		return true;
+3<@>	}
+2<@>}
+1<@>
+10<@></script>
+1<@>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="維護";
+29<@>	SideItem="備份與還原";
+27<@>	HelpItem="backuprestore";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+11<@></script>	
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+43<@>		<td class=topheader>備份與還原</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+52<@>			<p>此頁面可以讓您執行備份和還原。
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+1<@>
+64<@><form action="form2saveConf.cgi" method=POST name="saveConfig">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+40<@>		<td class=topheader>備份設定</td>
+7<@>	</tr>
+6<@>	<tr>
+38<@>		<td class="content" align="center">
+65<@>			<input type="submit" value="備份設定檔" name="saveconf">
+99<@>			<input type="hidden" name="submit.htm?saveconf.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@>		</td>
+7<@>	</tr>
+11<@></table>  
+8<@></form>
+1<@>
+90<@><form action="form2fileConf.htm" method=POST enctype="multipart/form-data" name="upload">
+46<@><table id=body_header border=0 cellSpacing=0>
+9<@>    <tr>
+40<@>		<td class=topheader>還原設定</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+58<@>			<input type="file" name="download image file" size=30>
+83<@>			<input type="submit" value="上傳" name="send" onClick="return sendClicked()">
+82<@>			<INPUT TYPE="hidden" NAME="submit" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@>		</td>
+7<@>	</tr>
+11<@></table>  
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+23<@>&*#@upload.htm@#*&2440
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+28<@><title>韌體更新</title>
+9<@><script>
+19<@>var uploadClick=0;
+23<@>function sendClicked()
+2<@>{
+47<@>	if (!confirm('您確定要更新韌體嗎?'))
+16<@>		return false;
+6<@>	else
+3<@>	{
+21<@>		if(uploadClick==0)
+4<@>		{
+18<@>			uploadClick=1;
+4<@>		}
+7<@>		else
+4<@>		{
+48<@>			alert("程序正在執行中，請稍候!");
+17<@>			return false;
+4<@>		}
+15<@>		return true;
+3<@>	}
+2<@>}
+1<@>
+10<@></script>
+1<@>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+7<@><BODY>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="維護";
+26<@>	SideItem="韌體更新";
+28<@>	HelpItem="firmwareupdate";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+40<@>		<td class=topheader>韌體更新</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+205<@>			<p>您可在此更新路由器的韌體版本，新版韌體可增加系統的效能或穩定性。建議您使用有線的方式來執行更新，且在更新過程中不要拔除電源或網路線。
+57<@> <p>注意:系統將會在檔案上傳後重新啟動。
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+1<@>
+88<@><form action="form2file.htm" method=POST enctype="multipart/form-data" name="password">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+40<@>		<td class=topheader>選擇檔案</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+58<@>			<input type="file" name="download image file" size=60>
+8<@>		</td>
+7<@>	</tr>
+6<@>	<tr>
+117<@>		<td>&nbsp;&nbsp;<input type="checkbox" name="resetdefault" value="nop" >在韌體更新後會自動回復預設值
+8<@>		</td>
+8<@>	</tr>	
+9<@></table>
+5<@><br>
+17<@><p align=center>
+92<@><input type="submit" value="上傳" name="send" onClick="return sendClicked()">&nbsp;&nbsp;
+49<@><input type="reset" value="取消" name="reset">
+80<@><INPUT TYPE="hidden" NAME="submit" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>> 
+5<@></p>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+15<@> </blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+21<@>&*#@upnp.htm@#*&3450
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+20<@><title>UPnP</title>
+1<@>
+9<@><SCRIPT>
+26<@>function proxySelection()
+2<@>{
+40<@>	if (document.upnp.daemon[0].checked) {
+40<@>		document.upnp.ext_if.disabled = true;
+3<@>	}
+8<@>	else {
+41<@>		document.upnp.ext_if.disabled = false;
+3<@>	}
+2<@>}
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+27<@>	TabHeader="進階設定";
+18<@>	SideItem="UPnP";
+18<@>	HelpItem="Upnp";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+34<@>		<td class="topheader">UPnP</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+85<@>			<p>此頁面是用來設定UPnP，當您啟用UPnP時系統以daemon運作。</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+1<@>
+54<@><form action="form2Upnp.cgi" method=POST name="upnp">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+34<@>		<td class="topheader">UPnP</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+44<@>					<td class="form_label_left">UPnP:</td>
+35<@>					<td class="form_label_right">
+56<@>      					<input type="radio" value="0" name="daemon" 
+38<@><VWS_SCREEN (char*)xscrnUPnPIsOFF[];>
+20<@>>停用&nbsp;&nbsp;
+50<@>					<input type="radio" value="1" name="daemon" 
+37<@><VWS_SCREEN (char*)xscrnUPnPIsON[];>
+8<@>>啟用
+26<@>                    </td>
+10<@>				</tr>
+1<@>
+5<@>				
+1<@>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+44<@>		<td class=topheader>目前UPnP清單</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+40<@>  			<table class=formlisting border=0>
+34<@>    			<tr class=form_label_row >
+49<@>	                    <td class='form_label_col'>
+38<@>	                    <b>活動中</b>
+27<@>	                    </td>
+49<@>	                    <td class='form_label_col'>
+41<@>	                    <b>通訊協定</b>
+27<@>	                    </td>
+49<@>	                    <td class='form_label_col'>
+44<@>	                    <b>內部服務埠</b>
+29<@>	                    </td>	 
+49<@>	                    <td class='form_label_col'>
+44<@>	                    <b>外部服務埠</b>
+48<@>	                    </td>	                    
+49<@>	                    <td class='form_label_col'>
+37<@>	                    <b>IP位址</b>
+27<@>	                    </td>
+49<@>	                    <td class='form_label_col'>
+35<@>	                    <b>敘述</b>
+27<@>	                    </td>
+22<@>                </tr>
+55<@>                <VWS_FUNCTION (void*)showUPnPTable();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+17<@><p align=center>
+49<@><input type="submit" value="套用">&nbsp;&nbsp;
+92<@><input type="hidden" value=<VWS_FUNCTION (void*)SendKeyCSRF();> name="submit.htm?upnp.htm">
+5<@></p>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+22<@>&*#@stats.htm@#*&3881
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+41<@><meta http-equiv="refresh" content="60">
+22<@><title>統計</title>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="狀態";
+20<@>	SideItem="統計";
+23<@>	HelpItem="statistic";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+34<@>		<td class=topheader>統計</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+76<@>			<p>本頁面顯示通過網路埠傳送和接收封包的統計資料。
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+40<@>		<td class=topheader>統計訊息</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+40<@>  			<table class=formlisting border=0>
+33<@>    			<tr class=form_label_row>
+47<@>    				<td class='form_label_col' width="8%">
+30<@>                    連接埠
+26<@>                    </td>
+48<@>    				<td class='form_label_col' width="15%">
+36<@>                    接收的封包
+14<@>    				</td>
+59<@>                    <td class='form_label_col' width="8%">
+33<@>                    接收錯誤
+14<@>    				</td>
+59<@>                    <td class='form_label_col' width="8%">
+33<@>                    接收丟棄
+14<@>    				</td>
+60<@>                    <td class='form_label_col' width="15%">
+36<@>                    傳送的封包
+14<@>    				</td>
+60<@>                     <td class='form_label_col' width="8%">
+33<@>                    傳送錯誤
+14<@>    				</td>
+60<@>                     <td class='form_label_col' width="8%">
+33<@>                    傳送丟棄
+14<@>    				</td>
+13<@>    			</tr>
+33<@>    			<tr class=form_label_row>
+56<@>    				<td class='form_label_col' width="8%">LAN1</td>
+26<@>                    </td>
+60<@>    				<td class='form_label_col' width="15%" rowspan="4">
+70<@>                    <VWS_SCREEN (char*) xscrnShowLanItfStatsRxPkt[];>
+14<@>    				</td>
+71<@>                    <td class='form_label_col' width="8%" rowspan="4">
+70<@>                    <VWS_SCREEN (char*) xscrnShowLanItfStatsRxErr[];>
+14<@>    				</td>
+71<@>                    <td class='form_label_col' width="8%" rowspan="4">
+71<@>                    <VWS_SCREEN (char*) xscrnShowLanItfStatsRxDrop[];>
+14<@>    				</td>
+72<@>                    <td class='form_label_col' width="15%" rowspan="4">
+70<@>                    <VWS_SCREEN (char*) xscrnShowLanItfStatsTxPkt[];>
+14<@>    				</td>
+72<@>                     <td class='form_label_col' width="8%" rowspan="4">
+70<@>                    <VWS_SCREEN (char*) xscrnShowLanItfStatsTxErr[];>
+14<@>    				</td>
+72<@>                     <td class='form_label_col' width="8%" rowspan="4">
+71<@>                    <VWS_SCREEN (char*) xscrnShowLanItfStatsTxDrop[];>
+14<@>    				</td>
+13<@>    			</tr>
+33<@>    			<tr class=form_label_row>
+56<@>    				<td class='form_label_col' width="8%">LAN2</td>
+13<@>    			</tr>
+33<@>    			<tr class=form_label_row>
+56<@>    				<td class='form_label_col' width="8%">LAN3</td>
+13<@>    			</tr>
+33<@>    			<tr class=form_label_row>
+56<@>    				<td class='form_label_col' width="8%">LAN4</td>
+13<@>    			</tr>
+47<@>				<VWS_FUNCTION (void*)showItfStatsTable();>
+13<@>			</table> 
+8<@>		</td>
+7<@>	</tr>
+11<@></table>  
+1<@>
+7<@><form>
+17<@><p align=center>
+86<@><input type="button" value="更新資料" onClick="window.location.href='stats.htm'">
+5<@></p>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+21<@>&*#@lan.htm@#*&22716
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+31<@><title>LAN介面設定</title>
+9<@><SCRIPT>
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+22<@>function resetClick()
+2<@>{
+25<@>   document.tcpip.reset;
+2<@>}
+1<@>
+23<@>function saveChanges()
+2<@>{
+34<@>	if (!checkIP(document.tcpip.ip))
+16<@>		return false;
+45<@>	if (!checkMaskSpecial(document.tcpip.mask))
+16<@>		return false;
+62<@>	if (!checkIpNetwork(document.tcpip.ip, document.tcpip.mask))
+16<@>		return false;
+1<@>
+1<@>
+122<@>	if(document.tcpip.ip.value != document.dhcpd.lan_ip.value || document.tcpip.mask.value != document.dhcpd.lan_mask.value)
+4<@>	{	
+101<@>		var msg='局域網IP地址或子網掩碼改變將導致您可能無法繼續訪問路由器。\n'
+62<@>				+'您應釋放并更新PC的IP地址來繼續配置。\n'
+64<@>				+'并且原來的靜態路由規則將被全部清空。\n'
+63<@>				+'您確定要更改局域網IP地址或子網掩碼嗎?';
+3<@>		
+21<@>		if (!confirm(msg))
+17<@>			return false;
+3<@>	}
+1<@>
+2<@>	
+2<@>}
+1<@>
+19<@>// for dhcp server
+21<@>var initDhcpDisable;
+1<@>
+39<@>function openWindow(url, windowName) {
+15<@>	var wide=600;
+15<@>	var high=400;
+19<@>	if (document.all)
+49<@>		var xMax = screen.width, yMax = screen.height;
+27<@>	else if (document.layers)
+59<@>		var xMax = window.outerWidth, yMax = window.outerHeight;
+6<@>	else
+30<@>	   var xMax = 640, yMax=480;
+32<@>	var xOffset = (xMax - wide)/2;
+32<@>	var yOffset = (yMax - high)/3;
+1<@>
+213<@>	var settings = 'width='+wide+',height='+high+',screenX='+xOffset+',screenY='+yOffset+',top='+yOffset+',left='+xOffset+', resizable=yes, toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes';
+1<@>
+43<@>	window.open( url, windowName, settings );
+2<@>}
+1<@>
+24<@>function dhcpdEnabled()
+2<@>{
+71<@>  document.getElementById('dhcpserver_block').style.display = 'block';
+30<@>	if(document.dhcpd.setVendor)
+43<@>		enableButton( document.dhcpd.setVendor);
+29<@>	if(document.dhcpd.setOpt60)
+42<@>		enableButton( document.dhcpd.setOpt60);
+2<@>}
+1<@>
+25<@>function dhcpdDisabled()
+2<@>{
+70<@>  document.getElementById('dhcpserver_block').style.display = 'none';
+1<@>
+31<@>	if(document.dhcpd.setVendor){
+1<@>
+44<@>		disableButton( document.dhcpd.setVendor);
+4<@>	}	
+30<@>	if(document.dhcpd.setOpt60){
+1<@>
+43<@>		disableButton( document.dhcpd.setOpt60);
+4<@>	}	
+2<@>}
+1<@>
+29<@>function dhcpdRelayEnabled()
+2<@>{
+70<@>  document.getElementById('dhcprelay_block').style.display = 'block';
+30<@>	if(document.dhcpd.setVendor)
+44<@>		disableButton( document.dhcpd.setVendor);
+29<@>	if(document.dhcpd.setOpt60)
+44<@>		disableButton( document.dhcpd.setOpt60);	
+2<@>}
+30<@>function dhcpdRelayDisabled()
+2<@>{
+69<@>  document.getElementById('dhcprelay_block').style.display = 'none';
+2<@>}
+1<@>
+1<@>
+32<@>function resetDhcpServerClick()
+2<@>{
+27<@>  	if (initDhcpDisable==0)
+5<@>  	{
+4<@>  	
+21<@>  		dhcpdDisabled();
+26<@>  		dhcpdRelayDisabled();
+5<@>  	}
+32<@>  	else if(initDhcpDisable==1){
+1<@>
+25<@>  		dhcpdRelayEnabled();
+21<@>  		dhcpdDisabled();
+5<@>  	}
+9<@>  	else{
+20<@>  		dhcpdEnabled();
+26<@>  		dhcpdRelayDisabled();
+5<@>  	}
+2<@>}
+1<@>
+39<@>function checkSubnet(ip, mask, client)
+2<@>{
+26<@>  ip_d = getDigit(ip, 4);
+30<@>  mask_d = getDigit(mask, 4);
+47<@>  if ( (ip_d & mask_d) != (client & mask_d ) )
+15<@>	return false;
+1<@>
+15<@>  return true;
+2<@>}
+1<@>
+34<@>function checkpoolsize(start,end)
+2<@>{
+22<@>	for(var i=1;i<4;i++)
+3<@>	{
+45<@>		if(getDigit(start, i) !=getDigit(end, i) )
+17<@>		 return false;
+3<@>	}
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+33<@>function saveDhcpServerChanges()
+2<@>{
+43<@>  if ( document.dhcpd.dhcpmode.value==2) {
+48<@>	if (document.dhcpd.dhcpRangeStart.value=="") {
+52<@>   	   	alert("請輸入DHCP IP pool的範圍。");
+84<@>		document.dhcpd.dhcpRangeStart.value = document.dhcpd.dhcpRangeStart.defaultValue;
+41<@>		document.dhcpd.dhcpRangeStart.focus();
+16<@>		return false;
+3<@>	}
+49<@>	if (!checkIP( document.dhcpd.dhcpRangeStart)) {
+41<@>		document.dhcpd.dhcpRangeStart.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+46<@>	if (document.dhcpd.dhcpRangeEnd.value=="") {
+52<@>   	   	alert("請輸入DHCP IP pool的範圍。");
+80<@>		document.dhcpd.dhcpRangeEnd.value = document.dhcpd.dhcpRangeEnd.defaultValue;
+39<@>		document.dhcpd.dhcpRangeEnd.focus();
+16<@>		return false;
+3<@>	}
+47<@>	if (!checkIP( document.dhcpd.dhcpRangeEnd)) {
+39<@>		document.dhcpd.dhcpRangeEnd.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+110<@>	if (!Lan1EqLan2(document.dhcpd.dhcpRangeStart.value, lanmask, document.dhcpd.dhcpRangeEnd.value, lanmask)) {
+76<@>		alert("起始的位址應該和結束的位址在同一個網段內。");
+41<@>		document.dhcpd.dhcpRangeStart.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+82<@>	if (!Lan1EqLan2(document.dhcpd.dhcpRangeStart.value, lanmask, lanip, lanmask)) {
+62<@>		alert("地址池和網關地址必須在相同的網段.");
+41<@>		document.dhcpd.dhcpRangeStart.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+94<@>	if(!ipaddrCompare(document.dhcpd.dhcpRangeStart.value, document.dhcpd.dhcpRangeEnd.value)) {
+61<@>		alert('終止IP地址必須大於或等於起始地址.');
+41<@>		document.dhcpd.dhcpRangeStart.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+1<@>
+44<@>	if (  document.dhcpd.ltime.value  == 0 ) {
+62<@>		alert('無效的DHCP租約時間! 時間不可以是0。');
+32<@>		document.dhcpd.ltime.focus();
+16<@>		return false;
+3<@>	}
+57<@>	if ( validateKey( document.dhcpd.ltime.value ) == 0 ) {
+81<@>		alert('無效的DHCP租約時間! 時間應該是十進位的數字(0-9)。');
+32<@>		document.dhcpd.ltime.focus();
+16<@>		return false;
+3<@>	}
+32<@>	//check lease time range, mins
+29<@>	var maxleasetime=365*24*60;
+72<@>	if ( !checkDigitRange(document.dhcpd.ltime.value,1,1,maxleasetime) ) {
+81<@>   	   	alert('無效的DHCP租約時間! 時間應該是 1-'+maxleasetime+'.');
+66<@>		document.dhcpd.ltime.value = document.dhcpd.ltime.defaultValue;
+32<@>		document.dhcpd.ltime.focus();
+16<@>		return false;
+3<@>	}
+46<@>  	if(checkIP(document.dhcpd.dns1) == false){
+33<@>  		document.dhcpd.dns1.focus();
+18<@>  		return false;
+7<@>    	}
+56<@>    	if(!checkSpecialChar(document.dhcpd.dname.value,1)
+41<@>    		&& document.dhcpd.dname.value !=""
+7<@>    	)
+7<@>    	{
+33<@>    		alert("無效的字元!");
+36<@>    		document.dhcpd.dname.focus();
+20<@>    		return false;
+7<@>    	}
+84<@>  	if( (document.dhcpd.dns2.value != '') && checkIP(document.dhcpd.dns2) == false){
+33<@>  		document.dhcpd.dns2.focus();
+18<@>  		return false;
+6<@>    }
+84<@>  	if( (document.dhcpd.dns3.value != '') && checkIP(document.dhcpd.dns3) == false){
+33<@>  		document.dhcpd.dns3.focus();
+18<@>  		return false;
+10<@>    }    
+4<@>  }
+1<@>
+42<@>  if ( document.dhcpd.dhcpmode.value==1) 
+4<@>  {
+42<@>  	if(!checkIP(document.dhcpd.relayaddr))
+6<@>  	{	
+18<@>  		return false;
+5<@>  	}
+4<@>  }
+1<@>
+15<@>  return true;
+2<@>}
+1<@>
+1<@>
+29<@>function dhcpTblClick(url) {
+43<@>	if ( document.dhcpd.dhcpmode.value==2 ) {
+31<@>		openWindow(url, 'DHCPTbl' );
+3<@>	}
+2<@>}
+1<@>
+31<@>function dhcpRtTblClick(url) {
+43<@>	if ( document.dhcpd.dhcpmode.value==2 ) {
+33<@>		openWindow(url, 'DHCPRtTbl' );
+3<@>	}
+2<@>}
+1<@>
+35<@>function dhcpVendorTblClick(url) {
+43<@>	if ( document.dhcpd.dhcpmode.value==2 ) {
+42<@>		openWindow(url, 'DHCPVendorClassTbl' );
+3<@>	}
+2<@>}
+1<@>
+37<@>function dhcpCUCOpt60TblClick(url) {
+43<@>	if ( document.dhcpd.dhcpmode.value==2 ) {
+39<@>		openWindow(url, 'DHCPCUCOpt60Tbl' );
+3<@>	}
+2<@>}
+1<@>
+25<@>function ShowIP(ipVal) {
+36<@>	document.write(getDigit(ipVal,1));
+22<@>	document.write('.');
+36<@>	document.write(getDigit(ipVal,2));
+22<@>	document.write('.');
+36<@>	document.write(getDigit(ipVal,3));
+22<@>	document.write('.');
+2<@>}
+1<@>
+26<@>function dhcpmodechang(){
+39<@>	if (document.dhcpd.dhcpmode.value==0)
+3<@>	{
+21<@>  		dhcpdDisabled();
+26<@>  		dhcpdRelayDisabled();
+5<@>  	}
+45<@>  	else if(document.dhcpd.dhcpmode.value==1)
+5<@>  	{
+25<@>  		dhcpdRelayEnabled();
+21<@>  		dhcpdDisabled();
+10<@>  	}else{
+25<@>  	dhcpdRelayDisabled();
+20<@>  		dhcpdEnabled();
+5<@>  	}
+2<@>}
+1<@>
+22<@>// for dhcp static ip
+11<@>var sel=0;
+28<@>function resetDhcpIpClick()
+2<@>{
+26<@>   document.dhcpip.reset;
+2<@>}
+42<@>function dhcpIptable(ip1,ip2,ip3,ip4,mac)
+2<@>{
+15<@>	this.ip1=ip1;
+15<@>	this.ip2=ip2;
+15<@>	this.ip3=ip3;
+15<@>	this.ip4=ip4;
+17<@>	//this.mac=mac;
+32<@>	this.mac=mac.replace(/:/g,"");
+2<@>}
+1<@>
+37<@>function checkPoolIP(ipaddr,macaddr)
+2<@>{
+31<@>	var DhcpIpTables=new Array();
+51<@>	<VWS_FUNCTION (void*)CreateDhcpStaticIPArray();>;
+83<@>	var poolstartip= getDigit(document.dhcpip.lan_dhcpRangeStart.value,1)*256*256*256
+67<@>					+getDigit(document.dhcpip.lan_dhcpRangeStart.value,2)*256*256
+63<@>					+getDigit(document.dhcpip.lan_dhcpRangeStart.value,3)*256
+60<@>					+getDigit(document.dhcpip.lan_dhcpRangeStart.value,4);
+1<@>
+81<@>	var poolendip=   getDigit(document.dhcpip.lan_dhcpRangeEnd.value,1)*256*256*256
+65<@>					+getDigit(document.dhcpip.lan_dhcpRangeEnd.value,2)*256*256
+61<@>					+getDigit(document.dhcpip.lan_dhcpRangeEnd.value,3)*256
+58<@>					+getDigit(document.dhcpip.lan_dhcpRangeEnd.value,4);
+55<@>	var setipaddr =  getDigit(ipaddr.value,1)*256*256*256
+39<@>					+getDigit(ipaddr.value,2)*256*256
+35<@>					+getDigit(ipaddr.value,3)*256
+32<@>					+getDigit(ipaddr.value,4);
+46<@>	macaddr.value = macaddr.value.toUpperCase();
+2<@>	
+36<@>	if(DhcpIpTables.length >= max_num)
+3<@>	{
+51<@>		alert("DHCP 固定IP規則已達最高限制!");
+18<@>		ipaddr.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+54<@>	if(setipaddr < poolstartip || setipaddr > poolendip)
+3<@>	{
+55<@>		alert("IP位址應該在DHCP ip pool的範圍內!");
+18<@>		ipaddr.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+10<@>	if(!sel)
+3<@>	{
+43<@>		for(var i=0; i<DhcpIpTables.length; i++)
+4<@>		{
+53<@>			if(DhcpIpTables[i].ip4 ==getDigit(ipaddr.value,4)
+53<@>			&& DhcpIpTables[i].ip3 ==getDigit(ipaddr.value,3)
+53<@>			&& DhcpIpTables[i].ip2 ==getDigit(ipaddr.value,2)
+54<@>			&& DhcpIpTables[i].ip1 ==getDigit(ipaddr.value,1))
+5<@>			{
+45<@>				alert("此IP位址已經被使用了!");
+20<@>				ipaddr.focus();
+18<@>				return false;
+6<@>			}	
+43<@>			if(DhcpIpTables[i].mac==macaddr.value )
+5<@>			{
+57<@>				alert("此mac位址已經綁定在其他IP位址!");
+21<@>				macaddr.focus();
+18<@>				return false;
+6<@>			}	
+4<@>		}
+3<@>	}
+1<@>
+14<@>	return true;
+2<@>}
+43<@>function updateCheckPoolIP(ipaddr,macaddr)
+2<@>{
+31<@>	var DhcpIpTables=new Array();
+51<@>	<VWS_FUNCTION (void*)CreateDhcpStaticIPArray();>;
+83<@>	var poolstartip= getDigit(document.dhcpip.lan_dhcpRangeStart.value,1)*256*256*256

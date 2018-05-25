@@ -1,0 +1,692 @@
+13<@>&&*&&tw**&**
+58<@>					'如果您的设备需要使用固定的IP地址,' +
+68<@>					'请为这些设备增加静态DHCP IP地址绑定.<br><br>' +
+64<@>					'<a href="helpsetup.htm#DhcpReserve">更多帮助...</a>';
+1<@>
+30<@>}else if (HelpItem=='wanif'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+90<@>					'當設定路由器去存取Internet時請確認從以下清單內選擇正確的' +
+79<@>					'<b><font color="rgb(108,169,213)">WAN存取類型</font></b>.<br><br>' +
+30<@>					'輸入時請留意: ' +
+75<@>					'<b><font color="rgb(108,169,213)">使用者名稱</font></b> 和 ' +
+63<@>					'<b><font color="rgb(108,169,213)">密碼</font></b> ,' +
+91<@>					'因為這些資料有區分大小寫。主要的連線問題是因為不正確的' +
+75<@>					'<b><font color="rgb(108,169,213)">使用者名稱</font></b> 或 ' +
+81<@>					'<b><font color="rgb(108,169,213)">密碼</font></b>引起的。<br><br>' +
+61<@>					'<a href="helpsetup.htm#Internet">更多幫助...</a>';
+1<@>
+29<@>}else if (HelpItem=='pptp'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+49<@>					'此頁面用來配置VPN PPTP客戶端.' +
+56<@>					'你可以在此頁面設置PPTP參數.<br><br>' +
+57<@>					'<a href="helpsetup.htm#pptp">更多幫助...</a>';
+29<@>}else if (HelpItem=='l2tp'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+42<@>					'此頁面用來設置L2TP參數.' +
+77<@>					'你可以在此頁面設置L2TP參數或查看相關信息.<br><br>' +
+57<@>					'<a href="helpsetup.htm#l2tp">更多幫助...</a>';
+36<@>}else if (HelpItem=='wancfghelp2'){
+87<@>  document.getElementById('helpLabel').innerHTML = '<b>帮助信息...</b> <br><br>' +
+54<@>					'IGMP (互联网组消息管理协议) 用于' +
+66<@>					'管理多播组成员. 为了支持二层多媒体应用' +
+63<@>					'(比如多媒体服务器,机顶盒,网络游戏等),' +
+56<@>					'请使能"IGMP 代理(组播)" 功能.<BR><BR> '+
+57<@>					'<a href="helpsetup.htm#Time">更多帮助...</a>';
+1<@>
+32<@>}else if (HelpItem=='IPV6Set'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+212<@>  					'<p>當設定路由器去存取IPv6 Internet時，請確認從下拉式選單中選擇正確的IPv6連線類型。若您不確定要選擇何種類型，請聯絡您的網路服務提供者(ISP)。</p>' +
+194<@>					'<p>若您無法透過路由器來存取IPv6 Internet時，請再次檢查您在此頁面輸入的每一個資料，需要時請聯絡您的ISP來確認資料是否正確。</p><br><br>' +
+60<@>					'<a href="helpsetup.htm#IPV6Set">更多幫助...</a>';
+1<@>
+2<@>}
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+25<@>&*#@wlanhelp.htm@#*&5808
+26<@>if (HelpItem=='wlbasic'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+83<@>					'修改<b><font color="rgb(108,169,213)">無線網絡名(SSID)</font></b> ' +
+45<@>					'是保護您的網絡的第一步. ' +
+85<@>					'修改成您熟悉的名字但注意不要包含任何個人訊息.<br><br>' +
+94<@>					'選擇自動信道模式可以使您的路由器選擇最好的無線信道.<br><br>' +
+61<@>					'<a href="helpwlan.htm#WlanBasic">更多幫助...</a>';
+1<@>
+35<@>}else if (HelpItem=='wlsecurity'){
+87<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br>' +
+72<@>					'如果您設置了無線安全,請確保記錄下您設置的 ' +
+68<@>					'<b><font color="rgb(108,169,213)">加密密鑰</font></b> ' +
+65<@>					'您需要在無線客戶端輸入密鑰訊息. <br><br>' +
+60<@>					'<a href="helpwlan.htm#WlanSecu">更多幫助...</a>';
+1<@>
+35<@>}else if (HelpItem=='wladvanced'){
+88<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br> ' +
+51<@>					'此頁面配置無線高級參數。<br> ' +
+59<@>					'<a href="helpwlan.htm#AdvWlan">更多幫助...</a>';
+30<@>} else if (HelpItem=='Ctrl'){
+88<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br> ' +
+72<@>					'此頁面配置無線接入的白名單或黑名單。<br><br>' +
+61<@>					'<a href="helpwlan.htm#WlanActrl">更多幫助...</a>';
+29<@>} else if (HelpItem=='Wps'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+51<@>					'本頁面可以修改WPS設置。<br><br>' +
+55<@>					'<a href="helpwlan.htm#WPS">更多幫助...</a>';
+32<@>} else if (HelpItem=='Mbssid'){
+88<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br> ' +
+129<@>					'本頁面用來配置虛擬AP。在這裏您可以啟用/禁用虛擬AP，以及設置SSID、認證類型等。<br><br>' +
+58<@>					'<a href="helpwlan.htm#MBSSID">更多幫助...</a>';
+29<@>} else if (HelpItem=='Wds'){
+88<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br> ' +
+95<@>					'無線分布的系統通過無線介質與其他AP相聯絡，作用類似以太網。'+
+87<@>					'您必須確保每個WDS設備使用相同的加密算法和密鑰。<br><br>' +
+55<@>					'<a href="helpwlan.htm#WDS">更多幫助...</a>';
+34<@>}else if (HelpItem=='wlanbasic'){
+650<@>  var tips='<br><strong>實用小提示...</strong><br><br><p><b>注意：</b>您必須設定適用於您區域內正確的運作頻道和地區來確保兩個相似產品間的相容性 <p><b>配置路由器的位置來取得較好的無線連線</b></p><p>路由器的擺放會影響您無線連線的使用距離或範圍。路由器放置的建議:</p><ul><li>鄰近您要使用電腦的區域中央。<li>例如書架上較高的位置。<li>遠離微波爐和無線電話等有潛在干擾的來源。<li>遠離大型的金屬介面。</ul></p><p><b>注意:</b> 沒有依照這些建議放置的話可能會影響無線連效的效能。</p>';
+69<@>  document.getElementById('helpLabel').innerHTML = tips+'<br><br>' +
+66<@>					'<a href="helpwlan.htm#WlanBasic">更多幫助...</a>';					
+35<@>} else if (HelpItem=='wlanguest'){
+563<@>  var tips='<br><strong>實用小提示...</strong><p><br><b>網路設定檔</b></p><p>您可以點選每一個設定檔上的按鈕來查看詳細的資料或更改設定。清單顯示您建立設定檔的資料總覽，包括設定檔數量、設定檔的SSID、安全類型、訪客無線網路是否啟用，以及SSID是否會顯示。 </p><p><b>設定檔的無線設定 </b></p><p>啟用訪客網路 </p><p>若這個核取方塊被勾選則此訪客網路即被啟用，您和您的訪客可以透過這個設定檔的SSID來連線到您的網路。</p>';
+69<@>  document.getElementById('helpLabel').innerHTML = tips+'<br><br>' +
+63<@>					'<a href="helpwlan.htm#MBSSID">更多幫助...</a>';					
+30<@>}else if (HelpItem=='wlwps'){
+293<@>  var tips='<br><strong>實用小提示...</strong><br><br><p>您可以利用PIN碼來新增無線用戶端。若您使用PIN模式，請輸入用戶端的PIN碼，同時開始WPS用戶端的連線程序。用戶端的PIN碼通常可以到裝置標籤或設定畫面內查看。<br><br></p>';
+69<@>  document.getElementById('helpLabel').innerHTML = tips+'<br><br>' +
+62<@>					'<a href="helpwlan.htm#wlwps">更多幫助...</a>';					
+31<@>} else if (HelpItem=='wladv'){
+127<@>  var tips='<br><strong>實用小提示...</strong><p>這些設定預設不需要更改來讓路由器的無線運作。</p>';
+69<@>  document.getElementById('helpLabel').innerHTML = tips+'<br><br>' +
+62<@>					'<a href="helpwlan.htm#wladv">更多幫助...</a>';					
+35<@>}else if (HelpItem=='wlrepeater'){
+200<@>  var tips='<br><strong>實用小提示...</strong><br><br><p><b>啟用無線中繼功能</b></p><p>若您想要用作無線中繼或無線橋接，請啟用此功能再選擇正確的模式。</p>';
+69<@>  document.getElementById('helpLabel').innerHTML = tips+'<br><br>' +
+67<@>					'<a href="helpwlan.htm#wlrepeater">更多幫助...</a>';					
+31<@>}else if (HelpItem=='wlctrl'){
+403<@>  var tips='<br><strong>幫助提示...</strong><br><br><p>默認情況下，配置正確的無線網卡均可訪問用戶的無線網絡。每一塊網卡均有全球唯一的物理地址-MAC地址。用戶可通過在無線網卡訪問列表中添加特定無線網卡的MAC地址，對哪些客戶端可以訪問自己的無線網絡進行限制，從而有效提高無線網絡的安全性。</p>';
+69<@>  document.getElementById('helpLabel').innerHTML = tips+'<br><br>' +
+62<@>					'<a href="helpwlan.htm#wladv">更多幫助...</a>';					
+2<@>}
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+24<@>&*#@advhelp.htm@#*&4573
+22<@>if (HelpItem=='Acl'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+93<@>					'您可以在此頁面指定什麼類型的服務可以在WAN端內啟用。<br><br>' +
+54<@>					'<a href="helpadv.htm#Acl">更多幫助...</a>';
+40<@>} else if (HelpItem=='PortTriggering'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+504<@>					'路由器會監控對外的流量。當路由器偵測到一個特定的對外流量時，它會記憶傳送資料的電腦IP位址和觸發的輸入埠，在大量資料中的觸發輸入埠會送出去觸發電腦。 Internet的應用程式可以透過Port Mapping/服務埠觸發來存取到內部電腦，所以區網內的主機可以提供像ftp、http…等的服務。一旦服務埠觸發功能被啟用後，從Internet來的要求將會被送到區網內對應的伺服器。<br><br>' +
+65<@>					'<a href="helpadv.htm#PortTriggering">更多幫助...</a>';
+29<@>} else if (HelpItem=='Dmz'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+205<@>					'DMZ是用來給內部主機提供服務到WAN，它可以防止從WAN端未經授權到內部主機的存取。典型的DMZ有一些WAN可以存取的裝置，像web、FTP、SMTP和DNS。<br><br>' +
+54<@>					'<a href="helpadv.htm#DMZ">更多幫助...</a>';
+29<@>} else if (HelpItem=='Url'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+183<@>					'用來設定關鍵字過濾。您可以新增或移除要過濾的關鍵字，此功能可以防止區域網路內的使用者用特定的關鍵字來存取網站。<br><br>' +
+54<@>					'<a href="helpadv.htm#Url">更多幫助...</a>';
+35<@>} else if (HelpItem=='Filtering'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+139<@>					'您可以用IP/Port過濾的功能來防止特定的內部IP來存取Internet，且封鎖特定Internet服務的存取。<br><br>' +
+62<@>					'<a href="helpadv.htm#IPFiltering">更多幫助...</a>';
+30<@>} else if (HelpItem=='Ddns'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+156<@>					'您可以設定動態DNS為DynDNS.org、TZO或Oray。您可以新增或刪除一個動態DNS，帳戶是由DDNS服務提供者來提供。<br><br>' +
+55<@>					'<a href="helpadv.htm#DDNS">更多幫助...</a>';
+35<@>} else if (HelpItem=='Netsniper'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+105<@>					'您可以設定Net Snipper功能，讓多台電腦透過此路由器來分享網路。 <br><br>' +
+60<@>					'<a href="helpadv.htm#Netsniper">更多幫助...</a>';
+30<@>} else if (HelpItem=='Igmp'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+102<@>					'IGMP proxy啟用系統透過標準IGMP介面來傳送內部主機訊息的功能。 <br><br>' +
+55<@>					'<a href="helpadv.htm#IGMP">更多幫助...</a>';
+32<@>} else if (HelpItem=='Qos_tc'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+96<@>					'您可以在此頁面設定特定的規則來管理對內封包的QoS功能。<br><br>' +
+58<@>					'<a href="helpadv.htm#IPQosTC">更多幫助...</a>';
+30<@>} else if (HelpItem=='Upnp'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+100<@>					'您可以在此頁面設定UPnP功能，若啟用時此功能會在後端執行。<br><br>' +
+55<@>					'<a href="helpadv.htm#UPnP">更多幫助...</a>';
+32<@>} else if (HelpItem=='Telnet'){
+88<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br> ' +
+74<@>					'本頁面用來配置Telnet. 系統將在後臺執行。<br><br>' +
+57<@>					'<a href="helpadv.htm#Telnet">更多幫助...</a>';
+33<@>} else if (HelpItem=='Routing'){
+88<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br> ' +
+87<@>					'本頁面用來配置路由訊息。您可以添加/刪除IP路由。<br><br>' +
+56<@>					'<a href="helpadv.htm#Route">更多幫助...</a>';
+33<@>} else if (HelpItem=='Virtual'){
+88<@>  document.getElementById('helpLabel').innerHTML = '<b>幫助訊息...</b> <br><br> ' +
+119<@>					'本頁面使您可以配置虛擬伺服器, 這樣其他人可以通過網關訪問相應的服務。<br><br>' +
+61<@>					'<a href="helpadv.htm#VirtualSrv">更多幫助...</a>';
+2<@>}
+1<@>
+25<@>&*#@mainhelp.htm@#*&1864
+33<@>if (HelpItem=='firmwareupdate'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+235<@>     '<b>注意！</b>在點選上傳後'+ '請不要中斷連線 '+ '且路由器正在重新啟動中，若您覺得在 '+ '過程中可能會因為某些原因中斷，您可以點選Reset '+ '來保持目前的程式。<br><br>' +
+58<@>     '<a href="helpmain.htm#Upload">更多幫助...</a>';
+1<@>
+39<@>} else if (HelpItem=='backuprestore'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+155<@>      ' 您應該儲存路由器的設定檔'+ '到您的電腦，之後若有需要時可以使用此檔案來復原路由器的設定 '+ '。<br><br>' +
+60<@>     '<a href="helpmain.htm#Saveconf">更多幫助...</a>';
+1<@>
+32<@>} else if (HelpItem=='reboot'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+64<@>      '此頁面是用來重新啟動路由器。。<br><br>' +
+58<@>     '<a href="helpmain.htm#Reboot">更多幫助...</a>';
+1<@>
+34<@>} else if (HelpItem=='password'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+231<@>     '<b>注意！</b>此密碼不是您ISP帳號的密碼'+ '，而是登入路由器網頁管理介面的密碼。密碼必須 '+ '要記錄下來，否則忘記'+ '密碼時要回復設定並重新設定路由器。 <br><br>' +
+62<@>     '<a href="helpmain.htm#Userconfig">更多幫助...</a>';
+1<@>
+33<@>}else if (HelpItem=='datetime'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+115<@>     '例如對記錄檔內時間的正確性來說，保持路由器時鐘同步是很重要的'+ '。<br><br>' +
+56<@>     '<a href="helpmain.htm#Time">更多幫助...</a>';
+1<@>
+2<@>}
+1<@>
+1<@>
+26<@>&*#@statushelp.htm@#*&989
+29<@>if (HelpItem=='deviceinfo'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+54<@>					'此頁面顯示您路由器狀態的總覽。'+
+36<@>					'包含裝置的韌體版本'+
+41<@>					'和Internet的狀態。<br><br>' +
+64<@>					'<a href="helpstatusinfo.htm#Status">更多幫助...</a>';
+1<@>
+34<@>}else if (HelpItem=='statistic'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+84<@>					'顯示目前連線到您無線路由器的所有無線用戶端。<br><br>' +
+63<@>					'<a href="helpstatusinfo.htm#Stats">更多幫助...</a>';
+1<@>
+35<@>}else if (HelpItem=='dhcpclient'){
+91<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br> ' +
+111<@>					'顯示由DHCP伺服器派發IP位址且連線到您路由器的所有區域網路用戶端。<br><br>' +
+68<@>					'<a href="helpstatusinfo.htm#Dhcpclient">更多幫助...</a>';
+1<@>
+2<@>}
+1<@>
+28<@>&*#@usersitemap.htm@#*&3819
+1<@>
+24<@>var MTMIconList = null;
+30<@>MTMIconList = new IconList();
+78<@>MTMIconList.addIcon(new MTMIcon("menu_link_external.gif", "http://", "pre"));
+71<@>MTMIconList.addIcon(new MTMIcon("menu_link_pdf.gif", ".pdf", "post"));
+1<@>
+14<@>// Main menu.
+17<@>var menu = null;
+21<@>menu = new MTMenu();
+1<@>
+68<@>menu.addItem("Status", "status.htm", "", "Display current status");
+71<@>menu.addItem("ADSL Driver", "adslconfig.htm", "", "View ADSL Driver");
+69<@>menu.addItem("LAN Interface", "lan.htm", "", "Setup LAN Interface");
+1<@>
+31<@>menu.addItem("WAN Interface");
+20<@>wan = new MTMenu();
+72<@>wan.addItem("Channel Config", "wanadsl.htm", "", "Setup Channel Mode");
+69<@>wan.addItem("ATM Settings", "wanatm.htm", "", "Setup ATM Settings");
+27<@>menu.makeLastSubmenu(wan);
+1<@>
+26<@>menu.addItem("Services");
+24<@>service = new MTMenu();
+1<@>
+34<@>//service.addItem("DHCP Server");
+24<@>//dhcpd = new MTMenu();
+78<@>//dhcpd.addItem("DHCP Server", "dhcpd.htm", "", "DHCP Server Configuration");
+75<@>//dhcpd.addItem("Static IP", "dhcpip.htm", "", "Static IP Configuration");
+34<@>//service.makeLastSubmenu(dhcpd);
+62<@>//service.addItem("DNS", "dns.htm", "", "DNS Configuration");
+1<@>
+29<@>service.addItem("Firewall");
+25<@>firewall = new MTMenu();
+1<@>
+43<@>//firewall.addItem("Access Control List");
+22<@>//acl = new MTMenu();
+89<@>//acl.addItem("IP/Port Filtering", "fw-ipportfilter.htm", "", "Setup IP/Port filering");
+103<@>//acl.addItem("Filtering Rule Order", "fw-ipportorder.htm", "", "Change IP/Port filering rule order");
+33<@>//firewall.makeLastSubmenu(acl);
+1<@>
+32<@>//firewall.addItem("NAT/NAPT");
+22<@>//nat = new MTMenu();
+90<@>//nat.addItem("NAPT Port Forwarding", "fw-portfw.htm", "", "Setup NAPT port-forwarding");
+80<@>//nat.addItem("NAT Forwarding", "fw-nat.htm", "", "Setup NAT port-forwarding");
+83<@>//nat.addItem("NAT Pass-Through", "fw-natpass.htm", "", "Setup NAT Pass-Through");
+33<@>//firewall.makeLastSubmenu(nat);
+1<@>
+81<@>firewall.addItem("MAC Filtering", "fw-macfilter.htm", "", "Setup MAC filering");
+58<@>//firewall.addItem("DMZ", "fw-dmz.htm", "", "Setup DMZ");
+35<@>service.makeLastSubmenu(firewall);
+1<@>
+81<@>//service.addItem("IGMP Proxy", "igmproxy.htm", "", "IGMP Proxy Configuration");
+62<@>//service.addItem("RIP", "rip.htm", "", "RIP Configuration");
+31<@>menu.makeLastSubmenu(service);
+1<@>
+25<@>menu.addItem("Advance");
+24<@>advance = new MTMenu();
+73<@>advance.addItem("Bridging", "bridging.htm", "", "Bridge Configuration");
+64<@>advance.addItem("Logging", "Logging.htm", "", "Logging Table");
+74<@>//advance.addItem("Routing", "routing.htm", "", "Routing Configuration");
+74<@>//advance.addItem("SNMP", "snmp.htm", "", "SNMP Protocol Configuration");
+77<@>advance.addItem("System Time", "time.htm", "", "System Time Configuration");
+79<@>//advance.addItem("Others", "others.htm", "", "Other advanced Configuration");
+31<@>menu.makeLastSubmenu(advance);
+1<@>
+28<@>menu.addItem("Diagnostic");
+21<@>diag = new MTMenu();
+51<@>diag.addItem("Ping", "ping.htm", "", "Ping test");
+78<@>diag.addItem("ATM Loopback", "oamloopback.htm", "", "ATM OAM loopback test");
+28<@>menu.makeLastSubmenu(diag);
+1<@>
+23<@>menu.addItem("Admin");
+22<@>admin = new MTMenu();
+78<@>admin.addItem("Commit/Reboot", "reboot.htm", "", "Commit/reboot the system");
+88<@>admin.addItem("Backup/Restore", "saveconf.htm", "", "Backup/restore current settings");
+72<@>admin.addItem("Password", "password.htm", "", "Setup access password");
+75<@>admin.addItem("Remote control", "wanctl.htm", "", "Setup remote control");
+78<@>admin.addItem("Upgrade Firmware", "upload.htm", "", "Update firmware image");
+29<@>menu.makeLastSubmenu(admin);
+1<@>
+74<@>menu.addItem("Statistics", "stats.htm", "", "Display packet statistics");
+61<@>//menu.addItem("Logout", "weblogout.htm", "", "Web logout");
+1<@>
+1<@>
+1<@>
+30<@>&*#@systemsitemap.htm@#*&4708
+1<@>
+24<@>var MTMIconList = null;
+30<@>MTMIconList = new IconList();
+78<@>MTMIconList.addIcon(new MTMIcon("menu_link_external.gif", "http://", "pre"));
+71<@>MTMIconList.addIcon(new MTMIcon("menu_link_pdf.gif", ".pdf", "post"));
+1<@>
+14<@>// Main menu.
+17<@>var menu = null;
+21<@>menu = new MTMenu();
+1<@>
+68<@>menu.addItem("Status", "status.htm", "", "Display current status");
+71<@>menu.addItem("ADSL Driver", "adslconfig.htm", "", "View ADSL Driver");
+69<@>menu.addItem("LAN Interface", "lan.htm", "", "Setup LAN Interface");
+1<@>
+31<@>menu.addItem("WAN Interface");
+20<@>wan = new MTMenu();
+72<@>wan.addItem("Channel Config", "wanadsl.htm", "", "Setup Channel Mode");
+69<@>wan.addItem("ATM Settings", "wanatm.htm", "", "Setup ATM Settings");
+72<@>wan.addItem("ADSL Settings", "adslset.htm", "", "Setup ADSL Settings");
+27<@>menu.makeLastSubmenu(wan);
+1<@>
+26<@>menu.addItem("Services");
+24<@>service = new MTMenu();
+1<@>
+32<@>service.addItem("DHCP Config");
+22<@>dhcpd = new MTMenu();
+58<@>dhcpd.addItem("DHCP Mode", "dhcpd.htm", "", "DHCP Mode");
+73<@>dhcpd.addItem("Static IP", "dhcpip.htm", "", "Static IP Configuration");
+32<@>service.makeLastSubmenu(dhcpd);
+1<@>
+24<@>service.addItem("DNS");
+20<@>dns = new MTMenu();
+63<@>dns.addItem("DNS Server", "dns.htm", "", "DNS Configuration");
+66<@>dns.addItem("Dynamic DNS", "ddns.htm", "", "DDNS Configuration");
+30<@>service.makeLastSubmenu(dns);
+1<@>
+29<@>service.addItem("Firewall");
+25<@>firewall = new MTMenu();
+1<@>
+41<@>firewall.addItem("Access Control List");
+20<@>acl = new MTMenu();
+73<@>acl.addItem("ACL Configuration", "acl.htm", "", "Setup local filering");
+87<@>acl.addItem("IP/Port Filtering", "fw-ipportfilter.htm", "", "Setup IP/Port filering");
+101<@>acl.addItem("Filtering Rule Order", "fw-ipportorder.htm", "", "Change IP/Port filering rule order");
+31<@>firewall.makeLastSubmenu(acl);
+1<@>
+30<@>firewall.addItem("NAT/NAPT");
+20<@>nat = new MTMenu();
+88<@>nat.addItem("NAPT Port Forwarding", "fw-portfw.htm", "", "Setup NAPT port-forwarding");
+82<@>nat.addItem("Virtual Server", "virtualSrv.htm", "", "Setup NAPT Virtual Server");
+68<@>nat.addItem("NAT IP Pool", "fw-pool.htm", "", "Setup NAT IP Pool");
+78<@>nat.addItem("NAT Forwarding", "fw-nat.htm", "", "Setup NAT port-forwarding");
+97<@>nat.addItem("NAT ALG and Pass-Through", "fw-natpass.htm", "", "Setup NAT ALG and Pass-Through");
+31<@>firewall.makeLastSubmenu(nat);
+1<@>
+81<@>firewall.addItem("MAC Filtering", "fw-macfilter.htm", "", "Setup MAC filering");
+56<@>firewall.addItem("DMZ", "fw-dmz.htm", "", "Setup DMZ");
+65<@>firewall.addItem("URL Setting","url.htm","","Setup URL setting")
+63<@>firewall.addItem("DoS Setup","dos.htm","","Setup DoS setting")
+35<@>service.makeLastSubmenu(firewall);
+1<@>
+68<@>service.addItem("IP QoS", "ipqos.htm", "", "IP QoS Configuration");
+79<@>service.addItem("IGMP Proxy", "igmproxy.htm", "", "IGMP Proxy Configuration");
+60<@>service.addItem("RIP", "rip.htm", "", "RIP Configuration");
+31<@>menu.makeLastSubmenu(service);
+1<@>
+25<@>menu.addItem("Advance");
+24<@>advance = new MTMenu();
+73<@>advance.addItem("Bridge Setting", "bridging.htm", "", "Bridge Setting");
+66<@>advance.addItem("Log Setting", "Logging.htm", "", "Log Setting");
+72<@>advance.addItem("Routing", "routing.htm", "", "Routing Configuration");
+63<@>advance.addItem("UPnP", "upnp.htm", "", "UPnP Configuration");
+72<@>advance.addItem("SNMP", "snmp.htm", "", "SNMP Protocol Configuration");
+77<@>advance.addItem("System Time", "time.htm", "", "System Time Configuration");
+77<@>advance.addItem("Others", "others.htm", "", "Other advanced Configuration");
+78<@>advance.addItem("Port Mapping", "portmap.htm", "", "Port map Configuration");
+31<@>menu.makeLastSubmenu(advance);
+1<@>
+28<@>menu.addItem("Diagnostic");
+21<@>diag = new MTMenu();
+51<@>diag.addItem("Ping", "ping.htm", "", "Ping test");
+78<@>diag.addItem("ATM Loopback", "oamloopback.htm", "", "ATM OAM loopback test");
+28<@>menu.makeLastSubmenu(diag);
+1<@>
+23<@>menu.addItem("Admin");
+22<@>admin = new MTMenu();
+78<@>admin.addItem("Commit/Reboot", "reboot.htm", "", "Commit/reboot the system");
+88<@>admin.addItem("Backup/Restore", "saveconf.htm", "", "Backup/restore current settings");
+78<@>admin.addItem("Password Setup", "password.htm", "", "Setup access password");
+75<@>admin.addItem("Remote control", "wanctl.htm", "", "Setup remote control");
+78<@>admin.addItem("Upgrade Firmware", "upload.htm", "", "Update firmware image");
+79<@>admin.addItem("Configure TR-069", "tr069.htm", "", "Configure TR-069 (CWMP)");
+29<@>menu.makeLastSubmenu(admin);
+1<@>
+74<@>menu.addItem("Statistics", "stats.htm", "", "Display packet statistics");
+61<@>//menu.addItem("Logout", "weblogout.htm", "", "Web logout");
+1<@>
+1<@>
+1<@>
+33<@>&*#@changeusertimeout.htm@#*&621
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+24<@><title>Autoboot</title>
+9<@><script>
+13<@>var wtime=1;
+16<@>function stop()
+2<@>{
+22<@>   clearTimeout(id); 
+2<@>}
+18<@>function start() 
+3<@>{ 
+12<@>   wtime--;
+19<@>   if (wtime >= 0)
+6<@>   { 
+36<@>      id=setTimeout("start()",100);
+5<@>   }
+19<@>   if (wtime == 0)
+6<@>   { 
+20<@>      window.open( 
+48<@><VWS_FUNCTION (void*)httpMgmtIPAddrUrlIndex();>
+20<@>,target="_parent");
+5<@>   }
+2<@>}
+10<@></script>
+8<@></head>
+44<@><body onLoad="start();" onUnload="stop();">
+13<@><blockquote>
+1<@>
+15<@></body></html>
+1<@>
+1<@>
+23<@>&*#@status.htm@#*&7785
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+56<@><meta http-equiv="refresh" content="60;url=status.htm">
+28<@><title>裝置訊息</title>
+9<@><script>
+26<@>function modifyClick(url)
+2<@>{
+15<@> var wide=600;
+15<@> var high=400;
+19<@> if (document.all)
+49<@>  var xMax = screen.width, yMax = screen.height;
+27<@> else if (document.layers)
+59<@>  var xMax = window.outerWidth, yMax = window.outerHeight;
+6<@> else
+30<@>    var xMax = 640, yMax=480;
+32<@> var xOffset = (xMax - wide)/2;
+32<@> var yOffset = (yMax - high)/3;
+1<@>
+213<@> var settings = 'width='+wide+',height='+high+',screenX='+xOffset+',screenY='+yOffset+',top='+yOffset+',left='+xOffset+', resizable=yes, toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes';
+1<@>
+48<@> window.open( url, 'Status_Modify', settings );
+2<@>}
+1<@>
+44<@>function submitPPPoe(form,pppoenum,connect)
+2<@>{
+33<@> form.pppoenum.value = pppoenum;
+31<@> form.connect.value = connect;
+16<@> form.submit();
+2<@>}
+1<@>
+10<@></script>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+21<@> TabHeader="狀態";
+26<@> SideItem="裝置資訊";
+24<@> HelpItem="deviceinfo";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@> <tr>
+40<@>  <td class=topheader>裝置訊息</td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+71<@>   <p>本頁面顯示設備的當前狀態和一些基本設置。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+1<@>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+34<@>  <td class=topheader>系統</td>
+7<@> </tr>
+1<@>
+6<@> <tr>
+21<@>  <td class=content>
+1<@>
+37<@>  <table class=formlisting border=0>
+30<@>    <tr class=form_label_row>
+59<@>    <td class='form_label_col' width=50%>產品名稱</td>
+32<@>    <td class='form_label_col'>
+40<@>    <VWS_SCREEN (char*) xscrnModel0[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+68<@>    <td class='form_label_col' width=50%>路由器啟動時間</td>
+32<@>    <td class='form_label_col'>
+43<@>    <VWS_SCREEN (char*) xscrnSysUpTime[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+60<@>    <td class='form_label_col' width=50%>日期/時間</td>
+32<@>    <td class='form_label_col'>
+49<@>    <VWS_SCREEN (char*) showNtpLocalTimeHttp[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+1<@>
+11<@>  </table>
+8<@>  </td>
+8<@>  </tr>
+9<@></table>
+1<@>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+40<@>  <td class=topheader>區域網路</td>
+7<@> </tr>
+1<@>
+6<@> <tr>
+21<@>  <td class=content>
+1<@>
+37<@>  <table class=formlisting border=0>
+30<@>    <tr class=form_label_row>
+55<@>    <td class='form_label_col' width=50%>IP位址</td>
+32<@>    <td class='form_label_col'>
+42<@>    <VWS_SCREEN (char*)xscrnLanIPAddr[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+62<@>    <td class='form_label_col' width=50%>子網路遮罩</td>
+32<@>    <td class='form_label_col'>
+46<@>    <VWS_SCREEN (char*)xscrnLanSubnetMask[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+60<@>    <td class='form_label_col' width=50%>DHCP伺服器</td>
+32<@>    <td class='form_label_col'>
+48<@>    <VWS_SCREEN (char*)xscrnShowDhcpSServer[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+56<@>    <td class='form_label_col' width=50%>MAC位址</td>
+32<@>    <td class='form_label_col'>
+43<@>    <VWS_SCREEN (char*)xscrnMacAddress[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+11<@>  </table>
+8<@>  </td>
+8<@>  </tr>
+9<@></table>
+1<@>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+40<@>  <td class=topheader>無線網路</td>
+7<@> </tr>
+1<@>
+6<@> <tr>
+21<@>  <td class=content>
+1<@>
+37<@>  <table class=formlisting border=0>
+30<@>    <tr class=form_label_row>
+65<@>    <td class='form_label_col' width=50%>無線網路狀態</td>
+32<@>    <td class='form_label_col'>
+46<@>    <VWS_SCREEN (char*)xscrnShowWlanState[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+53<@>    <td class='form_label_col' width=50%>模式</td>
+32<@>    <td class='form_label_col'>
+45<@>    <VWS_SCREEN (char*)xscrnShowWlanMode[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+51<@>    <td class='form_label_col' width=50%>SSID</td>
+32<@>    <td class='form_label_col'>
+45<@>    <VWS_SCREEN (char*)xscrnShowWlanSSID[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+59<@>    <td class='form_label_col' width=50%>加密模式</td>
+32<@>    <td class='form_label_col'>
+44<@>    <VWS_SCREEN (char*)xscrnShowWlanEnc[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+59<@>    <td class='form_label_col' width=50%>無線頻道</td>
+32<@>    <td class='form_label_col'>
+45<@>    <VWS_SCREEN (char*)xscrnShowWlanChan[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+57<@>    <td class='form_label_col' width=50%>廣播SSID</td>
+32<@>    <td class='form_label_col'>
+46<@>    <VWS_SCREEN (char*)xscrnShowWlanBSSID[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+50<@>    <td class='form_label_col' width=50%>WPS</td>
+32<@>    <td class='form_label_col'>
+44<@>    <VWS_SCREEN (char*)xscrnShowWlanWPS[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+30<@>    <tr class=form_label_row>
+59<@>    <td class='form_label_col' width=50%>中繼狀態</td>
+32<@>    <td class='form_label_col'>
+55<@>    <VWS_SCREEN (char*)xscrnShowWlanRepeaterStatus[];>
+10<@>    </td>
+10<@>    </tr>
+1<@>
+11<@>  </table>
+8<@>  </td>
+8<@>  </tr>
+9<@></table>
+1<@>
+67<@><table id=body_header border=0 cellSpacing=0 style="display:none">
+6<@> <tr>
+38<@>  <td class=topheader>DNS 狀態</td>
+7<@> </tr>
+1<@>
+6<@> <tr>
+21<@>  <td class=content>
+1<@>
+39<@>    <table class=formlisting border=0>
+32<@>      <tr class=form_label_row>
+59<@>      <td class='form_label_col' width=50%>DNS 模式</td>
+34<@>      <td class='form_label_col'>
+47<@>      <VWS_SCREEN (char*) xscrnShowDnsMode[];>
+12<@>      </td>
+12<@>      </tr>
+1<@>
+32<@>      <tr class=form_label_row>
+62<@>      <td class='form_label_col' width=50%>DNS 伺服器</td>
+34<@>      <td class='form_label_col'>
+50<@>      <VWS_SCREEN (char*) xscrnShowDnsServers[];>
+12<@>      </td>
+12<@>      </tr>
+1<@>
+13<@>    </table>
+8<@>  </td>
+8<@>  </tr>
+9<@></table>
+1<@>
+62<@><form action="form2WebRefresh.cgi" method=POST name="status">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+48<@>  <td class=topheader>Internet網際網路</td>
+7<@> </tr>
+1<@>
+6<@> <tr>
+21<@>  <td class=content>
+38<@>   <table class=formlisting border=0>
+52<@>    <INPUT TYPE="HIDDEN" NAME="pppoenum" VALUE="" >
+30<@>    <tr class=form_label_row>
+47<@>     <td class='form_label_col'>網路埠</td>
+50<@>     <td class='form_label_col'>連線類型</td>
+46<@>     <td class='form_label_col'>IP位址</td>
+50<@>     <td class='form_label_col'>閘道位址</td>
+59<@>     <td class='form_label_col'>網域名稱伺服器</td>
+47<@>     <td class='form_label_col'>MAC位址</td>
+44<@>     <td class='form_label_col'>狀態</td>
+10<@>    </tr>

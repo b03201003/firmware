@@ -1,0 +1,971 @@
+13<@>&&*&&tw**&**
+55<@>    alert("主要DNS 和 次要DNS 不可以相同!");
+22<@>    wan_dns2.focus();
+18<@>    return false;
+5<@>   }
+69<@>   if (wantype.value == 0 && wan_dns2.value == staip_ipaddr.value) {
+49<@>    alert("DNS IP 和 WAN IP 不可以相同!");
+22<@>    wan_dns2.focus();
+18<@>    return false;
+5<@>   }
+62<@>   if (Lan1EqLan2(wan_dns2.value, lanmask, lanip, lanmask)) {
+58<@>    alert("DNS IP and LAN IP 必須在不同的網路!");
+22<@>    wan_dns2.focus();
+18<@>    return false;
+5<@>   }
+4<@>  }
+3<@> }
+14<@> return true;
+2<@>}
+10<@></script>
+8<@></head>
+7<@><body>
+20<@><div class="login">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+28<@>  document.write(ModemVer);
+10<@></script>
+8<@>  </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+31<@>  document.write(FirmwareVer);
+10<@></script>
+27<@>  &nbsp;&nbsp;&nbsp;&nbsp;
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+64<@><table border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+5<@><br>
+5<@><br>
+85<@><form action="form2WizardStep3Static.cgi" method=POST name="form2WizardStep3Static">
+100<@><table width="502" cellspacing="0" cellpadding="0" border="0" align="center" class="setting_table">
+9<@> <tbody>
+7<@>  <tr>
+70<@>   <td width="500" valign="middle" align="left" class="wizard_title">
+39<@>    &nbsp&nbsp快速設定 - 固定 IP
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+20<@>   <td colspan="2">
+67<@>    <table width="502" cellspacing="0" cellpadding="0" border="0">
+13<@>     <tbody>
+11<@>      <tr>
+24<@>       <td colspan="2">
+13<@>        <br>
+85<@>        <table width="400" align="center" cellspacing="0" cellpadding="0" border="0"
+23<@>        class="space">
+17<@>         <tbody>
+15<@>          <tr>
+16<@>           <td>
+57<@>            請輸入由您ISP提供的IP位址資料。
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+68<@>        <table width="400" align="center" border="0" class="space">
+17<@>         <tbody>
+15<@>          <tr>
+28<@>           <td width="105">
+24<@>            IP位址：
+17<@>           </td>
+28<@>           <td width="285">
+63<@>            <input type="text" maxlength="15" size="16" value=
+45<@><VWS_SCREEN (char*) xscrnWanstaip_ipaddr[];>
+46<@> id="wanip" class="text" name="staip_ipaddr">
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <td>
+31<@>            子網路遮罩：
+17<@>           </td>
+16<@>           <td>
+63<@>            <input type="text" maxlength="15" size="16" value=
+46<@><VWS_SCREEN (char*) xscrnWanstaip_netmask[];>
+49<@> id="wanmask" class="text" name="staip_netmask">
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <td>
+28<@>            預設閘道：
+17<@>           </td>
+16<@>           <td>
+63<@>            <input type="text" maxlength="15" size="16" value=
+46<@><VWS_SCREEN (char*) xscrnWanstaip_gateway[];>
+49<@> id="gateway" class="text" name="staip_gateway">
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+28<@>           <td height="21">
+25<@>            主要DNS：
+17<@>           </td>
+16<@>           <td>
+58<@>            <VWS_SCREEN (char*) xscrnWanpppoe_dsndns1[];>
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <td>
+25<@>            次要DNS：
+17<@>           </td>
+16<@>           <td>
+58<@>            <VWS_SCREEN (char*) xscrnWanpppoe_dsndns2[];>
+33<@>            &nbsp;(選擇性的)
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+13<@>        <br>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+56<@>       <td width="207" height="30" class="wizard_tail">
+15<@>        &nbsp;
+1<@>
+13<@>       </td>
+58<@>       <td width="293" align="right" class="wizard_tail">
+78<@>        <input type="submit" name="wizardstep3static_back" value="上一步">
+15<@>        &nbsp;
+109<@>        <input type="submit" name="wizardstep3static_next" value="下一步" onClick="return saveChanges()">
+15<@>        &nbsp;
+13<@>       </td>
+12<@>      </tr>
+14<@>     </tbody>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </tbody>
+9<@></table>
+107<@><input type="hidden" name="submit.htm?wizard_step3_static.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+5<@><br>
+5<@><br>
+5<@><br>
+26<@><div class="loginBottom">
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+9<@><script>
+59<@>enableTextField(document.form2WizardStep3Static.wan_dns1);
+59<@>enableTextField(document.form2WizardStep3Static.wan_dns2);
+10<@></script>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+35<@>&*#@wizard_step4_wifi.htm@#*&16680
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+55<@><script type="text/javascript" src="util.js"></script>
+56<@><script type="text/javascript" src="share.js"></script>
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> 無線路由器
+9<@></title>
+1<@>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+64<@>var regDomain, defaultChan, lastBand=0, lastMode=0,currentBand;
+20<@>function addClick()
+2<@>{
+14<@> return true;
+2<@>}
+27<@>function encodeSelection()
+2<@>{
+59<@> if (document.form2WizardStep4.wizardstep4_sec[0].checked)
+3<@> {
+66<@>  disableTextField(document.form2WizardStep4.wizardstep4_pskpwd);
+3<@> }
+6<@> else
+3<@> {
+65<@>  enableTextField(document.form2WizardStep4.wizardstep4_pskpwd);
+3<@> }
+2<@>}
+39<@>function showChannel2G(bound_40, band)
+2<@>{
+12<@> start = 0;
+10<@> end = 0;
+37<@> if (regDomain==1 || regDomain==2) {
+13<@>  start = 1;
+12<@>  end = 11;
+3<@> }
+26<@> else if (regDomain==3) {
+72<@>  if(document.form2WizardStep4.wizardstep4_domain.selectedIndex == 47){
+14<@>   start = 3;
+12<@>   end = 9;
+9<@>  }else{
+14<@>   start = 1;
+13<@>   end = 13;
+4<@>  }
+3<@> }
+26<@> else if (regDomain==4) {
+14<@>  start = 10;
+12<@>  end = 11;
+3<@> }
+26<@> else if (regDomain==5) {
+14<@>  start = 10;
+12<@>  end = 13;
+3<@> }
+26<@> else if (regDomain==6) {
+44<@>  if(band == 0 || band == 2 || band == 10){
+14<@>   start = 1;
+13<@>   end = 14;
+9<@>  }else{
+14<@>   start = 1;
+13<@>   end = 13;
+4<@>  }
+3<@> }
+8<@> else {
+13<@>  start = 1;
+12<@>  end = 11;
+3<@> }
+54<@> document.form2WizardStep4.wizardstep4_chan.length=0;
+8<@> idx=0;
+96<@> document.form2WizardStep4.wizardstep4_chan.options[idx] = new Option("Auto", 0, false, false);
+25<@> if (0 == defaultChan) {
+64<@>  document.form2WizardStep4.wizardstep4_chan.selectedIndex = 0;
+3<@> }
+8<@> idx++;
+46<@> for (chan=start; chan<=end; chan++, idx++) {
+98<@>  document.form2WizardStep4.wizardstep4_chan.options[idx] = new Option(chan, chan, false, false);
+27<@>  if (chan == defaultChan)
+67<@>   document.form2WizardStep4.wizardstep4_chan.selectedIndex = idx;
+3<@> }
+58<@> document.form2WizardStep4.wizardstep4_chan.length = idx;
+2<@>}
+34<@>function updateChan_channebound()
+2<@>{
+74<@> var idx_value= document.form2WizardStep4.wizardstep4_band.selectedIndex;
+86<@> var band_value= document.form2WizardStep4.wizardstep4_band.options[idx_value].value;
+74<@> var bound = document.form2WizardStep4.wizardstep4_chanwid.selectedIndex;
+18<@> var adjust_chan;
+18<@> currentBand = 1;
+56<@> if(band_value==9 || band_value==10 || band_value ==7){
+16<@>  if(bound ==0)
+18<@>   adjust_chan=0;
+16<@>  if(bound ==1)
+18<@>   adjust_chan=1;
+7<@> }else
+17<@>  adjust_chan=0;
+25<@>   if (currentBand == 1)
+42<@>  showChannel2G(adjust_chan, band_value);
+21<@>   if(lastMode == 0)
+27<@>    lastMode = band_value;
+2<@>}
+22<@>function updateChan()
+2<@>{
+74<@> var idx_value= document.form2WizardStep4.wizardstep4_band.selectedIndex;
+86<@> var band_value= document.form2WizardStep4.wizardstep4_band.options[idx_value].value;
+21<@>    currentBand = 1;
+55<@> if(band_value==9 || band_value==10 || band_value==7){
+28<@>  updateChan_channebound();
+3<@> }
+8<@> else {
+33<@>  if (lastBand != currentBand) {
+29<@>     lastBand = currentBand;
+27<@>     if (currentBand == 2)
+21<@>    showChannel5G();
+10<@>     else
+34<@>    showChannel2G(0, band_value);
+4<@>  }
+9<@>  else {
+5<@>   {
+34<@>    showChannel2G(0, band_value);
+5<@>   }
+4<@>  }
+3<@> }
+24<@> lastMode = band_value;
+72<@>  if (document.form2WizardStep4.wizardstep4_chanwid.selectedIndex == 0)
+76<@>   disableCheckBox(document.form2WizardStep4.elements.wizardstep4_ctlband);
+7<@>  else
+75<@>   enableCheckBox(document.form2WizardStep4.elements.wizardstep4_ctlband);
+70<@>  if (document.form2WizardStep4.wizardstep4_band.selectedIndex == 0||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 1||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 2){
+4<@>  }
+75<@>  else if (document.form2WizardStep4.wizardstep4_band.selectedIndex == 3||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 4||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 5){
+4<@>  }
+2<@>}
+23<@>function disableWLAN()
+2<@>{
+64<@>  disableTextField(document.form2WizardStep4.wizardstep4_ssid);
+64<@>  disableTextField(document.form2WizardStep4.wizardstep4_chan);
+64<@>  disableTextField(document.form2WizardStep4.wizardstep4_band);
+67<@>  disableTextField(document.form2WizardStep4.wizardstep4_chanwid);
+67<@>  disableTextField(document.form2WizardStep4.wizardstep4_ctlband);
+64<@>  disableRadioGroup(document.form2WizardStep4.wizardstep4_sec);
+66<@>  disableTextField(document.form2WizardStep4.wizardstep4_pskpwd);
+2<@>}
+22<@>function enableWLAN()
+2<@>{
+63<@>  enableTextField(document.form2WizardStep4.wizardstep4_ssid);
+63<@>  enableTextField(document.form2WizardStep4.wizardstep4_chan);
+63<@>  enableTextField(document.form2WizardStep4.wizardstep4_band);
+66<@>  enableTextField(document.form2WizardStep4.wizardstep4_chanwid);
+66<@>  enableTextField(document.form2WizardStep4.wizardstep4_ctlband);
+63<@>  enableRadioGroup(document.form2WizardStep4.wizardstep4_sec);
+65<@>  enableTextField(document.form2WizardStep4.wizardstep4_pskpwd);
+2<@>}
+27<@>function updateIputState()
+2<@>{
+76<@>  if (document.form2WizardStep4.wizardstep4_wlanDisabled.checked == true) {
+66<@>   document.form2WizardStep4.wizardstep4_wlanDisabled.value="ON";
+17<@>  disableWLAN();
+11<@>  } else {
+67<@>   document.form2WizardStep4.wizardstep4_wlanDisabled.value="OFF";
+17<@>   enableWLAN();
+4<@>  }
+72<@>  if (document.form2WizardStep4.wizardstep4_chanwid.selectedIndex == 0)
+76<@>   disableCheckBox(document.form2WizardStep4.elements.wizardstep4_ctlband);
+80<@>  else if (document.form2WizardStep4.wizardstep4_wlanDisabled.checked == false)
+75<@>   enableCheckBox(document.form2WizardStep4.elements.wizardstep4_ctlband);
+70<@>  if (document.form2WizardStep4.wizardstep4_band.selectedIndex == 0||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 1||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 2){
+4<@>  }
+75<@>  else if (document.form2WizardStep4.wizardstep4_band.selectedIndex == 3||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 4||
+67<@>   document.form2WizardStep4.wizardstep4_band.selectedIndex == 5){
+4<@>  }
+28<@>  updateChan_channebound();
+2<@>}
+23<@>function saveChanges()
+2<@>{
+87<@> if(!checkSpecialCharExcludeSpace(document.form2WizardStep4.wizardstep4_ssid.value,1))
+3<@> {
+75<@>  alert('無效的SSID。 SSID不可以使用特殊字元，如\\\'"。');
+56<@>    document.form2WizardStep4.wizardstep4_ssid.focus();
+16<@>  return false;
+3<@> }
+59<@> if (document.form2WizardStep4.wizardstep4_sec[1].checked)
+3<@> {
+64<@>  var str = document.form2WizardStep4.wizardstep4_pskpwd.value;
+24<@>  if (str.length != 64)
+4<@>  {
+23<@>   if (str.length < 8)
+5<@>   {
+59<@>    alert('Pre-Shared金鑰必須為8個字元以上。');
+58<@>    document.form2WizardStep4.wizardstep4_pskpwd.focus();
+18<@>    return false;
+5<@>   }
+24<@>   if (str.length > 63)
+5<@>   {
+60<@>    alert('Pre-Shared金鑰必須為63個字元以內。');
+58<@>    document.form2WizardStep4.wizardstep4_pskpwd.focus();
+18<@>    return false;
+5<@>   }
+30<@>   if(!isValidWPAPasswd(str))
+5<@>   {
+70<@>     alert('Pre-Shared金鑰不可使用特殊字元，如\\\'"。');
+18<@>    return false;
+5<@>   }
+60<@>   document.form2WizardStep4.wizardstep4_pskFormat.value=0;
+4<@>  }
+7<@>  else
+4<@>  {
+36<@>   for (var i=0; i<str.length; i++)
+5<@>   {
+59<@>    if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+54<@>    (str.charAt(i) >= 'a' && str.charAt(i) <= 'f') ||
+53<@>    (str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+15<@>     continue;
+75<@>    alert("無效的Pre-Shared金鑰格式! 格式必須為0-9或a-f。");
+58<@>    document.form2WizardStep4.wizardstep4_pskpwd.focus();
+18<@>    return false;
+5<@>   }
+60<@>   document.form2WizardStep4.wizardstep4_pskFormat.value=1;
+4<@>  }
+3<@> }
+2<@>}
+27<@>function updateChanWidth()
+2<@>{
+73<@>   if (document.form2WizardStep4.wizardstep4_chanwid.selectedIndex == 0)
+76<@>   disableCheckBox(document.form2WizardStep4.elements.wizardstep4_ctlband);
+8<@>   else
+75<@>   enableCheckBox(document.form2WizardStep4.elements.wizardstep4_ctlband);
+29<@>   updateChan_channebound();
+2<@>}
+10<@></script>
+8<@></head>
+7<@><body>
+20<@><div class="login">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+28<@>  document.write(ModemVer);
+10<@></script>
+8<@>  </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+31<@>  document.write(FirmwareVer);
+10<@></script>
+27<@>  &nbsp;&nbsp;&nbsp;&nbsp;
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+64<@><table border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+5<@><br>
+5<@><br>
+73<@><form action="form2WizardStep4.cgi" method=POST name="form2WizardStep4">
+100<@><table width="502" cellspacing="0" cellpadding="0" border="0" align="center" class="setting_table">
+9<@> <tbody>
+7<@>  <tr>
+70<@>   <td width="500" valign="middle" align="left" class="wizard_title">
+42<@>    &nbsp&nbsp安裝精靈 - 無線設定
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+20<@>   <td colspan="2">
+67<@>    <table width="502" cellspacing="0" cellpadding="0" border="0">
+13<@>     <tbody>
+11<@>      <tr>
+24<@>       <td colspan="2">
+13<@>        <br>
+100<@>        <table width="430" align="center" cellspacing="0" cellpadding="0" border="0" class="space">
+17<@>         <tbody>
+15<@>          <tr>
+28<@>           <td colspan="2">
+61<@>            您可以在此步驟做無線的相關設定。
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+68<@>        <table width="430" align="center" border="0" class="space">
+17<@>         <tbody>
+15<@>          <tr>
+57<@>           <td class=form_label_left>停用無線功能:
+17<@>           </td>
+39<@>           <td class=form_label_right>
+66<@>           <input type="checkbox" name="wizardstep4_wlanDisabled"
+55<@>           <VWS_SCREEN (char*) webShowWlanDISABLED[];>
+37<@>           ONCLICK=updateIputState()
+13<@>           >
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+68<@>           <td class=form_label_left>無線網路名稱(SSID):</td>
+104<@>           <td class=form_label_right><input type=text name="wizardstep4_ssid" size="25" maxlength="32"
+57<@>                 <VWS_SCREEN (char*) webShowWlanSSID[];>
+19<@>                 >
+17<@>           </td>
+16<@>          </tr>
+36<@>          <tr style="display:none">
+16<@>           <td>
+69<@>            <input type="hidden" name="wizardstep4_domain" value="">
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+50<@>           <td class=form_label_left>頻道:</td>
+39<@>           <td class=form_label_right>
+64<@>            <select size="1" name="wizardstep4_chan"> </select>
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+56<@>           <td class=form_label_left>802.11模式:</td>
+102<@>           <td class=form_label_right><select size=1 name="wizardstep4_band" onChange="updateChan()">
+49<@>            <option value=0>2.4 GHz (B)</option>
+49<@>            <option value=1>2.4 GHz (G)</option>
+51<@>            <option value=2>2.4 GHz (B+G)</option>
+49<@>            <option value=7>2.4 GHz (N)</option>
+51<@>            <option value=9>2.4 GHz (G+N)</option>
+54<@>            <option value=10>2.4 GHz (B+G+N)</option>
+22<@>            </select>
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+56<@>           <td class=form_label_left>頻道寬度:</td>
+112<@>           <td class=form_label_right><select size="1" name="wizardstep4_chanwid" onChange="updateChanWidth()">
+43<@>            <option value="0">20M</option>
+51<@>            <option value="1">Auto 20/40M</option>
+22<@>            </select>
+17<@>           </td>
+16<@>          </tr>
+36<@>          <tr style="display:none">
+59<@>           <td class=form_label_left>Sideband 控制:</td>
+119<@>           <td class=form_label_right><select size="1" name="wizardstep4_ctlband" onChange="updateChan_channebound()">
+43<@>            <option value="0">高</option>
+43<@>            <option value="1">低</option>
+22<@>            </select>
+17<@>           </td>
+16<@>          </tr>
+19<@>          <SCRIPT>
+54<@>           <VWS_SCREEN (char*) webShowWlanDomChan[];>
+25<@>           updateChan();
+20<@>          </SCRIPT>
+18<@>         </tbody>
+17<@>        </table>
+100<@>        <table width="430" align="center" cellspacing="0" cellpadding="2" border="0" class="space">
+17<@>         <tbody>
+15<@>          <tr>
+27<@>           <td>&nbsp;</td>
+16<@>          </tr>
+15<@>          <tr>
+53<@>           <td id="t_rate" class="Item" colspan="2">
+28<@>            無線加密：
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+41<@>           <td class="Item" colspan="2">
+132<@>            <p style="color:red">為保障網路安全，強烈建議開啟無線加密並使用WPA-PSK/WPA2-PSK AES加密方式。
+17<@>            </p>
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <tr>
+125<@>            <td class=form_label_left><input type="radio" value="0" name="wizardstep4_sec" onClick="encodeSelection()"></td>
+63<@>             <td class=form_label_right>關閉(無密碼)</td>
+17<@>           </tr>
+16<@>           <tr>
+133<@>            <td class=form_label_left><input type="radio" value="1" checked name="wizardstep4_sec" onClick="encodeSelection()"></td>
+66<@>             <td class=form_label_right>WPA-PSK/WPA2-PSK AES</td>
+17<@>           </tr>
+37<@>           <tr style="display:none">
+61<@>            <td class=form_label_left>Pre-Shared金鑰:</td>
+86<@>            <td class=form_label_right><select size="1" name="wizardstep4_pskFormat">
+45<@>             <option value=0 >ASCII</option>
+56<@>             <option value=1 >Hex(64個字元)</option>
+23<@>             </select>
+18<@>            </td>
+17<@>           </tr>
+16<@>           <tr>
+51<@>            <td class=form_label_left>密碼:</td>
+107<@>            <td class=form_label_right><input type=text name="wizardstep4_pskpwd" size="25" maxlength="64"
+57<@>                  <VWS_SCREEN (char*) webShowWlanPSK[];>
+95<@>                  >(您可以輸入介於8-63個的ASCII字元，或介於8-64個的hex字元)
+18<@>            </td>
+17<@>           </tr>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+83<@>        <table width="430" align="center" border="0" id="showReboot" class="space"
+32<@>        style="display: none;">
+17<@>        </table>
+13<@>        <br>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+56<@>       <td width="224" height="30" class="wizard_tail">
+15<@>        &nbsp;
+13<@>       </td>
+58<@>       <td width="276" align="right" class="wizard_tail">
+72<@>        <input type="submit" name="wizardstep4_back" value="上一步">
+15<@>        &nbsp;
+103<@>        <input type="submit" name="wizardstep4_next" value="下一步" onClick="return saveChanges()">
+15<@>        &nbsp;
+113<@>        <input type="hidden" name="submit.htm?wizard_step4_wifi.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+13<@>       </td>
+12<@>      </tr>
+14<@>     </tbody>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </tbody>
+9<@></table>
+8<@></form>
+5<@><br>
+5<@><br>
+5<@><br>
+26<@><div class="loginBottom">
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+9<@><script>
+44<@><VWS_SCREEN (char*) webShowWlanWizdConf[];>
+71<@>defPskLen = document.form2WizardStep4.wizardstep4_pskpwd.value.length;
+78<@>defPskFormat = document.form2WizardStep4.wizardstep4_pskFormat.selectedIndex;
+19<@>updateIputState();
+19<@>encodeSelection();
+10<@></script>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+33<@>&*#@wizard_step5_end.htm@#*&3976
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+55<@><script type="text/javascript" src="util.js"></script>
+56<@><script type="text/javascript" src="share.js"></script>
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> 無線路由器
+9<@></title>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+10<@></script>
+8<@></head>
+7<@><body>
+20<@><div class="login">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+28<@>  document.write(ModemVer);
+10<@></script>
+8<@>  </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+31<@>  document.write(FirmwareVer);
+10<@></script>
+27<@>  &nbsp;&nbsp;&nbsp;&nbsp;
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+64<@><table border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+5<@><br>
+5<@><br>
+73<@><form action="form2WizardStep5.cgi" method=POST name="form2WizardStep5">
+100<@><table width="502" cellspacing="0" cellpadding="0" border="0" align="center" class="setting_table">
+9<@> <tbody>
+7<@>  <tr>
+70<@>   <td width="500" valign="middle" align="left" class="wizard_title">
+28<@>    &nbsp;&nbsp快速設定
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+20<@>   <td colspan="2">
+67<@>    <table width="502" cellspacing="0" cellpadding="0" border="0">
+13<@>     <tbody>
+11<@>      <tr>
+24<@>       <td width="500">
+13<@>        <br>
+85<@>        <table width="400" align="center" cellspacing="0" cellpadding="0" border="0"
+23<@>        class="space">
+17<@>         <tbody>
+15<@>          <tr>
+16<@>           <td>
+55<@>            點選「完成」按鈕來完成設定。
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+28<@>           <td colspan="2">
+19<@>            &nbsp;
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <td>
+286<@>            提示: 若您在完成設定後仍無法連接至網際網路，請確認網路網路設定的資料是否正確，或請確認上端是否有其他路由器使用相同網段的IP位址，若有則請至「區域網路設定」更改路由器IP位址(如192.168.0.100)。
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+28<@>           <td colspan="2">
+19<@>            &nbsp;
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+13<@>        <br>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+58<@>       <td height="30" align="right" class="wizard_tail">
+72<@>        <input type="submit" name="wizardstep5_back" value="上一步">
+15<@>        &nbsp;
+69<@>        <input type="submit" name="wizardstep5_next" value="完成">
+15<@>        &nbsp;
+112<@>        <input type="hidden" name="submit.htm?wizard_step5_end.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+13<@>       </td>
+12<@>      </tr>
+14<@>     </tbody>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </tbody>
+9<@></table>
+8<@></form>
+5<@><br>
+5<@><br>
+5<@><br>
+26<@><div class="loginBottom">
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+34<@>&*#@wizard_step6_wait.htm@#*&3680
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> 無線路由器
+9<@></title>
+24<@><style type="text/css">
+148<@> .login {position:absolute;left:50%;margin-left:-421px !important;margin-left:-421px;width:842px;height:526px;text-align:left; background:#ffffff;}
+62<@> .copywright{font-size: 14px;text-align:center; height:30px;}
+10<@>.Table1 {
+245<@> BORDER-BOTTOM: #ff6f00 1px solid; BORDER-LEFT: #ff6f00 1px solid; MARGIN-TOP: 30px; WIDTH: 550px; BORDER-COLLAPSE: collapse; BACKGROUND: #f1f1f1; HEIGHT: 270px; MARGIN-LEFT: 150px; BORDER-TOP: #ff6f00 1px solid; BORDER-RIGHT: #ff6f00 1px solid
+2<@>}
+19<@>.Table1 TD.lable {
+59<@> FONT: bold 9pt Arial,Helvetica,sans-serif; COLOR: #003366
+2<@>}
+1<@>
+9<@></style>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+15<@>var wtime = 3;
+22<@>function timerStart()
+2<@>{
+17<@> if (wtime >= 0)
+3<@> {
+11<@>  wtime--;
+34<@>  setTimeout("timerStart()",500);
+3<@> }
+6<@> else
+3<@> {
+38<@>  document.form2WizardStep6.submit();
+3<@> }
+2<@>}
+10<@></script>
+8<@></head>
+23<@><body id="login_body">
+20<@><div class="login">
+88<@>    <table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+13<@>        <tr>
+109<@>            <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+42<@>                document.write(ModemVer);
+10<@></script>
+18<@>            </td>
+86<@>            <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+45<@>                document.write(FirmwareVer);
+10<@></script>
+41<@>                &nbsp;&nbsp;&nbsp;&nbsp;
+18<@>            </td>
+14<@>        </tr>
+13<@>    </table>
+65<@> <table border="0" cellpadding="0" cellspacing="0" width="100%">
+7<@>  <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+8<@>  </tr>
+10<@> </table>
+74<@> <form action="form2WizardStep6.cgi" method=POST name="form2WizardStep6">
+27<@>    <table class="Table1">
+15<@>       <tbody>
+14<@>         <tr>
+43<@>          <td class="letterBg">&nbsp;</td>
+15<@>         </tr>
+14<@>         <tr>
+28<@>          <td height="240">
+19<@>           <table>
+20<@>            <tbody>
+18<@>             <tr>
+66<@>              <td width="980" align="center">設定儲存中</td>
+19<@>             </tr>
+18<@>             <tr>
+65<@>              <td width="980" align="center">請稍候 … </td>
+19<@>             </tr>
+21<@>            </tbody>
+20<@>           </table>
+16<@>          </td>
+15<@>         </tr>
+8<@>   <tr>
+9<@>    <td>
+110<@>     <input type="hidden" name="submit.htm?wizard_step6_wait.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+10<@>    </td>
+9<@>   </tr>
+14<@>     </tbody>
+13<@>    </table>
+10<@> <script>
+15<@> timerStart();
+11<@> </script>
+9<@> </form>
+37<@>    <div class="loginBottom"> </div>
+49<@>    <div id="lang_copyright" class="copywright">
+46<@>    <VWS_FUNCTION (void*)WebShowCopyright();>
+11<@>    </div>
+7<@></div>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+30<@>&*#@wizard_setup.htm@#*&28332
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+55<@><script type="text/javascript" src="util.js"></script>
+56<@><script type="text/javascript" src="share.js"></script>
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> Wireless Router
+9<@></title>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+53<@><VWS_FUNCTION (void*)WebShowStatusCheckPppoeUser();>
+10<@></script>
+24<@><style type="text/css">
+14<@>.wizard_step{
+22<@> background: #404343;
+18<@>    width: 842px;
+17<@> margin: 0 auto;
+2<@>}
+14<@>.wizard_main{
+23<@> padding-bottom: 10px;
+2<@>}
+17<@>.wizard_main h2{
+19<@> text-align: left;
+14<@> color: #fff;
+18<@> font-size: 18px;
+18<@> padding: 0 60px;
+22<@> font-weight: normal;
+2<@>}
+22<@>.wizard_main h2 span{
+14<@> color: #ccc;
+18<@> font-size: 14px;
+22<@> padding-right: 10px;
+2<@>}
+21<@>.wizard_main h2 img{
+37<@> background: url(line.jpg) repeat-x;
+15<@> width: 360px;
+14<@> height: 1px;
+21<@> padding-left: 10px;
+2<@>}
+19<@>.wizard_main h2 i{
+19<@> background: #ccc;
+14<@> width: 50px;
+13<@> height:20px
+2<@>}
+11<@>.image_01{
+42<@> background:url(pc.jpg) 10px 0 no-repeat;
+15<@> width: 134px;
+16<@> height: 117px;
+2<@>}
+11<@>.image_02{
+53<@> background:url(connect_yes.jpg) 5px 15px no-repeat;
+15<@> width: 114px;
+16<@> height: 117px;
+2<@>}
+11<@>.image_03{
+38<@> background:url(route.jpg) no-repeat;
+15<@> width: 136px;
+16<@> height: 117px;
+2<@>}
+11<@>.image_04{
+52<@> background:url(connect_no.jpg) 5px 15px no-repeat;
+15<@> width: 114px;
+16<@> height: 117px;
+2<@>}
+11<@>.image_05{
+49<@> background:url(global_no.jpg) 10px 0 no-repeat;
+15<@> width: 136px;
+16<@> height: 117px;
+2<@>}
+11<@>.image_06{
+50<@> background:url(global_yes.jpg) 10px 0 no-repeat;
+15<@> width: 136px;
+16<@> height: 117px;
+2<@>}
+16<@>.setting_title{
+28<@> background-color: #F56D23;
+17<@>    color: #000;
+18<@> font-size: 14px;
+23<@>    font-weight: bold;
+18<@>    height: 25px;
+24<@>    padding-left: 10px;
+2<@>}
+21<@>.setting_table_save{
+20<@> margin: 20px auto;
+18<@>    width: 500px;
+19<@> text-align: left;
+2<@>}
+24<@>.setting_table_save tr{
+20<@> text-align: right;
+2<@>}
+24<@>.setting_table_save td{
+21<@> text-align: center;
+2<@>}
+23<@>.setting_table_save a{
+24<@> text-decoration: none;
+14<@> color: #fff;
+18<@> font-size: 14px;
+2<@>}
+27<@>.setting_table_save input{
+20<@> padding: 5px 20px;
+18<@> font-size: 14px;
+2<@>}
+14<@>.wizard_step{
+22<@> background: #404343;
+18<@>    width: 842px;
+17<@> margin: 0 auto;
+2<@>}
+22<@>.setting_table_local{
+22<@> background: #d4d4d4;
+17<@> margin: 0 auto;
+18<@>    width: 720px;
+19<@> text-align: left;
+2<@>}
+17<@>.setting_client{
+21<@> padding-left: 15px;
+2<@>}
+15<@>.wizard_title{
+22<@> background: #F56D23;
+2<@>}
+9<@></style>

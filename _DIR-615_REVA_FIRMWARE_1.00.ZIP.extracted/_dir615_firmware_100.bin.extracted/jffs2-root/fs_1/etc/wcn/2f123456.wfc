@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<device xmlns="http://www.microsoft.com/provisioning/DeviceProfile/2004">
+	<configId>00000000-1111-2222-3333-555555666666</configId>
+	<manufacturer>D-Link</manufacturer>
+	<modelName>DIR-625</modelName>
+	<serialNumber>Wireless Draft 11n Router</serialNumber>
+	<firmwareVersion>0.88</firmwareVersion>
+	<deviceType>Access_Point</deviceType>
+</device>

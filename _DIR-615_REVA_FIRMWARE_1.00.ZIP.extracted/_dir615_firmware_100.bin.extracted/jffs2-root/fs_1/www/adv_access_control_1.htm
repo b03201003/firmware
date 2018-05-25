@@ -1,0 +1,796 @@
+<html>
+<head>
+<link rel="STYLESHEET" type="text/css" href="css_router.css">
+<script language="JavaScript" src="public.js"></script>
+<script language="JavaScript">
+var dDat = new Array();
+var dDat1 = new Array();
+
+<!-- repeat name=static_dhcp_data -->
+<!-- repeat name=dynamic_dhcp_data -->
+	function show_step(num){		
+			get_by_id("step"+num).style.display = "";
+			//perv_step(num);
+			num_tmp = num -1;
+			get_by_id("step"+num_tmp).style.display = "none";
+			
+			}	
+	
+    function perv_step(num){				
+			num_tmp = num -1;
+			get_by_id("step"+num_tmp).style.display = "";	
+			num_perv_tmp = num_tmp +1;
+			get_by_id("step"+num_perv_tmp).style.display = "none";
+			
+
+   	}
+	function add(){
+			get_by_id("policy").style.display ="";
+			get_by_id("show_policy").style.display = "none";		
+			get_by_id("show_policytable").style.display = "none";	
+		    get_by_id("enable").style.display = "none";
+			get_by_id("box_header").style.display = "none";
+			get_by_id("step1").style.display ="none";
+}
+function show_step1(){
+			get_by_id("step1").style.display ="";
+			get_by_id("policy").style.display = "none";
+}
+
+	function copy_mac(){
+		var temp_data;
+		
+		if (get_by_id("mac_list").selectedIndex > 0){
+			temp_data = (get_by_id("mac_list").value).split(",");
+			get_by_id("name").value = temp_data[0];
+			get_by_id("mac_addr").value = temp_data[1];
+		}else{
+			alert(msg[SELECT_MACHINE_ERROR]);
+		}
+	}
+	
+	function clone_mac(){
+    	
+	}
+	
+	function copy_ip_1(){
+
+	if (get_by_id("ip_list").selectedIndex > 0){
+		get_by_id("ip").value = get_by_id("ip_list").options[get_by_id("ip_list").selectedIndex].value;
+	}else{
+		alert(msg[SELECT_COMPUTER_ERROR]);
+	}
+}
+	
+	function check_aes(){
+		var addr_type = get_by_name("addr_type");
+		var ip = get_by_id("ip");
+		var mac_addr = get_by_id("mac_addr");
+		var clone = get_by_id("clone");
+		var ip_list = get_by_id("ip_list");
+		var mac_list = get_by_id("mac_list");
+		var copy1 = get_by_id("copy1");
+		var copy2 = get_by_id("copy2");
+			
+		if (addr_type[0].checked){
+			mac_addr.disabled = true;
+			mac_list.disabled = true;
+			clone.disabled = true;
+			copy2.disabled = true;
+			ip.disabled = false;
+			ip_list.disabled = false;
+			copy1.disabled = false;
+		}else if (addr_type[1].checked){
+			ip.disabled = true;
+			ip_list.disabled = true;
+			copy1.disabled = true;			
+			mac_addr.disabled = false;
+			mac_list.disabled = false;
+			clone.disabled = false;
+			copy2.disabled = false;
+		}else if (addr_type[2].checked){
+			mac_addr.disabled = true;
+			mac_list.disabled = true;
+			clone.disabled = true;
+			ip.disabled = true;
+			ip_list.disabled = true;
+			copy1.disabled = true;	
+			copy2.disabled = true;
+		
+		}
+		
+		
+	}
+
+function check_access(){
+		var web_filter_access = get_by_name("web_filter_access");
+			
+		if (web_filter_access[0].checked||web_filter_access[1].checked){
+			get_by_id("show_table").style.display = "none";	
+			get_by_id("next_4").disabled = true;
+			get_by_id("save_4").disabled = false;
+		}else{
+			get_by_id("show_table").style.display = "";
+			get_by_id("next_4").disabled = false;
+			get_by_id("save_4").disabled = true;
+		}		
+	}
+	
+		function show_policy(){
+		var policy = get_by_id("access_enable");	
+				
+		if (policy.checked){
+			get_by_id("show_policy").style.display = "";		
+			get_by_id("show_policytable").style.display = "";	
+		}else{
+			get_by_id("show_policy").style.display = "none";		
+			get_by_id("show_policytable").style.display = "none";	
+		
+		}
+		
+	}
+	
+	function send_request(){
+		if(get_by_name("web_filter_access")[0].checked||get_by_name("web_filter_access")[1].checked){
+    	
+    	get_by_id("step6").style.display ="";
+    	get_by_id("step4").style.display ="none";
+    	
+    }else{
+		if (get_by_name("Sentinel_Services").checked){ // Sentinel_Services
+			get_by_id("step5").style.display ="";   	
+		}else if (get_by_name("Apply_Web_Filter").checked){ // Apply_Web_Filter
+			get_by_id("step6").style.display ="";    	
+		}else if (get_by_name("Advanced_Port_Filters").checked){ // Advanced_Port_Filters
+			get_by_id("step7").style.display ="";     	
+		}else{
+		get_by_id("step7").style.display ="";  
+    	
+    	}  
+    	get_by_id("step7").style.display =""; 
+    	
+    	send_submit("form1");  	
+    }
+	
+	}
+
+
+</script>
+
+<title>D-LINK SYSTEMS, INC | WIRELESS ROUTER | HOME</title>
+
+</head>
+
+<body topmargin="1" leftmargin="0" rightmargin="0" bgcolor="#757575">
+	<table id="header_container" border="0" cellpadding="5" cellspacing="0" width="838" align="center">
+      <tr>
+        <td width="100%">Product Page: <a href="http://support.dlink.com/">WBR-2310</a></td>
+        <td align="right" nowrap>Hardware Version: A1 &nbsp;</td>
+        <td align="right" nowrap>Firmware Version: 1.01</td>
+      </tr>
+    </table>
+	<table id="topnav_container" border="0" cellpadding="0" cellspacing="0" width="838" align="center">
+		<tr>
+			<td align="center" valign="middle"><img src="wlan_masthead.gif" width="836" height="92"></td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="2" cellspacing="1" width="838" align="center" bgcolor="#FFFFFF">
+		<tr id="topnav_container">
+			<td height="29"><img src="short_modnum.gif" width="125" height="25"></td>
+			<td id="topnavoff"><a href="index.htm">Setup</a></td>
+			<td id="topnavon"><a href="adv_virtual.htm">Advanced</a></td>
+			<td id="topnavoff"><a href="tools_admin.htm">Tools</a></td>
+			<td id="topnavoff"><a href="st_device.html">Status</a></td>
+			<td id="topnavoff"><a href="support_men.htm">Support</a></td>
+		</tr>
+	</table>
+	<table border="1" cellpadding="2" cellspacing="0" width="838" height="100%" align="center" bgcolor="#FFFFFF" bordercolordark="#FFFFFF">
+		<tr>
+			<td id="sidenav_container" valign="top" width="125" align="right">
+				<table cellSpacing=0 cellPadding=0 border=0>
+                  <tbody>
+                    <tr>
+                      <td id=sidenav_container>
+                        <div id=sidenav>
+                         
+                          <UL>
+                            <LI>
+                              <div><a href="adv_virtual.htm">Port Forwarding</a></div>
+                            <LI>
+                              <div><a href="adv_appl.htm">Application Rules</a></div>
+                            <LI>
+                              <div><a href="adv_filters_mac.htm">Network Filter</a></div>
+<LI>
+							 <div id=sidenavoff>Access control</div>
+                            <LI>
+                              <div><a href="adv_filters_url.htm">Website Filter</a></div>
+                            <LI>
+                              <div><a href="adv_dmz.htm">Firewall Settings</a></div>
+                            <LI>
+                              <div><a href="adv_wlan_perform.htm">advanced Wireless</a></div>
+                            <LI>
+                              <div><a href="adv_network.htm">advanced Network</a></div>
+                            </LI>
+                          </UL>
+                         
+                      </div></td>
+                    </tr>
+                  </tbody>
+                </table></td>
+<form id="form1" name="form1" method="post" action="adv_access_control_1.cgi">
+			<td valign="top" id="maincontent_container">			  <div id=maincontent>
+				 
+                          
+                  <div id=box_header style="display:yes ">
+                    <h1>Access Control : </h1>
+                    The Access Control option allows you to control access in and out of your network. Use this feature as Access Controls to only grant access to approved sites, limit web access based on time or dates, and/or block internet access for applications like P2P utilities or games..<br>
+                    <br>
+                    <input name="button" type=submit class=button_submit value="Save Settings">
+                    <input name="button2" type=reset class=button_submit value="Don't Save Settings"  onClick="window.location.href='adv_access_control.htm'">
+                  </div>
+                  <div class=box id="enable" style="display:yes ">
+                    <h2>Enable</h2>
+                    <table width="525" class=formarea>
+                      <tbody>
+                        <tr>
+                          <td width="135" class=form_label>Enable Access Control&nbsp;:</td>
+                          <td width="378"><input name="access_enable" id="access_enable" type=checkbox value="1" onClick="show_policy()"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class=box id=show_policy style="display:none">
+                    <h2>Policy Wizard</h2>
+                    <div align="center">
+                      <input class=button_submit name=add_policy id=add_policy onClick="add()" type=button value="Add Policy">
+                    </div>
+                  </div>
+                  <div class=box id=show_policytable style="display:none">
+                    <h2>Policy Table</h2>
+                    <table width="525" cellPadding=0 cellSpacing=0>
+                      <tbody>
+                        <TR class=form_label_row>
+                          <td>Enable 
+                          <td>Policy 
+                          <td>Machine 
+                          <td>Filtering 
+                          <td>Logged 
+                          <td>Schedule 
+                          <TH>&nbsp;</TH>
+                          <TH>&nbsp;</TH>
+                        </tr>
+                        <!-- repeat name=access_list -->
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class=box id="policy" style="display:none ">
+                    <h2>Add New Policy</h2>
+                    <P>This wizard will guide you through the following steps to add a new policy for Access Control.</P>
+                    <table width="525" class=formarea>
+                      <tbody>
+                        <tr>
+                          <td width="516">Step 1 - Choose a unique name for your policy</td>
+                        </tr>
+                        <tr>
+                          <td>Step 2 - Select a schedule</td>
+                        </tr>
+                        <tr>
+                          <td>Step 3 - Select the machine to which this policy applies</td>
+                        </tr>
+                        <tr>
+                          <td>Step 4 - Select filtering method</td>
+                        </tr>
+                        <tr>
+                          <td>Step 5 - Select filters</td>
+                        </tr>
+                        <tr>
+                          <td>Step 6 - Configure Web Access Logging</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <table width="362" align="center">
+    <td>
+        <div align="center">
+          <input name="perv_b" type="button" id="prev_b" value="Perv" onclick="add()">
+&nbsp;
+          <input name="next_b" type="button" id="next_b" value="Next" onclick="show_step1()">
+&nbsp;
+          <input name="save_b" type="button" id="save_b" value="Save" disabled>
+&nbsp;
+          <input name="cancel_b" type="button" id="cancel_b" value="Cancel">
+      </div></td>
+                    </table>
+                  </div>
+                  <div class=box id="step1" style="display:none">
+                    <h2>Step 1: Choose Policy Name</h2>
+                    <p align="left"><strong>Choose a unique name for your policy.</strong></p>
+                    <table width="525" class=formarea>
+                      <tbody>
+                        <tr>
+                          <td class=form_label><div align="right">Policy Name&nbsp;:</div></td>
+                          <td><input name="policy_name" id="policy_name" size="15" maxLength=16></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <table width="362" align="center">
+    <td>
+        <div align="center">
+          <input name="perv_1" type="button" id="perv_1" value="Perv" onclick="add()">
+&nbsp;
+          <input name="next_1" type="button" id="next_1" value="Next" onclick="show_step(2)">
+&nbsp;
+          <input name="save_1" type="button" id="save_1" value="Save" disabled>
+&nbsp;
+          <input name="cancel_1" type="button" id="cancel_1" value="Cancel" onclick="window.location='adv_access_control.htm';">
+      </div></td>
+                    </table>
+                  </div>
+                  <div class=box id="step2" style="display:none">
+                    <h2>Step 2: Select Schedule</h2>
+                    <p align="left"><strong>Choose a schedule to apply to this policy. </strong></p>
+                    <div align="center">
+                      <select name="schedule_names" id="schedule_names">
+                        <option value="Always" selected>Always</option>
+                        <option value="Never">Never</option>
+                        <option value="Define a new schedule">Define a new schedule</option>
+                      </select>
+                    </div>
+                    <hr>
+                    <table width="362" align="center">
+    <td>
+        <div align="center">
+          <input name="perv_2" type="button" id="perv_2" value="Perv" onclick="perv_step(2)">
+&nbsp;
+          <input name="next_2" type="button" id="next_2" value="Next" onClick="show_step(3)">
+&nbsp;
+          <input name="save_2" type="button" id="save_2" value="Save" disabled>
+&nbsp;
+          <input name="cancel_2" type="button" id="cancel_2" value="Cancel">
+      </div></td>
+                    </table>
+                  </div>
+                  <div class=box id="step3" style="display:none">
+                    <h2>Step 3: select Machine</h2>
+                    <P><strong>select the machine to which this policy applies.</strong></P>
+                    Specify a machine with its IP or MAC address, or select "Other Machines" for machines that do not have a policy.
+                <table width="525" class=formarea summary="">
+                  <tbody>
+                    <tr>
+                      <td class=form_label><div align="right">Address Type&nbsp;:</div></td>
+                      <td>
+                        <input type=radio value=0 name=addr_type onClick=check_aes()>
+          IP
+          <input type=radio value=1 name=addr_type onClick=check_aes()>
+          MAC
+          <input type=radio value=2 name=addr_type onClick=check_aes()>
+          Other Machines </td>
+                    </tr>
+                    <tr>
+                      <td class=form_label><div align="right">IP Address&nbsp;:</div></td>
+                      <td><input name="ip" id="ip" maxlength=17 >
+                          <span>
+                          <input type="button" name="copy1" id="copy1" value="<<" onClick="copy_ip_1()">
+                          <select name=ip_list id="ip_list" style="WIDTH: 150px">
+                            <option value="-1">Computer Name</option>
+                            <!-- repeat name=dhcp_client_list -->
+                          </select>
+                        </span></td>
+                    </tr>
+                    <tr>
+                      <td class=form_label><div align="right">Machine Address&nbsp;:</div></td>
+                      <td><input name="mac_addr" id="mac_addr" maxlength=17>
+                          <span>
+                          <input type="button" name="copy2" id="copy2" value="<<" onClick="copy_mac()">
+                          <input type="hidden" id="name" name="name" maxlength="31">
+                          <select name=mac_list id="mac_list" style="WIDTH: 150px">
+                            <option value="-1">Computer Name</option>
+                            <!-- repeat name=show_dhcp_list -->
+                          </select>
+                        </span></td>
+                    </tr>
+                    <tr>
+                      <td class=form_label></td>
+                      <td><input name="clone" id="clone" type=button class=button_submit onclick="clone_mac()" value="Copy Your PC's MAC Address"></td>
+                    </tr>
+                    <tr>
+                      <td class=form_label></td>
+                      <td><input name="ok" type=button class=button_submit id="ok" value=OK >
+                          <input name="cancel" type=reset class=button_submit id="cancel"value=Cancel>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table width="525" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td colspan="3" bgcolor="#000000">
+                      <h2>&nbsp; Machine</h2></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"><hr></td>
+                  </tr>
+                  <tr>
+                    <!-- repeat name=machine_list -->
+                  </tr>
+                </table>
+                <hr>
+                <table width="362" align="center">
+    <td><table width="362" align="center">
+          <td>
+              <div align="center">
+                <input name="perv_3" type="button" id="perv_3" value="Perv" onclick="perv_step(3)">
+&nbsp;
+                <input name="next_3" type="button" id="next_3" value="Next" onclick="show_step(4)">
+&nbsp;
+                <input name="save_3" type="button" id="save_3" value="Save" disabled>
+&nbsp;
+                <input name="cancel_3" type="button" id="cancel_3" value="Cancel">
+            </div></td>
+      </table></td>
+                </table>
+                  </div>
+                  <div class=box id="step4" style="display:none">
+                    <h2>Step 4: Select Filtering Methode</h2>
+                    <P><strong>Select the method for filtering.</strong></P>
+                    <table width="525" class=formarea>
+                      <tbody>
+                        <tr>
+                          <td width="50" height="48" ><div align="right">Method&nbsp;:</div></td>
+                          <td width="475">
+                            <p>
+              <input type=radio value=2 name=web_filter_access onClick="check_access()">
+            Log Web Access Only
+            <input type=radio value=1 name=web_filter_access onClick="check_access()">
+            Block All Access 
+    <input type=radio value=0 name=web_filter_access onClick="check_access()" checked>
+    Block Some Access</p>                          </td>
+                        </tr>
+                        <tr id="show_table" style="display:none">
+                          <td colSpan=2><div align="right">
+                            <table width="520" border="0">
+                              <tr class="formarea">
+                                <td width="200" class=form_label_top><div align="right">Sentinel Services&nbsp;:</div></td>
+                                <td><input name="Sentinel_Services" type=checkbox value=1></td>
+                              </tr>
+                              <tr class="formarea">
+                                <td width="200" class=form_label_top><div align="right">Apply Web Filter&nbsp;:</div></td>
+                                <td><input name="Apply_Web_Filter" type=checkbox value=2></td>
+                              </tr>
+                              <tr class="formarea">
+                                <td width="200" class=form_label_top>                                  <div align="right">Apply Advanced Port Filters&nbsp;:</div></td>
+                                <td><input name="Advanced_Port_Filters" type=checkbox value=4></td>
+                              </tr>
+                            </table>
+                              </div></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <table width="362" align="center">
+    <td>
+        <div align="center">
+          <input name="perv_4" type="button" id="perv_4" value="Perv" onclick="perv_step(4)">
+&nbsp;
+          <input name="next_4" type="button" id="next_4" value="Next" onclick="send_request()">
+&nbsp;
+          <input name="save_4" type="button" id="save_4" value="Save" onclick="send_request()">
+&nbsp;
+          <input name="cancel_4" type="button" id="cancel_4" value="Cancel">
+      </div></td>
+                    </table>
+                  </div>
+                  <div class=box id="step5" style="display:none ">
+                    <h2>Step 5: Sentinel Categoriee</h2>
+                    <p><strong>Select the Sentinel categories to filter.</strong></p>
+                    <table width="525" class=formarea summary="">
+                      <tbody>
+                        <tr>
+                          <td width="144" class=form_label_top><div align="right">Categories Selection&nbsp;:</div></td>
+                          <td width="359"><input type=radio value=1 name=mapping_select 
+                  _VALUE="bsecure_use_age_mapping">
+                            By Age
+                              <input type=radio 
+                  value=0 name=mapping_select 
+                  _VALUE="bsecure_use_age_mapping">
+                              Manually </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table width="525" class=formarea summary="" 
+            _DISPLAYED="bsecure_use_age_mapping==1">
+                      <tbody>
+                        <tr>
+                          <td width="143" class=form_label_top><div align="right">Select Age Category&nbsp;:</div></td>
+                          <td width="360"><SELECT name="select" size=4 _VALUE="bsecure_age_category" width="20">
+                              <OPTION value=0>Child (0-8)</OPTION>
+                              <OPTION 
+                    value=1>Adolescent (9-12)</OPTION>
+                              <OPTION value=2>Youth (13-17)</OPTION>
+                              <OPTION value=3>Adult (18+)</OPTION>
+                            </SELECT>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table width="525" class=formarea summary="" 
+            _DISPLAYED="bsecure_use_age_mapping==0">
+                      <tbody>
+                        <tr>
+                          <td class=form_label_top>Check All&nbsp;:</td>
+                          <td><input onclick=bsecure_web_categ_toggle() type=checkbox 
+                  name=bsecure_allchecked></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table width="525" class=formarea summary="" 
+            _DISPLAYED="bsecure_use_age_mapping==0">
+                      <tbody>
+                        <tr>
+                          <td><input name="1" type=checkbox id="1" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Alcohol</td>
+                          <td><input name="113" type=checkbox id="113" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Gambling</td>
+                          <td><input name="125" type=checkbox id="126" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Public Proxies</td>
+                        </tr>
+                        <tr>
+                          <td><input name="12" type=checkbox id="12" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Anarchy</td>
+                          <td><input name="chk" type=ch?EL???????eckbox id="chk" 
+                  _VALUE="bsecure_web_access_categories[13]">
+          Games</td>
+                          <td><input name="126" type=checkbox id="127" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          R-rated</td>
+                        </tr>
+                        <tr>
+                          <td height="19">
+                            <input name="13" type=checkbox id="13" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Automobile</td>
+                          <td><input name="114" type=checkbox id="115" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Hate</td>
+                          <td><input name="127" type=checkbox id="128" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Search Engine</td>
+                        </tr>
+                        <tr>
+                          <td><input name="14" type=checkbox id="14" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Banner Ad</td>
+                          <td><input name="115" type=checkbox id="116" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Humor</td>
+                          <td><input name="128" type=checkbox id="129" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Shopping</td>
+                        </tr>
+                        <tr>
+                          <td><input name="15" type=checkbox id="15" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Chat</td>
+                          <td><input name="116" type=checkbox id="117" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Lifestyles</td>
+                          <td><input name="129" type=checkbox id="130" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Sports</td>
+                        </tr>
+                        <tr>
+                          <td><input name="16" type=checkbox id="16" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Criminal Skills</td>
+                          <td><input name="117" type=checkbox id="118" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Magazine</td>
+                          <td><input name="130" type=checkbox id="131" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Tickets</td>
+                        </tr>
+                        <tr>
+                          <td><input name="17" type=checkbox id="17" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Cults</td>
+                          <td><input name="118" type=checkbox id="119" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          News</td>
+                          <td><input name="131" type=checkbox id="132" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Travel</td>
+                        </tr>
+                        <tr>
+                          <td><input name="18" type=checkbox id="18" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Drugs</td>
+                          <td><input name="119" type=checkbox id="120" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Obscene</td>
+                          <td><input name="132" type=checkbox id="133" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Unstable</td>
+                        </tr>
+                        <tr>
+                          <td><input name="19" type=checkbox id="19" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Employment</td>
+                          <td><input name="120" type=checkbox id="121" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Opinion</td>
+                          <td><input name="133" type=checkbox id="134" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Web Mail</td>
+                        </tr>
+                        <tr>
+                          <td><input name="110" type=checkbox id="110" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Entertainment</td>
+                          <td><input name="121" type=checkbox id="122" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Personals</td>
+                          <td><input name="134" type=checkbox id="135" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Web Newsgroup</td>
+                        </tr>
+                        <tr>
+                          <td><input name="111" type=checkbox id="111" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Financial</td>
+                          <td><input name="122" type=checkbox id="123" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Pop-ups</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                          <td><input name="112" type=checkbox id="112" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Free Host</td>
+                          <td><input name="123" type=checkbox id="124" 
+                  _VALUE="bsecure_web_access_categories [0]">
+          Pornography</td>
+                          <td>&nbsp;</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table width="526" class=formarea summary="">
+                      <tbody>
+                        <tr>
+                          <td width="136" class=form_label_top><div align="right">Block Unrated Sites&nbsp;:</div></td>
+                          <td width="378"><input name="124" type=checkbox id="125" 
+                  _VALUE="bsecure_web_access_categories [0]"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <HR>
+                    <table width="362" align="center">
+    <td>
+        <div align="center">
+          <input name="perv_5" type="button" id="perv_5" value="Perv" onClick="perv_step(5)">
+&nbsp;
+          <input name="next_5" type="button" id="next_5" value="Next" onClick="show_step(6)">
+&nbsp;
+          <input name="save_5" type="button" id="save_5" value="Save">
+&nbsp;
+          <input name="cancel_5" type="button" id="cancel_5" value="Cancel">
+      </div></td>
+                    </table>
+                  </div>
+                  <div class=box id="step6" style="display:none ">
+                    <h2>Step 5: Port Filte</h2>
+                    <p><strong>Add Port Filters Rules.</strong></p>
+                    <P>Specify rules to prohibit access to specific IP addresses and ports.</P>
+                    <table width="525" 
+            border=0 cellPadding=0 cellSpacing=0 class=formlisting summary="">
+                      <tbody>
+                        <tr>
+                          <td>Enable</td>
+                          <td>Name</td>
+                          <td>Dest IP<br>
+          Start</td>
+                          <td>Dest IP<br>
+          End</td>
+                          <td>Protocol</td>
+                          <td>Dest<br>
+          Port<br>
+          Start</td>
+                          <td>Dest<br>
+          Port<br>
+          End                  
+                        </tr>
+                        <tr>
+                          <td><input name="enabled" type=checkbox></td>
+                          <td><input name="entry_name" maxLength="15" size="15"></td>
+                          <td><input name="dest_ip_start" maxLength="15" size="15"></td>
+                          <td><input name="dest_ip_end" maxLength="15" size="15"></td>
+                          <td><select name="protocol">
+                              <option value=0 selected >BOTH</option>
+                              <option value=6>TCP</option>
+                              <option value=17>UDP</option>
+                            </select>
+                          </td>
+                          <td><input name="dest_port_start" maxLength="15" size="15"></td>
+                          <td><input name="dest_port_end" maxLength="15" size="15"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <hr>
+                    <table width="362" align="center">
+    <td>
+        <div align="center">
+          <input name="perv_6" type="button" id="perv_6" value="Perv">
+&nbsp;
+          <input name="next_6" type="button" id="next_6" value="Next">
+&nbsp;
+          <input name="save_6" type="button" id="save_6" value="Save">
+&nbsp;
+          <input name="cancel_6" type="button" id="cancel_6" value="Cancel">
+      </div></td>
+                    </table>
+                  </div>
+              <div class=box id="step7" style="display:none ">
+                    <h2>Step 6: Configure Web Access Logginge</h2>
+                <div id=w8 _DISPLAYED="wizardPage==8">
+                      <table width="525" class=formarea summary="">
+                        <tbody>
+                          <tr>
+                            <td width="133" class=form_label>Web Access Logging&nbsp;:</td>
+                            <td width="370"><input type=radio value=0 name=web_filter_log 
+                  _VALUE="ae_pc.thearray[-1].log_access">
+                              Disabled<BR>
+                              <input 
+                  type=radio value=1 name=web_filter_log 
+                  _VALUE="ae_pc.thearray[-1].log_access">
+                              Enabled </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <HR>
+                </div>
+                    <table width="362" align="center">
+  <td>
+      <div align="center">
+        <input name="perv_7" type="button" id="perv_7" value="Perv" onclick="window.location='Step_4.htm';">
+&nbsp;
+        <input name="next_7" type="button" id="next_7" value="Next" onclick="window.location='Step_7.htm';">
+&nbsp;
+        <input name="save_7" type="button" id="save_7" value="Save">
+&nbsp;
+        <input name="cancel_7" type="button" id="cancel_7" value="Cancel">
+    </div></td>
+                    </table>
+              </div>    
+                  <!-- === END MAINCONTENT === -->            
+        </div></td></form>
+			<td valign="top" width="150" id="sidehelp_container" align="left">
+				<table borderColor=#ffffff cellSpacing=0 borderColorDark=#ffffff cellPadding=2 bgColor=#ffffff borderColorLight=#ffffff border=0>
+                  <tbody>
+                    <tr>
+                      <td id=help_text><b>Helpful Hints.</b><br>
+                          <br>                          
+                      <strong></strong></td>
+                    </tr>
+                  </tbody>
+                </table></td>
+		</tr>
+	</table>
+	<table id="footer_container" border="0" cellpadding="0" cellspacing="0" width="838" align="center">
+		<tr>
+			<td width="125" align="center">&nbsp;&nbsp;<img src="wireless_bottom.gif" width="114" height="35"></td>
+			<td width="10">&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+<br>
+<div align="center">Copyright &copy; 2004-2005 D-Link Systems, Inc.</div>
+<br>
+</body>
+<script>
+check_access();
+check_aes();
+</script>
+</html>

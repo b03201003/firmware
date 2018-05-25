@@ -1,0 +1,883 @@
+13<@>&&*&&tw**&**
+24<@>if(showTrafficShaping){
+97<@> AdvMenu[index++]=new Gitem(CAdvanced, "QoS設定", "ipqostc_gen_ap.htm", 1, "advhelp.htm", -1);
+2<@>}
+81<@>AdvMenu[index++]=new Gitem(CAdvanced, "UPnP", "upnp.htm", 1, "advhelp.htm", -1);
+85<@>AdvMenu[index++]=new Gitem(CAdvanced, "Telnet", "telnet.htm", 1, "advhelp.htm", -1);
+21<@>if(ShowTR069=='1') {
+85<@> AdvMenu[index++]=new Gitem(CAdvanced, "TR-069", "tr069.htm", 1, "advhelp.htm", -1);
+2<@>}
+98<@>AdvMenu[index++]=new Gitem(CAdvanced, "虛擬伺服器", "virtualSrv.htm", 1, "advhelp.htm", -1);
+99<@>AdvMenu[index++]=new Gitem(CAdvanced, "USB印表機", "cups.htm", PrintServer, "advhelp.htm", -1);
+11<@>index = 0;
+91<@>MaintainMenu[index++]=new Gitem(CMaintain, "系統", "reboot.htm", 1, "mainhelp.htm", -1);
+97<@>MaintainMenu[index++]=new Gitem(CMaintain, "韌體更新", "upload.htm", 1, "mainhelp.htm", -1);
+101<@>MaintainMenu[index++]=new Gitem(CMaintain, "備份與還原", "saveconf.htm", 1, "mainhelp.htm",-1);
+103<@>MaintainMenu[index++]=new Gitem(CMaintain, "使用者帳戶", "userconfig.htm", 1, "mainhelp.htm",-1);
+109<@>MaintainMenu[index++]=new Gitem(CMaintain, "時間與日期", "time.htm", InternetTime, "mainhelp.htm", -1);
+11<@>index = 0;
+93<@>StatMenu[index++]=new Gitem(CStatus, "裝置資訊", "status.htm", 1, "statushelp.htm", -1);
+106<@>StatMenu[index++]=new Gitem(CStatus, "活動中的用戶清單", "dhcptbl.htm", 1, "statushelp.htm", -1);
+86<@>StatMenu[index++]=new Gitem(CStatus, "統計", "stats.htm", 1, "statushelp.htm", -1);
+11<@>index = 0;
+73<@>HelpMenu[index++]=new Gitem(CHelp, "選單", "helpmenu.htm", 1, "", -1);
+74<@>HelpMenu[index++]=new Gitem(CHelp, "設定", "helpsetup.htm", 1, "", -1);
+73<@>HelpMenu[index++]=new Gitem(CHelp, "無線", "helpwlan.htm", 1, "", -1);
+78<@>HelpMenu[index++]=new Gitem(CHelp, "進階設定", "helpadv.htm", 1, "", -1);
+73<@>HelpMenu[index++]=new Gitem(CHelp, "維護", "helpmain.htm", 1, "", -1);
+79<@>HelpMenu[index++]=new Gitem(CHelp, "狀態", "helpstatusinfo.htm", 1, "", -1);
+49<@>SiteMenu[0]=new Gitem(CHelp, "", "", 0, "", -1);
+29<@>var setup=getDefaultPage(0);
+28<@>var wlan=getDefaultPage(1);
+27<@>var adv=getDefaultPage(2);
+34<@>var maintenace=getDefaultPage(3);
+30<@>var status=getDefaultPage(4);
+28<@>var help=getDefaultPage(5);
+11<@>index = 0;
+45<@>TabMenu[index++] =new Gtab("設定", setup);
+44<@>TabMenu[index++] =new Gtab("無線", wlan);
+49<@>TabMenu[index++] =new Gtab("進階設定", adv);
+50<@>TabMenu[index++] =new Gtab("維護", maintenace);
+46<@>TabMenu[index++] =new Gtab("狀態", status);
+44<@>TabMenu[index++] =new Gtab("幫助", help);
+28<@>function getDefaultPage(ID)
+2<@>{
+27<@> var sideMenu = SetupMenu;
+14<@> if (ID == 1)
+3<@> {
+27<@>  sideMenu = WirelessMenu;
+20<@> }else if (ID == 2)
+3<@> {
+22<@>  sideMenu = AdvMenu;
+3<@> }
+19<@> else if (ID == 3)
+3<@> {
+27<@>  sideMenu = MaintainMenu;
+3<@> }
+19<@> else if (ID == 4)
+3<@> {
+23<@>  sideMenu = StatMenu;
+3<@> }
+19<@> else if (ID == 5)
+3<@> {
+23<@>  sideMenu = HelpMenu;
+3<@> }
+34<@> for(i=0;i < sideMenu.length;i++)
+6<@>    {
+30<@>  if (sideMenu[i].ishow == 1)
+34<@>         return sideMenu[i].surl;
+6<@>    }
+2<@>}
+55<@>function Gitem(ifolder,sname,surl,ishow,shelp, idmenu)
+2<@>{
+26<@>    this.ifolder=ifolder;
+22<@>    this.sname=sname;
+20<@>    this.surl=surl;
+22<@>    this.ishow=ishow;
+22<@>    this.shelp=shelp;
+23<@> this.idmenu = idmenu;
+2<@>}
+26<@>function Gtab(sname,surl)
+2<@>{
+22<@>    this.sname=sname;
+20<@>    this.surl=surl;
+2<@>}
+22<@>function doLink(surl)
+2<@>{
+20<@>    shref =""+surl;
+36<@>    document.location.href = shref;
+2<@>}
+21<@>function GetTABpos()
+2<@>{
+17<@> var tabOn = -1;
+35<@> for(i=0; i < TabMenu.length; i++)
+3<@> {
+37<@>  if (TabHeader == TabMenu[i].sname)
+14<@>   tabOn = i;
+3<@> }
+15<@> return tabOn;
+2<@>}
+26<@>function GetSidepos(menu)
+2<@>{
+17<@> var tabOn = -1;
+32<@> for(i=0; i < menu.length; i++)
+3<@> {
+33<@>  if (SideItem == menu[i].sname)
+14<@>   tabOn = i;
+3<@> }
+15<@> return tabOn;
+2<@>}
+31<@>function Write_Folder_Images()
+2<@>{
+39<@>    var top1 = '<td width=140 class=';
+26<@> var top2 = '><a href="';
+18<@> var top3 = '">';
+25<@> var top4 = '</a></td>';
+67<@> var end = '<td style="background-color:white; width:2px;"></td>';
+18<@> var result = "";
+23<@> tabPos = GetTABpos();
+35<@> for(i=0; i < TabMenu.length; i++)
+3<@> {
+19<@>  if (tabPos == i)
+114<@>   result = result + top1 + 'topnavon rowspan=2' + top2 + TabMenu[i].surl + top3 + TabMenu[i].sname + top4 + end;
+7<@>  else
+105<@>   result = result + top1 + 'topnavoff' + top2 + TabMenu[i].surl + top3 + TabMenu[i].sname + top4 + end;
+3<@> }
+25<@> document.write(result);
+20<@> if (tabPos == -1){
+83<@>  document.write('</tr><tr><td></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>');
+10<@> } else {
+83<@>  document.write('</tr><tr><td></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+94<@>   '<td style="background-color:#404343;"></td><td style="background-color:#404343;"></td>' +
+51<@>   '<td style="background-color:#404343;"></td>');
+3<@> }
+2<@>}
+29<@>function Write_Item_Images()
+2<@>{
+28<@> var sideMenu = SetupMenu;;
+60<@> var top = '<td id=sidenav_container><div id=sidenav><ul>';
+39<@> var bottom = '</li></ul></div></td>';
+62<@> var side1 = '<li><div onMouseover="showmenu(event,linkset[';
+28<@> var side1_2 = '<li><div ';
+29<@> var side2_1 = '><a href="';
+58<@> var side2_2 = '], this)" onMouseout="delayhidemenu()" ';
+29<@> var side2_3 = '><a href="';
+19<@> var side3 = '">';
+27<@> var side4 = '</a></div>';
+18<@> var result = "";
+18<@> if (tabPos == 0)
+3<@> {
+24<@>  sideMenu = SetupMenu;
+24<@> }else if (tabPos == 1)
+3<@> {
+27<@>  sideMenu = WirelessMenu;
+3<@> }
+23<@> else if (tabPos == 2)
+3<@> {
+22<@>  sideMenu = AdvMenu;
+3<@> }
+23<@> else if (tabPos == 3)
+3<@> {
+27<@>  sideMenu = MaintainMenu;
+3<@> }
+23<@> else if (tabPos == 4)
+3<@> {
+23<@>  sideMenu = StatMenu;
+3<@> }
+23<@> else if (tabPos == 5)
+3<@> {
+23<@>  sideMenu = HelpMenu;
+3<@> }
+19<@> if (tabPos == -1)
+3<@> {
+23<@>  sideMenu = SiteMenu;
+3<@> }
+34<@> var g_FID= GetSidepos(sideMenu);
+34<@> for(i=0;i < sideMenu.length;i++)
+6<@>    {
+47<@>  if ((g_FID == i)&&(sideMenu[i].ishow == 1)){
+32<@>   if (sideMenu[i].idmenu > -1)
+177<@>    result = result + side1 + sideMenu[i].idmenu + side2_2 + ' class=sidenavoff id=dmenu' + sideMenu[i].idmenu + side2_3 + sideMenu[i].surl + side3 + sideMenu[i].sname + side4;
+8<@>   else
+118<@>    result = result + side1_2 + ' class=sidenavoff' + side2_1 + sideMenu[i].surl + side3 + sideMenu[i].sname + side4;
+37<@>  }else if (sideMenu[i].ishow == 1){
+32<@>   if (sideMenu[i].idmenu > -1)
+160<@>    result = result + side1 + sideMenu[i].idmenu + side2_2 + ' id=dmenu' + sideMenu[i].idmenu + side2_3 + sideMenu[i].surl + side3 + sideMenu[i].sname + side4;
+8<@>   else
+96<@>    result = result + side1_2 + side2_1 + sideMenu[i].surl + side3 + sideMenu[i].sname + side4;
+4<@>  }
+6<@>    }
+25<@>    document.write(top);
+25<@> document.write(result);
+25<@> document.write(bottom);
+2<@>}
+26<@>function mainTableStart()
+2<@>{
+13<@> var tabPos;
+29<@>  document.write('<style>');
+33<@> document.write('div.overflow');
+22<@> document.write('{');
+37<@> document.write('	overflow: auto;');
+22<@> if (HelpItem != ""){
+37<@>   document.write('	width: 670px;');
+10<@> } else {
+37<@>   document.write('	width: 795px;');
+3<@> }
+22<@> document.write('}');
+30<@>  document.write('</style>');
+23<@> tabPos = GetTABpos();
+18<@> if (tabPos == 5)
+79<@>  document.write('<div align="center" style="display: hidden" id="tblmain">');
+6<@> else
+77<@>  document.write('<div align="center" style="display: none" id="tblmain">');
+91<@> document.write('<table border="0" cellpadding="0" cellspacing="0" width="980"><tr><td>');
+117<@> document.write('<table id="header_container" border="0" cellpadding="0" cellspacing="0"><tr class="top_product">');
+203<@> document.write('<td align="right" height="30" colspan="3" bgcolor="#404343">硬體版本:' + HardwareVer + '&nbsp;&nbsp;&nbsp;&nbsp;韌體版本: ' + FirmwareVer + '&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>')
+25<@> document.write('<tr>');
+92<@> document.write('<td class="product_page" align="left">產品頁面: ' + ModemVer+ '</td>')
+26<@> document.write('</tr>');
+25<@> document.write('<tr>');
+49<@> document.write('<td class="header_bg1"></td>');
+78<@> document.write('<td width="722" align=right class="header_bg2">' + '</td>');
+66<@> document.write('<td align=right class="header_bg3">' + '</td>');
+34<@> document.write('</tr></table>');
+53<@> document.write('<table cellSpacing=0 width=100%>');
+73<@> document.write('<tr><td height=3 style="background:white"></td></tr>');
+29<@> document.write('</table>');
+2<@>}
+16<@>function logo()
+2<@>{
+2<@>}
+18<@>function TopNav()
+2<@>{
+145<@> document.write('<table cellSpacing=0 width="100%" style="background-color:f1f1f1" Height=3px border=0><tr><td width="980"></td></tr></table>');
+196<@> document.write('<table id=topnav_container2 border=0 cellSpacing=0><tr><td style="background-color:white; width:1px;"></td><td id=modnum rowspan=2><img alt="" src="img_short_modnum.gif"></td>');
+73<@> document.write('<td style="background-color:white; width:2px;"></td>');
+24<@> Write_Folder_Images();
+34<@> document.write('</tr></table>');
+145<@> document.write('<table cellSpacing=0 width="100%" style="background-color:f1f1f1" Height:3px border=0><tr><td width="980"></td></tr></table>');
+2<@>}
+25<@>function ThirdRowStart()
+2<@>{
+99<@> document.write('<table id=content_container cellSpacing=0 summary="" border=0 width="980"><tr>');
+2<@>}
+25<@>function mainBodyStart()
+2<@>{
+65<@> document.write('<td id=maincontent_container><table><tr><td>');
+23<@>  if (HelpItem != ""){
+61<@>   document.write('<div id=maincontent style="width:703">');
+10<@> } else {
+61<@>   document.write('<div id=maincontent style="width:830">');
+3<@> }
+2<@>}
+23<@>function mainBodyEnd()
+2<@>{
+27<@> document.write('</div>');
+44<@> document.write('</td></tr></table></td>');
+2<@>}
+23<@>function ThirdRowEnd()
+2<@>{
+15<@> var sideMenu;
+18<@> if (tabPos == 0)
+3<@> {
+24<@>  sideMenu = SetupMenu;
+24<@> }else if (tabPos == 1)
+3<@> {
+27<@>  sideMenu = WirelessMenu;
+3<@> }
+23<@> else if (tabPos == 2)
+3<@> {
+22<@>  sideMenu = AdvMenu;
+3<@> }
+23<@> else if (tabPos == 3)
+3<@> {
+27<@>  sideMenu = MaintainMenu;
+3<@> }
+23<@> else if (tabPos == 4)
+3<@> {
+23<@>  sideMenu = StatMenu;
+3<@> }
+23<@> else if (tabPos == 5)
+3<@> {
+23<@>  sideMenu = HelpMenu;
+3<@> }
+24<@> else if (tabPos == -1)
+3<@> {
+23<@>  sideMenu = SiteMenu;
+3<@> }
+34<@> var g_FID= GetSidepos(sideMenu);
+23<@>  if (HelpItem != ""){
+47<@> document.write('<td id=sidehelp_container>');
+39<@> document.write('<div id=help_text>');
+51<@> document.write('<label id="helpLabel"></label>');
+122<@> document.write('<script language="Javascript" src="' + sideMenu[g_FID].shelp + '?rnd=' + Math.random() + '"></script>');
+27<@> document.write('</div>');
+26<@> document.write('</td>');
+3<@> }
+34<@> document.write('</tr></table>');
+2<@>}
+18<@>function Footer()
+2<@>{
+70<@> document.write('<table id=footer_container cellSpacing=0 border=0>')
+56<@> document.write('<tr><td>'+copyrightInfo+'</td></tr>');
+29<@> document.write('</table>');
+2<@>}
+24<@>function mainTableEnd()
+2<@>{
+69<@> document.write('</td></tr></table><div id=copyright></div></div>');
+87<@> setTimeout("document.getElementById('tblmain').style.display = 'block'", delaytimer);
+2<@>}
+22<@>function wizardHead()
+2<@>{
+82<@> document.write('<DIV align="center"><TABLE cellSpacing=0 width="980"><TR><TD>' +
+144<@> '<TABLE id="header_container" width="980"><TR><TD align=left width="200">產品頁面: ' + ModemVer+ '</TD><TD align=right width="50"></TD>' +
+68<@> '<TD align=right width="690">韌體版本1.07</TD></TR></TABLE>');
+113<@> document.write('<TABLE cellSpacing=0 width=100%><TR><td height=3 style={background:white}></td></TR></TABLE>' +
+144<@> '<TABLE cellSpacing=0 width="980"><TR><TD id=masthead_container width="980"><IMG alt="" src="img_masthead.gif" width=980></TD></TR></TABLE>' +
+130<@> '<TABLE cellSpacing=0 width="100%" style="background-color:f1f1f1" Height=3px border=0><TR><TD width="940"></TD></TR></TABLE>' +
+130<@> '<TABLE cellSpacing=0 width="100%" style="background-color:f1f1f1" Height=3px border=0><TR><TD width="940"></TD></TR></TABLE>' +
+194<@> '<TABLE id=content_container cellSpacing=0 summary="" border=0 width="940"><TR><TD width=78></TD><TD id=maincontent_container colspan=4><TABLE><TR><TD><DIV id=maincontent style="width:820">');
+2<@>}
+24<@>function wizardFooter()
+2<@>{
+113<@> document.write('</DIV></TD></TR></TABLE></TD></TR></TABLE><TABLE id=footer_container cellSpacing=0 border=0>' +
+65<@> '<TR><TD></TD><TD>&nbsp;</TD></TR></TABLE></TD></TR></TABLE>' +
+12<@> '</DIV>');
+2<@>}
+29<@>var defaultMenuWidth="130px"
+19<@>var baseTop = 147;
+14<@>var top = 27;
+17<@>var width = 127;
+24<@>var linkset=new Array()
+35<@>linkset[0]='<div id=sidenav><ul>';
+63<@>linkset[0]+='<li><div><a href="lan.htm">LAN 介面</a></div>';
+82<@>linkset[0]+='<li><div><a href="dhcpd_nocheck_lanip.htm">DHCP伺服器</a></div>';
+81<@>linkset[0]+='<li><div><a href="dhcpip_nocheck_lanip.htm">DHCP 保留</a></div>';
+32<@>linkset[0]+='</li></ul></div>';
+35<@>linkset[1]='<div id=sidenav><ul>';
+81<@>linkset[1]+='<li><div><a href="wanadsl_auto_droute.htm">頻道設定</a></div>';
+17<@>if(WAN3g== '1'){
+69<@> linkset[1]+='<li><div><a href="wan3gconf.htm">3G 設定</a></div>';
+2<@>}
+66<@>linkset[1]+='<li><div><a href="wanatm.htm">ATM 設定</a></div>';
+68<@>linkset[1]+='<li><div><a href="adslset.htm">ADSL 設定</a></div>';
+72<@>linkset[1]+='<li><div><a href="autopvc.htm">PVC Auto Search</a></div>';
+32<@>linkset[1]+='</li></ul></div>';
+35<@>linkset[2]='<div id=sidenav><ul>';
+75<@>linkset[2]+='<li><div><a href="wlbasic.htm">無線基本設定</a></div>';
+74<@>linkset[2]+='<li><div><a href="wlwpa_mbssid.htm">無線安全</a></div>';
+32<@>linkset[2]+='</li></ul></div>';
+35<@>linkset[3]='<div id=sidenav><ul>';
+72<@>linkset[3]+='<li><div><a href="wladvanced.htm">進階無線</a></div>';
+69<@>linkset[3]+='<li><div><a href="wlactrl.htm">存取控制</a></div>';
+58<@>linkset[3]+='<li><div><a href="wlwps.htm">WPS</a></div>';
+63<@>linkset[3]+='<li><div><a href="wlguest.htm">MBSSID</a></div>';
+58<@>linkset[3]+='<li><div><a href="wlwds.htm">WDS</a></div>';
+68<@>linkset[3]+='<li><div><a href="wlwds_enc.htm">WDS加密</a></div>';
+32<@>linkset[3]+='</li></ul></div>';
+35<@>linkset[4]='<div id=sidenav><ul>';
+83<@>linkset[4]+='<li><div><a href="fw-ipportfilter_adv.htm">IP/Port 過濾</a></div>';
+32<@>linkset[4]+='</li></ul></div>';
+35<@>linkset[5]='<div id=sidenav><ul>';
+18<@>if(PortMapping) {
+71<@> linkset[5]+='<li><div><a href="portmap.htm">Port Mappping</a></div>';
+2<@>}
+68<@>linkset[5]+='<li><div><a href="igmproxy.htm">IGMP Proxy</a></div>';
+24<@>if(showTrafficShaping){
+71<@> linkset[5]+='<li><div><a href="ipqostc_gen_ap.htm">IP QoS</a></div>';
+2<@>}
+58<@>linkset[5]+='<li><div><a href="upnp.htm">UPnP</a></div>';
+21<@>if(ShowTR069=='1') {
+62<@> linkset[5]+='<li><div><a href="tr069.htm">TR-069</a></div>';
+2<@>}
+32<@>linkset[5]+='</li></ul></div>';
+35<@>linkset[6]='<div id=sidenav><ul>';
+69<@>linkset[6]+='<li><div><a href="routing.htm">靜態路由</a></div>';
+32<@>linkset[6]+='</li></ul></div>';
+35<@>linkset[7]='<div id=sidenav><ul>';
+75<@>linkset[7]+='<li><div><a href="virtualSrv.htm">虛擬伺服器</a></div>';
+32<@>linkset[7]+='</li></ul></div>';
+35<@>linkset[8]='<div id=sidenav><ul>';
+58<@>linkset[8]+='<li><div><a href="ping.htm">Ping</a></div>';
+70<@>linkset[8]+='<li><div><a href="traceroute.htm">Traceroute</a></div>';
+71<@>linkset[8]+='<li><div><a href="diag-test.htm">診斷測試</a></div>';
+32<@>linkset[8]+='</li></ul></div>';
+35<@>linkset[9]='<div id=sidenav><ul>';
+71<@>linkset[9]+='<li><div><a href="acl.htm">存取控制清單</a></div>';
+32<@>linkset[9]+='</li></ul></div>';
+36<@>linkset[10]='<div id=sidenav><ul>';
+57<@>linkset[10]+='<li><div><a href="dns.htm">DNS</a></div>';
+33<@>linkset[10]+='</li></ul></div>';
+38<@>var ie5=document.all && !window.opera
+32<@>var ns6=document.getElementById
+15<@>if (ie5||ns6){
+187<@> document.write('<IFRAME id="iframetemp" style="position:absolute; display:none; z-index:0; width:0; height:0" frameborder=0 scrolling=no marginwidth=0 src="" marginheight=0></iframe>');
+113<@> document.write('<div id="popitmenu" onMouseover="clearhidemenu();" onMouseout="dynamichide(event)">menu</div>')
+2<@>}
+86<@>var frameTemp = ie5? document.all.iframetemp : document.getElementById("iframetemp");
+25<@>function iecompattest(){
+113<@>return (document.compatMode && document.compatMode.indexOf("CSS")!=-1)? document.documentElement : document.body
+2<@>}
+36<@>function showmenu(e, which, count){
+46<@> if (!document.all&&!document.getElementById)
+10<@>  return;
+18<@> clearhidemenu();
+77<@> menuobj=ie5? document.all.popitmenu : document.getElementById("popitmenu");
+26<@> menuobj.innerHTML=which;
+39<@> menuobj.style.width=defaultMenuWidth;
+43<@> menuobj.contentwidth=menuobj.offsetWidth;
+45<@> menuobj.contentheight=menuobj.offsetHeight;
+39<@>eventX=ie5? event.clientX : e.clientX;
+39<@>eventY=ie5? event.clientY : e.clientY;
+81<@>var rightedge=ie5? iecompattest().clientWidth-eventX : window.innerWidth-eventX;
+84<@>var bottomedge=ie5? iecompattest().clientHeight-eventY : window.innerHeight-eventY;
+20<@>var tempEl = count;
+18<@>var baseLeft = 0;
+16<@>var tempTop =0;
+24<@>while (tempEl != null){
+32<@> baseLeft += tempEl.offsetLeft;
+30<@> tempTop += tempEl.offsetTop;
+31<@> tempEl = tempEl.offsetParent;
+2<@>}
+36<@>if (rightedge<menuobj.contentwidth)
+35<@>menuobj.style.left=baseLeft+width;
+5<@>else
+35<@>menuobj.style.left=baseLeft+width;
+38<@>if (bottomedge<menuobj.contentheight)
+28<@>menuobj.style.top= tempTop;
+5<@>else
+27<@>menuobj.style.top=tempTop;
+33<@>frameTemp.style.display="block";
+41<@>frameTemp.style.left=menuobj.style.left;
+39<@>frameTemp.style.top=menuobj.style.top;
+44<@>frameTemp.style.width=menuobj.contentwidth;
+46<@>frameTemp.style.height=menuobj.contentheight;
+36<@>menuobj.style.visibility="visible";
+14<@>return false;
+2<@>}
+30<@>function contains_ns6(a, b) {
+21<@>while (b.parentNode)
+29<@>if ((b = b.parentNode) == a)
+13<@>return true;
+14<@>return false;
+2<@>}
+21<@>function hidemenu(){
+20<@>if (window.menuobj)
+35<@>menuobj.style.visibility="hidden";
+32<@>frameTemp.style.display="none";
+2<@>}
+25<@>function dynamichide(e){
+41<@>if (ie5&&!menuobj.contains(e.toElement))
+11<@>hidemenu()
+99<@>else if (ns6&&e.currentTarget!= e.relatedTarget&& !contains_ns6(e.currentTarget, e.relatedTarget))
+11<@>hidemenu()
+2<@>}
+26<@>function delayhidemenu(){
+39<@>delayhide=setTimeout("hidemenu()",300)
+2<@>}
+26<@>function clearhidemenu(){
+22<@>if (window.delayhide)
+24<@>clearTimeout(delayhide)
+2<@>}
+14<@>if (ie5||ns6)
+26<@>document.onclick=hidemenu
+1<@>
+1<@>
+25<@>&*#@helpmenu.htm@#*&5529
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><SCRIPT language="JavaScript">
+41<@><VWS_FUNCTION (void*)vmsGetLoginUser();>
+41<@><VWS_FUNCTION (void*)WebShowWireless();>
+10<@></SCRIPT>
+31<@><script language="JavaScript">
+21<@> TabHeader="幫助";
+20<@> SideItem="菜單";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@> <tr>
+40<@>  <td class=topheader>說明選單</td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+48<@>    <li><a href="helpmenu.htm#Setup">設定</a>
+13<@>    <script>
+22<@>    if(wireless=="1")
+73<@>     document.writeln('<li><a href="helpmenu.htm#Wireless">無線</a>');
+30<@>    if (LoginUser == "admin")
+73<@>     document.writeln('<li><a href="helpmenu.htm#Advanced">進階</a>');
+14<@>    </script>
+54<@>    <li><a href="helpmenu.htm#Maintenance">維護</a>
+49<@>    <li><a href="helpmenu.htm#Status">狀態</a>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+13<@></table><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+58<@>  <td class=topheader><a name=Setup>設定說明</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+35<@>    <script language="javascript">
+30<@>    if (LoginUser == "admin")
+72<@>     document.writeln('<li><a href="helpsetup.htm#Wizard">精靈</a>');
+14<@>    </script>
+53<@>    <li><a href="helpsetup.htm#LAN">內部網路</a>
+61<@>    <li><a href="helpsetup.htm#Internet">Internet 設定</a>
+1<@>
+1<@>
+1<@>
+1<@>
+46<@>    <li><a href="helpsetup.htm#pptp">PPTP</a>
+1<@>
+1<@>
+46<@>    <li><a href="helpsetup.htm#l2tp">L2TP</a>
+1<@>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+13<@></table><br>
+1<@>
+45<@><div id="wirelessHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+61<@>  <td class=topheader><a name=Wireless>無線說明</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+1<@>
+64<@>    <li><a href="helpwlan.htm#WlanBasic">無線基本設定</a>
+35<@>    <script language="javascript">
+31<@>    if (LoginUser == "admin"){
+1<@>
+66<@>    document.writeln('<li><a href="helpwlan.htm#wlwps">WPS</a>');
+81<@>    document.writeln('<li><a href="helpwlan.htm#wladv">無線進階設定</a>');
+80<@>    document.writeln('<li><a href="helpwlan.htm#wlrepeater">無線中繼</a>');
+1<@>
+1<@>
+1<@>
+6<@>    }
+14<@>    </script>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+13<@></table><br>
+7<@></div>
+40<@><div id="advHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+61<@>  <td class=topheader><a name=Advanced>進階說明</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+35<@>    <script language="javascript">
+32<@>    if (LoginUser == "admin") {
+94<@>                    document.writeln('<li><a href="helpadv.htm#Acl">存取控制清單</a>');
+102<@>                    document.writeln('<li><a href="helpadv.htm#PortTriggering">服務埠觸發</a>');
+62<@>   document.writeln('<li><a href="helpadv.htm#DMZ">DMZ</a>');
+86<@>                    document.writeln('<li><a href="helpadv.htm#Url">URL 封鎖</a>');
+81<@>                    document.writeln('<li><a href="helpadv.htm#DDNS">DDNS</a>');
+89<@>                    document.writeln('<li><a href="helpadv.htm#IPQosTC">QoS設置</a>');
+81<@>                    document.writeln('<li><a href="helpadv.htm#UPnP">UPnP</a>');
+98<@>                    document.writeln('<li><a href="helpadv.htm#VirtualSrv">虛擬伺服器</a>');
+6<@>    }
+14<@>    </script>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+13<@></table><br>
+7<@></div>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+64<@>  <td class=topheader><a name=Maintenance>維護說明</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+55<@>    <li><a href="helpmain.htm#Reboot">重新啟動</a>
+35<@>    <script language="javascript">
+32<@>    if (LoginUser == "admin") {
+77<@>     document.writeln('<li><a href="helpmain.htm#Upload">韌體更新</a>');
+80<@>     document.writeln('<li><a href="helpmain.htm#Saveconf">備份/還原</a>');
+75<@>     document.writeln('<li><a href="helpmain.htm#Userconfig">密碼</a>');
+78<@>     document.writeln('<li><a href="helpmain.htm#Time">時間和日期</a>');
+6<@>    }
+14<@>    </script>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+13<@></table><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+59<@>  <td class=topheader><a name=Status>狀態說明</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+61<@>    <li><a href="helpstatusinfo.htm#Status">設備資訊</a>
+77<@>    <li><a href="helpstatusinfo.htm#Dhcpclient">活動中的用戶清單</a>
+54<@>    <li><a href="helpstatusinfo.htm#Stats">統計</a>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+31<@><script language="javascript">
+22<@>if(wireless == "1") {
+66<@> document.getElementById("wirelessHelp").style.display = 'block';
+2<@>}
+7<@>else {
+65<@> document.getElementById("wirelessHelp").style.display = 'none';
+2<@>}
+27<@>if (LoginUser == "admin"){
+61<@> document.getElementById("advHelp").style.display = 'block';
+8<@>}else {
+60<@> document.getElementById("advHelp").style.display = 'none';
+2<@>}
+10<@></script>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+26<@>&*#@helpsetup.htm@#*&7462
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><SCRIPT language="JavaScript">
+41<@><VWS_FUNCTION (void*)vmsGetLoginUser();>
+41<@><VWS_FUNCTION (void*)WebShowWireless();>
+47<@><VWS_FUNCTION (void*)WebShowLanMacAddrCtrl();>
+48<@><VWS_FUNCTION (void*)WebShowLanLinkModeCtrl();>
+10<@></SCRIPT>
+31<@><script language="JavaScript">
+21<@> TabHeader="幫助";
+20<@> SideItem="設定";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+46<@> <table id=box_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+17<@>    設定說明
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+8<@>   <ul>
+35<@>    <script language="javascript">
+30<@>    if (LoginUser == "admin")
+80<@>     document.writeln('<li><a href="helpsetup.htm#Wizard">Internet精靈</a>');
+14<@>    </script>
+53<@>    <li><a href="helpsetup.htm#LAN">區域網路</a>
+61<@>    <li><a href="helpsetup.htm#Internet">Internet 設定</a>
+1<@>
+1<@>
+1<@>
+1<@>
+46<@>    <li><a href="helpsetup.htm#pptp">PPTP</a>
+1<@>
+1<@>
+46<@>    <li><a href="helpsetup.htm#l2tp">L2TP</a>
+1<@>
+9<@>   </ul>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+6<@> <br>
+1<@>
+45<@> <div id="wizzardHelp" style="display:none">
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+50<@>    <a name="Wizard" id="Wizard">設定精靈</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+7<@>   <p>
+196<@>   如果您以前從未配置過路由器或者不知如何配置，請點擊<span class=button_ref>精靈</span>，且路由器會引導您透過幾個簡單的步驟來設定並取得網路。
+8<@>   </p>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+6<@> <br>
+8<@> </div>
+1<@>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+46<@>    <a id=LAN name=LAN>區域網路設定</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+21<@>  <td class=content>
+72<@>  <p>這些是路由器LAN(Local Area Network)端介面的設定。</p>
+8<@>   <dl>
+23<@>   <dt>LAN介面設定
+212<@>       <dd>路由器的區域網路(LAN)設定是以被指派的IP位址和子網路遮罩為基礎，此IP位址也用於存取網頁管理介面，若沒有IP衝突的情況下建議您使用預設的設定。
+14<@>         <dl>
+29<@>       <dt>路由器IP位址
+118<@>           <dd>表示路由器局域網的IP地址。可以設置路由器局域網IP地址，比如，192.168.0.1。
+28<@>           <dt>子網掩碼
+61<@>           <dd>路由器在區域網路的子網路遮罩。
+12<@>      </dd>
+12<@>      </dl>
+9<@>   </dl>
+1<@>
+8<@>   <dl>
+28<@>    <dt>DHCP伺服器設定
+175<@>        <dd>DHCP為Dynamic Host Configuration Protocol的縮寫。您可以在此設定內建的DHCP伺服器來指派IP位址給您區域網路內的電腦和其他裝置。
+14<@>         <dl>
+25<@>          <dt>DHCP模式
+16<@>           <dd>
+145<@>           <p>連線到您區域網路的電腦和其他裝置也需要將它們的TCP/IP設定為「DHCP」或「自動取得IP位址」。</p>
+15<@>           <p>
+96<@>     當您設定DHCP模式為<span class=option>DHCP伺服器</span>，主要參數如下:</p>
+29<@>           <dt>IP Pool範圍
+10<@>     <dd>
+9<@>     <p>
+293<@>     您的路由器使用192.168.10.1作為IP位址。您已經指派一個固定IP位址192.168.10.3給電腦作為網站伺服器，且指派一個固定IP位址192.168.10.4給另一台電腦作為FTP伺服器。所以您的DHCP IP位址範圍就需要從192.168.10.5或以上開始。</p>
+36<@>           <DIV class=help_example>
+16<@>           <dl>
+17<@>     <dt>例如:
+10<@>     <dd>
+285<@>     您的路由器使用192.168.1.1作為IP位址。您已經指派一個固定IP位址192.168.1.3給電腦作為網站伺服器，且指派一個固定IP位址192.168.1.4給另一台電腦作為FTP伺服器。所以您的DHCP IP位址範圍就需要從192.168.1.5或以上開始。
+17<@>     <dt>例如:
+10<@>     <dd>
+261<@>     假設您設定DHCP伺服器的管理IP位址從192.168.1.100到192.168.1.199，表示192.168.1.3到192.168.1.99和192.168.1.200到192.168.1.254不在DHCP伺服器的管理範圍內，在這些範圍內的電腦或裝置的IP位址是被手動指派的。
+11<@>     </dd>
+11<@>     </dl>
+12<@>     </DIV>
+28<@>           <dt>預設閘道
+59<@>           <dd>在DHCP伺服器範圍內的預設閘道。
+34<@>           <dt>最大租約時間
+22<@>                 <dd>
+340<@>                在電腦在要求更新租約前可能取得IP位址的時間。租約運作的方式就像是公寓一樣，初始租約是在租約過期前的時間。若承租者希望在租約到期時保留位址則新的租約是被成立的。若租約到期且位址已不再需要時則另一個承租者可以使用該位址。
+28<@>           <dt>網域名稱
+59<@>           <dd>在DHCP伺服器範圍內的網域名稱。
+28<@>           <dt>DNS伺服器
+59<@>           <dd>在DHCP伺服器範圍內的DNS伺服器。
+12<@>      </dd>
+12<@>      </dl>
+9<@>   </dl>
+1<@>
+8<@>   <dl>
+27<@>   <dt>DHCP 固定IP設定
+11<@>      <dd>
+156<@>      如果您需要為局域網上的電腦或設備分配固定的IP地址，請配置DHCP地址保留，綁定設備的MAC地址到對應的IP地址。
+14<@>         <dl>
+19<@>      <dt>IP位址
+78<@>         <dd>設定區域網接入設備的IP位址。例如，192.168.0.2。
+24<@>         <dt>Mac 位址
+50<@>         <dd>區域網接入設備的MAC位址。
+12<@>      </dd>
+12<@>      </dl>
+9<@>   </dl>
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+13<@>       </td>
+8<@>  </tr>
+10<@> </table>
+6<@> <br>
+1<@>
+1<@>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+57<@>    <a name="Internet" id="Internet">Internet 設定</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+26<@>   <td class=content><dl>
+20<@>               <dd>
+183<@>              <p>如果您曾經有配置路由器的經驗，對路由器配置比較熟悉，請在頁面<span class=button_ref>Internet 設定</span>中手動配置上網參數。
+19<@>              </p>
+11<@>     </dd>
+9<@>   </dl>
+14<@>        </td>
+8<@>  </tr>
+10<@> </table>
+6<@> <br>
+46<@><table id=body_header border=0 cellSpacing=0>
+5<@><tr>
+22<@> <td class=topheader>
+35<@> <a name="pptp" id="pptp">PPTP</a>
+7<@> </td>
+6<@></tr>
+5<@><tr>
+20<@> <td class=content>
+7<@>  <dl>
+8<@>   <dd>
+110<@>   <p>此頁面用來配置VPN PPTP客戶端, 你可以在此頁面設置PPTP參數或查看相關信息.</p>
+9<@>   </dd>
+8<@>  </dl>
+7<@> </td>
+6<@></tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+5<@><tr>
+22<@> <td class=topheader>
+35<@> <a name="l2tp" id="l2tp">L2TP</a>
+7<@> </td>
+6<@></tr>
+5<@><tr>
+20<@> <td class=content>
+7<@>  <dl>
+8<@>   <dd>
+43<@>   <p>此頁面用來設置L2TP參數.</p>
+9<@>   </dd>
+8<@>  </dl>
+7<@> </td>
+6<@></tr>
+9<@></table>
+5<@><br>
+31<@><script language="javascript">
+27<@>if (LoginUser == "admin"){
+65<@> document.getElementById("wizzardHelp").style.display = 'block';
+7<@>}else{
+64<@> document.getElementById("wizzardHelp").style.display = 'none';
+2<@>}
+10<@></script>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+11<@> Footer();
+17<@> mainTableEnd();
+10<@></script>
+14<@></blockquote>
+11<@>   </body>
+8<@></html>
+1<@>
+1<@>
+26<@>&*#@helpwlan.htm@#*&13890
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><SCRIPT language="JavaScript">
+41<@><VWS_FUNCTION (void*)vmsGetLoginUser();>

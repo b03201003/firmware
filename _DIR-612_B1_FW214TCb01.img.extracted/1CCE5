@@ -1,0 +1,915 @@
+13<@>&&*&&tw**&**
+61<@>         if ( isValidPort(matchPort_s[i].value) == false ) {
+83<@>            alert('起始觸發埠"' + matchPort_s[i].value + '"是無效的。');
+20<@>            return;
+11<@>         }
+61<@>         if ( isValidPort(matchPort_e[i].value) == false ) {
+83<@>            alert('結束觸發埠"' + matchPort_e[i].value + '"是無效的。');
+20<@>            return;
+11<@>         }
+62<@>         if ( isValidPort(relatePort_s[i].value) == false ) {
+86<@>            alert('起始relate port"' + relatePort_s[i].value + '"是無效的。');
+20<@>            return;
+11<@>         }
+62<@>         if ( isValidPort(relatePort_e[i].value) == false ) {
+90<@>            alert('結束end relate port"' + relatePort_e[i].value + '"是無效的。');
+20<@>            return;
+11<@>         }
+46<@>         tS = parseInt(matchPort_s[i].value);
+46<@>         tE = parseInt(matchPort_e[i].value);
+24<@>         if (tS > tE) {
+79<@>            alert('open port的範圍[' + tS + '-' + tE + ']是無效的。');
+20<@>            return;
+11<@>         }
+47<@>         oS = parseInt(relatePort_s[i].value);
+47<@>         oE = parseInt(relatePort_e[i].value);
+26<@>         if ( oS > oE ) {
+82<@>            alert('related port的範圍[' + oS + '-' + oE + ']是無效的。');
+20<@>            return;
+11<@>         }
+61<@>         tStartLoc = tStartLoc + matchPort_s[i].value + ',';
+57<@>         tEndLoc = tEndLoc + matchPort_e[i].value + ',';
+58<@>         tProtoLoc = tProtoLoc + protocol[i].value + ',';
+62<@>         oStartLoc = oStartLoc + relatePort_s[i].value + ',';
+58<@>         oEndLoc = oEndLoc + relatePort_e[i].value + ',';
+56<@>         oProtoLoc = oProtoLoc + oProto[i].value + ',';
+52<@>	//snatTypeLoc=	 snatTypeLoc+snatType[i].value+',';
+52<@>	//dnatTypeLoc=	 dnatTypeLoc+dnatType[i].value+',';
+34<@>	dirLoc=	dirLoc+dir[i].value+',';
+23<@>      }               
+5<@>   }
+127<@>   loc = loc + tStartLoc + tEndLoc + tProtoLoc + oStartLoc + oEndLoc + oProtoLoc+dirLoc+'&submit.htm?nat_portrigger.htm=Send';
+40<@>   var code = 'location="' + loc + '"';
+15<@>   eval(code);
+2<@>}
+10<@></script>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+27<@>	TabHeader="進階設定";
+29<@>	SideItem="服務埠觸發";
+28<@>	HelpItem="PortTriggering";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+45<@>		<td class="topheader">服務埠觸發</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+205<@>			<p>在此清單內的規則是用來限制資料封包的特定類型從您的內部網路透過閘道到Internet。使用過濾器的功能對保護和約束您的內部網路是很有幫助的。</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+1<@>
+89<@><form action="form2NatPortriggerStatus.cgi" method=POST name="form2NatPortriggerStatus">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+51<@>		<td class="topheader">服務埠觸發狀態</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+55<@>					<td class="form_label_left">服務埠觸發:</td>
+35<@>					<td class="form_label_right">
+54<@>						<VWS_FUNCTION (void*)webGetPortriggerStatus();>
+26<@>                    </td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+49<@><input type="submit" value="套用">&nbsp;&nbsp;
+102<@><input type="hidden" NAME="submit.htm?nat_portrigger.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+5<@></p>
+8<@></form>
+1<@>
+68<@><form action="form2PortriggerRule.cgi"  name="form2PortriggerRule">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+48<@>		<td class="topheader">應用程式類型</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+170<@>					<td class="form_label_radio" style="text-align:left"><input type="radio" name="radiosrv" value="0" onClick="radioClick();" checked>常用的應用程式名稱:</td>
+10<@>					<td>
+67<@>						<select onchange=appSelect(this.value) size=1 name=AppName> 
+62<@>          					<option value=0 selected>選擇一個</option>
+41<@>							<option value=1>Aim Talk</option>
+47<@>							<option value=2>Asheron's Call</option>
+49<@>							<option value=3>Calista IP Phone</option>
+60<@>							<option value=4>Delta Force (Client/Server)</option>
+36<@>							<option value=5>ICQ</option>
+40<@>							<option value=6>Napster</option>
+42<@>							<option value=7>Net2Phone</option>
+56<@>							<option value=8>QuickTime 4     Client</option> 
+54<@>							<option value=9>Rainbow Six/RogueSpea</option>
+16<@>						</select>
+11<@>					</td>
+10<@>				</tr>
+1<@>
+9<@>				<tr>
+157<@>					<td class="form_label_radio" style="text-align:left; width:220px"><input type="radio" name="radiosrv" value="1">使用者自訂應用程式名稱:</td>
+77<@>					<td><input type="text" size="30" name="txtAppName" maxlength="32"></td>
+10<@>				</tr>
+12<@>			</table>
+4<@>			
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+22<@>				<TR align=middle>
+41<@>					<TD class=hd>起始Match Port </TD>
+41<@>					<TD class=hd>結束Match Port </TD>
+42<@>					<TD class=hd>觸發通訊協定</TD>
+41<@>					<TD class=hd>起始Relate Port</TD>
+41<@>					<TD class=hd>結束Relate Port</TD>
+42<@>					<TD class=hd>開放通訊協定</TD>
+33<@>					<TD class=hd>NAT類型</TD>
+10<@>				</TR>
+4<@>			
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+18<@>								</OPTION>
+17<@>							</SELECT>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+4<@>			
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+1<@>
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+1<@>
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+1<@>
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+1<@>
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+4<@>			
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+1<@>
+9<@>				<TR>
+46<@>					<TD><INPUT size=7 name=matchPort_s></TD>
+46<@>					<TD><INPUT size=7 name=matchPort_e></TD>
+10<@>					<TD>
+30<@>						<SELECT name=protocol> 
+36<@>							<OPTION value=1 selected>UDP
+27<@>							<OPTION value=0>TCP
+33<@>							<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+47<@>					<TD><INPUT size=7 name=relatePort_s></TD>
+47<@>					<TD><INPUT size=7 name=relatePort_e></TD>
+10<@>					<TD>
+28<@>						<SELECT name=oProto> 
+37<@>								<OPTION value=1 selected>UDP
+28<@>								<OPTION value=0>TCP
+34<@>								<OPTION value=255>TCP/UDP
+17<@>							</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>					<TD>
+25<@>						<SELECT name=dir> 
+38<@>						<OPTION value=0 selected>對外
+30<@>						<OPTION value=1 >對內
+16<@>						</OPTION>
+16<@>						</SELECT>
+11<@>					</TD>
+10<@>				</TR>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+17<@><p align=center>
+90<@><input type="button" value="套用" name="save" onClick="return btnApply();">&nbsp;&nbsp;
+5<@></p>
+8<@></form>
+1<@>
+58<@><form method=POST Action="form2PortriggerRuleDelete.cgi">
+47<@><INPUT TYPE="HIDDEN" NAME="natType" VALUE="" >
+43<@><INPUT TYPE="HIDDEN" NAME="dir" VALUE="" >
+52<@><INPUT TYPE="HIDDEN" NAME="triggerproto" VALUE="" >
+51<@><INPUT TYPE="HIDDEN" NAME="matchPort_s" VALUE="" >
+51<@><INPUT TYPE="HIDDEN" NAME="matchPort_e" VALUE="" >
+49<@><INPUT TYPE="HIDDEN" NAME="openproto" VALUE="" >
+52<@><INPUT TYPE="HIDDEN" NAME="relatePort_s" VALUE="" >
+52<@><INPUT TYPE="HIDDEN" NAME="relatePort_e" VALUE="" >
+44<@><INPUT TYPE="HIDDEN" NAME="name" VALUE="" >
+52<@><table id="body_header" border="0" cellspacing="0">
+6<@>	<tr>
+63<@>    	<td class="topheader">目前服務埠觸發的清單</td>
+10<@>    </tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+92<@>        	<table class="formlisting" border="0" cellpadding="0" cellspacing="0" width="500">
+41<@>            	<tr class="form_label_row">
+65<@>                	<td class="form_label_col">伺服器名稱</td>
+71<@>                    <td class="form_label_col">觸發通訊協定</td>
+21<@>                    
+59<@>                    <td class="form_label_col">方向</td>
+63<@>                    <td class="form_label_col">Match Port</td>
+71<@>                    <td class="form_label_col">開放通訊協定</td>
+64<@>                    <td class="form_label_col">Relate Port</td>
+59<@>                    <td class="form_label_col">行為</td>
+22<@>                </tr>
+49<@>				<VWS_FUNCTION (void*)showPortriggerTable();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+103<@><INPUT TYPE="HIDDEN" NAME="submit.htm?nat_portrigger.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();> >
+8<@></form>
+1<@>
+31<@><script language="JavaScript">
+133<@>function natPortriggerActionFunc( form , natType,dir,triggerproto,matchport_s,matchport_e,openproto,relateport_s,relateport_e,name){
+34<@>  form.elements[0].value=natType;
+30<@>  form.elements[1].value=dir;
+39<@>  form.elements[2].value=triggerproto;
+38<@>  form.elements[3].value=matchport_s;
+38<@>  form.elements[4].value=matchport_e;
+36<@>  form.elements[5].value=openproto;
+39<@>  form.elements[6].value=relateport_s;
+39<@>  form.elements[7].value=relateport_e;
+31<@>  form.elements[8].value=name;
+17<@>  form.submit();
+2<@>}
+1<@>
+10<@></script>
+9<@><script>
+66<@>	     			// document.addVrtSrv.inprt.value = servertypes[0].port;
+61<@>				//document.addVrtSrv.srvprt.value = servertypes[0].port;
+84<@>				//if(servertypes[0].protocol==6) document.addVrtSrv.protocol.selectedIndex = 0;
+84<@>				//if(servertypes[0].protocol==17)document.addVrtSrv.protocol.selectedIndex = 1;
+2<@>	
+10<@></script>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+1<@>
+23<@>&*#@login.htm@#*&14569
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+45<@><link rel="stylesheet" href="stylemain.css">
+8<@><title>
+14<@> 無線路由
+9<@></title>
+1<@>
+1<@>
+29<@><script language=javascript>
+17<@>var hexcase = 0;
+17<@>var b64pad = "";
+69<@>function hex_md5(s) { return rstr2hex(rstr_md5(str2rstr_utf8(s))); }
+69<@>function b64_md5(s) { return rstr2b64(rstr_md5(str2rstr_utf8(s))); }
+75<@>function any_md5(s, e) { return rstr2any(rstr_md5(str2rstr_utf8(s)), e); }
+28<@>function hex_hmac_md5(k, d)
+74<@>  { return rstr2hex(rstr_hmac_md5(str2rstr_utf8(k), str2rstr_utf8(d))); }
+28<@>function b64_hmac_md5(k, d)
+74<@>  { return rstr2b64(rstr_hmac_md5(str2rstr_utf8(k), str2rstr_utf8(d))); }
+31<@>function any_hmac_md5(k, d, e)
+77<@>  { return rstr2any(rstr_hmac_md5(str2rstr_utf8(k), str2rstr_utf8(d)), e); }
+23<@>function md5_vm_test()
+2<@>{
+77<@>  return hex_md5("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
+2<@>}
+21<@>function rstr_md5(s)
+2<@>{
+58<@>  return binl2rstr(binl_md5(rstr2binl(s), s.length * 8));
+2<@>}
+34<@>function rstr_hmac_md5(key, data)
+2<@>{
+29<@>  var bkey = rstr2binl(key);
+62<@>  if(bkey.length > 16) bkey = binl_md5(bkey, key.length * 8);
+42<@>  var ipad = Array(16), opad = Array(16);
+30<@>  for(var i = 0; i < 16; i++)
+4<@>  {
+36<@>    ipad[i] = bkey[i] ^ 0x36363636;
+36<@>    opad[i] = bkey[i] ^ 0x5C5C5C5C;
+4<@>  }
+76<@>  var hash = binl_md5(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
+60<@>  return binl2rstr(binl_md5(opad.concat(hash), 512 + 128));
+2<@>}
+25<@>function rstr2hex(input)
+2<@>{
+42<@>  try { hexcase } catch(e) { hexcase=0; }
+67<@>  var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+19<@>  var output = "";
+9<@>  var x;
+40<@>  for(var i = 0; i < input.length; i++)
+4<@>  {
+29<@>    x = input.charCodeAt(i);
+47<@>    output += hex_tab.charAt((x >>> 4) & 0x0F)
+40<@>           + hex_tab.charAt( x & 0x0F);
+4<@>  }
+17<@>  return output;
+2<@>}
+25<@>function rstr2b64(input)
+2<@>{
+41<@>  try { b64pad } catch(e) { b64pad=''; }
+80<@>  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+19<@>  var output = "";
+26<@>  var len = input.length;
+34<@>  for(var i = 0; i < len; i += 3)
+4<@>  {
+46<@>    var triplet = (input.charCodeAt(i) << 16)
+65<@>                | (i + 1 < len ? input.charCodeAt(i+1) << 8 : 0)
+61<@>                | (i + 2 < len ? input.charCodeAt(i+2) : 0);
+31<@>    for(var j = 0; j < 4; j++)
+6<@>    {
+61<@>      if(i * 8 + j * 6 > input.length * 8) output += b64pad;
+63<@>      else output += tab.charAt((triplet >>> 6*(3-j)) & 0x3F);
+6<@>    }
+4<@>  }
+17<@>  return output;
+2<@>}
+35<@>function rstr2any(input, encoding)
+2<@>{
+33<@>  var divisor = encoding.length;
+28<@>  var i, j, q, x, quotient;
+53<@>  var dividend = Array(Math.ceil(input.length / 2));
+39<@>  for(i = 0; i < dividend.length; i++)
+4<@>  {
+80<@>    dividend[i] = (input.charCodeAt(i * 2) << 8) | input.charCodeAt(i * 2 + 1);
+4<@>  }
+49<@>  var full_length = Math.ceil(input.length * 8 /
+80<@>                                    (Math.log(encoding.length) / Math.log(2)));
+39<@>  var remainders = Array(full_length);
+35<@>  for(j = 0; j < full_length; j++)
+4<@>  {
+24<@>    quotient = Array();
+11<@>    x = 0;
+41<@>    for(i = 0; i < dividend.length; i++)
+6<@>    {
+35<@>      x = (x << 16) + dividend[i];
+35<@>      q = Math.floor(x / divisor);
+24<@>      x -= q * divisor;
+39<@>      if(quotient.length > 0 || q > 0)
+39<@>        quotient[quotient.length] = q;
+6<@>    }
+23<@>    remainders[j] = x;
+25<@>    dividend = quotient;
+4<@>  }
+19<@>  var output = "";
+46<@>  for(i = remainders.length - 1; i >= 0; i--)
+46<@>    output += encoding.charAt(remainders[i]);
+17<@>  return output;
+2<@>}
+30<@>function str2rstr_utf8(input)
+2<@>{
+19<@>  var output = "";
+14<@>  var i = -1;
+12<@>  var x, y;
+28<@>  while(++i < input.length)
+4<@>  {
+29<@>    x = input.charCodeAt(i);
+60<@>    y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
+65<@>    if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
+6<@>    {
+57<@>      x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
+11<@>      i++;
+6<@>    }
+18<@>    if(x <= 0x7F)
+40<@>      output += String.fromCharCode(x);
+24<@>    else if(x <= 0x7FF)
+64<@>      output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
+57<@>                                    0x80 | ( x & 0x3F));
+25<@>    else if(x <= 0xFFFF)
+64<@>      output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
+64<@>                                    0x80 | ((x >>> 6 ) & 0x3F),
+57<@>                                    0x80 | ( x & 0x3F));
+27<@>    else if(x <= 0x1FFFFF)
+64<@>      output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
+64<@>                                    0x80 | ((x >>> 12) & 0x3F),
+64<@>                                    0x80 | ((x >>> 6 ) & 0x3F),
+57<@>                                    0x80 | ( x & 0x3F));
+4<@>  }
+17<@>  return output;
+2<@>}
+33<@>function str2rstr_utf16le(input)
+2<@>{
+19<@>  var output = "";
+40<@>  for(var i = 0; i < input.length; i++)
+63<@>    output += String.fromCharCode( input.charCodeAt(i) & 0xFF,
+71<@>                                  (input.charCodeAt(i) >>> 8) & 0xFF);
+17<@>  return output;
+2<@>}
+33<@>function str2rstr_utf16be(input)
+2<@>{
+19<@>  var output = "";
+40<@>  for(var i = 0; i < input.length; i++)
+70<@>    output += String.fromCharCode((input.charCodeAt(i) >>> 8) & 0xFF,
+64<@>                                   input.charCodeAt(i) & 0xFF);
+17<@>  return output;
+2<@>}
+26<@>function rstr2binl(input)
+2<@>{
+41<@>  var output = Array(input.length >> 2);
+41<@>  for(var i = 0; i < output.length; i++)
+19<@>    output[i] = 0;
+47<@>  for(var i = 0; i < input.length * 8; i += 8)
+64<@>    output[i>>5] |= (input.charCodeAt(i / 8) & 0xFF) << (i%32);
+17<@>  return output;
+2<@>}
+26<@>function binl2rstr(input)
+2<@>{
+19<@>  var output = "";
+48<@>  for(var i = 0; i < input.length * 32; i += 8)
+70<@>    output += String.fromCharCode((input[i>>5] >>> (i % 32)) & 0xFF);
+17<@>  return output;
+2<@>}
+26<@>function binl_md5(x, len)
+2<@>{
+39<@>  x[len >> 5] |= 0x80 << ((len) % 32);
+43<@>  x[(((len + 64) >>> 9) << 4) + 14] = len;
+22<@>  var a = 1732584193;
+22<@>  var b = -271733879;
+23<@>  var c = -1732584194;
+21<@>  var d = 271733878;
+40<@>  for(var i = 0; i < x.length; i += 16)
+4<@>  {
+18<@>    var olda = a;
+18<@>    var oldb = b;
+18<@>    var oldc = c;
+18<@>    var oldd = d;
+53<@>    a = md5_ff(a, b, c, d, x[i+ 0], 7 , -680876936);
+53<@>    d = md5_ff(d, a, b, c, x[i+ 1], 12, -389564586);
+52<@>    c = md5_ff(c, d, a, b, x[i+ 2], 17, 606105819);
+54<@>    b = md5_ff(b, c, d, a, x[i+ 3], 22, -1044525330);
+53<@>    a = md5_ff(a, b, c, d, x[i+ 4], 7 , -176418897);
+53<@>    d = md5_ff(d, a, b, c, x[i+ 5], 12, 1200080426);
+54<@>    c = md5_ff(c, d, a, b, x[i+ 6], 17, -1473231341);
+52<@>    b = md5_ff(b, c, d, a, x[i+ 7], 22, -45705983);
+53<@>    a = md5_ff(a, b, c, d, x[i+ 8], 7 , 1770035416);
+54<@>    d = md5_ff(d, a, b, c, x[i+ 9], 12, -1958414417);
+49<@>    c = md5_ff(c, d, a, b, x[i+10], 17, -42063);
+54<@>    b = md5_ff(b, c, d, a, x[i+11], 22, -1990404162);
+53<@>    a = md5_ff(a, b, c, d, x[i+12], 7 , 1804603682);
+52<@>    d = md5_ff(d, a, b, c, x[i+13], 12, -40341101);
+54<@>    c = md5_ff(c, d, a, b, x[i+14], 17, -1502002290);
+53<@>    b = md5_ff(b, c, d, a, x[i+15], 22, 1236535329);
+53<@>    a = md5_gg(a, b, c, d, x[i+ 1], 5 , -165796510);
+54<@>    d = md5_gg(d, a, b, c, x[i+ 6], 9 , -1069501632);
+52<@>    c = md5_gg(c, d, a, b, x[i+11], 14, 643717713);
+53<@>    b = md5_gg(b, c, d, a, x[i+ 0], 20, -373897302);
+53<@>    a = md5_gg(a, b, c, d, x[i+ 5], 5 , -701558691);
+51<@>    d = md5_gg(d, a, b, c, x[i+10], 9 , 38016083);
+53<@>    c = md5_gg(c, d, a, b, x[i+15], 14, -660478335);
+53<@>    b = md5_gg(b, c, d, a, x[i+ 4], 20, -405537848);
+52<@>    a = md5_gg(a, b, c, d, x[i+ 9], 5 , 568446438);
+54<@>    d = md5_gg(d, a, b, c, x[i+14], 9 , -1019803690);
+53<@>    c = md5_gg(c, d, a, b, x[i+ 3], 14, -187363961);
+53<@>    b = md5_gg(b, c, d, a, x[i+ 8], 20, 1163531501);
+54<@>    a = md5_gg(a, b, c, d, x[i+13], 5 , -1444681467);
+52<@>    d = md5_gg(d, a, b, c, x[i+ 2], 9 , -51403784);
+53<@>    c = md5_gg(c, d, a, b, x[i+ 7], 14, 1735328473);
+54<@>    b = md5_gg(b, c, d, a, x[i+12], 20, -1926607734);
+50<@>    a = md5_hh(a, b, c, d, x[i+ 5], 4 , -378558);
+54<@>    d = md5_hh(d, a, b, c, x[i+ 8], 11, -2022574463);
+53<@>    c = md5_hh(c, d, a, b, x[i+11], 16, 1839030562);
+52<@>    b = md5_hh(b, c, d, a, x[i+14], 23, -35309556);
+54<@>    a = md5_hh(a, b, c, d, x[i+ 1], 4 , -1530992060);
+53<@>    d = md5_hh(d, a, b, c, x[i+ 4], 11, 1272893353);
+53<@>    c = md5_hh(c, d, a, b, x[i+ 7], 16, -155497632);
+54<@>    b = md5_hh(b, c, d, a, x[i+10], 23, -1094730640);
+52<@>    a = md5_hh(a, b, c, d, x[i+13], 4 , 681279174);
+53<@>    d = md5_hh(d, a, b, c, x[i+ 0], 11, -358537222);
+53<@>    c = md5_hh(c, d, a, b, x[i+ 3], 16, -722521979);
+51<@>    b = md5_hh(b, c, d, a, x[i+ 6], 23, 76029189);
+53<@>    a = md5_hh(a, b, c, d, x[i+ 9], 4 , -640364487);
+53<@>    d = md5_hh(d, a, b, c, x[i+12], 11, -421815835);
+52<@>    c = md5_hh(c, d, a, b, x[i+15], 16, 530742520);
+53<@>    b = md5_hh(b, c, d, a, x[i+ 2], 23, -995338651);
+53<@>    a = md5_ii(a, b, c, d, x[i+ 0], 6 , -198630844);
+53<@>    d = md5_ii(d, a, b, c, x[i+ 7], 10, 1126891415);
+54<@>    c = md5_ii(c, d, a, b, x[i+14], 15, -1416354905);
+52<@>    b = md5_ii(b, c, d, a, x[i+ 5], 21, -57434055);
+53<@>    a = md5_ii(a, b, c, d, x[i+12], 6 , 1700485571);
+54<@>    d = md5_ii(d, a, b, c, x[i+ 3], 10, -1894986606);
+51<@>    c = md5_ii(c, d, a, b, x[i+10], 15, -1051523);
+54<@>    b = md5_ii(b, c, d, a, x[i+ 1], 21, -2054922799);
+53<@>    a = md5_ii(a, b, c, d, x[i+ 8], 6 , 1873313359);
+52<@>    d = md5_ii(d, a, b, c, x[i+15], 10, -30611744);
+54<@>    c = md5_ii(c, d, a, b, x[i+ 6], 15, -1560198380);
+53<@>    b = md5_ii(b, c, d, a, x[i+13], 21, 1309151649);
+53<@>    a = md5_ii(a, b, c, d, x[i+ 4], 6 , -145523070);
+54<@>    d = md5_ii(d, a, b, c, x[i+11], 10, -1120210379);
+52<@>    c = md5_ii(c, d, a, b, x[i+ 2], 15, 718787259);
+53<@>    b = md5_ii(b, c, d, a, x[i+ 9], 21, -343485551);
+27<@>    a = safe_add(a, olda);
+27<@>    b = safe_add(b, oldb);
+27<@>    c = safe_add(c, oldc);
+27<@>    d = safe_add(d, oldd);
+4<@>  }
+28<@>  return Array(a, b, c, d);
+2<@>}
+35<@>function md5_cmn(q, a, b, x, s, t)
+2<@>{
+75<@>  return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s),b);
+2<@>}
+37<@>function md5_ff(a, b, c, d, x, s, t)
+2<@>{
+55<@>  return md5_cmn((b & c) | ((~b) & d), a, b, x, s, t);
+2<@>}
+37<@>function md5_gg(a, b, c, d, x, s, t)
+2<@>{
+55<@>  return md5_cmn((b & d) | (c & (~d)), a, b, x, s, t);
+2<@>}
+37<@>function md5_hh(a, b, c, d, x, s, t)
+2<@>{
+44<@>  return md5_cmn(b ^ c ^ d, a, b, x, s, t);
+2<@>}
+37<@>function md5_ii(a, b, c, d, x, s, t)
+2<@>{
+49<@>  return md5_cmn(c ^ (b | (~d)), a, b, x, s, t);
+2<@>}
+24<@>function safe_add(x, y)
+2<@>{
+41<@>  var lsw = (x & 0xFFFF) + (y & 0xFFFF);
+49<@>  var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+39<@>  return (msw << 16) | (lsw & 0xFFFF);
+2<@>}
+27<@>function bit_rol(num, cnt)
+2<@>{
+46<@>  return (num << cnt) | (num >>> (32 - cnt));
+2<@>}
+10<@></script>
+1<@>
+1<@>
+32<@><script type="text/javascript">
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+43<@><VWS_FUNCTION (void*)otherUserLogState();>
+21<@>function onlogin() {
+24<@> if(otherUserLog == 1){
+215<@>  if (confirm("You are currently logged in from anoter device. There can be only one device logged in at a time.If you log in from this device, the other deviece will be logged out. Do you want to proceed?") == 0){
+17<@>   return false;
+4<@>  }
+3<@> }
+15<@> var password;
+49<@> if (document.test.username.value.length <= 0) {
+32<@>  alert("請輸入用戶名!");
+34<@>  document.test.username.focus();
+16<@>  return false;
+3<@> }
+42<@> password = document.test.password.value;
+51<@> document.test.password.value = hex_md5(password);
+14<@> return true;
+2<@>}
+21<@>function frmLoad() {
+33<@> document.test.username.focus();
+2<@>}
+10<@></script>
+8<@></head>
+7<@><body>
+20<@><div class="login">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+28<@>  document.write(ModemVer);
+10<@></script>
+8<@>  </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+31<@>  document.write(FirmwareVer);
+10<@></script>
+27<@>  &nbsp;&nbsp;&nbsp;&nbsp;
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+64<@><table border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+7<@> </tr>
+9<@></table>
+71<@><form action="login.cgi" method="post" name="test" autocomplete="off">
+25<@> <div class="login_box">
+23<@>  <p class="letterBg">
+19<@>   登入路由器
+7<@>  </p>
+30<@>  <table class="login_table">
+8<@>   <tr>
+9<@>    <td>
+22<@>     使用者名稱:
+10<@>    </td>
+9<@>    <td>
+76<@>     <input style="width: 150px;" type="text" id="username" name="username"
+12<@>     value=
+48<@><VWS_FUNCTION (void*)WebShowDefaultUsername();>
+2<@>>
+10<@>    </td>
+9<@>   </tr>
+8<@>   <tr>
+9<@>    <td>
+13<@>     密碼:
+10<@>    </td>
+9<@>    <td>
+81<@>     <input style="width: 150px;" name="password" id="password" type="password">
+10<@>    </td>
+9<@>   </tr>
+11<@>      <tr>
+21<@>    <td colspan="2">
+30<@>      <div class="login_btn">
+84<@>       <input id="loginBtn" onclick="return onlogin()" type="submit" value="登入"
+24<@>       class="link_bg">
+71<@>       <input id="rewBtn" type="reset" value="重設" class="link_bg">
+100<@>       <input type="hidden" name="submit.htm?login.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+13<@>      </div>
+10<@>    </td>
+9<@>   </tr>
+11<@>  </table>
+8<@> </div>
+8<@></form>
+26<@><div class="loginBottom">
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+30<@>&*#@fw-natmapping.htm@#*&9216
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+30<@><title>NAT IP MAPPING</title>
+9<@><script>
+47<@>function checkIpRangeValid(lowipstr,highipstr)
+2<@>{
+1<@>
+61<@>	if((getDigit(lowipstr,1)>getDigit(highipstr,1))) return -2;
+61<@>	if((getDigit(lowipstr,2)>getDigit(highipstr,2))) return -2;
+61<@>	if((getDigit(lowipstr,3)>getDigit(highipstr,3))) return -2;
+65<@>	if((getDigit(lowipstr,4)>getDigit(highipstr,4))) return -2;  		
+14<@>	return true;
+2<@>}
+20<@>function addClick()
+2<@>{
+40<@>  with(document.formNatmappingSetting){
+35<@>	if (lowip.value=="")return false;
+35<@>	if(!checkIP(lowip))	return false;
+23<@>	if(highip.value!=""){
+36<@>		if(!checkIP(highip))return false;
+59<@>		var checkre=checkIpRangeValid(lowip.value,highip.value);
+19<@>		if(checkre==-2){
+59<@>			alert("The high ip should be bigger than the low ip!");
+17<@>			return false;
+4<@>		}
+4<@>  }
+43<@>  if (mappinglowip.value=="")return false;
+42<@>	if(!checkIP(mappinglowip))	return false;
+30<@>	if(mappinghighip.value!=""){
+43<@>		if(!checkIP(mappinghighip))return false;
+73<@>		var checkre=checkIpRangeValid(mappinglowip.value,mappinghighip.value);
+19<@>		if(checkre==-2){
+59<@>			alert("The high ip should be bigger than the low ip!");
+17<@>			return false;
+4<@>		}
+4<@>  }
+14<@>	return true;
+2<@>}
+2<@>}
+22<@>function checkState()
+18<@>{              		
+76<@>	 if ( document.formNatmappingSetting.addressMapType.selectedIndex == 0 ) {
+41<@>		//alert('You select One-to-One.');				
+59<@>  		enableTextField(document.formNatmappingSetting.lowip);
+61<@>  		disableTextField(document.formNatmappingSetting.highip);
+66<@>  		enableTextField(document.formNatmappingSetting.mappinglowip);
+72<@>  		disableTextField(document.formNatmappingSetting.mappinghighip);  		
+84<@>  	} else if ( document.formNatmappingSetting.addressMapType.selectedIndex == 1 ) {
+42<@>		//alert('You select Many-to-One.');				
+59<@>  		enableTextField(document.formNatmappingSetting.lowip);
+60<@>  		enableTextField(document.formNatmappingSetting.highip);
+66<@>  		enableTextField(document.formNatmappingSetting.mappinglowip);
+73<@>  		disableTextField(document.formNatmappingSetting.mappinghighip);   		
+84<@>  	} else if ( document.formNatmappingSetting.addressMapType.selectedIndex == 2 ) {
+39<@>		//alert('You select Many-to-Many.');

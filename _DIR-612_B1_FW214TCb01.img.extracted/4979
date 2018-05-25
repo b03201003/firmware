@@ -1,0 +1,1183 @@
+13<@>&&*&&tw**&**
+31<@>         item.checked = false;
+6<@>    }
+2<@>}
+1<@>
+33<@>function setDisable(item, value)
+2<@>{
+40<@>    if ( value == 1 || value == '1' ) {
+31<@>         item.disabled = true;
+13<@>    } else {
+32<@>         item.disabled = false;
+6<@>    }
+2<@>}
+1<@>
+26<@>function submitText(item)
+2<@>{
+44<@>	return '&' + item.name + '=' + item.value;
+2<@>}
+1<@>
+28<@>function submitSelect(item)
+2<@>{
+49<@>	return '&' + item.name + '=' + getSelect(item);
+2<@>}
+1<@>
+1<@>
+27<@>function submitCheck(item)
+2<@>{
+10<@>	var val;
+29<@>	if (item.checked == true) {
+11<@>		val = 1;
+3<@>	}
+8<@>	else {
+11<@>		val = 0;
+3<@>	}
+37<@>	return '&' + item.name + '=' + val;
+2<@>}
+1<@>
+25<@>//add by alex, 08/31/05'
+1<@>
+33<@>//Function Name: isInteger (val)
+63<@>//Description: Check if the value entered is an integer or not
+18<@>//Parameters: val
+40<@>//output: true - no error	false - error
+24<@>function isInteger(val)
+2<@>{
+8<@>	var i;
+1<@>
+70<@>	val = val + ""; //need to convert to string because 0 is treat as ""
+1<@>
+16<@>	if (val == "")
+16<@>		return false;
+1<@>
+31<@>	for (i=0; i<val.length; i++ )
+3<@>	{
+22<@>		ch = val.charAt(i);
+42<@>		if( (ch==' ')||(ch=='\n')||(ch=='\t') )
+17<@>			return false;
+17<@>		if (isNaN(ch))
+17<@>			return false;
+3<@>	}
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+79<@>//Frederick,060731	Add fieldname check and also support backward compatibility
+65<@>//Function  Name: isInValidRange(s,low,high,fieldname(optional))
+64<@>//Description: Check if s is in the range between low and high.
+76<@>//Parameters:	s: value to be checked, low:starting range	high: ending range
+91<@>//				fieldname (optional), if available will show an error message upon error encountered
+44<@>//output: true - no error	false - has error
+48<@>function isInValidRange(s,low,high,fieldname) {
+1<@>
+47<@>	if((isInteger(s) == false)||(isNaN(s)==true))
+3<@>	{
+57<@>		if (fieldname != undefined) alertInvalid(fieldname,s);
+16<@>		return false;
+1<@>
+3<@>	}
+1<@>
+21<@>	s = parseInt(s,10);
+1<@>
+1<@>
+21<@> 	if(s<low||s>high){
+108<@>		if (fieldname != undefined) alert (fieldname + " " + s + " 超出了范圍 [" + low + "-" + high + "].");
+19<@>    	return false;
+3<@>	}
+6<@>	else
+15<@>		return true;
+1<@>
+2<@>}
+1<@>
+27<@>//add by koukai,2005/06/03
+1<@>
+22<@>function isBlank(s) {
+8<@>	var c;
+27<@>	for(i=0;i<s.length;i++) {
+19<@>		c = s.charAt(i);
+39<@>		if( (c!=' ')&&(c!='\n')&&(c!='\t') )
+27<@>	            return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+1<@>
+32<@>function isValidName_Voice(raw)
+2<@>{
+8<@>	var i;
+9<@>	var ch;
+1<@>
+15<@>	if(raw == "")
+3<@>	{
+15<@>		return true;
+3<@>	}
+26<@>	else if(raw.length != 0)
+3<@>	{
+32<@>		for(i = 0; i<raw.length; i++)
+4<@>		{
+23<@>			ch = raw.charAt(i);
+75<@>			if(ch.search(/[0-9]|[a-z]|[A-Z]|-/) == -1)  //modify by alex,08/30/2005
+5<@>			{
+18<@>				return false;
+5<@>			}
+4<@>		}
+3<@>	}
+1<@>
+14<@>	return true;
+1<@>
+2<@>}
+1<@>
+1<@>
+30<@>function isValidPassword(val)
+2<@>{
+12<@>    var ch;
+36<@>    for(j = 0; j < val.length; j++)
+6<@>    {
+28<@>        ch = val.charAt(j);
+50<@>        if (ch.search(/[0-9]|[a-z]|[A-Z]/) == -1)
+26<@>            return false;
+6<@>    }
+17<@>    return true;
+2<@>}
+1<@>
+1<@>
+1<@>
+1<@>
+44<@>function isFormElements_UsedByAddress(name)
+2<@>{
+26<@>    var isExists = false;
+54<@>    for(i=0; i<document.forms[0].elements.length;i++)
+6<@>    {
+55<@>        if(document.forms[0].elements[i].name == name)
+10<@>        {
+29<@>            isExists = true;
+19<@>            break;
+10<@>        }
+6<@>    }
+50<@>    if(document.forms[0].elements[i].value == "")
+3<@>	{
+51<@>		document.forms[0].elements[i].value = '0.0.0.0';
+22<@>		return ('0.0.0.0');
+3<@>	}
+6<@>	else
+51<@>    	return (document.forms[0].elements[i].value);
+2<@>}
+1<@>
+38<@>function isFormElements_Checked(name)
+2<@>{
+26<@>    var isExists = false;
+54<@>    for(i=0; i<document.forms[0].elements.length;i++)
+6<@>    {
+55<@>        if(document.forms[0].elements[i].name == name)
+10<@>        {
+29<@>            isExists = true;
+19<@>            break;
+10<@>        }
+6<@>    }
+54<@>    if(document.forms[0].elements[i].checked == true)
+15<@>		return true;
+6<@>	else
+19<@>    	return false;
+2<@>}
+1<@>
+30<@>function isFormElements(name)
+2<@>{
+26<@>    var isExists = false;
+54<@>    for(i=0; i<document.forms[0].elements.length;i++)
+6<@>    {
+55<@>        if(document.forms[0].elements[i].name == name)
+10<@>        {
+29<@>            isExists = true;
+19<@>            break;
+10<@>        }
+6<@>    }
+50<@>    if(document.forms[0].elements[i].value == "")
+3<@>	{
+43<@>		document.forms[0].elements[i].value = 0;
+14<@>		return (0);
+3<@>	}
+6<@>	else
+51<@>    	return (document.forms[0].elements[i].value);
+2<@>}
+1<@>
+1<@>
+36<@>function SetFormElementsFocus(name)
+2<@>{
+26<@>    var isExists = false;
+54<@>    for(i=0; i<document.forms[0].elements.length;i++)
+6<@>    {
+55<@>        if(document.forms[0].elements[i].name == name)
+10<@>        {
+29<@>            isExists = true;
+51<@>            document.forms[0].elements[i].focus();
+19<@>            break;
+10<@>        }
+6<@>    }
+1<@>
+23<@>    return (isExists);
+2<@>}
+1<@>
+1<@>
+36<@>function isValidIPOrDomainName(str)
+2<@>{
+8<@>	var i;
+33<@>	var str_array = str.split(".");
+1<@>
+37<@>	for (i=0; i<str_array.length; i++ )
+3<@>	{
+26<@>		if (str_array[i] == "")
+17<@>			return false;
+3<@>	}
+37<@>	for (i=0; i<str_array.length; i++ )
+3<@>	{
+32<@>		if (!isInteger(str_array[i]))
+10<@>			break;
+3<@>	}
+1<@>
+28<@>	if (i == str_array.length)
+3<@>	{
+29<@>		if (str_array.length == 4)
+4<@>		{
+31<@>			if (!isValidIpAddress(str))
+18<@>				return false;
+4<@>		}
+7<@>		else
+17<@>			return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+1<@>
+30<@>//Function Name: GetBrowserOS
+69<@>//Description: Gets the current OS version and browser version of OS
+19<@>//Parameters: none
+24<@>//Output: <browser><OS>
+24<@>function GetBrowserOS()
+2<@>{
+1<@>
+49<@>	var detect = navigator.userAgent.toLowerCase();
+52<@>	var OS,browser,version,total,thestring, browseVer;
+1<@>
+31<@>	if (do_checkstr('konqueror'))
+3<@>	{
+25<@>		browser = "Konqueror";
+16<@>		OS = "Linux";
+3<@>	}
+51<@>	else if (do_checkstr('safari')) browser = "safa";
+52<@>	else if (do_checkstr('omniweb')) browser = "omni";
+50<@>	else if (do_checkstr('opera')) browser = "oper";
+50<@>	else if (do_checkstr('webtv')) browser = "webt";
+49<@>	else if (do_checkstr('icab')) browser = "icab";
+49<@>	else if (do_checkstr('msie')) browser = "msie";
+42<@>	//Frederick,060721	Add firefox detection
+54<@>	else if(navigator.userAgent.indexOf("Firefox")!=-1){
+60<@>		var versionindex=navigator.userAgent.indexOf("Firefox")+8
+61<@>		if (parseInt(navigator.userAgent.charAt(versionindex))>=1)
+20<@>		browser = "fire";
+3<@>	}
+38<@>	else if (!do_checkstr('compatible'))
+3<@>	{
+19<@>		browser = "nets"
+3<@>	}
+28<@>		else browser = "unknown";
+1<@>
+27<@>	if (browser != "unknown")
+11<@>		if (!OS)
+4<@>		{
+41<@>			if (do_checkstr('linux')) OS = "lin";
+44<@>			else if (do_checkstr('x11')) OS = "uni";
+43<@>			else if (do_checkstr('mac')) OS = "mac"
+43<@>			else if (do_checkstr('win')) OS = "win"
+24<@>			else OS = "unknown";
+4<@>		}
+1<@>
+27<@>	browseVer = browser + OS;
+1<@>
+19<@>	return browseVer;
+2<@>}
+1<@>
+1<@>
+29<@>function do_checkstr(string)
+2<@>{
+49<@>	var detect = navigator.userAgent.toLowerCase();
+37<@>	place = detect.indexOf(string) + 1;
+21<@>	thestring = string;
+15<@>	return place;
+2<@>}
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+32<@>//Function Name:reencodeIP (IP)
+113<@>//Description: Re-encodes IP address to make sure that it is in proper format *e.g. 0192.0168.1.1 -> 192.168.1.1
+17<@>//Parameters: IP
+13<@>//Output: IP
+25<@>function reencodeIP (IP)
+2<@>{
+17<@>	var newIP = '';
+28<@>	addrParts = IP.split('.');
+1<@>
+66<@>	//Frederick,060724	Make sure that everything is in decimal place
+38<@>	for (i=0; i < addrParts.length; i++)
+14<@>		if (i == 3)
+46<@>			newIP = newIP + parseInt(addrParts[i],10);
+7<@>		else
+52<@>			newIP = newIP + parseInt(addrParts[i],10) + '.';
+1<@>
+15<@>	return newIP;
+2<@>}
+1<@>
+1<@>
+1<@>
+1<@>
+58<@>//Function Name:isOverlapModemIp(EndIp, StartIp, ModemIp)
+69<@>//Description: Check if the StartIp and EndIp is overlapping ModemIp
+38<@>//Parameters: EndIp, StartIp, ModemIp
+26<@>//output: true - no error
+20<@>//		  false - error
+51<@>function isOverlapModemIp(EndIp, StartIp, ModemIp)
+2<@>{
+31<@>   addrEnd = EndIp.split('.');
+35<@>   addrStart = StartIp.split('.');
+35<@>   addrModem = ModemIp.split('.');
+34<@>	E = parseInt(addrEnd[3],10) + 1;
+39<@>    S = parseInt(addrStart[3],10) + 1;
+36<@>	M = parseInt(addrModem[3],10) + 1;
+1<@>
+99<@>	//it is assumed that end ip and start ip lie in the same subnet as checked by previous validation
+54<@>	//check that modem ip it doesn't lie within ip range
+1<@>
+23<@>	if ((S<=M) && (M<=E))
+15<@>		return true;
+6<@>	else
+16<@>		return false;
+2<@>}
+1<@>
+1<@>
+1<@>
+25<@>//Add is invalid message
+67<@>//Function Name: alertInvalid(fieldname, fieldvalue [,additional])
+69<@>//Description: alerts invalid message containing fieldname and value
+86<@>//Parameters: fieldname, fieldvalue, additional - Any additional comments to be added
+38<@>//Output: MessageBox(invalid message)
+57<@>function alertInvalid(fieldname, fieldvalue, additional)
+2<@>{
+30<@>	if (additional == undefined)
+53<@>		alert (fieldname + " " + fieldvalue + " 無效.");
+6<@>	else
+73<@>		alert (fieldname + " " + fieldvalue + " 無效, " + additional + ".");
+2<@>}
+1<@>
+44<@>//Frederick,060731	Add isValidTime function
+46<@>//Function name: isValidTime(time, fieldname)
+101<@>//Description: Check if the time input in hh:mm is valid or not and returns the total number of mins
+38<@>//Parameters: time (hh:mm), fieldname
+40<@>//Output: -1 (error), integer (in mins)
+37<@>function isValidTime(time,fieldname)
+2<@>{
+1<@>
+11<@>	var vals;
+23<@>	var hasField = false;
+16<@>	var hour, min;
+46<@>	if (fieldname != undefined) hasField = true;
+1<@>
+25<@>	vals = time.split(':');
+1<@>
+24<@>	if (vals.length == 2){
+1<@>
+51<@>		if (!isInteger(vals[0]) || !isInteger(vals[1])){
+47<@>			if (hasField) alertInvalid(fieldname,time);
+14<@>			return -1;
+4<@>		}
+1<@>
+31<@>		hour = parseInt(vals[0],10);
+30<@>		min = parseInt(vals[1],10);
+1<@>
+35<@>		if (!isInValidRange(hour,0,23)){
+47<@>			if (hasField) alertInvalid(fieldname,time);
+14<@>			return -1;
+4<@>		}
+1<@>
+34<@>		if (!isInValidRange(min,0,59)){
+47<@>			if (hasField) alertInvalid(fieldname,time);
+14<@>			return -1;
+4<@>		}
+3<@>	}
+6<@>	else
+3<@>	{
+46<@>		if (hasField) alertInvalid(fieldname,time);
+13<@>		return -1;
+3<@>	}
+1<@>
+27<@>	return (hour * 60 + min);
+2<@>}
+1<@>
+1<@>
+55<@>//Function Name: DoValidateIpRange(Subnet,Mask[,type])
+99<@>//Description: Check if Subnet complies to Mask input for TYPE_IP_ADDRESS and TYPE_NETWORK_ADDRESS
+60<@>//				check if Subnet + Mask is of type TYPE_BRCAST_ADDRESS
+82<@>//Parameters: type <TYPE_IP_ADDRESS | TYPE_NETWORK_ADDRESS | TYPE_BRCAST_ADDRESS>
+31<@>//				Default: TYPE_IP_ADDRESS
+26<@>//Output: true - no error
+20<@>//		  false - error
+47<@>function DoValidateIpRange(Subnet, Mask, type)
+2<@>{
+81<@>  var Subadd = Subnet.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+80<@>  var Maskadd = Mask.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+1<@>
+63<@>	//do not do anything if required parameters are not specified
+49<@>	if ((Subnet == "") || (Mask =="")) return true;
+1<@>
+8<@> var i;
+19<@>  var error=false;
+17<@>  var count = 0;
+1<@>
+21<@>    var snm1a = 255;
+21<@>    var snm2a = 255;
+21<@>    var snm3a = 255;
+21<@>    var snm4a = 255;
+1<@>
+18<@>    var nw1a = 0;
+18<@>    var nw2a = 0;
+18<@>    var nw3a = 0;
+18<@>    var nw4a = 0;
+1<@>
+23<@>    var broad1a = 255;
+23<@>    var broad2a = 255;
+23<@>    var broad3a = 255;
+23<@>    var broad4a = 255;
+1<@>
+35<@>	arrSubadd = Subadd[0].split(".");
+36<@>  	arrMask = Maskadd[0].split(".");
+1<@>
+24<@>    snm1a = arrMask[0];
+24<@>    snm2a = arrMask[1];
+24<@>    snm3a = arrMask[2];
+24<@>    snm4a = arrMask[3];
+1<@>
+29<@>    var ck1a = arrSubadd[0];
+29<@>    var ck2a = arrSubadd[1];
+29<@>    var ck3a = arrSubadd[2];
+29<@>    var ck4a = arrSubadd[3];
+1<@>
+30<@>  	nw1a = eval(snm1a & ck1a);
+28<@>	nw2a = eval(snm2a & ck2a);
+28<@>	nw3a = eval(snm3a & ck3a);
+28<@>	nw4a = eval(snm4a & ck4a);
+1<@>
+39<@>	broad1a = ((nw1a) ^ (~ snm1a) & 255);
+39<@>	broad2a = ((nw2a) ^ (~ snm2a) & 255);
+39<@>	broad3a = ((nw3a) ^ (~ snm3a) & 255);
+39<@>	broad4a = ((nw4a) ^ (~ snm4a) & 255);
+1<@>
+56<@>	if ((type == undefined) || (type == TYPE_IP_ADDRESS)){
+120<@>		if ((broad1a == arrSubadd[0]) && (broad2a == arrSubadd[1]) && (broad3a == arrSubadd[2]) && (broad4a == arrSubadd[3]))
+4<@>		{
+40<@>			//20070929 jeff  add the combination
+63<@>			errVal = "IP地址:" + Subnet + " 和子網掩碼:" + Mask;
+54<@>			alertInvalid("",errVal," 請確認子網掩碼.");
+1<@>
+17<@>			return false;
+4<@>		}
+1<@>
+3<@>	}
+41<@>	else if (type == TYPE_NETWORK_ADDRESS){
+60<@>		var tempIP = nw1a + "." + nw2a + "." + nw3a + "." + nw4a;
+25<@>		if (tempIP != Subnet){
+50<@>			errVal = Subnet + " 和子網掩碼: " + Mask;
+43<@>			alertInvalid ("網絡地址: ",errVal);
+40<@>			//20070929 jeff  add the combination
+17<@>			return false;
+4<@>		}
+3<@>	}
+40<@>	else if (type == TYPE_BRCAST_ADDRESS){
+72<@>		var tempIP = broad1a + "." + broad2a + "." + broad3a + "." + broad4a;
+24<@>		if (tempIP != Subnet)
+17<@>			return false;
+3<@>	}
+1<@>
+1<@>
+1<@>
+15<@>  return true;
+1<@>
+1<@>
+2<@>}
+1<@>
+43<@>function DoValidateNetworkIP(Subnet, Mask)
+2<@>{
+81<@>  var Subadd = Subnet.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+80<@>  var Maskadd = Mask.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+1<@>
+63<@>	//do not do anything if required parameters are not specified
+49<@>	if ((Subnet == "") || (Mask =="")) return true;
+1<@>
+8<@> var i;
+19<@>  var error=false;
+17<@>  var count = 0;
+1<@>
+21<@>    var snm1a = 255;
+21<@>    var snm2a = 255;
+21<@>    var snm3a = 255;
+21<@>    var snm4a = 255;
+1<@>
+18<@>    var nw1a = 0;
+18<@>    var nw2a = 0;
+18<@>    var nw3a = 0;
+18<@>    var nw4a = 0;
+1<@>
+23<@>    var broad1a = 255;
+23<@>    var broad2a = 255;
+23<@>    var broad3a = 255;
+23<@>    var broad4a = 255;
+1<@>
+35<@>	arrSubadd = Subadd[0].split(".");
+36<@>  	arrMask = Maskadd[0].split(".");
+1<@>
+24<@>    snm1a = arrMask[0];
+24<@>    snm2a = arrMask[1];
+24<@>    snm3a = arrMask[2];
+24<@>    snm4a = arrMask[3];
+1<@>
+29<@>    var ck1a = arrSubadd[0];
+29<@>    var ck2a = arrSubadd[1];
+29<@>    var ck3a = arrSubadd[2];
+29<@>    var ck4a = arrSubadd[3];
+1<@>
+30<@>  	nw1a = eval(snm1a & ck1a);
+28<@>	nw2a = eval(snm2a & ck2a);
+28<@>	nw3a = eval(snm3a & ck3a);
+28<@>	nw4a = eval(snm4a & ck4a);
+1<@>
+39<@>	broad1a = ((nw1a) ^ (~ snm1a) & 255);
+39<@>	broad2a = ((nw2a) ^ (~ snm2a) & 255);
+39<@>	broad3a = ((nw3a) ^ (~ snm3a) & 255);
+39<@>	broad4a = ((nw4a) ^ (~ snm4a) & 255);
+1<@>
+59<@>	var tempIP = nw1a + "." + nw2a + "." + nw3a + "." + nw4a;
+1<@>
+24<@>	if (tempIP == Subnet){
+49<@>		errVal = Subnet + " 和子網掩碼: " + Mask;
+39<@>		//20070929 jeff  add the combination
+39<@>		alertInvalid ("IP 地址: ",errVal);
+16<@>		return false;
+3<@>	}
+1<@>
+15<@>  return true;
+1<@>
+1<@>
+2<@>}
+1<@>
+41<@>//aids, 060810 for checking broadcast ip
+38<@>function getBroadcastIP(HostIp, Mask)
+2<@>{
+82<@>  var Hostadd = HostIp.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+80<@>  var Maskadd = Mask.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+24<@>  var digits1, digits3;
+14<@>  var result;
+17<@>  var count = 0;
+1<@>
+19<@>    var oct1a = 0;
+19<@>    var oct2a = 0;
+19<@>    var oct3a = 0;
+19<@>    var oct4a = 0;
+1<@>
+21<@>    var snm1a = 255;
+21<@>    var snm2a = 255;
+21<@>    var snm3a = 255;
+21<@>    var snm4a = 255;
+1<@>
+18<@>    var nw1a = 0;
+18<@>    var nw2a = 0;
+18<@>    var nw3a = 0;
+18<@>    var nw4a = 0;
+1<@>
+23<@>    var broad1a = 255;
+23<@>    var broad2a = 255;
+23<@>    var broad3a = 255;
+23<@>    var broad4a = 255;
+1<@>
+37<@>    digits1 = Hostadd[0].split(".");
+37<@>    digits3 = Maskadd[0].split(".");
+1<@>
+24<@>    oct1a = digits1[0];
+24<@>    oct2a = digits1[1];
+24<@>    oct3a = digits1[2];
+24<@>    oct4a = digits1[3];
+1<@>
+24<@>    snm1a = digits3[0];
+24<@>    snm2a = digits3[1];
+24<@>    snm3a = digits3[2];
+24<@>    snm4a = digits3[3];
+1<@>
+31<@>  	nw1a = eval(snm1a & oct1a);
+29<@>	nw2a = eval(snm2a & oct2a);
+29<@>	nw3a = eval(snm3a & oct3a);
+29<@>	nw4a = eval(snm4a & oct4a);
+39<@>	broad1a = ((nw1a) ^ (~ snm1a) & 255);
+39<@>	broad2a = ((nw2a) ^ (~ snm2a) & 255);
+39<@>	broad3a = ((nw3a) ^ (~ snm3a) & 255);
+39<@>	broad4a = ((nw4a) ^ (~ snm4a) & 255);
+1<@>
+66<@>	result = broad1a + "." + broad2a + "." + broad3a + "." + broad4a
+1<@>
+17<@>  return result;
+2<@>}
+1<@>
+19<@>//rick, check date
+39<@>function isDateValid(year, month, day)
+2<@>{
+19<@>	if (month == 2) {
+69<@>		if ( ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0) )
+4<@>		{
+27<@>		  if(day > 29) return 0;
+4<@>		}
+7<@>		else
+4<@>		{
+27<@>		  if(day > 28) return 0;
+4<@>		}
+4<@>  }
+68<@>  else if ((month == 4)||(month == 6)||(month == 9)||(month == 11))
+4<@>  {
+27<@>		  if(day > 30) return 0;
+4<@>  }
+12<@>  return 1;
+1<@>
+2<@>}
+55<@>//Function Name: isValidEmail(fieldvalue,[fieldname]))
+55<@>//Description: Check if email address entered is valid
+36<@>//Parameters: fieldvalue, fieldname
+26<@>//Output: true - no error
+20<@>//		  false - error
+45<@>function isValidEmail(fieldvalue,fieldname){
+23<@>	var hasField = false;
+46<@>	if (fieldname != undefined) hasField = true;
+1<@>
+83<@>	if (!isValidName(fieldvalue,fieldname,BLANK_INVALID,SPACE_INVALID)) return false;
+1<@>
+41<@>	var tmpIndex = fieldvalue.indexOf('@');
+41<@>	var dotIndex = fieldvalue.indexOf('.');
+1<@>
+118<@>	if ((tmpIndex == -1) || (dotIndex == -1) || (tmpIndex == fieldvalue.length -1) || (dotIndex == fieldvalue.length -1)
+42<@>		|| (tmpIndex == 0) || (dotIndex == 0)){
+53<@>		if (hasField) alertInvalid (fieldname,fieldvalue);
+16<@>		return false;
+3<@>	}
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+66<@>//Frederick,070214	add disabling of all elements under 1 id given
+48<@>//Function name:changeBlockState(idname,status)
+96<@>//Description: This function changes the disabled and color property of elements given under id
+67<@>//	Input: idname : the id of the tag or DIV, must have id property
+34<@>//		   status: ENABLED | DISABLED
+42<@>function changeBlockState(idname,status){
+21<@>	var i,currentcolor;
+26<@>	var OS = GetBrowserOS();
+76<@>	var tempelems = document.getElementById(idname).getElementsByTagName("*");
+1<@>
+22<@>	if (status == false)
+26<@>		currentcolor = "black";
+6<@>	else
+28<@>		currentcolor = "#aca899";
+1<@>
+40<@>	for (i = 0; i < tempelems.length;i++){
+42<@>		if (tempelems[i].disabled != undefined)
+35<@>			tempelems[i].disabled = status;
+1<@>
+87<@>	if (OS.indexOf("msie")!= -1){	//ie returns null, firefox uses undefined.....@#@%@^#@^
+32<@>		if (tempelems[i].style.color)
+44<@>			tempelems[i].style.color = currentcolor;
+3<@>	}
+7<@>	else{
+45<@>		if (tempelems[i].style.color != undefined)
+44<@>			tempelems[i].style.color = currentcolor;
+4<@>		}
+3<@>	}
+1<@>
+47<@>	//Frederick,070226 disable the element itself
+50<@>	var tempelems = document.getElementById(idname);
+38<@>	if (tempelems.disabled != undefined)
+31<@>		tempelems.disabled = status;
+1<@>
+87<@>	if (OS.indexOf("msie")!= -1){	//ie returns null, firefox uses undefined.....@#@%@^#@^
+29<@>		if (tempelems.style.color)
+41<@>			tempelems.style.color = currentcolor;
+3<@>	}
+7<@>	else{
+42<@>		if (tempelems.style.color != undefined)
+41<@>			tempelems.style.color = currentcolor;
+4<@>		}
+1<@>
+2<@>}
+1<@>
+31<@>function TcpIdToString(value){
+19<@> var tempVal = '';
+18<@> switch (value) {
+19<@>         case '0':
+33<@>            tempVal = 'TCP/UDP';
+19<@>            break;
+19<@>         case '1':
+29<@>            tempVal = 'TCP';
+19<@>            break;
+19<@>         case '2':
+29<@>            tempVal = 'UDP';
+19<@>            break;
+19<@>         case '3':
+30<@>            tempVal = 'ICMP';
+19<@>            break;
+18<@>         default:
+29<@>            tempVal = 'Any';
+19<@>            break;
+8<@>      }
+15<@>return tempVal
+2<@>}
+1<@>
+18<@>//allison, 070419
+62<@>//recheck IP range return value to indicate the failed factor
+29<@>//Output: -1 - NETWORK_ERROR
+24<@>//		    -2 - MASK_ERROR
+34<@>//        -3 - NETWORK_MASK_ERROR
+25<@>//			  -4 - BRCAST_ERROR
+52<@>function DoValidateIpRangeCheck(Subnet, Mask, type)
+2<@>{
+81<@>  var Subadd = Subnet.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+80<@>  var Maskadd = Mask.match("^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$");
+1<@>
+63<@>	//do not do anything if required parameters are not specified
+51<@>//	if ((Subnet == "") || (Mask =="")) return true;
+1<@>
+22<@>   if(Subadd == null)
+33<@>    return -1; //"NETWORK_ERROR"
+1<@>
+23<@>   if(Maskadd == null)
+29<@>    return -2;//"MASK_ERROR"
+1<@>
+1<@>
+41<@>   for (i = 0; i < Subnet.length; i++) {
+27<@>     c = Subnet.charAt(i);
+36<@>     if((c>='0'&&c<='9')||(c=='.'))
+17<@>       continue;
+10<@>     else
+36<@>       return -1; //"NETWORK_ERROR"
+5<@>   }
+1<@>
+39<@>   for (i = 0; i < Mask.length; i++) {
+25<@>     c = Mask.charAt(i);
+36<@>     if((c>='0'&&c<='9')||(c=='.'))
+17<@>       continue;
+10<@>     else
+32<@>       return -2;//"MASK_ERROR"
+5<@>   }
+1<@>
+1<@>
+8<@> var i;
+19<@>  var error=false;
+17<@>  var count = 0;
+1<@>
+21<@>    var snm1a = 255;
+21<@>    var snm2a = 255;
+21<@>    var snm3a = 255;
+21<@>    var snm4a = 255;
+1<@>
+18<@>    var nw1a = 0;
+18<@>    var nw2a = 0;
+18<@>    var nw3a = 0;
+18<@>    var nw4a = 0;
+1<@>
+23<@>    var broad1a = 255;
+23<@>    var broad2a = 255;
+23<@>    var broad3a = 255;
+23<@>    var broad4a = 255;
+1<@>
+37<@>	  arrSubadd = Subadd[0].split(".");
+36<@>  	arrMask = Maskadd[0].split(".");
+1<@>
+24<@>    snm1a = arrMask[0];
+24<@>    snm2a = arrMask[1];
+24<@>    snm3a = arrMask[2];
+24<@>    snm4a = arrMask[3];
+1<@>
+1<@>
+29<@>    var ck1a = arrSubadd[0];
+29<@>    var ck2a = arrSubadd[1];
+29<@>    var ck3a = arrSubadd[2];
+29<@>    var ck4a = arrSubadd[3];
+1<@>
+1<@>
+1<@>
+30<@>  	nw1a = eval(snm1a & ck1a);
+28<@>	nw2a = eval(snm2a & ck2a);
+28<@>	nw3a = eval(snm3a & ck3a);
+28<@>	nw4a = eval(snm4a & ck4a);
+1<@>
+39<@>	broad1a = ((nw1a) ^ (~ snm1a) & 255);
+39<@>	broad2a = ((nw2a) ^ (~ snm2a) & 255);
+39<@>	broad3a = ((nw3a) ^ (~ snm3a) & 255);
+39<@>	broad4a = ((nw4a) ^ (~ snm4a) & 255);
+1<@>
+56<@>	if ((type == undefined) || (type == TYPE_IP_ADDRESS)){
+120<@>		if ((broad1a == arrSubadd[0]) && (broad2a == arrSubadd[1]) && (broad3a == arrSubadd[2]) && (broad4a == arrSubadd[3]))
+4<@>		{
+48<@>//			errVal = "IP:" + Subnet + " Mask:" + Mask;
+62<@>//			alertInvalid("",errVal,"Please check your subnet mask");
+28<@>			return -2;//"MASK_ERROR"
+4<@>		}
+1<@>
+3<@>	}
+41<@>	else if (type == TYPE_NETWORK_ADDRESS){
+60<@>		var tempIP = nw1a + "." + nw2a + "." + nw3a + "." + nw4a;
+25<@>		if (tempIP != Subnet){
+40<@>//			errVal = Subnet + " Mask:" + Mask;
+46<@>//			alertInvalid ("Network Address",errVal);
+36<@>			return -3;//"NETWORK_MASK_ERROR"
+4<@>		}
+3<@>	}
+40<@>	else if (type == TYPE_BRCAST_ADDRESS){
+72<@>		var tempIP = broad1a + "." + broad2a + "." + broad3a + "." + broad4a;
+24<@>		if (tempIP != Subnet)
+30<@>			return -4;//"BRCAST_ERROR"
+3<@>	}
+1<@>
+1<@>
+1<@>
+15<@>  return true;
+2<@>}
+1<@>
+40<@>function valIsBroadcastIP(HostIp, Mask)
+2<@>{
+45<@>	var broadIP = getBroadcastIP(HostIp, Mask);
+38<@>	var hostIPSplit = HostIp.split(".");
+39<@>	var broadIPSlip = broadIP.split(".");
+1<@>
+20<@>	var result = true;
+27<@>	for (i = 0; i < 4; i++) {
+40<@>		if (hostIPSplit[i] != broadIPSlip[i])
+19<@>			result = false;
+3<@>	}
+1<@>
+16<@>	return result;
+1<@>
+2<@>}
+1<@>
+52<@>//Rick, 070507, check if End IP biger than Start IP
+45<@>function isEndIpBigerStartIP(EndIp, StartIp)
+2<@>{
+31<@>   addrEnd = EndIp.split('.');
+35<@>   addrStart = StartIp.split('.');
+1<@>
+120<@>   valueS = eval(addrStart[0] * 16777216) + eval(addrStart[1] * 65536) + eval(addrStart[2] * 256) + eval(addrStart[3]);
+112<@>   valueE = eval(addrEnd[0] * 16777216) + eval(addrEnd[1] * 65536) + eval(addrEnd[2] * 256) + eval(addrEnd[3]);
+1<@>
+25<@>   if (valueE <= valueS)
+20<@>      return false;
+16<@>   return true;
+2<@>}
+1<@>
+18<@>var idxStr = '4';
+25<@>function getMsgIndex() {
+34<@>   var idxNum = parseInt(idxStr);
+52<@>   if ( isNaN(idxNum) || idxNum < 0 || idxNum > 4 )
+18<@>      idxNum = 4;
+1<@>
+18<@>   return idxNum;
+2<@>}
+1<@>
+15<@>var count = 0;
+19<@>var total = '100';
+14<@>var interval;
+19<@>var needReset = 1;
+1<@>
+20<@>function reboot() {
+18<@>   var loc = ' ';
+1<@>
+29<@>   if ( getMsgIndex() != 2 )
+6<@>   	{
+20<@>     if(count < 20)
+6<@>   	{
+14<@>   	count ++;
+12<@>	status="";
+50<@>	if (document.getElementById)  // DOM3 = IE5, NS6
+62<@>		document.getElementById('status').style.display = "inline";
+7<@>	 else
+3<@>	{
+39<@>		if (document.layers == false) // IE4
+49<@>			document.all.status.style.display = "inline";
+3<@>	}
+66<@>	if  (document.getElementById('uiStatus').innerHTML.length < 100)
+107<@>		document.getElementById('uiStatus').innerHTML = document.getElementById('uiStatus').innerHTML + "|||||";
+93<@>		document.getElementById('uiPercent').innerHTML = parseInt(((count / 20) * 100), 10) + '%';
+35<@>	setTimeout('reboot()', interval);
+8<@>   	  }
+10<@>     else
+4<@>		{
+26<@>	var loc = '/wizard.asp';
+38<@>	var code = 'location="' + loc + '"';
+13<@>	eval(code);
+4<@>		}
+6<@>   	}
+2<@>}
+1<@>
+21<@>function frmLoad() {
+12<@>var status;
+1<@>
+22<@>   if (needReset== 1)
+3<@>	{
+40<@>	   	if (getMsgIndex() != 0  || 1 == 2)
+35<@>	  		total=70;//rick, change to 70
+25<@>	  	interval = total*50;
+12<@>		reboot();
+3<@> }
+1<@>
+23<@>   if (needReset == 0)
+19<@>	status="visible";
+8<@>   else
+21<@>   	status="hidden";
+1<@>
+41<@>    if (document.layers == false) // IE4
+52<@>       document.all.back.style.visibility = status;
+2<@>}
+1<@>
+23<@>function frmUpload() {
+12<@>var status;
+1<@>
+22<@>   if (needReset== 1)
+3<@>	{
+40<@>	   	if (getMsgIndex() != 0  || 1 == 2)
+35<@>	  		total=70;//rick, change to 70
+26<@>	  	interval = total*100;
+12<@>		reboot();
+3<@> }
+1<@>
+23<@>   if (needReset == 0)
+19<@>	status="visible";
+8<@>   else
+21<@>   	status="hidden";
+1<@>
+41<@>    if (document.layers == false) // IE4
+52<@>       document.all.back.style.visibility = status;
+2<@>}
+1<@>
+1<@>
+1<@>
+21<@>&*#@menu.js@#*&26153
+24<@>function openSupport(){
+1<@>
+50<@> window.open('http://support.dlink.com', '', '');
+2<@>}
+18<@>var TabHeader="";
+17<@>var SideItem="";
+17<@>var HelpItem="";
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+41<@><VWS_FUNCTION (void*)WebGetCopyright();>
+16<@>var CSetup = 1;
+19<@>var CWireless = 2;
+19<@>var CAdvanced = 3;
+19<@>var CMaintain = 4;
+17<@>var CStatus = 5;
+15<@>var CHelp = 6;
+14<@>var CEnd = 6;
+20<@>var delaytimer=300;
+22<@>  var user = 'admin';
+23<@>  var proto = 'PPPoE';
+19<@>  var ipExt = '0';
+20<@>  var dhcpen = '1';
+23<@>  var std = 'annex_a';
+43<@>  <VWS_FUNCTION (void*)WebShowWireless();>
+18<@>  var voice = '';
+23<@>  var buildSnmp = '1';
+24<@>  var buildDdnsd = '1';
+23<@>  var buildSntp = '1';
+29<@>  var buildPureBridge = '0';
+42<@>  <VWS_FUNCTION (void*)WebShowPortmap();>
+51<@>    <VWS_FUNCTION (void*)WebShowTrafficShaping();>
+40<@>  <VWS_FUNCTION (void*)WebShowWAN3g();>
+40<@>  <VWS_FUNCTION (void*)WebShowTR069();>
+22<@>  var buildipp = '0';
+21<@>  var buildSes = '';
+21<@>  var siproxd = '0';
+17<@>  var tod = '1';
+28<@>  var QosEnabled = 'false';
+22<@>  var buildRip = '1';
+26<@>  var buildUsbHost = '0';
+25<@>  var buildUsbFtp = '0';
+25<@>  var buildUsbSmb = '0';
+19<@>  var ipsec = '0';
+25<@>  var certificate = '1';
+25<@>  var wirelessqos = '1';
+19<@>  var tr69c = '1';
+33<@>  var buildPptpClient = '&nbsp';
+22<@>  var buildDOS = '1';
+21<@>  var buildPT = '1';
+20<@>  var buildQoS='1';
+23<@>  var urlFilter = '1';
+25<@>  var iptSchedule = '1';
+23<@>  var buildUpnp = '1';
+20<@>  var QuickSetup=0;
+24<@>  var VirtualServers=0;
+24<@>  var PortTriggering=0;
+17<@>  var DMZHost=0;
+13<@>  var ALG=0;
+18<@>  var Outgoing=0;
+18<@>  var Incoming=0;
+16<@>  var Filter=0;
+23<@>  var AttackPrevent=0;
+22<@>  var MACFiltering=0;
+25<@>  var ParentalControl=0;
+26<@>  var QualityofService=0;
+24<@>  var DefaultGateway=0;
+21<@>  var StaticRoute=0;
+13<@>  var RIP=0;
+17<@>  var Routing=0;
+19<@>  var DNSServer=0;
+20<@>  var DynamicDNS=0;
+16<@>  var Annex="";
+21<@>  var PortMapping=0;
+20<@>  var PPTPClient=0;
+15<@>  var IPSec=0;
+17<@>  var wlBasic=0;
+20<@>  var wlSecurity=0;
+21<@>  var wlMACFilter=0;
+18<@>  var wlBridge=0;
+20<@>  var wlAdvanced=0;
+15<@>  var wlQos=0;
+15<@>  var wlSES=0;
+23<@>  var wlStationInfo=0;
+21<@>  var WirelessAdv=0;
+21<@>  var MassStorage=0;
+37<@><VWS_FUNCTION (void*)WebShowCups();>
+18<@>  var Settings=0;
+14<@>  var SNMP=0;
+21<@>  var TR069Client=0;
+16<@>  var cert = 0;
+22<@>  var InternetTime=0;
+23<@>  var AccessControl=0;
+19<@>  var Security="";
+24<@>  var UpdateSoftware=0;
+20<@>  var schedule = 0;
+38<@>  var statswanweb="statsifcwan.html";
+44<@>if ( user != 'support' && user != 'user') {
+31<@>  if ( buildPureBridge == 0) {
+24<@>      VirtualServers=1;
+23<@>    if(buildPT == '1')
+24<@>      PortTriggering=1;
+17<@>      DMZHost=1;
+30<@>        if ( siproxd == '1' )
+19<@>           ALG =1;
+18<@>      Outgoing=1;
+18<@>      Incoming=1;
+17<@> MACFiltering=1;
+16<@>      Filter=1;
+29<@>        if (buildDOS == '1')
+27<@>          AttackPrevent=1;
+51<@>         if (( tod == '1' ) || (urlFilter == '1'))
+31<@>            ParentalControl=1;
+31<@>         if (iptSchedule=='1')
+24<@>          schedule = 1;
+4<@>  }
+2<@>}
+29<@>if ( buildPureBridge == 0) {
+16<@>  QuickSetup=1;
+25<@>  if ( user != 'user') {
+27<@>      if (buildQoS == '1')
+28<@>        QualityofService=1;
+26<@>        DefaultGateway=1;
+23<@>        StaticRoute=1;
+19<@>        Routing=1;
+28<@>      if ( buildRip == '1')
+15<@>        RIP=1;
+19<@>      DNSServer=1;
+30<@>      if ( buildDdnsd == '1')
+22<@>        DynamicDNS=1;
+4<@>  }
+2<@>}
+24<@>if ( std == 'annex_c' )
+25<@>  Annex="adslcfgc.html";
+5<@>else
+24<@>  Annex="adslcfg.html";
+29<@>if ( buildPortmap == '1' ) {
+17<@>  PortMapping=1;
+2<@>}
+32<@>if ( buildPptpClient == '1' ) {
+16<@>  PPTPClient=1;
+2<@>}
+22<@>if ( ipsec == '1' ) {
+11<@>  IPSec=1;
+2<@>}
+22<@>if ( user != 'user'){
+37<@>  statswanweb="statsifcwanber.html";
+27<@> if (certificate == '1') {
+12<@>  cert = 1;
+3<@> }
+21<@> if ( tr69c == '1' )
+19<@>    TR069Client=1;
+2<@>}
+25<@>if ( wireless == '1' ) {
+13<@>  wlBasic=1;
+16<@>  wlSecurity=1;
+17<@>  wlMACFilter=1;
+14<@>  wlBridge=1;
+16<@>  wlAdvanced=1;
+17<@>  WirelessAdv=1;
+24<@>  if (buildQoS == '1'){
+30<@>  if ( wirelessqos == '1' ) {
+14<@>     wlQos=1;
+4<@>  }
+4<@>  }
+27<@>  if ( buildSes == '1' ) {
+14<@>     wlSES=1;
+4<@>  }
+19<@>  wlStationInfo=1;
+2<@>}
+29<@>if ( buildUsbHost == '1' ) {
+52<@>  if ( buildUsbFtp == '1' || buildUsbSmb == '1' ) {
+19<@>    MassStorage=1;
+4<@>  }
+27<@>  if ( buildipp == '1' ) {
+19<@>    PrintServer=1;
+4<@>  }
+2<@>}
+23<@>if ( user != 'user') {
+14<@>  Settings=1;
+26<@>  if ( buildSnmp == '1' )
+11<@>   SNMP=1;
+56<@>  if ( (buildPureBridge == '0') && (buildSntp == '1') )
+20<@>    InternetTime=1;
+19<@>  AccessControl=1;
+2<@>}
+27<@>var SetupMenu=new Array();
+30<@>var WirelessMenu=new Array();
+25<@>var AdvMenu=new Array();
+32<@>var MaintainMenu = new Array();
+26<@>var StatMenu=new Array();
+26<@>var HelpMenu=new Array();
+26<@>var SiteMenu=new Array();
+27<@>var TabMenu = new Array();
+26<@>var tabPos = GetTABpos();
+15<@>var index = 0;
+104<@>SetupMenu[index++]=new Gitem(CSetup, "設定精靈", "wizard_step1_start.htm", 1, "setuphelp.htm", -1);
+95<@>SetupMenu[index++]=new Gitem(CSetup, "區域網路設定", "lan.htm", 1, "setuphelp.htm", -1);
+91<@>SetupMenu[index++]=new Gitem(CSetup, "Internet設定", "wan.htm", 1, "setuphelp.htm", -1);
+82<@>SetupMenu[index++]=new Gitem(CSetup, "PPTP", "pptp.htm", 1, "setuphelp.htm", -1);
+82<@>SetupMenu[index++]=new Gitem(CSetup, "L2TP", "l2tp.htm", 1, "setuphelp.htm", -1);
+11<@>index = 0;
+107<@>WirelessMenu[index++]=new Gitem(CWireless, "無線基本設定", "wlan_basic.htm", 1, "wlanhelp.htm", -1);
+99<@>WirelessMenu[index++]=new Gitem(CWireless, "WPS設定", "wlwps_step1.htm", 1, "wlanhelp.htm", -1);
+101<@>WirelessMenu[index++]=new Gitem(CWireless, "無線進階", "wladvanced.htm", 1, "wlanhelp.htm", -1);
+101<@>WirelessMenu[index++]=new Gitem(CWireless, "無線中繼", "wlrepeater.htm", 1, "wlanhelp.htm", -1);
+11<@>index = 0;
+88<@>AdvMenu[index++]=new Gitem(CAdvanced, "存取控制", "acl.htm", 1, "advhelp.htm", -1);
+102<@>AdvMenu[index++]=new Gitem(CAdvanced, "服務埠觸發", "nat_portrigger.htm", 1, "advhelp.htm", -1);
+82<@>AdvMenu[index++]=new Gitem(CAdvanced, "DMZ", "fw-dmz.htm", 1, "advhelp.htm", -1);
+95<@>AdvMenu[index++]=new Gitem(CAdvanced, "URL封鎖", "url_nokeyword.htm", 1, "advhelp.htm", -1);
+86<@>AdvMenu[index++]=new Gitem(CAdvanced, "動態DNS", "ddns.htm", 1, "advhelp.htm", -1);
+18<@>if(PortMapping) {
+93<@> AdvMenu[index++]=new Gitem(CAdvanced, "端口綁定", "portmap.htm", 1, "advhelp.htm", -1);
+2<@>}

@@ -1,0 +1,855 @@
+13<@>&&*&&tw**&**
+41<@><VWS_FUNCTION (void*)WebShowWireless();>
+10<@></SCRIPT>
+31<@><script language="JavaScript">
+21<@> TabHeader="幫助";
+20<@> SideItem="無線";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+46<@> <table id=box_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+23<@>    無線設定說明
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+8<@>   <ul>
+1<@>
+64<@>    <li><a href="helpwlan.htm#WlanBasic">無線基本設定</a>
+13<@>    <script>
+31<@>    if (LoginUser == "admin"){
+1<@>
+66<@>    document.writeln('<li><a href="helpwlan.htm#wlwps">WPS</a>');
+75<@>    document.writeln('<li><a href="helpwlan.htm#wladv">進階無線</a>');
+80<@>    document.writeln('<li><a href="helpwlan.htm#wlrepeater">無線中繼</a>');
+1<@>
+1<@>
+1<@>
+6<@>    }
+14<@>    </script>
+9<@>   </ul>
+9<@>   </td>
+8<@>  </tr>
+10<@> </table>
+6<@> <br>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+58<@>    <a id=WlanBasic name=WlanBasic>無線基本設定</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+9<@>    <dl>
+26<@>    <dt>無線網絡</dt>
+9<@>    <dd>
+10<@>     <dl>
+10<@>      <p>
+41<@>       <strong>啟用SSID廣播</strong>
+277<@>       <br>啟用了本選項之後，無線路由器會向所有無線工作站廣播其無線網絡標識（SSID）。這樣附近的電腦或其他無線客戶端即可搜索到本路由器的無線信號、通過選擇正確的無線網絡標識來連結到本接入點。
+11<@>      </p>
+10<@>      <p>
+43<@>       <strong>啟用無線阻斷</strong>
+157<@>       <br>如果選中，此SSID下的無線客戶端只能訪問網際網路，無法與其他無線客戶端、以太網客戶端或其他設備互訪。
+11<@>      </p>
+10<@>      <p>
+37<@>       <strong>名稱(SSID)</strong>
+159<@>       <br>輸入最多32個含有字母、數字、符號的字元。相同的名稱(SSID)必須指派給您網路內所有的無線裝置，預設的SSID是
+16<@>       <script>
+67<@>                             document.write('\"D-LINK_DIR-612\"');
+17<@>       </script>
+11<@>      </p>
+10<@>      <p>
+31<@>       <strong>模式</strong>
+61<@>       <br>選擇您想要使用的無線模式，選項有:
+12<@>       <ul>
+16<@>       <script>
+78<@>        document.writeln('<li>802.11b模式，最高速度為11Mbps。</a>');
+78<@>        document.writeln('<li>802.11g模式，最高速度為54Mbps。</a>');
+208<@>        document.writeln('<li>802.11n -- 20M帶寬最高速率不超過130 Mbps（短報文下則不超過150 Mbps）；40M帶寬最高速率不超過270 Mbps（短報文下則不超過300 Mbps）。 </a>');
+80<@>        document.writeln('<li>802.11b/g模式，最高速度為54Mbps。</a>');
+209<@>        document.writeln('<li>802.11n/g -- 20M帶寬最高速率不超過130 Mbps（短報文下則不超過150 Mbps）；40M帶寬最高速率不超過270 Mbps（短報文下則不超過300 Mbps）。</a>');
+212<@>        document.writeln('<li>802.11b/g/n -- 20M帶寬最高速率不超過130 Mbps（短報文下則不超過150 Mbps）；40M帶寬最高速率不超過270 Mbps（短報文下則不超過300 Mbps）。 </a>');
+17<@>       </script>
+13<@>       </ul>
+11<@>      </p>
+10<@>      <p>
+123<@>       <br><strong>進階無線設定</strong>可以設定長封包標頭(long preamble)和短封包標頭(short preamble)
+11<@>      </p>
+10<@>      <p>
+31<@>       <strong>頻道</strong>
+159<@>       <br>此項目決定將會使用何種運作頻率。除非您察覺到無線頻道被附近的其他基地台干擾，否則不需要變更此設定。
+11<@>      </p>
+11<@>     </dl>
+10<@>    </dd>
+26<@>    <dt>安全選項</dt>
+9<@>    <dd>
+10<@>     <ul>
+47<@>      <li><p>無 - 無資料加密。</p></li>
+120<@>      <li><p>&nbsp; Wi-Fi保護設定功能在安全模式設定為Shared-Key驗證的WEP時是停用狀態。</p></li>
+305<@>      <li><p>WPA-PSK（預共享密鑰Wi-Fi保護訪問）——采用WPA-PSK標準加密，加密類型TKIP。TKIP即“Temporal Key Integrity Protocol”（臨時密鑰完整性協議），它利用更強大的加密方法，并結合“消息完整性代碼”(MIC)來防御黑客的攻擊。</p></li>
+243<@>      <li><p>WPA2-PSK[AES]（預共享密鑰Wi-Fi保護訪問，版本2）——采用WPA2-PSK標準加密，加密類型AES。AES即“Advanced encryption standard”（高級加密標準），其利用對稱128位塊數據加密。</p></li>
+110<@>      <li><p>WPA-PSK [AES] + WPA2-PSK [AES] - 允許用戶端使用WPA-PSK [AES]或WPA2-PSK [AES]。</p></li>
+11<@>     </ul>
+10<@>    </dd>
+35<@>    <dt>安全加密（WEP）</dt>
+9<@>    <dd>
+10<@>     <dl>
+9<@>     <p>
+36<@>      <strong>驗證類型</strong>
+211<@>      <br>一般情況下本欄可保留缺省值<b>自動</b>。默認值無法正常工作時，請選擇適當的值：<b>共享密鑰</b>。具體采用哪種方法，請參考您的無線網卡說明書。
+10<@>     </p>
+9<@>     <p>
+36<@>      <strong>加密強度</strong>
+36<@>      <br>選擇WEP加密等級<br>
+11<@>      <ul>
+53<@>       <li>64位元(又稱為40位元)加密。</li>
+35<@>       <li>128位元加密。</li>
+12<@>      </ul>
+10<@>     </p>
+11<@>     </dl>
+10<@>    </dd>
+30<@>    <dt>WEP 安全金鑰</dt>
+214<@>    <dd><p>在啟用了WEP之後，用戶可手工輸入或者采用程式自動生成這四個數據加密金鑰。在網絡中的無線客戶端上，必須準確輸入金鑰的數值，才能成功連結。</p>
+190<@>    <p><br>WEP加密有設置方法：從四個金鑰中選擇需要使用的一個，然後在所選的金鑰框中輸入網絡的匹配WEP金鑰訊息。輸入時遵循以下規則：</p>
+9<@>    <ul>
+99<@>     <li>64位WEP——輸入十位十六進制數字（0-9和A-F之間的任意組合）。 </li>
+106<@>     <li>128位WEP——輸入二十六位十六進制數字（0-9和A-F之間的任意組合）。 </li>
+10<@>    </ul>
+220<@>    <p><b>注意：</b>以Windows XP SP2操作系統為例，無線管理工具默認金鑰為“金鑰1”，如果您不熟悉電腦中選擇其他金鑰的方法，請在設置加密時選擇“金鑰”即可。</p>
+10<@>    </dd>
+69<@>    <dt>安全加密（WPA-PSK、WPA2-PSK、WPA-PSK+WPA2-PSK）</dt>
+112<@>    <dd><p>選擇相應的加密方式，在本框中輸入長度介於8~63個字符之間的口令。</p></dd>
+10<@>    </dl>
+9<@>    <br>
+11<@>     </td>
+8<@>  </tr>
+10<@> </table>
+6<@> <br>
+48<@><div id="wirelessAdvHelp" style="display:none">
+1<@>
+5<@><br>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+41<@>    <a id=wlwps name=wlwps>WPS設定</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+9<@>    <dl>
+23<@>    <dt>WPS設定</dt>
+395<@>    <dd><p>WPS代表Wi-Fi保護設置。您可以通過這一過程輕松地將無線客戶端添加到網絡，而無需進行任何具體的配置，例如SSID、安全模式和密碼之類的配置。<br>采用<b>PIN碼模式</b>，您需要在此處輸入客戶端的PIN碼。您必須同時啟動客戶端WPS進程，可以在客戶端的管理工具上找到客戶端的PIN碼。</p></dd>
+10<@>    </dl>
+9<@>    <br>
+11<@>     </td>
+8<@>  </tr>
+10<@> </table>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+44<@>    <a id=wladv name=wladv>進階無線</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+9<@>    <dl>
+35<@>       <dt>進階無線設定</dt>
+12<@>       <dd>
+13<@>        <dl>
+13<@>         <p>
+67<@>          <strong>啟用無線路由器無線收發功能</strong>
+363<@>          <br>路由器的無線功能可以由用戶選擇啟用或禁用。路由器前面板上的無線指示燈會顯示無線接入點的當前狀態。無線功能啟用時，路由器面板上無線指示燈閃亮，客戶端可以無線連結到路由器；無線功能禁用時，無線指示燈熄滅，無線客戶端無法搜索到此無線網絡。
+14<@>         </p>
+13<@>         <p>
+71<@>          <strong>碎片限值、CTS/RTS限值、報頭模式</strong>
+114<@>          <br>這些設置屬於保留設置，僅用於無線測試及高級配置。切勿更改這些設置。
+14<@>         </p>
+13<@>         <p>
+46<@>          <strong>調節發射功率</strong>
+105<@>          <br>顯示路由器可用的發射功率。您可以根據需要自行調節該功率大小。
+14<@>         </p>
+14<@>        </dl>
+13<@>       </dd>
+26<@>       <dt>WPS設置</dt>
+12<@>       <dd>
+13<@>        <dl>
+13<@>         <p>
+46<@>          <strong>路由器的PIN值</strong>
+162<@>          <br>這是通過WPS配置路由器的無線設置時要在無線客戶端上使用的PIN碼。您也可以在路由器的產品標簽上找到該PIN。
+14<@>         </p>
+13<@>         <p>
+37<@>          <strong>啟用WPS</strong>
+33<@>          <br>開啟WPS功能。
+14<@>         </p>
+13<@>         <p>
+49<@>          <strong>禁用路由器的PIN</strong>
+393<@>          <br>僅當啟用了路由器的PIN時，您才能依據路由器的PIN通過WPS配置路由器的無線設置或添加無線客戶端。當路由器檢測到存在依據路由器的PIN通過WPS侵擾路由器無線設置的可疑操作時，系統可能暫時禁用路由器的PIN功能。用戶可以通過取消選中該選項并單擊“套用”按鈕手動啟獄N斯δ堋? </p>
+13<@>         <p>
+55<@>          <strong>保持現有的無線設置</strong>
+443<@>          <br>這顯示路由器是否處於“WPS已配置”狀態。如果未選中上述這一選項，添加新的無線客戶端會將路由器的無線設置更改為自動生成的隨機SSID和安全密鑰。相反，如果選中該選項，則一些外部注冊者（例如Windows Vista上的“網絡瀏覽器”）可能看不到該路由器。從路由器的管理界面配置基本無線設置將使該選項變為選中狀態。
+14<@>         </p>
+14<@>        </dl>
+13<@>       </dd>
+40<@>      <dt>無線網卡訪問列表</dt>
+16<@>      <dl></dl>
+583<@>      <dd><p>默認情況下，配置正確的無線網卡均可訪問用戶的無線網絡。每一塊網卡均有全球唯一的物理地址-MAC地址。用戶可通過在無線網卡訪問列表中添加特定無線網卡的MAC地址，對哪些客戶端可以訪問自己的無線網絡進行限制，從而有效提高無線網絡的安全性。設置頁面中顯示了無線網卡訪問控制列表。啟用訪問控制後，只有列表中的無線網卡可連結到本路由器。不過，要訪問無線網絡，還必須注意其他的無線設置同樣準確無誤。</p>
+11<@>      <dl>
+11<@>       <p>
+50<@>        <strong>打開無線訪問控制</strong>
+17<@>        <br></p>
+13<@>        <ol>
+135<@>         <li>單擊<b>打開無線訪問控制</b>復選框，即可根據無線網卡的MAC地址對無線網卡進行限制。 </li>
+105<@>         <li>單擊<b>套用</b>按鈕保存更改，并返回到<b>無線高級設置</b>頁面。</li>
+184<@>         <b>注意：</b>啟用了<b>打開無線訪問控制</b>之後，如果<b>訪問控制列表</b>為空，那麼所有的無線網卡均無法連結到用戶的無線網絡！
+14<@>        </ol>
+15<@>       <p></p>
+1<@>
+1<@>
+1<@>
+11<@>       <p>
+47<@>        <strong>可用的無線網卡</strong>
+75<@>        <br>列表顯示了所有可用的無線PC網卡及其MAC地址。
+454<@>        <br>對於<b>可用的無線網卡</b>列表中顯示的無線PC網卡而言，單擊該網卡的單選按鈕即可捕獲其MAC地址。但如果列表中沒有顯示所需的無線PC網卡，則需確認該網卡是否已經過了正確的設置，然後單擊<b>刷新</b>按鈕更新無線PC網卡的可用列表。如果此時仍然沒有顯示出所需的無線PC網卡，則請按照以下說明手工設置該無線PC網卡的MAC地址。
+12<@>       </p>
+11<@>       <p>
+44<@>        <strong>輸入無線網卡</strong>
+153<@>        <br>如果可用的無線網卡列表中沒有顯示任何無線網卡，則可以手工輸入待授權無線PC網卡的設備名和MAC地址。
+131<@>        <br><b>注意：</b>MAC地址是一個字符串，其中包含十二個字符，通常可在無線設備的底部找到。
+12<@>       </p>
+12<@>      </dl>
+12<@>      </dd>
+10<@>    </dl>
+9<@>    <br>
+11<@>     </td>
+8<@>  </tr>
+10<@> </table>
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+54<@>    <a id=wlrepeater name=wlrepeater>無線中繼</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+9<@>    <dl>
+27<@>     <dt>無線中繼</dt>
+10<@>     <dd>
+11<@>      <dl>
+11<@>       <p>
+43<@>       <strong>啟用無線中繼</strong>
+283<@>       <br>啟用中繼模式DHCP伺服器將自動關閉(關閉中繼模式DHCP伺服器將自動開啟)。建議將電腦的IP地址和DNS地址設置為自動獲取。如果電腦是從上行AP獲得地址，要登錄本設備管理頁面，需要手動設置電腦的IP地址。
+12<@>       </p>
+12<@>      </dl>
+11<@>     </dd>
+10<@>    </dl>
+9<@>    <br>
+11<@>     </td>
+8<@>  </tr>
+10<@> </table>
+7<@></div>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+11<@> Footer();
+17<@> mainTableEnd();
+10<@></script>
+31<@><script language="javascript">
+27<@>if (LoginUser == "admin"){
+69<@> document.getElementById("wirelessAdvHelp").style.display = 'block';
+8<@>}else {
+68<@> document.getElementById("wirelessAdvHelp").style.display = 'none';
+2<@>}
+10<@></script>
+14<@></blockquote>
+11<@>   </body>
+8<@></html>
+1<@>
+1<@>
+24<@>&*#@helpadv.htm@#*&8452
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><SCRIPT language="JavaScript">
+41<@><VWS_FUNCTION (void*)vmsGetLoginUser();>
+41<@><VWS_FUNCTION (void*)WebShowWireless();>
+40<@><VWS_FUNCTION (void*)WebShowPortmap();>
+10<@></SCRIPT>
+31<@><script language="JavaScript">
+21<@> TabHeader="幫助";
+28<@> SideItem = "進階設定";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@> <tr>
+40<@>  <td class=topheader>進階說明</td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+1<@>
+35<@>    <script language="javascript">
+30<@>    if (LoginUser == "admin")
+18<@>                {
+88<@>                    document.writeln('<li><a href="helpadv.htm#Acl">存取控制</a>');
+102<@>                    document.writeln('<li><a href="helpadv.htm#PortTriggering">服務埠觸發</a>');
+1<@>
+62<@>   document.writeln('<li><a href="helpadv.htm#DMZ">DMZ</a>');
+1<@>
+85<@>                    document.writeln('<li><a href="helpadv.htm#Url">URL封鎖</a>');
+86<@>                    document.writeln('<li><a href="helpadv.htm#DDNS">動態DNS</a>');
+1<@>
+1<@>
+1<@>
+89<@>                    document.writeln('<li><a href="helpadv.htm#IPQosTC">Qos設定</a>');
+81<@>                    document.writeln('<li><a href="helpadv.htm#UPnP">UPnP</a>');
+85<@>                    document.writeln('<li><a href="helpadv.htm#Telnet">Telnet</a>');
+1<@>
+1<@>
+1<@>
+1<@>
+98<@>                    document.writeln('<li><a href="helpadv.htm#VirtualSrv">虛擬伺服器</a>');
+1<@>
+1<@>
+1<@>
+1<@>
+6<@>    }
+14<@>    </script>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+40<@><div id="aclHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+32<@>   <a name=Acl>存取控制</a>
+8<@>  </td>
+7<@> </tr>
+1<@>
+6<@> <tr>
+21<@>  <td class=content>
+153<@>     <p>您可以在此頁面指定什麼類型的服務可以在WAN端內啟用。在ACL清單內或從指定IP來的封包可以通過路由器。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+48<@><div id="portTriggerHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+46<@>   <a name=PortTriggering>服務埠觸發</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+217<@>            <p>服務埠觸發是一個服務埠轉發的特殊型式，在允許一個或多個服務埠的連線進入前要求一個對外的連線。服務埠觸發通常是用於電腦在NAT路由器後方時。
+17<@>            </p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+1<@>
+40<@><div id="dmzHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+23<@>   <a name=DMZ>DMZ</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+154<@>              <p>將電腦設定在DMZ可能會將電腦暴露在安全的風險下，建議只有在沒有其他方法可用時才啟用此功能。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+1<@>
+40<@><div id="urlHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+29<@>   <a name=Url>URL封鎖</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+176<@>   <p>此功能用於設定關鍵字過濾，您可以增加或移除關鍵字來執行過濾。此功能可以防止內部使用者用特定的關鍵字來存取網站。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+41<@><div id="ddnsHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+30<@>   <a name=DDNS>動態DNS</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+332<@>            <p>動態DNS：是指沒有固定IP的主機，利用動態DNS服務，幫助主機可以隨著IP的改變去相應改變網域名稱與IP的關系。本頁面用來配置在DynDNS.org，TZO和Oray上的動態DNS地址. 您可以通過添加/刪除來配置動態DNS。賬戶設置為DDNS服務商提供的賬戶。</p>
+10<@>    </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+44<@><div id="netToolHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+33<@>   <a name=IPQosTC>Qos設定</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+17<@>            <dl>
+24<@>                <dt>QoS
+225<@>                <dd>QoS是一種主動調整流量輸出速率的措施。作用是限制流出某一網絡的某一連結的流量與突發，使這類報文以比較均勻的速度向外發送。你可以添加Qos規則。
+21<@>                <br>
+18<@>            </dl>
+10<@>    </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+25<@>   <a name=UPnP>UPnP</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+17<@>            <dl>
+73<@>             <dd>用來配置UPnP。開啟後系統將在後臺執行。
+18<@>            </dl>
+10<@>    </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+9<@>    <tr>
+29<@>        <td class=topheader>
+38<@>            <a name=Telnet>Telnet</a>
+14<@>        </td>
+10<@>    </tr>
+9<@>    <tr>
+27<@>        <td class=content>
+17<@>            <dl>
+236<@>                <dd>Telnet協議是TCP/IP協議族的其中之一，是Internet遠端登錄服務的標准協議和主要方式，常用于網頁服務器的遠端控制，可供使用者在本地主機執行遠端主機上的工作。
+18<@>            </dl>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+43<@><div id="routerHelp" style="display:none">
+1<@>
+5<@><br>
+7<@></div>
+40<@><div id="natHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+42<@>   <a name=VirtualSrv>虛擬伺服器</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+17<@>            <dl>
+9<@>    <dd>
+25<@>                    <dl>
+47<@>                        <dt>常用服務名稱
+56<@>                        <dd>選擇常用服務名稱。
+47<@>                        <dt>自訂服務名稱
+62<@>                        <dd>自行輸入一個服務名稱。
+41<@>                        <dt>通訊協定
+41<@>                        <dd>TCP或UDP。
+35<@>                        <dt>WAN埠
+47<@>                        <dd>WAN的服務埠。
+41<@>                        <dt>LAN開放埠
+47<@>                        <dd>LAN的服務埠。
+41<@>                        <dt>LAN IP位址
+55<@>                        <dd>來自LAN端的IP位址。
+11<@>     </dl>
+18<@>            </dl>
+10<@>    </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+31<@><script language="javascript">
+27<@>if (LoginUser == "admin"){
+61<@> document.getElementById("aclHelp").style.display = 'block';
+69<@> document.getElementById("portTriggerHelp").style.display = 'block';
+61<@> document.getElementById("dmzHelp").style.display = 'block';
+61<@> document.getElementById("urlHelp").style.display = 'block';
+62<@> document.getElementById("ddnsHelp").style.display = 'block';
+65<@> document.getElementById("netToolHelp").style.display = 'block';
+64<@> document.getElementById("routerHelp").style.display = 'block';
+61<@> document.getElementById("natHelp").style.display = 'block';
+7<@>}else{
+60<@> document.getElementById("aclHelp").style.display = 'none';
+68<@> document.getElementById("portTriggerHelp").style.display = 'none';
+60<@> document.getElementById("dmzHelp").style.display = 'none';
+60<@> document.getElementById("urlHelp").style.display = 'none';
+63<@> document.getElementById("filterHelp").style.display = 'none';
+61<@> document.getElementById("ddnsHelp").style.display = 'none';
+64<@> document.getElementById("netToolHelp").style.display = 'none';
+63<@> document.getElementById("routerHelp").style.display = 'none';
+60<@> document.getElementById("natHelp").style.display = 'none';
+2<@>}
+10<@></script>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+25<@>&*#@helpmain.htm@#*&4806
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><SCRIPT language="JavaScript">
+41<@><VWS_FUNCTION (void*)vmsGetLoginUser();>
+10<@></SCRIPT>
+31<@><script language="JavaScript">
+21<@> TabHeader="幫助";
+20<@> SideItem="維護";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@> <tr>
+40<@>  <td class=topheader>維護說明</td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+49<@>    <li><a href="helpmain.htm#Reboot">系統</a>
+35<@>    <script language="javascript">
+30<@>    if (LoginUser == "admin")
+6<@>    {
+77<@>     document.writeln('<li><a href="helpmain.htm#Upload">韌體更新</a>');
+82<@>     document.writeln('<li><a href="helpmain.htm#Saveconf">備份與還原</a>');
+84<@>     document.writeln('<li><a href="helpmain.htm#Userconfig">使用者帳戶</a>');
+78<@>     document.writeln('<li><a href="helpmain.htm#Time">時間和日期</a>');
+1<@>
+1<@>
+1<@>
+6<@>    }
+14<@>    </script>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+53<@>  <td class=topheader><a name=Reboot>系統</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+68<@>   <p>以目前設定或預設設定來重新啟動路由器。</p>
+8<@>   <dl>
+20<@>   <dt>重新啟動
+53<@>      <dd>重新啟動路由器來使設定生效。
+9<@>   </dl>
+8<@>   <dl>
+20<@>   <dt>回復設定
+56<@>      <dd>以出廠預設值來重新啟動路由器。
+9<@>   </dl>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+43<@><div id="uploadHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+59<@>  <td class=topheader><a name=Upload>韌體更新</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+95<@>   <p>韌體更新項目可用來升級最新的韌體來改善設備的性能和效能。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+45<@><div id="saveconfHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+64<@>  <td class=topheader><a name=Saveconf>備份與還原</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+163<@>        <p>將路由器設定儲存在您的電腦內，若未來設定更改時可作為還原之用。請確認在執行韌體更新前已將設定儲存。</p>
+8<@>  </td>
+7<@> </tr>
+13<@></table><br>
+7<@></div>
+45<@><div id="userconfHelp" style="display:none">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+66<@>  <td class=topheader><a name=Userconfig>使用者帳戶</a></td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+131<@>            <p>此頁面是用來設定存取網頁管理介面的密碼，建議您更改密碼來保障路由器的安全。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+7<@></div>
+41<@> <div id="ntpHelp" style="display:none">
+47<@> <table id=body_header border=0 cellSpacing=0>
+7<@>  <tr>
+24<@>   <td class=topheader>
+45<@>    <a id=Time name=Time>時間和日期</a>
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+22<@>   <td class=content>
+9<@>    <dl>
+105<@>    <dd>此頁面是用來設定路由器的內部時鐘，您也可以設定時區和時間伺服器。
+21<@>    <dt>系統時間
+72<@>    <dd>顯示路由器的當前時間，如果顯示時間不正確，
+32<@>    請填寫正確的時間。
+9<@>    <dl>
+24<@>    <dt>伺服器位址
+69<@>       <dd>您可以輸入用來做時間同步的伺服器位址。
+15<@>    <dt>時區
+63<@>    <dd>您可以從下拉式選單內來選擇您的時區。
+18<@>    <dt>啟用NTP
+69<@>    <dd>您可以點選<span class=button_ref>取得GMT時間</span>
+32<@>    從網路時間伺服器。
+10<@>    </dd>
+10<@>    </dl>
+10<@>    </dd>
+10<@>    </dl>
+14<@>        </td>
+8<@>  </tr>
+10<@> </table>
+8<@> </div>
+31<@><script language="javascript">
+27<@>if (LoginUser == "admin"){
+64<@> document.getElementById("uploadHelp").style.display = 'block';
+66<@> document.getElementById("saveconfHelp").style.display = 'block';
+66<@> document.getElementById("userconfHelp").style.display = 'block';
+61<@> document.getElementById("ntpHelp").style.display = 'block';
+7<@>}else{
+63<@> document.getElementById("uploadHelp").style.display = 'none';
+65<@> document.getElementById("saveconfHelp").style.display = 'none';
+65<@> document.getElementById("userconfHelp").style.display = 'none';
+60<@> document.getElementById("ntpHelp").style.display = 'none';
+2<@>}
+10<@></script>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+31<@>&*#@helpstatusinfo.htm@#*&3913
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><SCRIPT language="JavaScript">
+41<@><VWS_FUNCTION (void*)WebShowWireless();>
+10<@></SCRIPT>
+31<@><script language="JavaScript">
+21<@> TabHeader="幫助";
+20<@> SideItem="狀態";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@> <tr>
+40<@>  <td class=topheader>狀態幫助</td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+8<@>   <ul>
+61<@>    <li><a href="helpstatusinfo.htm#Status">裝置訊息</a>
+77<@>    <li><a href="helpstatusinfo.htm#Dhcpclient">活動中的用戶清單</a>
+54<@>    <li><a href="helpstatusinfo.htm#Stats">統計</a>
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+1<@>
+9<@>   </ul>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+60<@>   <td class=topheader><a name=Status>裝置訊息</a></td>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+56<@>            <p>當前狀態和一些基本設置。</p>
+17<@>            <dl>
+27<@>                <dt>系統
+21<@>                <dd>
+25<@>                    <dl>
+23<@>      <dt>產品名稱
+29<@>      <dd>路由器名稱。
+23<@>      <dt>上電時間
+44<@>      <dd>系統上電後運行的時間。
+24<@>      <dt>日期/時間
+50<@>                        <dd>系統當前時間。
+23<@>      <dt>韌體版本
+47<@>                        <dd>產品的版本。
+38<@>                        <dt>序列號
+47<@>                        <dd>產品序列號。
+26<@>                    </dl>
+36<@>                <dt>局域網配置
+21<@>                <dd>
+25<@>                    <dl>
+19<@>      <dt>IP地址
+34<@>      <dd>路由器的IP地址。
+23<@>      <dt>子網掩碼
+38<@>      <dd>路由器的子網掩碼。
+24<@>      <dt>DHCP伺服器
+57<@>                        <dd>DHCP伺服器是否啟用。
+20<@>      <dt>MAC地址
+53<@>                        <dd>路由器的MAC地址。
+26<@>                    </dl>
+33<@>                <dt>無線配置
+21<@>                <dd>
+25<@>                    <dl>
+21<@>    <dt>無線網絡
+36<@>    <dd>無線網絡是否啟用。
+15<@>    <dt>模式
+39<@>    <dd>無線網絡的工作模式。
+13<@>    <dt>SSID
+31<@>    <dd>無線網絡的SSID。
+21<@>    <dt>加密模式
+39<@>    <dd>無線網絡的加密模式。
+15<@>    <dt>信道
+33<@>    <dd>無線網絡的信道。
+19<@>    <dt>廣播SSID
+34<@>    <dd>廣播SSID是否啟用。
+12<@>    <dt>WPS
+27<@>    <dd>WPS是否啟用。
+26<@>                    </dl>
+36<@>                <dt>廣域網配置
+42<@>                <dd>廣域網配置情況
+18<@>            </dl>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+23<@>  <td class=topheader>
+51<@>   <a name=Dhcpclient>活動中的用戶清單</a>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+267<@>  <p>本頁面顯示了連結到本路由器的各臺電腦，其中包括電腦的設備名稱、IP地址、MAC（介質訪問控制）地址。<p>本頁上所有值均不可更改。如需更新本頁面以顯示當前已接設備，請單擊<i>刷新</i>按鈕。
+7<@>  </p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+53<@>   <td class=topheader><a name=Stats>統計</a></td>
+8<@>  </td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+80<@>            <p>顯示通過網絡接口發送和接收數據包的訊息。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+26<@>&*#@setuphelp.htm@#*&4516
+25<@>if (HelpItem=='wizard'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+61<@>					'首次設定時建議使用者執行<b>Wizard</b>。'+
+96<@>					'點選 <b>Wizard</b> 頁面且您將會被逐步引導來設定您的連線。<br><br>' +
+174<@>					'若您認為自己是進階的使用者或之前有設定路由器的經驗可點選<b><font color="rgb(108 169 213)">Internet 設定</font></b>來配置。<br><br>' +
+59<@>					'<a href="helpsetup.htm#Wizard">更多幫助...</a>';
+1<@>
+31<@>}else if (HelpItem=='lancfg'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+103<@>					'您路由器的IP位址與您存取路由器的網頁管理介面的IP位址相同。<br><br>' +
+110<@>					'若您在網路內已經有一個DHCP伺服器或您網路內的所有設備都使用固定IP位址' + 
+105<@>					'選擇DHCP模式 <b><font color="rgb(108 169 213)">無</font></b> 來停用此功能。<br><br>' +
+138<@>					'若在您網路內的裝置需要使用固定IP位址的話，請在固定DHCP功能內為每一個裝置新增規則。<br><br>' +
+56<@>					'<a href="helpsetup.htm#LAN">更多幫助...</a>';
+1<@>
+32<@>}else if (HelpItem=='dhcpcfg'){
+90<@>  document.getElementById('helpLabel').innerHTML = '<b>實用小提示...</b> <br><br>' +
+72<@>					'如果您已經在局域網中配置了其他的DHCP 伺服器' +
+108<@>					'或者您的電腦或設備使用手動獲得IP地址的方式, 請禁用DHCP 伺服器。<br><br>' +
+58<@>					'<a href="helpsetup.htm#Dhcpd">更多幫助...</a>';
+1<@>
+34<@>}else if (HelpItem=='dhcpipcfg'){
+87<@>  document.getElementById('helpLabel').innerHTML = '<b>帮助信息...</b> <br><br>' +

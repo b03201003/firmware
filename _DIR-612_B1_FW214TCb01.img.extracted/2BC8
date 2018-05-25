@@ -1,0 +1,1006 @@
+13<@>&&*&&tw**&**
+82<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 50%; TEXT-ALIGN: right
+2<@>}
+27<@>.formarea .form_label_60 {
+82<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 60%; TEXT-ALIGN: right
+2<@>}
+27<@>.formarea .form_label_40 {
+82<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 40%; TEXT-ALIGN: right
+2<@>}
+27<@>.formarea .form_label_25 {
+82<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 25%; TEXT-ALIGN: right
+2<@>}
+32<@>.formarea .form_label_noWidth {
+69<@>	PADDING-RIGHT: 5px! important; FONT-WEIGHT: bold; TEXT-ALIGN: right
+2<@>}
+27<@>.formarea .form_label_30 {
+82<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 30%; TEXT-ALIGN: right
+2<@>}
+31<@>.formarea .form_label_center {
+83<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 50%; TEXT-ALIGN: center
+2<@>}
+28<@>.formarea .form_label_top {
+94<@>	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; VERTICAL-ALIGN: top; WIDTH: 170px; TEXT-ALIGN: right
+2<@>}
+31<@>.formarea .form_label_middle {
+97<@>	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; VERTICAL-ALIGN: middle; WIDTH: 170px; TEXT-ALIGN: right
+2<@>}
+31<@>.formarea .form_label_bottom {
+102<@>	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; VERTICAL-ALIGN: text-bottom; WIDTH: 170px; TEXT-ALIGN: right
+2<@>}
+30<@>.formarea .form_label_radio {
+93<@>	PADDING-RIGHT: 5px; FONT-WEIGHT: bold; VERTICAL-ALIGN: top; WIDTH: 170px; TEXT-ALIGN: right
+2<@>}
+27<@>.formarea .form_label_10 {
+93<@>	PADDING-RIGHT: 10px! important; VERTICAL-ALIGN: middle; FONT-WEIGHT: bold; TEXT-ALIGN: left
+2<@>}
+38<@>.formarea .form_label_doublespacing {
+99<@>	PADDING-RIGHT: 10px! important; HEIGHT: 35px;  FONT-WEIGHT: bold; WIDTH: 170px; TEXT-ALIGN: right
+2<@>}
+38<@>.formarea .form_label_spacingbottom {
+110<@>	PADDING-RIGHT: 10px! important;  VERTICAL-ALIGN: bottom;  FONT-WEIGHT: bold; WIDTH: 170px; TEXT-ALIGN: right
+2<@>}
+1<@>
+15<@>.formlisting {
+120<@>	TEXT-ALIGN: left; MARGIN: 10px 0px 0px; WIDTH: 100%; BACKGROUND-COLOR: #dfdfdf; border-spacing: 1px; empty-cells: show
+2<@>}
+18<@>.formlisting TH {
+269<@>	BORDER-RIGHT: white 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: white 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 4px; VERTICAL-ALIGN: middle; BORDER-LEFT: white 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: white 1px solid; BACKGROUND-COLOR: #dfdfdf; TEXT-ALIGN: left
+2<@>}
+18<@>.formlisting TD {
+296<@>	BORDER-RIGHT: white 1px solid; PADDING-RIGHT: 1px! important; BORDER-TOP: white 1px solid; PADDING-LEFT: 1px! important; PADDING-BOTTOM: 1px! important; VERTICAL-ALIGN: middle; BORDER-LEFT: white 1px solid; PADDING-TOP: 1px! important; BORDER-BOTTOM: white 1px solid; BACKGROUND-COLOR: #ffffff;
+2<@>}
+18<@>.form_label_row {
+20<@>	TEXT-ALIGN: center
+2<@>}
+16<@>.form_label_col
+2<@>{
+100<@>    PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+2<@>}
+21<@>.form_label_col_body
+2<@>{
+82<@>    PADDING-RIGHT: 4px; PADDING-LEFT: 4px;  PADDING-BOTTOM: 2px; PADDING-TOP: 2px
+2<@>}
+1<@>
+19<@>.form_label_col_80
+2<@>{
+113<@>    PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; PADDING-TOP: 2px; WIDTH: 80%;
+2<@>}
+8<@>INPUT {
+160<@>	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; PADDING-BOTTOM: 2px; MARGIN: 0px 8px 0px 0px !important; MARGIN: 0px 5px 0px 0px; PADDING-TOP: 2px; WHITE-SPACE: nowrap
+2<@>}
+19<@>.INPUT_no_spacing{
+124<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 0px; PADDING-TOP: 2px; WHITE-SPACE: nowrap
+2<@>}
+19<@>.INPUT_rightPlus2{
+124<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 2px 0px 0px; PADDING-TOP: 2px; WHITE-SPACE: nowrap
+2<@>}
+20<@>.INPUT_rightMinus1{
+162<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 2px 0px 0px !important;  MARGIN: 0px -1px 0px 0px; PADDING-TOP: 2px; WHITE-SPACE: nowrap
+2<@>}
+18<@>.INPUT_lefMinus4{
+125<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px -4px; PADDING-TOP: 2px; WHITE-SPACE: nowrap
+2<@>}
+19<@>.INPUT_rightPlus5{
+161<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 11px 0px 0px !important; MARGIN: 0px 5px 0px 0px; PADDING-TOP: 2px; WHITE-SPACE: nowrap
+2<@>}
+19<@>.INPUT_rightPlus8{
+161<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px 11px 0px 0px !important; MARGIN: 0px 8px 0px 0px; PADDING-TOP: 2px; WHITE-SPACE: nowrap
+2<@>}
+1<@>
+22<@>#sidehelp_container {
+79<@>	VERTICAL-ALIGN: top; WIDTH: 155px; COLOR: #f1f1f1; BACKGROUND-COLOR: #404343;
+2<@>}
+13<@>#help_text {
+138<@>	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #f1f1f1; PADDING-TOP: 5px; BACKGROUND-COLOR: #404343
+2<@>}
+20<@>#help_text A:link {
+114<@>	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: rgb(226,152,97); BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+2<@>}
+23<@>#help_text A:visited {
+114<@>	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: rgb(226,152,97); BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+2<@>}
+22<@>#help_text A:active {
+114<@>	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: rgb(226,152,97); BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+2<@>}
+21<@>#help_text A:hover {
+115<@>	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #404343; BACKGROUND-COLOR: rgb(226,152,97); TEXT-DECORATION: underline
+2<@>}
+5<@>DT {
+56<@>	MARGIN-TOP: 5px; FONT-WEIGHT: bold; MARGIN-BOTTOM: 5px
+2<@>}
+5<@>DD {
+55<@>	MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px; MARGIN-LEFT: 0px
+2<@>}
+7<@>DD P {
+37<@>	MARGIN-TOP: 5px; MARGIN-BOTTOM: 5px
+2<@>}
+8<@>DD DL {
+19<@>	MARGIN-LEFT: 30px
+2<@>}
+18<@>SPAN.button_ref {
+214<@>	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px 2px; COLOR: #111111; LINE-HEIGHT: 12px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #99ccee
+2<@>}
+19<@>.help_example DL {
+223<@>	BORDER-RIGHT: gray 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: gray 1px solid; PADDING-LEFT: 4px; PADDING-BOTTOM: 0px; BORDER-LEFT: gray 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: gray 1px solid; BACKGROUND-COLOR: #dfdfdf
+2<@>}
+1<@>
+1<@>
+12<@>#popitmenu{
+20<@>position: absolute;
+27<@>background-color: #404343;
+24<@>border:1px solid black;
+14<@>z-index: 100;
+20<@>visibility: hidden;
+2<@>}
+1<@>
+68<@>body{background:#757575;font: 12px/1.4 Arial, sans-serif, Verdana;}
+3<@>  
+84<@>.input02{border:1px solid #bbb;background:#fff;height:21px;width:200px;color:#555;}
+1<@>
+134<@>.login {position:absolute;left:50%;margin-left:-421px !important;margin-left:-421px;width:842px;text-align:left; background:#ffffff;}
+56<@>.td01{text-align:center;height:25px;padding-left:40px;}
+48<@>.productInfo{ background:#404343; height:31px;}
+49<@>.productInfo td{font-size: 14px;color: #FFFFFF;}
+145<@>.loginTable {border-collapse:collapse;width:550px;height:300px;margin-top:30px; margin-left:150px; background:#f1f1f1;border:1px solid #FF6F00;}
+33<@>.loginTable td{text-align:left;}
+50<@>.loginInfo{ font-weight:bold;margin-left:135px; }
+34<@>.loginInfo td{text-align:center;}
+191<@>.loginBut{margin-top:0px;margin-left:5px;border: 0px #ccc solid;background: url(/html/skin/loginBut.gif);width:63px;height:30px;line-height:30px;color:#000;cursor:pointer;padding:0 0 0 0px;}
+1<@>
+80<@>.copywright{font-size: 14px;text-align:center; height:30px;background:#757575;}
+10<@>.link_bg{
+20<@>	padding: 2px 10px;
+2<@>}
+11<@>.letterBg{
+23<@>	background: #f36d23; 
+19<@>	text-align: left;
+20<@>	font-weight: bold;
+21<@>	padding: 0 0 0 5px;
+12<@>	margin: 0;
+15<@>	height: 25px;
+20<@>	line-height: 25px;
+2<@>}
+14<@>.loginBottom{
+45<@>	background:url(loginbottom.gif) no-repeat; 
+15<@>	height:41px; 
+18<@>	margin-top:33px;
+2<@>}
+1<@>
+95<@>td.wizard_title { font-size: 12px; color: #FFFFFF; background-color: #404343; height: 24px; } 
+49<@>td.wizard_tail { border-top:1px solid #404343;} 
+77<@>td.wizard_hline { background-color: #404343; height: 1px; color: #FF9933; } 
+76<@>td.wizard_vline { color: #FF9933; background-color: #404343; width: 1px; } 
+1<@>
+1<@>
+18<@>.select_language{
+21<@>	position: absolute;
+17<@>    right: 10px;
+15<@>    top: 60px;
+2<@>}
+19<@>#header_container{
+21<@>	position: relative;
+2<@>}
+10<@>#tblmain{
+17<@>	margin: 0 auto;
+18<@>    width: 980px;
+21<@>	text-align: center;
+2<@>}
+11<@>body,html{
+21<@>	text-align: center;
+17<@>	margin: 0 auto;
+2<@>}
+14<@>.top_product{
+21<@>	position: relative;
+2<@>}
+15<@>.product_page{
+21<@>	position: absolute;
+13<@>	left: 20px;
+11<@>	top: 6px;
+2<@>}
+16<@>.setting_table{
+28<@>	border: 1px solid #404343;
+2<@>}
+14<@>.login_table{
+17<@>	margin: 0 auto;
+24<@>    text-align: center;
+19<@>	margin-top: 60px;
+2<@>}
+12<@>.login_btn{
+21<@>	text-align: center;
+2<@>}
+13<@>.login_box {
+15<@>	width: 550px;
+16<@>	height: 300px;
+17<@>	margin: 0 auto;
+19<@>	margin-top: 30px;
+22<@>	background: #f1f1f1;
+28<@>	border: 1px solid #FF6F00;
+2<@>}
+1<@>
+21<@>&*#@util.js@#*&49911
+1<@>
+24<@>var BLANK_VALID = true;
+27<@>var BLANK_INVALID = false;
+24<@>var SPACE_VALID = true;
+26<@>var SPACE_INVALID = false
+24<@>var SLASH_VALID = true;
+27<@>var SLASH_INVALID = false;
+23<@>var IS_MAC_FLT = true;
+28<@>var IS_NOT_MAC_FLT = false;
+59<@>var ERROR_ENCODE_URL = "(E)(R)(R)(O)(R)!!(R)(O)(R)(R)(E)";
+38<@>var TYPE_NETWORK_ADDRESS = "NETWORK";
+28<@>var TYPE_IP_ADDRESS = "IP";
+39<@>var TYPE_BRCAST_ADDRESS = "BROADCAST";
+1<@>
+66<@>//Frederick,070214	add disabling of all elements under 1 id given
+17<@>DISABLED = true;
+17<@>ENABLED = false;
+1<@>
+1<@>
+30<@>function isHexaDigit(digit) {
+77<@>   var hexVals = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+88<@>                           "A", "B", "C", "D", "E", "F", "a", "b", "c", "d", "e", "f");
+29<@>   var len = hexVals.length;
+14<@>   var i = 0;
+20<@>   var ret = false;
+1<@>
+31<@>   for ( i = 0; i < len; i++ )
+40<@>      if ( digit == hexVals[i] ) break;
+1<@>
+18<@>   if ( i < len )
+18<@>      ret = true;
+1<@>
+15<@>   return ret;
+2<@>}
+1<@>
+50<@>//Function Name: isValidKey(val,size[,fieldname])
+67<@>//Description: check value entered is a valid key for wireless key
+40<@>//Parameters: val : value to be checked
+38<@>//			  size: size 13(128bit)|5(64bit)
+69<@>//			  fieldname (optional): show error message if error encountered
+39<@>//Output: true - no error	false: error
+44<@>function isValidKey(val, size, fieldname) {
+20<@>   var ret = false;
+25<@>   var len = val.length;
+26<@>   var dbSize = size * 2;
+1<@>
+107<@>	var addcomment1 = "請輸入13 個ASCII 字元或26 個十六進制數作為128比特WEP加密金鑰。";
+106<@>	var addcomment2 = "請輸入5 個ASCII 字元或13 個十六進制數 作為64比特WEP加密金鑰。";
+1<@>
+22<@>   if ( len == size )
+18<@>      ret = true;
+31<@>   else if ( len == dbSize ) {
+37<@>      for ( i = 0; i < dbSize; i++ )
+52<@>         if ( isHexaDigit(val.charAt(i)) == false )
+19<@>            break;
+25<@>      if ( i == dbSize )
+21<@>         ret = true;
+10<@>   } else
+19<@>      ret = false;
+1<@>
+76<@>	if (fieldname != undefined) //show error message if fieldname is available
+23<@>	   if (ret == false){
+17<@>		if (size == 5)
+45<@>			alertInvalid (fieldname,val,addcomment2);
+23<@>		else if (size == 13)
+45<@>			alertInvalid (fieldname,val,addcomment1);
+6<@>	   }
+1<@>
+15<@>   return ret;
+2<@>}
+1<@>
+1<@>
+36<@>function isValidHexKey(val, size) {
+20<@>   var ret = false;
+29<@>   if (val.length == size) {
+43<@>      for ( i = 0; i < val.length; i++ ) {
+54<@>         if ( isHexaDigit(val.charAt(i)) == false ) {
+19<@>            break;
+11<@>         }
+8<@>      }
+31<@>      if ( i == val.length ) {
+21<@>         ret = true;
+8<@>      }
+5<@>   }
+1<@>
+15<@>   return ret;
+2<@>}
+1<@>
+1<@>
+37<@>function isNameUnsafe(compareChar) {
+32<@>// Jerry 20040628, @ . is allow
+55<@>//   var unsafeString = "\"<>%\\^[]`\+\$\,='#&@.: \t";
+52<@>   var unsafeString = "\"<>%\\^[]`\+\$\,='#&: \t;";
+1<@>
+82<@>   if ( unsafeString.indexOf(compareChar) == -1 && compareChar.charCodeAt(0) > 32
+45<@>        && compareChar.charCodeAt(0) < 123 )
+59<@>      return false; // found no unsafe chars, return false
+8<@>   else
+19<@>      return true;
+2<@>}
+1<@>
+25<@>// Check if a name valid
+54<@>//Frederick,060731	add fields and modify error checks
+36<@>//check if the name is URL friendly
+77<@>//Function Name: isValidName(name[,fieldname][,isblankvalid][,isSpaceValid])
+66<@>//Description: Check that name contains no unnecessary characters
+83<@>//Parameters: name, fieldname(optional): show error message when error encountered
+104<@>//			isblankvalid: BLANK_VALID - allow empty values	| BLANK_INVALID(default) - don't allow empty values
+112<@>//			isSpaceValid: SPACE_VALID - allow space characetrs | SPACE_INVALID(default) - don't allow space characters
+38<@>//output: true:no error		false: error
+78<@>function isValidName(name,fieldname,isblankvalid,isSpaceValid,isSlashValid) {
+14<@>   var i = 0;
+25<@>   var hasField = false;
+1<@>
+46<@>	if (fieldname != undefined) hasField = true;
+1<@>
+17<@>   if (name=="")
+61<@>	if ((isblankvalid == undefined) || (isblankvalid == false))
+3<@>	{
+46<@>		if (hasField)	alertInvalid(fieldname,name);
+16<@>		return false;
+3<@>	}
+1<@>
+64<@>   if ((isSpaceValid == undefined) || (isSpaceValid == false)){
+42<@>	   for ( i = 0; i < name.length; i++ ) {
+51<@>	      if ( isNameUnsafe(name.charAt(i)) == true )
+6<@>		  {
+47<@>			if (hasField)	alertInvalid(fieldname,name);
+24<@>	         return false;
+6<@>		  }
+6<@>	   }
+3<@>	}
+6<@>	else
+3<@>	{
+42<@>	   for ( i = 0; i < name.length; i++ ) {
+53<@>		      if ( isCharUnsafe(name.charAt(i)) == true ){
+48<@>				if (hasField)	alertInvalid(fieldname,name);
+25<@>        		 return false;
+7<@>		   }
+4<@>		}
+3<@>	}
+1<@>
+37<@>	if ( isSlashValid==SLASH_INVALID ){
+33<@>		if ( name.indexOf("/") != -1 )
+4<@>		{
+47<@>			if (hasField)	alertInvalid(fieldname,name);
+20<@>	    	return false;
+4<@>		}
+3<@>	}
+1<@>
+1<@>
+16<@>   return true;
+2<@>}
+1<@>
+44<@>// same as is isNameUnsafe but allow spaces
+37<@>function isCharUnsafe(compareChar) {
+53<@>   var unsafeString = "\"<>%\\^[]`\+\$\,='#&@.:\t;";
+1<@>
+83<@>   if ( unsafeString.indexOf(compareChar) == -1 && compareChar.charCodeAt(0) >= 32
+45<@>        && compareChar.charCodeAt(0) < 123 )
+59<@>      return false; // found no unsafe chars, return false
+8<@>   else
+19<@>      return true;
+2<@>}
+1<@>
+1<@>
+1<@>
+60<@>function isSameSubNet(lan1Ip, lan1Mask, lan2Ip, lan2Mask) {
+1<@>
+18<@>   var count = 0;
+1<@>
+30<@>   lan1a = lan1Ip.split('.');
+32<@>   lan1m = lan1Mask.split('.');
+30<@>   lan2a = lan2Ip.split('.');
+32<@>   lan2m = lan2Mask.split('.');
+1<@>
+29<@>   for (i = 0; i < 4; i++) {
+38<@>      l1a_n = parseInt(lan1a[i], 10);
+38<@>      l1m_n = parseInt(lan1m[i], 10);
+38<@>      l2a_n = parseInt(lan2a[i], 10);
+38<@>      l2m_n = parseInt(lan2m[i], 10);
+46<@>      if ((l1a_n & l1m_n) == (l2a_n & l2m_n))
+18<@>         count++;
+5<@>   }
+19<@>   if (count == 4)
+19<@>      return true;
+8<@>   else
+20<@>      return false;
+2<@>}
+1<@>
+52<@>//Frederick,060731	add optional fieldname parameter
+62<@>//Function Name: isValidIpAddress(address[,fieldname][,type])
+62<@>//Description: Check that address entered is valid ip address
+95<@>//Parameters: address, 	fieldname(optional): entering will show error message when encountered
+109<@>//			  type: TYPE_NETWORK_ADDRESS:check network address | TYPE_IP_ADDRESS (default) check of type IP address
+41<@>//output: true:no error		false:has error
+52<@>function isValidIpAddress(address,fieldname,type) {
+14<@>   var i = 0;
+15<@>   var c = '';
+25<@>   var hasfield = false;
+1<@>
+48<@>   if (fieldname != undefined)	hasfield = true;
+1<@>
+1<@>
+24<@>   if (address == "") {
+54<@>       if (hasfield) alertInvalid(fieldname,address);
+18<@>	   return false;
+4<@>  }
+1<@>
+42<@>   for (i = 0; i < address.length; i++) {
+28<@>     c = address.charAt(i);
+36<@>     if((c>='0'&&c<='9')||(c=='.'))
+17<@>       continue;
+10<@>     else
+4<@>	 {
+54<@>       if (hasfield) alertInvalid(fieldname,address);
+18<@>	   return false;
+7<@>  	  }
+5<@>   }
+32<@>   if ( address == '0.0.0.0' ||
+39<@>        address == '255.255.255.255' )
+4<@>	 {
+54<@>       if (hasfield) alertInvalid(fieldname,address);
+20<@>      return false;
+4<@>	 }
+1<@>
+35<@>   addrParts = address.split('.');
+1<@>
+66<@>	//Frederick,060724	Make sure that everything is in decimal place
+39<@>	for (i=0; i < addrParts.length; i++){
+44<@>		addrParts[i] = parseInt(addrParts[i],10);
+22<@>		addrParts[i] += "";
+3<@>	}
+1<@>
+36<@>   if ( addrParts.length != 4 ) 	 {
+54<@>       if (hasfield) alertInvalid(fieldname,address);
+16<@>		return false;
+3<@>	}
+1<@>
+29<@>   for (i = 0; i < 4; i++) {
+52<@>      if (isNaN(addrParts[i]) || addrParts[i] =="")
+4<@>	 {
+54<@>       if (hasfield) alertInvalid(fieldname,address);
+23<@>         return false;
+4<@>	 }
+39<@>      num = parseInt(addrParts[i],10);
+34<@>      if ( num < 0 || num > 255 )
+4<@>	 {
+54<@>       if (hasfield) alertInvalid(fieldname,address);
+23<@>         return false;
+4<@>	 }
+32<@>	  if (addrParts[i].length > 3)
+4<@>	 {
+54<@>       if (hasfield) alertInvalid(fieldname,address);
+16<@>		return false;
+4<@>	 }
+5<@>   }
+1<@>
+54<@>	if ((type == undefined) || (type==TYPE_IP_ADDRESS)){
+131<@>	   if (parseInt(addrParts[0],10)==0||parseInt(addrParts[3],10)==0||parseInt(addrParts[0],10)==127||parseInt(addrParts[0],10)>223)
+5<@>		 {
+56<@>	       	if (hasfield) alertInvalid(fieldname,address);
+21<@>   				return false;
+5<@>		 }
+8<@>	}else{
+37<@>		if (type == TYPE_NETWORK_ADDRESS){
+106<@>			if ((parseInt(addrParts[0],10)==0) || (parseInt(addrParts[0],10)==127)||parseInt(addrParts[0],10)>223)
+6<@>			 {
+57<@>		       	if (hasfield) alertInvalid(fieldname,address);
+22<@>   					return false;
+6<@>			 }
+4<@>		}
+3<@>	}
+1<@>
+16<@>   return true;
+2<@>}
+1<@>
+38<@>function getLeftMostZeroBitPos(num) {
+14<@>   var i = 0;
+47<@>   var numArr = [128, 64, 32, 16, 8, 4, 2, 1];
+1<@>
+41<@>   for ( i = 0; i < numArr.length; i++ )
+36<@>      if ( (num & numArr[i]) == 0 )
+19<@>         return i;
+1<@>
+25<@>   return numArr.length;
+2<@>}
+1<@>
+38<@>function getRightMostOneBitPos(num) {
+14<@>   var i = 0;
+47<@>   var numArr = [1, 2, 4, 8, 16, 32, 64, 128];
+1<@>
+41<@>   for ( i = 0; i < numArr.length; i++ )
+43<@>      if ( ((num & numArr[i]) >> i) == 1 )
+41<@>         return (numArr.length - i - 1);
+1<@>
+14<@>   return -1;
+2<@>}
+1<@>
+53<@>//Function Name: isValidSubnetMask(mask[,fieldname])
+66<@>//Description: Check if mask entered is valid subnet mask or not)
+69<@>//Parameters: mask, fieldname(optional) shows error when encountered
+41<@>//output: true:no error	false: has error
+45<@>function isValidSubnetMask(mask,fieldname) {
+23<@>   var i = 0, num = 0;
+38<@>   var zeroBitPos = 0, oneBitPos = 0;
+31<@>   var zeroBitExisted = false;
+15<@>   var c = '';
+25<@>   var hasField = false;
+1<@>
+48<@>   if (fieldname != undefined) hasField = true;
+1<@>
+39<@>   for (i = 0; i < mask.length; i++) {
+25<@>     c = mask.charAt(i);
+36<@>     if((c>='0'&&c<='9')||(c=='.'))
+17<@>       continue;
+10<@>     else
+4<@>	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+21<@>       return false;
+4<@>	 }
+5<@>   }
+28<@>   if ( mask == '0.0.0.0' )
+4<@>	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+20<@>      return false;
+4<@>	 }
+1<@>
+32<@>   maskParts = mask.split('.');
+32<@>   if ( maskParts.length != 4 )
+4<@>	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+103<@>		 return false; //Frederick 060503, this part is buggy, an entry of 255.255.255. will not be detected
+5<@>	  }
+1<@>
+65<@>	//Frederick, 060503	check that every single digit is not blank{
+36<@>	for (i=0; i<maskParts.length; i++)
+32<@>		if (maskParts[i].length < 1){
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+17<@>			return false;
+4<@>		}
+65<@>	//Frederick, 060503	check that every single digit is not blank}
+1<@>
+29<@>   for (i = 0; i < 4; i++) {
+42<@>      if ( isNaN(maskParts[i]) == true ){
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+23<@>         return false;
+4<@>		}
+36<@>      num = parseInt(maskParts[i]);
+37<@>      if ( num < 0 || num > 255 )	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+23<@>         return false;
+4<@>		}
+51<@>      if ( zeroBitExisted == true && num != 0 )	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+23<@>         return false;
+4<@>		}
+47<@>      zeroBitPos = getLeftMostZeroBitPos(num);
+46<@>      oneBitPos = getRightMostOneBitPos(num);
+39<@>      if ( zeroBitPos < oneBitPos )	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+23<@>         return false;
+4<@>		}
+28<@>      if ( zeroBitPos < 8 )
+32<@>         zeroBitExisted = true;
+5<@>   }
+37<@>   if (parseInt(maskParts[0])==0)	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+18<@>   	return false;
+4<@>		}
+1<@>
+39<@>   if (parseInt(maskParts[3])>=255)	 {
+48<@>	   if (hasField) alertInvalid(fieldname,mask);
+18<@>   	return false;
+4<@>		}
+1<@>
+16<@>   return true;
+2<@>}
+1<@>
+47<@>//Function NAme: isValidPort(port[,fieldname])
+64<@>//description: Check if the port number entered is valid or not
+52<@>//Parameters: port: single integer or range (xx:yy)
+73<@>//			fieldname: fieldname of port to be checked, show alert if available
+42<@>//output: true: no error	false: has error
+39<@>function isValidPort(port,fieldname) {
+21<@>   var fromport = 0;
+21<@>   var toport = 100;
+25<@>   var hasField = false;
+1<@>
+48<@>   if (fieldname != undefined) hasField = true;
+1<@>
+32<@>   portrange = port.split(':');
+57<@>   if ( portrange.length < 1 || portrange.length > 2 ) {
+3<@>	{
+48<@>	   if (hasField) alertInvalid(fieldname,port);
+21<@>       return false;
+3<@>	}
+5<@>   }
+30<@>   if ( isNaN(portrange[0]) )
+3<@>	{
+48<@>	   if (hasField) alertInvalid(fieldname,port);
+21<@>       return false;
+3<@>	}
+40<@>   //fromport = parseInt(portrange[0]);
+34<@>   fromport = (portrange[0] * 1);
+33<@>   if ( portrange.length > 1 ) {
+34<@>       if ( isNaN(portrange[1]) )
+4<@>		{
+48<@>	   if (hasField) alertInvalid(fieldname,port);
+24<@>          return false;
+7<@>	    }
+42<@>       //toport = parseInt(portrange[1]);
+31<@>		toport = (portrange[1] * 1);
+33<@>       if ( toport <= fromport )
+4<@>		{
+48<@>	   if (hasField) alertInvalid(fieldname,port);
+25<@>           return false;
+4<@>		}
+5<@>   }
+1<@>
+75<@>   if ( fromport < 1 || fromport > 65535 || toport < 1 || toport > 65535 )
+3<@>	{
+48<@>	   if (hasField) alertInvalid(fieldname,port);
+21<@>       return false;
+3<@>	}
+1<@>
+16<@>   return true;
+2<@>}
+1<@>
+32<@>function isValidNatPort(port) {
+21<@>   var fromport = 0;
+21<@>   var toport = 100;
+1<@>
+32<@>   portrange = port.split('-');
+57<@>   if ( portrange.length < 1 || portrange.length > 2 ) {
+21<@>       return false;
+5<@>   }
+30<@>   if ( isNaN(portrange[0]) )
+21<@>       return false;
+40<@>   //fromport = parseInt(portrange[0]);
+32<@>	fromport = (portrange[0] * 1);
+33<@>   if ( portrange.length > 1 ) {
+34<@>       if ( isNaN(portrange[1]) )
+24<@>          return false;
+42<@>       //toport = parseInt(portrange[1]);
+31<@>		toport = (portrange[1] * 1);
+33<@>       if ( toport <= fromport )
+25<@>           return false;
+5<@>   }
+1<@>
+75<@>   if ( fromport < 1 || fromport > 65535 || toport < 1 || toport > 65535 )
+21<@>       return false;
+1<@>
+16<@>   return true;
+2<@>}
+1<@>
+1<@>
+57<@>function isValidMacAddress(address,ismacflt,fieldname) {
+15<@>   var c = '';
+21<@>   var i = 0, j = 0;
+17<@>   var hasField;
+57<@>   var additionalComment = " 例如: 00:22:33:AA:BB:CC";
+1<@>
+46<@>	if (fieldname != undefined) hasField = true;
+1<@>
+91<@>   if ((ismacflt == undefined) || (ismacflt == false)){   //can also allow no input at all
+111<@>   	if (( address.toLowerCase() == 'ff:ff:ff:ff:ff:ff' ) || ( address.toLowerCase() == '00:00:00:00:00:00' )){
+68<@>			if (hasField) alertInvalid(fieldname,address,additionalComment);
+17<@>			return false;
+4<@>		}
+3<@>	}
+1<@>
+35<@>   addrParts = address.split(':');
+34<@>   if ( addrParts.length != 6 ) {
+67<@>		if (hasField) alertInvalid(fieldname,address,additionalComment);
+16<@>		return false;
+3<@>	}
+1<@>
+29<@>   for (i = 0; i < 6; i++) {
+33<@>      if ( addrParts[i] == '' ){
+67<@>		if (hasField) alertInvalid(fieldname,address,additionalComment);
+23<@>         return false;
+5<@>	  }
+66<@>	  //Frederick, 060523	one byte can consist of only 2 characters{
+34<@>	  if (addrParts[i].length != 2){
+67<@>		if (hasField) alertInvalid(fieldname,address,additionalComment);
+17<@>		 return false;
+5<@>	  }
+24<@>	  //Frederick, 060523}
+52<@>      for ( j = 0; j < addrParts[i].length; j++ ) {
+51<@>         c = addrParts[i].toLowerCase().charAt(j);
+40<@>         if ( (c >= '0' && c <= '9') ||
+39<@>              (c >= 'a' && c <= 'f') )
+22<@>            continue;
+14<@>         else
+5<@>		 {
+68<@>			if (hasField) alertInvalid(fieldname,address,additionalComment);
+26<@>            return false;
+5<@>		 }
+8<@>      }
+5<@>   }
+1<@>
+48<@>	//aids, add checking for multicast mac address
+47<@>   if ((parseInt(addrParts[0], 16) % 2) == 1){
+66<@>	if (hasField) alertInvalid(fieldname,address,additionalComment);
+15<@>	return false;
+5<@>   }
+1<@>
+16<@>   return true;
+2<@>}
+1<@>
+51<@>function isValidMacFltAddress(address,fieldname) {
+15<@>   var c = '';
+21<@>   var i = 0, j = 0;
+25<@>   var hasField = false;
+57<@>   var additionalComment = " 例如: 00:22:33:AA:BB:CC";
+1<@>
+48<@>   if (fieldname != undefined) hasField = true;
+1<@>
+35<@>   addrParts = address.split(':');
+46<@>   if ( addrParts.length != 6 ) return false;
+1<@>
+29<@>   for (i = 0; i < 6; i++) {
+32<@>      if ( addrParts[i] == '' )
+5<@>	  {
+57<@>	     alertInvalid(fieldname,address,additionalComment);
+23<@>         return false;
+5<@>	  }
+66<@>	  //Frederick, 060523	one byte can consist of only 2 characters{
+33<@>	  if (addrParts[i].length != 2)
+5<@>	  {
+57<@>	     alertInvalid(fieldname,address,additionalComment);
+17<@>		 return false;
+5<@>	  }
+24<@>	  //Frederick, 060523}
+52<@>      for ( j = 0; j < addrParts[i].length; j++ ) {
+51<@>         c = addrParts[i].toLowerCase().charAt(j);
+40<@>         if ( (c >= '0' && c <= '9') ||
+39<@>              (c >= 'a' && c <= 'f') )
+22<@>            continue;
+14<@>         else
+8<@>	     {
+57<@>	     alertInvalid(fieldname,address,additionalComment);
+26<@>            return false;
+5<@>		 }
+8<@>      }
+5<@>   }
+1<@>
+16<@>   return true;
+2<@>}
+1<@>
+74<@>var hexVals = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
+45<@>              "A", "B", "C", "D", "E", "F");
+43<@>var unsafeString = "\"<>%\\^[]`\+\$\,'#&";
+85<@>// deleted these chars from the include list ";", "/", "?", ":", "@", "=", "&" and #
+40<@>// so that we could analyze actual URLs
+1<@>
+31<@>function isUnsafe(compareChar)
+56<@>// this function checks to see if a char is URL unsafe.
+52<@>// Returns bool result. True = unsafe, False = safe
+2<@>{
+82<@>   if ( unsafeString.indexOf(compareChar) == -1 && compareChar.charCodeAt(0) > 32
+45<@>        && compareChar.charCodeAt(0) < 123 )
+59<@>      return false; // found no unsafe chars, return false
+8<@>   else
+19<@>      return true;
+2<@>}
+1<@>
+30<@>function decToHex(num, radix)
+40<@>// part of the hex-ifying functionality
+2<@>{
+23<@>   var hexString = "";
+28<@>   while ( num >= radix ) {
+26<@>      temp = num % radix;
+37<@>      num = Math.floor(num / radix);
+34<@>      hexString += hexVals[temp];
+5<@>   }
+30<@>   hexString += hexVals[num];
+31<@>   return reversal(hexString);
+2<@>}
+1<@>
+21<@>function reversal(s)
+40<@>// part of the hex-ifying functionality
+2<@>{
+23<@>   var len = s.length;
+19<@>   var trans = "";
+29<@>   for (i = 0; i < len; i++)
+51<@>      trans = trans + s.substring(len-i-1, len-i);
+14<@>   s = trans;
+13<@>   return s;
+2<@>}
+1<@>
+1<@>
+76<@>//Frederick, 060414	Add converting of special characters for URL encoding {
+41<@>function convertSpclChar (compareChar) {
+1<@>
+16<@>	var i_ctr = 0;
+52<@>	var toConvertString = "\"<>%\\^[]`\+\$\,='#&: \t";
+24<@>	var returnString = "";
+1<@>
+37<@>	while (i_ctr < compareChar.length){
+1<@>
+64<@>		if (toConvertString.indexOf(compareChar.charAt(i_ctr)) == -1)
+60<@>			returnString = returnString + compareChar.charAt(i_ctr);
+7<@>		else
+69<@>			returnString = returnString + convert(compareChar.charAt(i_ctr));
+1<@>
+11<@>		i_ctr++;
+3<@>	}
+1<@>
+21<@>	return returnString
+2<@>}
+76<@>//Frederick, 060414 Add converting of special characters for URL encoding }
+1<@>
+1<@>
+99<@>//Frederick, 060503	Check if there's a ":" available or else don't allow post, issue of WinXP SP2{
+35<@>//Function Name: checkFile(txtBox)
+59<@>//Description: Check if the filename input is valid or not
+53<@>//Parameters: txtBox : textbox containinig file path
+42<@>//Output: true: no error	false: has error
+27<@>function checkFile(txtBox)
+2<@>{
+42<@>//aids, 060719 fix for F/W upgrade linux.
+25<@>var OS = GetBrowserOS();
+1<@>
+25<@>	if (txtBox.length == 0)
+3<@>	{
+52<@>		alert("請輸入一個有效的檔案名稱。");
+16<@>		return false;
+3<@>	}
+1<@>
+28<@>if (OS.indexOf("win")!=-1){
+1<@>
+33<@>	if (txtBox.indexOf("\\\\")!=-1)
+15<@>		return true;
+1<@>
+28<@>	//check if a : is existing
+28<@>	temp = txtBox.search(":");
+16<@>	if (temp != 1)
+3<@>	{
+52<@>		alert("請輸入一個有效的檔案名稱。");
+16<@>		return false;
+3<@>	}
+2<@>}
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+99<@>//Frederick, 060503	Check if there's a ":" available or else don't allow post, issue of WinXP SP2}
+1<@>
+1<@>
+22<@>function convert(val)
+46<@>// this converts a given char to url hex form
+2<@>{
+50<@>   return  "%" + decToHex(val.charCodeAt(0), 16);
+2<@>}
+1<@>
+1<@>
+44<@>//Function Name: encodeUrl(val[,fieldname])
+71<@>//Description: Encodes any special characers encountered to URL format
+92<@>//Parameters: val, fieldname (optional) if available will show alert when error encountered
+26<@>//Output: New encoded URL
+76<@>//		  ERROR_ENCODE_URL : error encountered, non-ISO-8859-1 characters found
+34<@>function encodeUrl(val,fieldname)
+2<@>{
+29<@>   var len     = val.length;
+20<@>   var i       = 0;
+21<@>   var newStr  = "";
+23<@>   var original = val;
+25<@>   var hasField = false;
+1<@>
+49<@>   if (fieldname != undefined ) hasField = true;
+1<@>
+33<@>   for ( i = 0; i < len; i++ ) {
+50<@>//aids, 080123 exclude ASCII characters above 126
+56<@>      if ( val.substring(i,i+1).charCodeAt(0) < 127 ) {
+60<@>         // hack to eliminate the rest of unicode from this
+54<@>         if (isUnsafe(val.substring(i,i+1)) == false)
+52<@>            newStr = newStr + val.substring(i,i+1);
+14<@>         else
+61<@>            newStr = newStr + convert(val.substring(i,i+1));
+15<@>      } else {
+30<@>         // woopsie! restore.
+120<@>         //alert ("Found a non-ISO-8859-1 character at position: " + (i+1) + ",\nPlease eliminate before continuing.");
+28<@>         newStr = original;
+1<@>
+19<@>		 if (hasField) {
+32<@>			alertInvalid(fieldname,val);
+30<@>			newStr = ERROR_ENCODE_URL;
+5<@>		 }
+1<@>
+44<@>         // short-circuit the loop and exit
+18<@>         i = len;
+8<@>      }
+5<@>   }
+1<@>
+18<@>   return newStr;
+2<@>}
+1<@>
+26<@>var markStrChars = "\"'";
+1<@>
+74<@>// Checks to see if a char is used to mark begining and ending of string.
+60<@>// Returns bool result. True = special, False = not special
+36<@>function isMarkStrChar(compareChar)
+2<@>{
+50<@>   if ( markStrChars.indexOf(compareChar) == -1 )
+66<@>      return false; // found no marked string chars, return false
+8<@>   else
+19<@>      return true;
+2<@>}
+1<@>
+61<@>// use backslash in front one of the escape codes to process
+29<@>// marked string characters.
+30<@>// Returns new process string
+36<@>function processMarkStrChars(str) {
+14<@>   var i = 0;
+20<@>   var retStr = '';
+1<@>
+40<@>   for ( i = 0; i < str.length; i++ ) {
+50<@>      if ( isMarkStrChar(str.charAt(i)) == true )
+25<@>         retStr += '\\';
+31<@>      retStr += str.charAt(i);
+5<@>   }
+1<@>
+18<@>   return retStr;
+2<@>}
+1<@>
+35<@>// Web page manipulation functions
+1<@>
+31<@>function showhide(element, sh)
+2<@>{
+16<@>    var status;
+19<@>    if (sh == 1) {
+26<@>        status = "block";
+6<@>    }
+11<@>    else {
+24<@>        status = "none"
+6<@>    }
+1<@>
+30<@>	if (document.getElementById)
+3<@>	{
+14<@>		// standard
+59<@>		document.getElementById(element).style.display = status;
+3<@>	}
+24<@>	else if (document.all)
+3<@>	{
+12<@>		// old IE
+48<@>		document.all[element].style.display = status;
+3<@>	}
+27<@>	else if (document.layers)
+3<@>	{
+16<@>		// Netscape 4
+45<@>		document.layers[element].display = status;
+3<@>	}
+2<@>}
+1<@>
+27<@>// Load / submit functions
+1<@>
+25<@>function getSelect(item)
+2<@>{
+10<@>	var idx;
+32<@>	if (item.options.length > 0) {
+31<@>	    idx = item.selectedIndex;
+37<@>	    return item.options[idx].value;
+3<@>	}
+8<@>	else {
+13<@>		return '';
+6<@>    }
+2<@>}
+1<@>
+32<@>function setSelect(item, value)
+2<@>{
+41<@>	for (i=0; i<item.options.length; i++) {
+46<@>        if (item.options[i].value == value) {
+33<@>        	item.selectedIndex = i;
+16<@>        	break;
+10<@>        }
+6<@>    }
+2<@>}
+1<@>
+31<@>function setCheck(item, value)
+2<@>{
+26<@>    if ( value == '1' ) {
+30<@>         item.checked = true;
+13<@>    } else {

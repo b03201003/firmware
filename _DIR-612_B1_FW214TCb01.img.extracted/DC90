@@ -1,0 +1,989 @@
+13<@>&&*&&tw**&**
+55<@>   	document.formFilterEdit.localAcl_any.checked=true;
+49<@>   	<VWS_FUNCTION (void*)showIpRangeSecondIp();>
+53<@>   	if(document.formFilterEdit.localAcl_any.checked)
+6<@>   	{
+68<@>   	  document.getElementById("serviceTable").style.display="none";
+10<@>    }else
+6<@>    {
+64<@>      document.getElementById("serviceTable").style.display="";
+6<@>    }
+4<@>  }
+23<@>  if(direction == "1")
+4<@>  {
+15<@>    //WAN side
+68<@>    document.getElementById("lanaclswitchid").style.display="none";
+51<@>    document.formFilterEdit.interface.value="wan";
+44<@>//#ifdef CONFIG_ALLOW_IP_MARK_LAN_INTERFACE
+48<@>    if(document.getElementById("lansettingid"))
+71<@>         document.getElementById("lansettingid").style.display="none";
+50<@>    if(document.getElementById("lanitfselectid"))
+73<@>         document.getElementById("lanitfselectid").style.display="none";
+9<@>//#endif
+67<@>    document.getElementById("fromwanipid").style.display="none";  
+64<@>   	document.getElementById("localanyid").style.display="none";
+67<@>   	document.getElementById("wanitfselectid").style.display="";   
+68<@>    document.getElementById("wansettingid").style.display="";      
+56<@>    document.formFilterEdit.localAcl_any.checked=false;
+62<@>    document.getElementById("serviceTable").style.display="";
+70<@>    document.getElementById ("iprangesecondip").style.display="none";
+59<@>    	document.formFilterEdit.wansetting.selectedIndex=0;  
+65<@>    document.getElementById ("wanitfselectid").style.display="";
+66<@>    document.getElementById ("fromwanipid").style.display="none";
+4<@>  }
+19<@>  OnClickWebChk();
+22<@>  OnClickTelnetChk();
+20<@>  OnClickTftpChk();
+19<@>  OnClickFtpChk();
+20<@>  OnClickSnmpChk();
+19<@>  onClickAnyBtn();
+15<@>  return true;
+2<@>}
+18<@>function onLoad()
+2<@>{
+45<@>   // document.lanwancheck.noop.value="lan";
+55<@>   if(document.lanwancheck.nop[0].checked==true)      
+27<@>      LanWan(0); //lan    
+9<@>    else
+17<@>      LanWan(1);
+5<@>    
+2<@>}
+10<@></script>
+8<@></head>
+1<@>
+26<@><body onload="onLoad();">
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+27<@>	TabHeader="進階設定";
+26<@>	SideItem="存取控制";
+17<@>	HelpItem="Acl";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+26<@><form name="lanwancheck">
+46<@>	<table id=box_header border=0 cellSpacing=0>
+7<@>		<tr>
+41<@>			<td class=topheader>存取控制</td>
+8<@>		</tr>
+3<@>		
+7<@>		<tr>
+22<@>			<td class=content>
+106<@>			<p>存取控制中讓您選擇從網際網路端(WAN端)可以存取本路由器的服務種類。</p>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+1<@>
+68<@>	<table id=body_header border=0 cellSpacing=0 style="display:none">
+7<@>		<tr>
+48<@>			<td class=topheader>ACL設定 -- 方向</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+10<@>					<tr>
+61<@>						<td class=form_label_40>選擇方向:&nbsp;&nbsp;</td>
+11<@>						<td>
+111<@>							<input type="radio" name="nop" value="lan" onClick="LanWan(0);">&nbsp;LAN&nbsp;&nbsp;&nbsp;&nbsp;						
+89<@>							<input type="radio" name="nop" value="wan" checked onClick="LanWan(1);">&nbsp;WAN
+12<@>						</td>
+11<@>					</tr>
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+8<@></form>
+2<@> 
+80<@><form action="form2LocalAclenablecfg.cgi" method=POST name="formFilterEnable"">
+47<@><div id="lanaclswitchid" style="display:none">
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+49<@>			<td class=topheader>LAN ACL Switch設定</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+10<@>					<tr>
+71<@>						<td class=form_label_40>LAN ACL Switch:&nbsp;&nbsp;&nbsp;</td>		
+11<@>						<td>
+46<@><VWS_FUNCTION (void*)WriteAclEnableRadio();>	
+12<@>						</td>
+11<@>					</tr>
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+1<@>
+18<@>	<p align=center>
+90<@>	<input type="submit" value="套用" onClick="return localAclEnableCheck();">&nbsp;&nbsp;
+6<@>	</p>
+63<@>	<input type="hidden" NAME="submit.htm?acl.htm" value="Send">	
+7<@></div>
+8<@></form>
+1<@>
+75<@><form action="form2LocalAclEditcfg.cgi" method=POST name="formFilterEdit">
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+38<@>			<td class=topheader>ACL設定</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+51<@>					<input type="hidden" NAME="enable" value="1">
+56<@>					<input type="hidden" NAME="interface" value="lan">
+1<@>
+1<@>
+1<@>
+1<@>
+28<@>					<tr id="wansettingid">
+49<@>						<td class=form_label_40>設定依據:</td>
+95<@>						<td><select name='wansetting' size="1" style="width:200" ONCHANGE="wansettingchange();">
+38<@>							<option value="0">WAN</option>
+43<@>							<option value="1">IP位址</option>
+17<@>							</select>
+12<@>						</td>
+11<@>					</tr>
+51<@>					<VWS_FUNCTION (void*)WriteAclLANInterface();>
+1<@>
+48<@>					<tr id="fromwanipid" style="display:none">
+45<@>						<td class=form_label_40>IP位址:</td>
+11<@>						<td>
+49<@>						<input type='text' size="15" name="aclIP">
+55<@>						<div id="iprangesecondip" style="display:none">-
+84<@>						<input type='text' size="15" name="aclIPend">(IP 0.0.0.0代表任何IP位址)
+12<@>						</td>
+11<@>					</tr>
+1<@>
+51<@>					<tr id="wanitfselectid" style="display:none">
+67<@>						<td class=form_label_40 style="display:none">WAN介面:</td>
+32<@>						<td style="display:none">
+64<@>							<select name='fromwanitf' size="1" style="width:200"> 		
+62<@>							<VWS_SCREEN (char*) xscrnNaptWanRouterPvcWithPPPOE[];>
+43<@>							<option value="any">任何</option>
+17<@>							</select>
+12<@>						</td>
+11<@>					</tr>
+1<@>
+10<@>					<tr>
+52<@>						<td class=form_label_40>允許的服務:</td>
+16<@>						<td></td>
+11<@>					</tr>
+6<@>					
+26<@>					<tr id="localanyid">
+47<@>						<td align=right>&nbsp;&nbsp;&nbsp;&nbsp;
+97<@>						<input type="checkbox" name="localAcl_any" value="any" checked onClick="onClickAnyBtn();">
+12<@>						</td>
+47<@>						<td class=form_label_enabled>任何</td>
+11<@>					</tr>
+1<@>
+13<@>				</table>
+1<@>
+49<@>				<div id="serviceTable" style="display:none">
+12<@>				<table>
+31<@>					<tr style="display:none">
+11<@>					<td >
+122<@>					&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="localAcl_web" value="web" onClick="OnClickWebChk();">web &nbsp;
+11<@>					</td>
+48<@>					<td id="webporttext" style="display:none">
+94<@>					服務埠:<INPUT TYPE="TEXT" value="80" NAME="webport" SIZE="5" MAXLENGTH="5" VALUE="" >
+11<@>					</td>
+11<@>					</tr>
+6<@>					
+31<@>					<tr style="display:none">
+11<@>					<td >
+134<@>					&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="localAcl_telnet" value="telnet" onClick="OnClickTelnetChk();">telnet &nbsp;
+11<@>					</td>
+51<@>					<td id="telnetporttext" style="display:none">
+97<@>					服務埠:<INPUT TYPE="TEXT" value="23" NAME="telnetport" SIZE="5" MAXLENGTH="5" VALUE="" >
+11<@>					</td>
+11<@>					</tr>
+6<@>					
+31<@>					<tr style="display:none">
+11<@>					<td >
+122<@>					&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="localAcl_ftp" value="ftp" onClick="OnClickFtpChk();">ftp &nbsp;
+11<@>					</td>
+48<@>					<td id="ftpporttext" style="display:none">
+94<@>					服務埠:<INPUT TYPE="TEXT" value="21" NAME="ftpport" SIZE="5" MAXLENGTH="5" VALUE="" >
+11<@>					</td>
+11<@>					</tr>
+6<@>					
+31<@>					<tr style="display:none">
+11<@>					<td >
+126<@>					&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="localAcl_tftp" value="tftp" onClick="OnClickTftpChk();">tftp &nbsp;
+11<@>					</td>
+49<@>					<td id="tftpporttext" style="display:none">
+95<@>					服務埠:<INPUT TYPE="TEXT" value="69" NAME="tftpport" SIZE="5" MAXLENGTH="5" VALUE="" >
+11<@>					</td>
+11<@>					</tr>
+6<@>					
+31<@>					<tr style="display:none">
+11<@>					<td >
+126<@>					&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="localAcl_snmp" value="snmp" onClick="OnClickSnmpChk();">snmp &nbsp;
+11<@>					</td>
+49<@>					<td id="snmpporttext" style="display:none">
+96<@>					服務埠:<INPUT TYPE="TEXT" value="161" NAME="snmpport" SIZE="5" MAXLENGTH="5" VALUE="" >
+11<@>					</td>
+11<@>					</tr>
+6<@>					
+10<@>					<tr>
+11<@>					<td >
+92<@>						&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="localAcl_ping" value="ping">ping
+11<@>					</td>
+15<@>					<td></td>
+11<@>					</tr>
+13<@>				</table>
+13<@>				</div>		
+5<@>				
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+2<@>	
+1<@>
+18<@>	<p align=center>
+84<@>	<input type="submit" value="增加規則" onClick="return addClick()">&nbsp;&nbsp;
+62<@>	<input type="reset" value="取消" name="reset">&nbsp;&nbsp;
+62<@>	<input type="hidden" NAME="submit.htm?acl.htm" value="Send">
+7<@>	</p> 
+8<@></form>
+1<@>
+49<@><form method=POST Action="form2LocalAcldel.cgi">
+46<@><INPUT TYPE="HIDDEN" NAME="acldel" VALUE="" >
+45<@><INPUT TYPE="HIDDEN" NAME="state" VALUE="" >
+45<@><INPUT TYPE="HIDDEN" NAME="delip" VALUE="" >
+47<@><INPUT TYPE="HIDDEN" NAME="itftype" VALUE="" >
+48<@><INPUT TYPE="HIDDEN" NAME="openport" VALUE="" >
+47<@><INPUT TYPE="HIDDEN" NAME="itfname" VALUE="" >
+48<@><INPUT TYPE="HIDDEN" NAME="protocol" VALUE="" >
+47<@><INPUT TYPE="HIDDEN" NAME="itforip" VALUE="" >
+47<@><INPUT TYPE="HIDDEN" NAME="srvname" VALUE="" >
+48<@><INPUT TYPE="HIDDEN" NAME="delipend" VALUE="" >
+5<@><BR>
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+44<@>			<td class=topheader>目前ACL清單</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+22<@>			<td class=content>
+39<@>				<table class=formlisting border=0>
+31<@>					<tr class=form_label_row>
+43<@>						<td class=form_label_col>項目</td>
+65<@>						<td class=form_label_col  style="display:none">方向</td>
+52<@>						<td class=form_label_col>IP位址/介面</td>
+43<@>						<td class=form_label_col>服務</td>
+46<@>						<td class=form_label_col>服務埠</td>
+43<@>						<td class=form_label_col>刪除</td>
+11<@>					</tr>
+1<@>
+41<@><VWS_FUNCTION (void*)showLocalACList();>
+5<@>				
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+5<@>				
+31<@><script language="JavaScript">
+1<@>
+25<@>function deleteAclip(id)
+2<@>{
+42<@><VWS_FUNCTION (void*)localAclEnablejs();>
+2<@>{
+54<@>if(lanAclips.length==1&&lanAclips[0].selectindex==id)
+5<@>   {
+106<@>   alert("抱歉! 必須有一個以上從lan端來的IP或一個lan端介面被允許存取數據機!");
+17<@>   return false;
+5<@>   }
+2<@>}
+15<@>  return true;
+2<@>}
+132<@>function LocalAclDelFunc( form , acldel, state,ip,ip2,itftype,openport,itfname,protocol,itforip,srvname,isLocal,id,localAclEnable){
+48<@>if(isLocal&&localAclEnable&&!deleteAclip(id)){	
+23<@>       return false;		
+7<@>	   }	
+33<@>  form.elements[0].value=acldel;
+32<@>  form.elements[1].value=state;
+29<@>  form.elements[2].value=ip;
+35<@>  form.elements[3].value=openport;
+34<@>  form.elements[4].value=itftype;
+34<@>  form.elements[5].value=itfname;
+35<@>  form.elements[6].value=protocol;
+34<@>  form.elements[7].value=itforip;
+34<@>  form.elements[8].value=srvname;
+31<@>   form.elements[9].value=ip2;
+17<@>  form.submit();
+15<@>  return true;
+2<@>}
+1<@>
+10<@></script>
+61<@><input type="hidden" NAME="submit.htm?acl.htm" value="Send">
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+28<@>&*#@virtualSrv.htm@#*&15051
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+31<@><title>虛擬伺服器</title>
+9<@><SCRIPT>
+17<@>var curTblNum=0;
+44<@><VWS_FUNCTION (void*)showVrtSrvTableNum();>
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+35<@>var retPort=/^([0-9]|[:]){1,15}$/;
+28<@>var retNum=/^[0-9]{1,15}$/;
+1<@>
+47<@>function portInfo(startPort, endPort, srvName)
+2<@>{
+29<@>	this.startPort = startPort;
+25<@>	this.endPort = endPort;
+25<@>	this.srvName = srvName;
+2<@>}
+40<@>function serverType(name,protocol,port)
+2<@>{
+17<@>	this.name=name;
+25<@>	this.protocol=protocol;
+17<@>	this.port=port;
+2<@>}
+31<@>var servertypes = new Array();
+45<@>servertypes[0]=new serverType("AUTH",6,113);
+44<@>servertypes[1]=new serverType("DNS",17,53);
+43<@>servertypes[2]=new serverType("FTP",6,21);
+47<@>servertypes[3]=new serverType("IPSEC",17,500);
+45<@>servertypes[4]=new serverType("POP3",6,110);
+46<@>servertypes[5]=new serverType("PPTP",6,1723);
+44<@>servertypes[6]=new serverType("SMTP",6,25);
+43<@>servertypes[7]=new serverType("SSH",6,22);
+46<@>servertypes[8]=new serverType("TELNET",6,23);
+45<@>servertypes[9]=new serverType("TFTP",17,69);
+44<@>servertypes[10]=new serverType("WEB",6,80);
+1<@>
+21<@>function cbClick() {
+31<@>	with ( document.addVrtSrv ) {
+36<@>		var idx = srvname.selectedIndex;	
+41<@>		for( var i=0;i<servertypes.length;i++)
+4<@>		{
+58<@>		  if(srvname.options[idx].value == servertypes[i].name)
+5<@>			{
+39<@>				inprt.value = servertypes[i].port;
+40<@>				srvprt.value = servertypes[i].port;
+63<@>				if(servertypes[i].protocol==6) protocol.selectedIndex = 0;
+63<@>				if(servertypes[i].protocol==17)protocol.selectedIndex = 1;
+11<@>				break;
+5<@>			}
+6<@>		}		
+3<@>	}
+2<@>}
+1<@>
+43<@>function checkOpenPort(startport, endport)
+2<@>{
+31<@>	var openedPort = new Array();
+31<@>	var rmtaccPort = new Array();
+42<@>	<VWS_FUNCTION (void*)showGWOpendPort();>
+2<@>	
+42<@>	for( var i=0; i<openedPort.length; i++ )
+3<@>	{
+86<@>		if( ((startport>=openedPort[i].startPort) && (startport<=openedPort[i].endPort)) ||
+79<@>			((endport>=openedPort[i].startPort) && (endport<=openedPort[i].endPort)) ||
+80<@>			((startport<=openedPort[i].startPort) && (endport>=openedPort[i].endPort)) )
+4<@>		{
+97<@>			alert("您指派的服務埠已經被"+openedPort[i].srvName+"("+openedPort[i].startPort+"-"+
+57<@>				openedPort[i].endPort+")使用，請重新輸入!");
+17<@>			return false;
+4<@>		}
+3<@>	}
+42<@>	for ( var i=0; i<rmtaccPort.length; i++)
+3<@>	{
+80<@>		if ((startport<=rmtaccPort[i].startPort) && (endport>=rmtaccPort[i].endPort))
+4<@>		{
+92<@>			alert("抱歉! 您輸入的服務埠已經被遠端存取使用了，請重新輸入!");
+17<@>			return false;
+4<@>		}
+3<@>	}
+2<@>	
+14<@>	return true;
+2<@>}
+1<@>
+22<@>function btnApply() {
+33<@>	with ( document.addVrtSrv ) {		
+46<@>	//add by ramen 20090609 to check server name
+31<@>	     if(radiosrv[1].checked){
+49<@>	     	if(!checkSpecialChar(txtsrvname.value,1))
+12<@>	     	   {
+56<@>	     	   	alert("無效的字元，請重新輸入!");
+25<@>	     	   	return false;
+12<@>	     	   }
+3<@>		
+8<@>	     }
+16<@>	//end by ramen
+1<@>
+36<@>		//add at 20090805 to check wan ip
+26<@>		fromwanitf.value="any";
+3<@>		
+59<@>		if ( inprt.value == '' || !retPort.test(inprt.value) ) {
+59<@>			msg = '廣域網端口號' + inprt.value + ' 非法.';	
+15<@>			alert(msg);
+17<@>			return false;
+4<@>		}
+2<@>	
+61<@>		if ( srvprt.value == '' || !retPort.test(srvprt.value) ) {
+67<@>    		msg = '局域網開放端口號' + srvprt.value + '非法.';
+18<@>    		alert(msg);
+20<@>    		return false;
+7<@>   		}
+3<@>		
+34<@>		var inrangevalue = inprt.value;
+41<@>		var invalue = inrangevalue.split(':');
+17<@>		var startPort;
+15<@>		var endPort;
+26<@>		var wanOpenPortRange=0;
+34<@>		var wanOpenPortRangeInterval=0;
+40<@>		if(inrangevalue.match("[:]") == null)
+4<@>		{
+35<@>			startPort=parseInt(invalue[0]);
+33<@>			endPort=parseInt(invalue[0]);
+4<@>		}
+7<@>		else
+4<@>		{
+35<@>			startPort=parseInt(invalue[0]);
+33<@>			endPort=parseInt(invalue[1]);
+23<@>			wanOpenPortRange=1;
+47<@>			wanOpenPortRangeInterval=endPort-startPort;
+4<@>		}
+59<@>		if (startPort > endPort || startPort<1 || endPort>65535)
+4<@>		{
+41<@>			msg = '非法的廣域網端口號!';
+15<@>			alert(msg);
+17<@>			return false;
+4<@>		}
+48<@>		//if ( !checkOpenPort(startPort, endPort) ) {
+20<@>		//	inprt.focus();
+19<@>		//	return false;
+6<@>		//}
+41<@>//add by ramen to support lan port range
+29<@>		inrangevalue=srvprt.value;
+37<@>		invalue = inrangevalue.split(':');
+40<@>		if(inrangevalue.match("[:]") == null)
+4<@>		{
+35<@>			startPort=parseInt(invalue[0]);
+33<@>			endPort=parseInt(invalue[0]);
+4<@>		}
+7<@>		else
+4<@>		{
+28<@>		    if(!wanOpenPortRange)
+10<@>			     {
+54<@>							msg = '非法的局域網開放端口范圍!';
+19<@>							alert(msg);
+21<@>							return false;
+7<@>				 }
+35<@>			startPort=parseInt(invalue[0]);
+33<@>			endPort=parseInt(invalue[1]);
+1<@>
+4<@>		}
+1<@>
+59<@>		if (startPort > endPort || startPort<1 || endPort>65535)
+4<@>		{
+47<@>			msg = '非法的局域網開放端口號!';
+15<@>			alert(msg);
+17<@>			return false;
+4<@>		}
+76<@>		if((endPort-startPort)&&(wanOpenPortRangeInterval!=(endPort-startPort))){
+68<@>		   msg="局域網及廣域網的端口范圍長度必須一致!";
+17<@>		   alert(msg);
+19<@>		   return false;
+4<@>		}
+1<@>
+25<@>		if (!checkIP(srvaddr))
+17<@>			return false;
+21<@>		if(srvaddr.value==
+36<@>		<VWS_FUNCTION (void*)LanItfIp();>
+4<@>		)
+4<@>		{
+83<@>		alert("它是數據機的IP位址，請輸入一個LAN端的有效IP位址。");
+19<@>		srvaddr.focus();
+16<@>		return false;
+4<@>		}
+1<@>
+61<@>		if (!Lan1EqLan2(srvaddr.value, lanmask, lanip, lanmask)) {
+38<@>			alert('無效的LAN IP位址。');
+20<@>			srvaddr.focus();
+17<@>			return false;
+6<@>		}		
+3<@>	}
+21<@>	if(curTblNum >= 49)
+3<@>	{
+55<@>		alert('虛擬伺服器的數值應該要小於48!');
+16<@>		return false;
+3<@>	}
+2<@>}
+10<@></script>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+27<@>	TabHeader="進階設定";
+29<@>	SideItem="虛擬伺服器";
+21<@>	HelpItem="Virtual";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+43<@>		<td class=topheader>虛擬伺服器</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+115<@>			<p>此頁面讓您設定虛擬伺服器，讓他人可以透過網際網路存取您區域網路內的服務。
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+64<@><form action="form2AddVrtsrv.cgi" method=POST name="addVrtSrv">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+49<@>		<td class=topheader>虛擬伺服器設定</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+85<@>  			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+12<@>    			<tr>
+49<@>                    <td class="form_label_left">
+93<@>                    <input type="radio" name="radiosrv" value="0" checked>常用服務名稱
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+92<@>                    <select name='srvname' size="1" style="width:200" onChange='cbClick()'>
+58<@>		            <option value="AUTH" selected>AUTH</option>
+47<@>		            <option value="DNS">DNS</option>
+47<@>		            <option value="FTP">FTP</option>
+51<@>		            <option value="IPSEC">IPSEC</option>
+49<@>		            <option value="POP3">POP3</option>
+49<@>		            <option value="PPTP">PPTP</option>
+49<@>		            <option value="SMTP">SMTP</option>
+47<@>		            <option value="SSH">SSH</option>
+53<@>		            <option value="TELNET">TELNET</option>
+49<@>		            <option value="TFTP">TFTP</option>
+47<@>		            <option value="WEB">WEB</option>
+24<@>		            </select>
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+85<@>                    <input type="radio" name="radiosrv" value="1">自訂服務名稱
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+83<@>                    <input type='text' size="15" name="txtsrvname" maxlength="15">
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+33<@>                    通訊協定
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+72<@>                    <select name='protocol' size="1" style="width:200">
+51<@>                    <option value="0">TCP</option>
+51<@>                    <option value="1">UDP</option>
+30<@>                    </select>
+26<@>                    </td>
+22<@>                </tr>
+11<@>          
+28<@>                <tr style="
+41<@>			<VWS_FUNCTION (void*)SendTagStyle();>
+6<@>			">
+49<@>                    <td class='form_label_left'>
+30<@>                    WAN設定
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+105<@>                    <select name='wansetting' size="1" style="width:200" ONCHANGE="wansettingchange();">
+54<@>                    <option value="0">介面</option>
+56<@>                    <option value="1">IP位址</option>
+30<@>                    </select>
+26<@>                    </td>
+22<@>                </tr>
+45<@>                <tr id="fromwanipid" style="
+41<@>			<VWS_FUNCTION (void*)SendTagStyle();>
+6<@>			">
+49<@>                    <td class='form_label_left'>
+33<@>                    WAN IP位址
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+82<@>                    <input type='text' size="15" name="fromwanip" maxlength="15">
+26<@>                    </td>
+22<@>                </tr>
+18<@>                 
+48<@>                <tr id="wanitfselectid" style="
+41<@>			<VWS_FUNCTION (void*)SendTagStyle();>
+6<@>			">
+49<@>                    <td class='form_label_left'>
+30<@>                    WAN介面
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+74<@>                    <select name='fromwanitf' size="1" style="width:200">
+75<@>                    <VWS_SCREEN (char*) xscrnNaptWanRouterPvcWithPPPOE[];>
+56<@>                    <option value="any">任何</option>
+30<@>                    </select>
+26<@>                    </td>
+22<@>                </tr>
+15<@>              
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+35<@>                   公用服務埠
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+80<@>                    <input type='text' size="15" name="inprt">(例如5001:5010)
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+38<@>                     私人服務埠 
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+64<@>                    <input type='text' size="15" name="srvprt">
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+33<@>                    LAN IP位址
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+80<@>                    <input type='text' size="15" name="srvaddr" maxlength="15">
+26<@>                    </td>
+22<@>                </tr>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+52<@><INPUT TYPE="hidden" NAME="wanIpOrItf" VALUE="itf">
+98<@><INPUT TYPE="hidden" NAME="submit.htm?virtualSrv.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+78<@><input type="submit" value="套用" name="save" onClick="return btnApply();">
+5<@></p>
+8<@></form>
+48<@><form method=POST Action="form2naptitfdel.cgi">
+50<@><INPUT TYPE="HIDDEN" NAME="actiontype" VALUE="" >
+49<@><INPUT TYPE="HIDDEN" NAME="natitfcmd" VALUE="" >
+45<@><INPUT TYPE="HIDDEN" NAME="state" VALUE="" >
+44<@><INPUT TYPE="HIDDEN" NAME="itf1" VALUE="" >
+44<@><INPUT TYPE="HIDDEN" NAME="itf2" VALUE="" >
+47<@><INPUT TYPE="HIDDEN" NAME="wanport" VALUE="" >
+47<@><INPUT TYPE="HIDDEN" NAME="instnum" VALUE="" >
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+64<@>		<td class=topheader>目前的虛擬伺服器轉傳清單</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+40<@>  			<table class=formlisting border=0>
+34<@>    			<tr class=form_label_row >
+48<@>                    <td class='form_label_col'>
+40<@>                    <b>服務名稱</b>
+26<@>                    </td>
+48<@>                    <td class='form_label_col'>
+40<@>                    <b>通訊協定</b>
+26<@>                    </td>
+48<@>                    <td class='form_label_col'>
+45<@>                    <b>本地端IP位址</b>
+26<@>                    </td>
+48<@>                    <td class='form_label_col'>
+46<@>                    <b>本地端服務埠</b>
+26<@>                    </td>
+55<@>                    <td class='form_label_col' style="
+41<@>			<VWS_FUNCTION (void*)SendTagStyle();>
+6<@>			">
+40<@>                    <b>WAN IP位址</b>
+26<@>                    </td>
+48<@>                    <td class='form_label_col'>
+34<@>                    <b>WAN埠</b>
+26<@>                    </td>
+48<@>                    <td class='form_label_col'>
+34<@>                    <b>狀態</b>
+26<@>                    </td>
+48<@>                    <td class='form_label_col'>
+34<@>                    <b>行為</b>
+26<@>                    </td>
+22<@>                </tr>
+57<@>                <VWS_FUNCTION (void*)showVrtSrvTable();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+98<@><INPUT TYPE="HIDDEN" NAME="submit.htm?virtualSrv.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+31<@><script language="JavaScript">
+93<@>function natItfActionFunc( form , actiontype, natitfcmd, state, itf1, itf2,wanport,instnum){
+37<@>  form.elements[0].value=actiontype;
+36<@>  form.elements[1].value=natitfcmd;
+32<@>  form.elements[2].value=state;
+31<@>  form.elements[3].value=itf1;
+31<@>  form.elements[4].value=itf2;
+34<@>  form.elements[5].value=wanport;
+34<@>  form.elements[6].value=instnum;
+17<@>  form.submit();
+2<@>}
+10<@></script>
+9<@><script>
+64<@>	     			 document.addVrtSrv.inprt.value = servertypes[0].port;
+59<@>				document.addVrtSrv.srvprt.value = servertypes[0].port;
+82<@>				if(servertypes[0].protocol==6) document.addVrtSrv.protocol.selectedIndex = 0;
+82<@>				if(servertypes[0].protocol==17)document.addVrtSrv.protocol.selectedIndex = 1;
+2<@>	
+10<@></script>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+1<@>
+22<@>&*#@time.htm@#*&10811
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+31<@><title>時間與日期</title>
+1<@>
+9<@><SCRIPT>
+41<@>function ntpStartFunc( form , ntpstart){
+35<@>  form.elements[0].value=ntpstart;
+17<@>  form.submit();
+2<@>}
+1<@>
+21<@>function checkTime()
+3<@>{	
+30<@>	var year=document.time.year;
+28<@>	var day=document.time.day;
+30<@>	var hour=document.time.hour;
+28<@>	var min=document.time.min;
+28<@>	var sec=document.time.sec;
+1<@>
+23<@>	if (year.value=="") {
+38<@>		alert("「年」不可以空白!");
+34<@>		year.value = year.defaultValue;
+16<@>		year.focus();
+16<@>		return false;
+3<@>	}
+41<@>	if ( validateKey( year.value ) == 0 ) {
+74<@>		alert("無效的「年」數值! 數值應該是十進位數(0-9)。");
+34<@>		year.value = year.defaultValue;
+16<@>		year.focus();
+16<@>		return false;
+3<@>	}
+48<@>	if ( !checkDigitRange(year.value,1,0,9999) ) {
+66<@>		alert("無效的「年」數值! 數值應該介於0-9999。");
+34<@>		year.value = year.defaultValue;
+16<@>		year.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+22<@>	if (day.value=="") {
+38<@>		alert("「天」不可以空白!");
+32<@>		day.value = day.defaultValue;
+15<@>		day.focus();
+16<@>		return false;
+3<@>	}
+40<@>	if ( validateKey( day.value ) == 0 ) {
+74<@>		alert("無效的「天」數值! 數值應該是十進位數(0-9)。");
+32<@>		day.value = day.defaultValue;
+15<@>		day.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(day.value,1,1,31) ) {
+64<@>		alert("無效的「天」數值! 數值應該介於1-31。");
+32<@>		day.value = day.defaultValue;
+15<@>		day.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+23<@>	if (hour.value=="") {
+38<@>		alert("「時」不可以空白!");
+34<@>		hour.value = hour.defaultValue;
+16<@>		hour.focus();
+16<@>		return false;
+3<@>	}
+41<@>	if ( validateKey( hour.value ) == 0 ) {
+74<@>		alert("無效的「時」數值! 數值應該是十進位數(0-9)。");
+34<@>		hour.value = hour.defaultValue;
+16<@>		hour.focus();
+16<@>		return false;
+3<@>	}
+46<@>	if ( !checkDigitRange(hour.value,1,0,23) ) {
+64<@>		alert("無效的「時」數值! 數值應該介於0-59。");
+34<@>		hour.value = hour.defaultValue;
+16<@>		hour.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+22<@>	if (min.value=="") {
+38<@>		alert("「分」不可以空白!");
+32<@>		min.value = min.defaultValue;
+15<@>		min.focus();
+16<@>		return false;
+3<@>	}
+40<@>	if ( validateKey( min.value ) == 0 ) {
+74<@>		alert("無效的「分」數值! 數值應該是十進位數(0-9)。");
+32<@>		min.value = min.defaultValue;
+15<@>		min.focus();
+16<@>		return false;
+4<@>	}	
+45<@>	if ( !checkDigitRange(min.value,1,0,59) ) {
+64<@>		alert("無效的「分」數值! 數值應該介於0-59。");
+32<@>		min.value = min.defaultValue;
+15<@>		min.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+22<@>	if (sec.value=="") {
+38<@>		alert("「秒」不可以空白!");
+32<@>		sec.value = sec.defaultValue;
+15<@>		sec.focus();
+16<@>		return false;
+3<@>	}
+40<@>	if ( validateKey( sec.value ) == 0 ) {
+74<@>		alert("無效的「秒」數值! 數值應該是十進位數(0-9)。");
+32<@>		sec.value = sec.defaultValue;
+15<@>		sec.focus();
+16<@>		return false;
+4<@>	}	
+45<@>	if ( !checkDigitRange(sec.value,1,0,59) ) {
+64<@>		alert("無效的「秒」數值! 數值應該介於0-59。");
+32<@>		sec.value = sec.defaultValue;
+15<@>		sec.focus();
+16<@>		return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+27<@>function checkUrlChar(url)
+2<@>{
+71<@>	var urlRegex=/^[a-zA-Z0-9]{1}[a-zA-Z0-9-.]{1,253}[a-zA-Z0-9]{1}$/;   
+49<@>	var ipRegex=/^([0-9]{1,3}\.{1}){3}[0-9]{1,3}$/;
+1<@>
+31<@>	if(!ipRegex.exec(url.value)){
+33<@>		if (!urlRegex.exec(url.value))
+4<@>		{
+31<@> 			alert("無效的字元!");
+17<@> 			url.focus();
+20<@> 			return false;		
+5<@>		}	
+8<@>	}else{
+21<@>		if( !checkIP(url))
+4<@>		{
+17<@>			return false;
+4<@>		}
+3<@>	}
+2<@>	
+15<@>	return true;	
+2<@>}
+1<@>
+23<@>function saveChanges()
+2<@>{
+2<@>	
+41<@>    if(document.ntp.ntpstate[1].checked)
+4<@> 	{
+81<@> 		if(document.ntp.ntpserver.value == "" && document.ntp.ntpserver2.value == "")
+5<@> 		{
+69<@>			alert("NTP時間伺服器地址不能為空，請重新輸入!");
+35<@>			document.ntp.ntpserver.focus();
+17<@>			return false;
+5<@> 		}
+4<@> 		
+42<@> 		if(document.ntp.ntpserver.value != "")
+5<@> 		{
+45<@>			if(!checkUrlChar(document.ntp.ntpserver))
+6<@>	 		{
+19<@>	 			return false;
+6<@>	 		}
+5<@> 		}
+1<@>
+42<@>		if(document.ntp.ntpserver2.value != "")
+5<@> 		{
+47<@> 			if(!checkUrlChar(document.ntp.ntpserver2))
+5<@>			{
+19<@>	 			return false;
+6<@> 			}
+9<@> 		}  		
+4<@>	}	
+41<@> 	var intetval=document.ntp.ntpinterval;
+28<@> 	if (intetval.value=="") {
+35<@>		alert("間隔不可以空白!");
+42<@>		intetval.value = intetval.defaultValue;
+20<@>		intetval.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( validateKey( intetval.value ) == 0 ) {
+71<@>		alert("無效的間隔數值! 數值應該是十進位數(0-9)。");
+42<@>		intetval.value = intetval.defaultValue;
+20<@>		intetval.focus();
+16<@>		return false;
+3<@>	}
+51<@>	if ( !checkDigitRange(intetval.value,1,1,999) ) {
+56<@>		alert("無效的間隔! 間隔應該介於1-999。");
+42<@>		intetval.value = intetval.defaultValue;
+20<@>		intetval.focus();
+16<@>		return false;
+3<@>	}
+15<@> 	return true;
+2<@>}
+1<@>
+22<@>function checkState()
+2<@>{
+39<@>	if(document.ntp.ntpstate[1].checked){
+15<@>		//enable ntp
+43<@>		enableTextField(document.ntp.ntpserver);
+44<@>		enableTextField(document.ntp.ntpserver2);
+49<@>		enableTextField(document.ntp.ntpinterval);    
+46<@>		enableTextField(document.ntp.ntptimezone); 
+10<@>	} else {
+44<@>		disableTextField(document.ntp.ntpserver);
+45<@>		disableTextField(document.ntp.ntpserver2);
+50<@>		disableTextField(document.ntp.ntpinterval);    
+47<@>		disableTextField(document.ntp.ntptimezone); 
+3<@>	}
+2<@>}
+1<@>
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+30<@><body onload="checkState();">
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="維護";
+29<@>	SideItem="時間與日期";

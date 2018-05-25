@@ -1,0 +1,973 @@
+13<@>&&*&&tw**&**
+66<@>			alert("金鑰內不應該有一個以上連續的空白!");			
+15<@>			return 0;		
+8<@>		}				
+13<@>		return 1;	
+4<@>	}	
+35<@>	for (var i=0; i<str.length; i++) 
+5<@>	{		
+156<@>		if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') || (str.charAt(i) >= 'a' && str.charAt(i) <= 'f') || (str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+15<@>			continue;		
+76<@>		alert("無效的密鑰。請輸入十六進制數字(0-9 或 a-f)。");		
+13<@>		return 0;	
+3<@>	}
+11<@>	return 1;
+2<@>}
+24<@>function WepKeyChange()
+3<@>{	
+27<@>	for (var i=1; i<=4; i++)	
+5<@>	{		
+58<@>		var radiogroup = document.formEncrypt.defaultTxKeyId;		
+53<@>		var keyfiled = document.getElementById('key'+i);		
+36<@>		if(radiogroup[i-1].checked==true)
+7<@>		{			
+32<@>			enableTextField(keyfiled);		
+4<@>		}
+7<@>		else
+7<@>		{			
+33<@>			disableTextField(keyfiled);		
+5<@>		}	
+3<@>	}
+2<@>}
+22<@>function checkState()
+3<@>{	
+116<@>	document.getElementById('optionforwep').style.display = (document.formEncrypt.method.selectedIndex==1)? '':'none';
+19<@>	WepKeyChange();		
+117<@>	document.getElementById('optionforwpa').style.display = (document.formEncrypt.method.selectedIndex>=2)? '':'none';	
+2<@>	
+61<@>	document.getElementById('wpainfo1').style.display = 'none';
+61<@>	document.getElementById('wpainfo2').style.display = 'none';
+61<@>	document.getElementById('wpainfo3').style.display = 'none';
+102<@>	if(document.formEncrypt.method.selectedIndex == 2 || document.formEncrypt.method.selectedIndex == 3)
+56<@>		document.getElementById('wpainfo1').style.display='';
+104<@>	else if (document.formEncrypt.method.selectedIndex==4 || document.formEncrypt.method.selectedIndex==5)
+56<@>		document.getElementById('wpainfo2').style.display='';
+56<@>		else if(document.formEncrypt.method.selectedIndex==6)
+112<@>			document.getElementById('wpainfo3').style.display=(document.formEncrypt.method.selectedIndex==6)? '':'none';
+1<@>
+2<@>}
+30<@>function setDefaultKeyValue()
+4<@>{		
+25<@>	var idx = 5; //repeater
+2<@>	
+46<@>	if (document.formEncrypt.length.value == 1) 
+5<@>	{		
+46<@>		document.formEncrypt.key1.maxLength = 10;		
+46<@>		document.formEncrypt.key2.maxLength = 10;		
+46<@>		document.formEncrypt.key3.maxLength = 10;		
+48<@>		document.formEncrypt.key4.maxLength = 10;				
+59<@>		document.formEncrypt.key1.value = wepkeys64_key1[idx];		
+59<@>		document.formEncrypt.key2.value = wepkeys64_key2[idx];		
+59<@>		document.formEncrypt.key3.value = wepkeys64_key3[idx];		
+58<@>		document.formEncrypt.key4.value = wepkeys64_key4[idx];	
+6<@>	}	  
+7<@>	else 
+6<@>	{			
+46<@>		document.formEncrypt.key1.maxLength = 26;		
+46<@>		document.formEncrypt.key2.maxLength = 26;		
+46<@>		document.formEncrypt.key3.maxLength = 26;		
+48<@>		document.formEncrypt.key4.maxLength = 26;				
+60<@>		document.formEncrypt.key1.value = wepkeys128_key1[idx];		
+60<@>		document.formEncrypt.key2.value = wepkeys128_key2[idx];		
+60<@>		document.formEncrypt.key3.value = wepkeys128_key3[idx];		
+62<@>		document.formEncrypt.key4.value = wepkeys128_key4[idx];		  
+3<@>	}
+2<@>}
+24<@>function updateFormat()
+3<@>{	
+54<@>	if (document.formEncrypt.length.selectedIndex == 0) 
+5<@>	{		
+70<@>		document.formEncrypt.format.options[0].text = 'ASCII (5 字符)';		
+77<@>		document.formEncrypt.format.options[1].text = '十六進制 (10 字符)';	
+4<@>	}	
+7<@>	else 
+5<@>	{		
+71<@>		document.formEncrypt.format.options[0].text = 'ASCII (13 字符)';		
+77<@>		document.formEncrypt.format.options[1].text = '十六進制 (26 字符)';	
+4<@>	}	
+23<@>	setDefaultKeyValue();
+2<@>}
+23<@>function lengthClick()
+3<@>{	
+51<@>	if (document.formEncrypt.length.selectedIndex==0)
+5<@>	{		
+14<@>		//64 bits		
+22<@>		var keysize = 10;		
+29<@>		for (var i=1; i<=4; i++)		
+7<@>		{			
+57<@>			document.getElementById('key'+i).size =keysize + 2 ; 
+26<@>			// extra for Mac						
+61<@>			if (document.getElementById('key'+i).value.length>10)				
+104<@>				document.getElementById('key'+i).value = document.getElementById('key'+i).value.substring(0,10);			
+52<@>			document.getElementById('key'+i).maxLength=10;		
+5<@>		}	
+3<@>	}
+7<@>	else 
+52<@>		if (document.formEncrypt.length.selectedIndex==1)
+6<@>		{		
+16<@>			//128 bits		
+23<@>			var keysize = 26;		
+30<@>			for (var i=1; i<=4; i++)		
+8<@>			{			
+58<@>				document.getElementById('key'+i).size =keysize + 8 ; 
+27<@>				// extra for Mac						
+62<@>				if (document.getElementById('key'+i).value.length>26)				
+105<@>					document.getElementById('key'+i).value = document.getElementById('key'+i).value.substring(0,26);			
+53<@>				document.getElementById('key'+i).maxLength=26;		
+6<@>			}	
+4<@>		}
+17<@>	updateFormat();
+2<@>}
+23<@>function saveChanges()
+2<@>{
+72<@>	enableTextField(document.formEncrypt.method); // enable Encrypt method
+52<@>	if (document.formEncrypt.method.selectedIndex>=2) 
+3<@>	{
+49<@>		var str = document.formEncrypt.pskValue.value;
+25<@>		if (str.length != 64) 
+4<@>		{
+16<@>			//8-63 ASCII
+24<@>			if (str.length < 8) 
+5<@>			{
+59<@>				alert('Pre-Shared金鑰必須為8個字元以上。');
+43<@>				document.formEncrypt.pskValue.focus();
+18<@>				return false;
+5<@>			}
+25<@>			if (str.length > 63) 
+5<@>			{
+60<@>				alert('Pre-Shared金鑰必須為63個字元以內。');
+43<@>				document.formEncrypt.pskValue.focus();
+18<@>				return false;
+5<@>			}
+43<@>			//add by ramen 20090603 for telefonica 
+30<@>			if(!isValidWPAPasswd(str))
+5<@>			{
+72<@>	 			alert('Pre-Shared金鑰不可使用如\\\'“的特殊字元。');
+18<@>				return false;
+7<@>			}		
+43<@>			document.formEncrypt.pskFormat.value=0;
+4<@>		}
+7<@>		else
+4<@>		{
+23<@>			//64 bit hex number
+37<@>			for (var i=0; i<str.length; i++) 
+5<@>			{
+59<@>				if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+54<@>				(str.charAt(i) >= 'a' && str.charAt(i) <= 'f') ||
+53<@>				(str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+15<@>					continue;
+75<@>				alert("無效的Pre-Shared金鑰格式! 格式必須為0-9或a-f。");
+43<@>				document.formEncrypt.pskValue.focus();
+18<@>				return false;
+7<@>	  		}
+4<@>			
+43<@>			document.formEncrypt.pskFormat.value=1;
+5<@>		}	
+5<@>  	}
+2<@>	
+18<@>	//check wep key	
+53<@>	if (document.formEncrypt.method.selectedIndex ==1)	
+5<@>	{		
+62<@>		if ( document.formEncrypt.defaultTxKeyId[0].checked ==true)
+7<@>		{			
+61<@>			if(validateWepKey(0,document.formEncrypt.key1.value)==0) 
+9<@>			{				
+43<@>				document.formEncrypt.key1.focus();				
+21<@>				return false;			
+7<@>			}		
+6<@>		}		
+62<@>		if ( document.formEncrypt.defaultTxKeyId[1].checked ==true)
+7<@>		{			
+62<@>			if (validateWepKey(1,document.formEncrypt.key2.value)==0) 
+9<@>			{				
+43<@>				document.formEncrypt.key2.focus();				
+21<@>				return false;			
+7<@>			}		
+6<@>		}		
+62<@>		if ( document.formEncrypt.defaultTxKeyId[2].checked ==true)
+7<@>		{			
+62<@>			if (validateWepKey(2,document.formEncrypt.key3.value)==0) 
+9<@>			{				
+43<@>				document.formEncrypt.key3.focus();				
+21<@>				return false;			
+7<@>			}		
+6<@>		}		
+62<@>		if ( document.formEncrypt.defaultTxKeyId[3].checked ==true)
+7<@>		{			
+62<@>			if (validateWepKey(3,document.formEncrypt.key4.value)==0) 
+9<@>			{				
+43<@>				document.formEncrypt.key4.focus();				
+21<@>				return false;			
+7<@>			}		
+5<@>		}	
+3<@>	}
+2<@>	
+17<@>   	return true;
+2<@>}
+10<@></script>
+8<@></head>
+7<@><body>
+31<@><script language="JavaScript">
+21<@>	TabHeader="無線";
+26<@>	SideItem="無線中繼";
+24<@>	HelpItem="wlrepeater";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+70<@><form action=form2WlRepeaterstep2.cgi method=POST name="formEncrypt">
+46<@>	<table id=box_header border=0 cellSpacing=0>
+7<@>		<tr>
+24<@>			<td class=topheader>
+23<@>				無線安全設定
+9<@>			</td>
+8<@>		</tr>
+7<@>		<tr>
+22<@>			<td class=content>
+145<@>				<p>第二步:設定無線安全。使用加密金鑰來啟用WEP或WPA可以防止任何未經授權的連線存取您的無線網路。</p>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+42<@>			<td class=topheader>無線安全設定
+9<@>			</td>
+8<@>		</tr>
+7<@>		<tr>
+22<@>			<td class=content>
+81<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>					<tr>
+55<@>						<td class=form_label_40>加密模式:&nbsp;</td>
+11<@>						<td>
+63<@>							<select size="1" name="method" onChange="checkState()">
+62<@>							<VWS_SCREEN (char*) webShowWlanMethodList_Repeater[];>
+17<@>							</select>
+12<@>						</td>
+11<@>					</tr>
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+2<@>	
+10<@>	</table>
+47<@>	<div  id="optionforwep" style="display:none">
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+46<@>			<td class=topheader>安全加密(WEP)</td>
+8<@>		</tr>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+81<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>					<tr>
+52<@>						<td class=form_label_40>驗證類型 ：</td>
+11<@>						<td>
+41<@>							<select size="1" name="authType">
+41<@>								<option value=2 >自動</option>
+47<@>								<option value=1 >共用金鑰</option>
+23<@>							</select>						
+12<@>						</td>
+11<@>					</tr>
+10<@>					<tr>
+52<@>						<td class=form_label_40>金鑰長度 ：</td>
+65<@>						<td><select size="1" name="length" ONCHANGE=lengthClick()>
+41<@>							<option value=1>64位元</option>
+42<@>							<option value=2>128位元</option>
+17<@>							</select>
+12<@>						</td>
+11<@>					</tr>
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+11<@>	</table>	
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+50<@>			<td class=topheader>無線WEP金鑰設定</td>
+8<@>		</tr>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+81<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+10<@>					<tr>
+47<@>						<td class=form_label_40>金鑰1 ：</td>
+11<@>						<td>
+86<@>							<input type="radio" name="defaultTxKeyId" value="1" onclick="WepKeyChange();">
+59<@>							<input type="text" name="key1" id="key1" size="26">
+12<@>						</td>
+11<@>					</tr>
+10<@>					<tr>
+47<@>						<td class=form_label_40>金鑰2 ：</td>
+11<@>						<td>
+86<@>							<input type="radio" name="defaultTxKeyId" value="2" onclick="WepKeyChange();">
+59<@>							<input type="text" name="key2" id="key2" size="26">
+12<@>						</td>
+14<@>					</tr>			
+10<@>					<tr>
+53<@>						<td class=form_label_40>金鑰3 ：</td>						
+11<@>						<td>
+86<@>							<input type="radio" name="defaultTxKeyId" value="3" onclick="WepKeyChange();">
+59<@>							<input type="text" name="key3" id="key3" size="26">
+12<@>						</td>
+13<@>					</tr>		
+10<@>					<tr>
+54<@>						<td class=form_label_40>金鑰4 ：</td>						 
+11<@>						<td>
+86<@>							<input type="radio" name="defaultTxKeyId" value="4" onclick="WepKeyChange();">
+59<@>							<input type="text" name="key4" id="key4" size="26">
+12<@>						</td>
+15<@>					</tr>				
+1<@>
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+12<@>	</table>		
+8<@>	</div>
+47<@>	<div  id="optionforwpa" style="display:none">
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+99<@>			<td class=topheader  id="wpainfo1" name = "wpainfo1" style="display:none">安全加密(WPA-PSK)
+9<@>			</td>
+100<@>			<td class=topheader  id="wpainfo2" name = "wpainfo2" style="display:none">安全加密(WPA2-PSK)
+9<@>			</td>
+108<@>			<td class=topheader  id="wpainfo3" name = "wpainfo3" style="display:none">安全加密(WPA-PSK+WPA2-PSK)
+9<@>			</td>
+8<@>		</tr>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+81<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+31<@>					<tr style="display:none">
+53<@>						<td class=form_label_40>Pre-Shared金鑰:</td>
+11<@>						<td>
+42<@>							<select size="1" name="pskFormat">
+40<@>							<option value=0 >密文</option>
+62<@>							<option value=1 >十六進制 (64 characters)</option>
+17<@>							</select>
+19<@>					        </td>
+12<@>					</tr>	
+29<@>					<tr id=tr_psk style="">
+46<@>						<td class=form_label_40>密碼 ：</td>
+13<@>						<td>	 
+68<@>							<input type="text" name="pskValue" size="32" maxlength="64" 
+55<@>							<VWS_SCREEN (char*) webShowWlanPSK_REPEATER[];>
+50<@>							>(8-63個 ASCII字元 或 64個 hex字元)
+19<@>					        </td>
+11<@>					</tr>
+31<@>					<tr style="display:none">
+49<@>						<td class=form_label_40>金鑰格式:</td>
+11<@>						<td>
+69<@>							<select size="1" name="format" ONCHANGE=setDefaultKeyValue()>
+38<@>							<option value=1>ASCII</option>
+36<@>							<option value=2>Hex</option>
+17<@>							</select>
+12<@>						</td>
+11<@>					</tr>
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+11<@>	</table>	
+8<@>	</div>
+1<@>
+1<@>
+1<@>
+18<@>	<p align=center>
+43<@>		<VWS_SCREEN (char*) webShowWPS2Check[];>
+66<@>		<input type="submit" value="上一步" name="back">&nbsp;&nbsp;
+97<@>		<input type="submit" value="下一步" name="save" onClick="return saveChanges()">&nbsp;&nbsp;
+6<@>	</p>
+49<@>	<input type="hidden" name="basicrates" value=0>
+48<@>	<input type="hidden" name="operrates" value=0>
+105<@>	<INPUT TYPE="hidden" NAME="submit.htm?wlrepeater_step3.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+10<@>	<script>
+51<@>	<VWS_SCREEN (char*) webShowWlanSECURITY_INIT1[];>
+15<@>	checkState();
+17<@>	updateFormat();
+73<@>	disableTextField(document.formEncrypt.method);// disable Encrypt method
+11<@>	</script>
+8<@></form>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+33<@>&*#@wlrepeater_step3.htm@#*&3119
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+34<@><title>無線中繼設定</title>
+9<@><script>
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+23<@>function saveChanges()
+2<@>{
+45<@>	if (!checkIP(document.WlRepeaterFinish.ip))
+3<@>	{
+34<@>		alert("不正確的IP位址!");
+16<@>		return false;
+3<@>	}
+1<@>
+56<@>	if (!checkMaskSpecial(document.WlRepeaterFinish.mask))
+3<@>	{
+32<@>		alert("不正確的遮罩!");
+16<@>		return false;
+3<@>	}
+100<@>	if(document.WlRepeaterFinish.ip.value != lanip || document.WlRepeaterFinish.mask.value != lanmask)
+4<@>	{	
+101<@>		var msg='局域網IP地址或子網掩碼改變將導致您可能無法繼續訪問路由器。\n'
+62<@>				+'您應釋放并更新PC的IP地址來繼續配置。\n'
+64<@>				+'并且原來的靜態路由規則將被全部清空。\n'
+63<@>				+'您確定要更改局域網IP地址或子網掩碼嗎?';
+3<@>		
+21<@>		if (!confirm(msg))
+17<@>			return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+10<@></script>
+1<@>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="無線";
+26<@>	SideItem="無線中繼";
+24<@>	HelpItem="wlrepeater";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+70<@><form action="form2lansetup.cgi" method=POST name="WlRepeaterFinish">
+48<@><table id="body_header" border=0 cellSpacing=0>
+6<@>	<tr>
+42<@>		<td class="topheader">完成設定</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+57<@>			<p>第三步:點選「完成」來儲存設定。</p>
+8<@>		</td>
+7<@>	</tr>
+6<@>	<tr>
+7<@>		<td>
+25<@>			<p style="color:red">
+192<@>&nbsp&nbsp&nbsp&nbsp強烈建議您修改本地網關的IP地址以避免與中心AP的IP地址沖突(例如中心AP的IP為192.168.1.1時，可將本地網關IP地址修改為192.168.1.2)。
+8<@>			</p>
+8<@>		</td>
+7<@>	</tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+87<@>        	<table class=formarea border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+46<@>					<td class=form_label_left>IP位址:</td>
+93<@>					<td class=form_label_right><input type="text" name="ip" size="15" maxlength="15" value=
+39<@><VWS_SCREEN (char*) xscrnLanIPAddr[];>
+7<@>></td>
+10<@>				</tr>
+9<@>				<tr>
+53<@>					<td class=form_label_left>子網路遮罩:</td>
+95<@>					<td class=form_label_right><input type="text" name="mask" size="15" maxlength="15" value=
+43<@><VWS_SCREEN (char*) xscrnLanSubnetMask[];>
+7<@>></td>
+11<@>				</tr> 
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+18<@>	<p align=center>
+95<@>	<input type=submit value="完成" name=wlrepeaterfinish onClick="return saveChanges()">&nbsp;
+6<@>	</p>
+99<@>	<INPUT TYPE="hidden" NAME="submit.htm?wlrepeater.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+1<@>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+23<@>&*#@wlwait.htm@#*&1118
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+28<@><title>自動重啟</title>
+9<@><script>
+14<@>var wtime=20;
+16<@>function stop()
+2<@>{
+24<@> //  clearTimeout(id); 
+2<@>}
+18<@>function start() 
+3<@>{ 
+12<@>   wtime--;
+19<@>   if (wtime >= 0)
+6<@>   { 
+44<@>      document.wlanWait.time.value = wtime;
+37<@>      id=setTimeout("start()",1000);
+5<@>   }
+19<@>   if (wtime == 0)
+6<@>   { 
+34<@>      document.wlanWait.submit();
+19<@>      return true;
+5<@>   }
+2<@>}
+10<@></script>
+8<@></head>
+44<@><body onLoad="start();" onUnload="stop();">
+13<@><blockquote>
+61<@><h2><font color="#0000FF">無線局域網重啟!</font></h2>
+5<@><hr>
+1<@>
+62<@><form action="form2WlanWait.cgi" method=POST name="wlanWait">
+22<@>	<font color=red><h4>
+43<@>		無線局域網正在重啟!請稍候...
+15<@>		</h4></font>
+2<@>	
+31<@>	<font color=red><h4>請等待
+37<@>		<INPUT TYPE=text NAME=time size=2>
+19<@>		 秒</h4></font>
+1<@>
+28<@>	<INPUT TYPE="hidden" NAME=
+49<@>		<VWS_FUNCTION (void*)webGetWlanRedirectURL();>
+46<@>		VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+1<@>
+14<@></blockquote>
+15<@></body></html>
+1<@>
+1<@>
+29<@>&*#@url_redirect.htm@#*&3063
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+38<@><title>Routing Configuration </title>
+9<@><SCRIPT>
+27<@>function checkTextStr(str)
+2<@>{
+35<@>	for (var i=0; i<str.length; i++) 
+3<@>	{
+121<@>		if ( str.charAt(i) == '%' || str.charAt(i) =='&' ||str.charAt(i) =='\\' || str.charAt(i) =='?' || str.charAt(i)=='"') 
+20<@>			return false;			
+3<@>	}
+14<@>	return true;
+2<@>}
+22<@>function applyClick()
+3<@>{	
+61<@>	if(!checkTextStr(document.urlredirect.urltextwindow.value))
+3<@>	{
+58<@>		if(document.urlredirect.urlredctcap[0].checked == true)
+4<@>		{
+48<@>			document.urlredirect.urltextwindow.value="";
+16<@>			return true;
+4<@>		}
+43<@>		alert("Invalid key value: % & \\ ? \"");
+46<@>		document.urlredirect.urltextwindow.focus();
+17<@>		return false;	
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+27<@>function disableRedirect()
+2<@>{
+50<@>	if (document.getElementById)  // DOM3 = IE5, NS6
+3<@>	{
+61<@>		document.getElementById('urltext').style.display = 'none';
+10<@>	} else {
+39<@>		if (document.layers == false) // IE4
+4<@>		{
+48<@>			document.all.urltext.style.display = 'none';
+4<@>		}
+3<@>	}
+2<@>}
+1<@>
+26<@>function enableRedirect()
+2<@>{
+50<@>	if (document.getElementById)  // DOM3 = IE5, NS6
+3<@>	{
+62<@>		document.getElementById('urltext').style.display = 'block';
+10<@>	} else {
+39<@>		if (document.layers == false) // IE4
+4<@>		{
+49<@>			document.all.urltext.style.display = 'block';
+4<@>		}
+3<@>	}
+3<@>}	
+10<@></SCRIPT>
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+65<@><h2><font color="#0000FF">URL Redirect Configuration</font></h2>
+68<@><form action="form2urlredirect.cgi" method=POST name="urlredirect">
+57<@><table border=0 width="500" cellspacing=4 cellpadding=0>
+20<@>  <tr><font size=2>
+147<@>    This page is used to configure the action of force redirecting to the predefined web site when your access internet (web browser) first time! 
+8<@>  </tr>
+44<@>  <tr><hr size=1 noshade align=top></tr>   
+9<@></table>
+57<@><table border=0 width="500" cellspacing=4 cellpadding=0>
+2<@> 
+7<@>  <tr>
+61<@>      <td ><font size=2><b>URL Redirect Capability:</b></td>
+12<@>      <td >
+111<@>      	<input type="radio" value="0" name="urlredctcap" onClick="return disableRedirect()">Disable&nbsp;&nbsp;
+96<@>     	<input type="radio" value="1" name="urlredctcap" onClick="return enableRedirect()">Enable
+12<@>      </td>
+15<@>  </tr>       
+11<@>  </table>
+1<@>
+42<@><div  id="urltext"  style="display:none">
+20<@><table width="500">
+7<@>  <tr>
+103<@>  <td><font size=2><b>URL(redirect to): &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;</b></td>
+78<@>  <td><input type="text"  maxlength="64" size="32" name="urltextwindow"></td>
+8<@>  </tr>
+9<@></table>
+7<@></div>
+1<@>
+91<@>  <input type="submit" value="Apply Changes" onclick="return applyClick()" >&nbsp;&nbsp;  
+7<@>  <br>
+76<@>      <input type="hidden" NAME="submit.htm?url_redirect.htm" value="Send">
+9<@><script>
+47<@><VWS_FUNCTION   (void*)urlredirectinitpage();>
+10<@></script>
+8<@></form>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+27<@>&*#@nat_ftpalg.htm@#*&2949
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+1<@>
+1<@>
+9<@><SCRIPT>
+1<@>
+32<@>function ftpalgportCheckClick()
+3<@>{	
+12<@>	var dport;
+3<@>	 
+1<@>
+55<@>		dport = getDigit(document.ftpalg.ftpdport.value, 1);
+59<@>		if ( validateKey(document.ftpalg.ftpdport.value) == 0 ||
+36<@>			(dport > 65535 || dport < 1) ) {
+73<@>			alert("Invalid port value! You should set a value between 1-65535.");
+37<@>			document.ftpalg.ftpdport.focus();
+17<@>			return false;
+4<@>		}
+14<@>	return true;
+2<@>}
+2<@>	
+10<@></SCRIPT>
+8<@></head>
+1<@>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+23<@>	TabHeader="Advanced";
+17<@>	SideItem="NAT";
+27<@>//	HelpItem="Device Info";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+50<@>		<td class=topheader>FTP ALG  Configuration</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+79<@>			<p>This page is used to configure FTP Server ALG and FTP Client ALG ports .
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+58<@><form action="form2ftpalg.cgi" method=POST name="ftpalg">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+40<@>		<td class=topheader>Setting port</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+85<@>  			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+12<@>    			<tr>
+49<@>                    <td class="form_label_left">
+34<@>                    FTP ALG  port
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+82<@>                    <input type="text" name="ftpdport" size="15" maxlength="125">
+26<@>                    </td>
+22<@>                </tr>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+113<@><input type="submit" value="Add Dest Ports" name="adddport" onClick="return ftpalgportCheckClick()">&nbsp;&nbsp;
+83<@><input type="submit" value="Delete Selected DestPort" name="deldport">&nbsp;&nbsp;
+1<@>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+47<@>		<td class=topheader>FTP ALG ports Table</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+40<@>  			<table class=formlisting border=0>
+34<@>    			<tr class=form_label_row >
+59<@>                <VWS_FUNCTION (void*)showFTPDportTable();>
+22<@>                </tr>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+68<@><input type="hidden" NAME="submit.htm?nat_ftpalg.htm" value="Send">
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+1<@>
+32<@>&*#@nat_portrigger.htm@#*&24492
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+31<@><title>服務埠觸發</title>
+29<@><SCRIPT language=javascript>
+15<@>TOTAL_ROW = 8;
+13<@>remain = 31;
+18<@>var appName = '';
+41<@>NO_SEL_MSG = '請選擇某一項應用';
+56<@>RE_ALL_MSG = '請輸入正確的匹配及相關端口';
+29<@>function isValidPort(port) {
+21<@>   var fromport = 0;
+21<@>   var toport = 100;
+1<@>
+32<@>   portrange = port.split(':');
+57<@>   if ( portrange.length < 1 || portrange.length > 2 ) {
+21<@>       return false;
+5<@>   }
+30<@>   if ( isNaN(portrange[0]) )
+21<@>       return false;
+38<@>   fromport = parseInt(portrange[0]);
+4<@>   
+33<@>   if ( portrange.length > 1 ) {
+34<@>       if ( isNaN(portrange[1]) )
+24<@>          return false;
+40<@>       toport = parseInt(portrange[1]);
+33<@>       if ( toport <= fromport )
+31<@>           return false;      
+5<@>   }
+4<@>   
+75<@>   if ( fromport < 1 || fromport > 65535 || toport < 1 || toport > 65535 )
+21<@>       return false;
+4<@>   
+16<@>   return true;
+2<@>}
+20<@>function clearAll()
+2<@>{
+41<@>   with (document.form2PortriggerRule) {
+40<@>      for (i = 0; i < TOTAL_ROW; i++) {
+107<@>         matchPort_s[i].value = matchPort_e[i].value = relatePort_s[i].value = relatePort_e[i].value = "";
+50<@>         protocol[i].value = oProto[i].value = 1;
+21<@>				 dir[i].value=0;
+8<@>      }
+5<@>   }
+2<@>}
+22<@>function appSelect(v)
+2<@>{
+15<@>   clearAll();
+41<@>   with (document.form2PortriggerRule) {
+18<@>      switch(v) {
+16<@>      case '0':
+36<@>         AppName.selectedIndex = 0;
+41<@>         AppName.options[0].value = "0";
+23<@>         appName = "";
+66<@>         break;                                  //trigger   open
+69<@>      case '1':   //  Aim Talk                   TCP 4099,  TCP 5191
+31<@>         appName = "Aim Talk";
+61<@>         matchPort_s[0].value = matchPort_e[0].value = 4099;
+63<@>         relatePort_s[0].value = relatePort_e[0].value = 5191;
+46<@>				 protocol[0].value = oProto[0].value = 0;
+16<@>         break;
+79<@>      case '2':  // Asheron's Call                UDP 9000-9013, UDP 9000-9013
+37<@>         appName = "Asheron's Call";
+62<@>         matchPort_s[0].value = relatePort_s[0].value = 9000;
+62<@>         matchPort_e[0].value = relatePort_e[0].value = 9013;
+50<@>         protocol[0].value = oProto[0].value = 1;
+16<@>         break;
+69<@>      case '3':  //Calista IP Phone               TCP 5190, UDP 3000
+39<@>         appName = "Calista IP Phone";
+61<@>         matchPort_s[0].value = matchPort_e[0].value = 5190;
+63<@>         relatePort_s[0].value = relatePort_e[0].value = 3000;
+32<@>         protocol[0].value = 0;
+26<@>				 oProto[0].value = 1;
+16<@>         break;
+75<@>      case '4':  //Delta Force (Client/Server)    UDP 3568, BOTH 3100-3999
+50<@>         appName = "Delta Force (Client/Server)";
+61<@>         matchPort_s[0].value = matchPort_e[0].value = 3568;
+32<@>         protocol[0].value = 1;
+39<@>         relatePort_s[0].value = 3100;
+39<@>         relatePort_e[0].value = 3999;
+32<@>         oProto[0].value = 255;
+16<@>         break;
+76<@>      case '5':  //ICQ                            UDP 4000, TCP 20000-20059
+26<@>         appName = "ICQ";
+61<@>         matchPort_s[0].value = matchPort_e[0].value = 4000;
+32<@>         protocol[0].value = 1;
+40<@>         relatePort_s[0].value = 20000;
+40<@>         relatePort_e[0].value = 20059;
+26<@>				 oProto[0].value = 0;
+16<@>         break;
+105<@>      case '6':  //Napster                        TCP 6699, TCP 6699, 6697, 4444, 5555, 6666, 7777, 8888
+30<@>         appName = "Napster";
+148<@>         matchPort_s[0].value = matchPort_e[0].value = matchPort_s[1].value = matchPort_e[1].value = matchPort_s[2].value = matchPort_e[2].value = 
+148<@>         matchPort_s[3].value = matchPort_e[3].value = matchPort_s[4].value = matchPort_e[4].value = matchPort_s[5].value = matchPort_e[5].value = 
+61<@>         matchPort_s[6].value = matchPort_e[6].value = 6699;
+63<@>         relatePort_s[0].value = relatePort_e[0].value = 6699;
+63<@>         relatePort_s[1].value = relatePort_e[1].value = 6697;
+63<@>         relatePort_s[2].value = relatePort_e[2].value = 4444;
+63<@>         relatePort_s[3].value = relatePort_e[3].value = 5555;
+63<@>         relatePort_s[4].value = relatePort_e[4].value = 6666;
+63<@>         relatePort_s[5].value = relatePort_e[5].value = 7777;
+63<@>         relatePort_s[6].value = relatePort_e[6].value = 8888;
+46<@>				 protocol[0].value = oProto[0].value = 0;
+46<@>				 protocol[1].value = oProto[1].value = 0;
+46<@>				 protocol[2].value = oProto[2].value = 0;
+46<@>				 protocol[3].value = oProto[3].value = 0;
+46<@>				 protocol[4].value = oProto[4].value = 0;
+46<@>				 protocol[5].value = oProto[5].value = 0;
+46<@>				 protocol[6].value = oProto[6].value = 0;
+16<@>         break;
+71<@>      case '7':   // Net2Phone                      UDP 6801, UDP 6801
+32<@>         appName = "Net2Phone";
+61<@>         matchPort_s[0].value = matchPort_e[0].value = 6801;
+32<@>         protocol[0].value = 1;
+63<@>         relatePort_s[0].value = relatePort_e[0].value = 6801;
+30<@>         oProto[0].value = 1;
+16<@>         break;
+107<@>      case '8':  //  QuickTime 4 Client             TCP 554, UDP 6970-32000 // 2). TCP 554, BOTH 6970-7000
+41<@>         appName = "QuickTime 4 Client";
+106<@>         matchPort_s[0].value = matchPort_e[0].value = matchPort_s[1].value = matchPort_e[1].value = 554;
+63<@>         relatePort_s[0].value = relatePort_s[1].value = 6970;
+40<@>         relatePort_e[0].value = 32000;
+39<@>         relatePort_e[1].value = 7000;
+51<@>         protocol[0].value = protocol[1].value =0;
+46<@>         oProto[0].value=oProto[1].value = 1;
+16<@>         break;
+77<@>      case '9':   // Rainbow Six/Rogue Spear        TCP 2346, BOTH 2436-2438
+45<@>         appName = "Rainbow Six/Rogue Spea";
+61<@>         matchPort_s[0].value = matchPort_e[0].value = 2346;
+39<@>         relatePort_s[0].value = 2436;
+39<@>         relatePort_e[0].value = 2438;
+27<@>				 protocol[0].value =0;
+32<@>         oProto[0].value = 255;
+16<@>         break;
+15<@>      default:
+38<@>         alert('不支援的選擇');
+8<@>      }
+7<@>   }  
+2<@>}
+22<@>function radioClick()
+2<@>{
+41<@>   with (document.form2PortriggerRule) {
+39<@>      if (radiosrv[0].checked == true)
+32<@>         txtAppName.value = '';
+5<@>   }
+19<@>   appSelect("0");
+2<@>}
+22<@>function btnApply() {
+41<@>   var loc = "form2PortriggerRule.cgi?";
+42<@>   with ( document.form2PortriggerRule) {
+41<@>      if (radiosrv[0].checked == true) {
+41<@>         if (encodeURI(appName) == '') {
+31<@>            alert(NO_SEL_MSG);
+20<@>            return;
+11<@>         }
+42<@>	appName=appName.replace(/(^\s*)/g, ""); 
+42<@>	appName=appName.replace(/(\s*$)/g, ""); 
+33<@>	appName=appName.split(/\s+/,1);
+47<@>	//appName=appName.replace(/(\s)/g, "&nbsp;");
+50<@>         loc += '&AppName=' + encodeURI(appName);
+8<@>      }
+13<@>      else {
+55<@>         if (encodeURI(txtAppName.value) == '') {     
+56<@>            alert('請輸入一個應用程式名稱');
+20<@>            return;
+11<@>         }
+51<@>		if(!checkSpecialCharForURL(txtAppName.value, 1))
+4<@>		{
+36<@>			alert("無效的服務名稱!");
+23<@>			txtAppName.focus();
+13<@>			return;		
+4<@>		}
+60<@>	txtAppName.value=txtAppName.value.replace(/(^\s*)/g, ""); 
+60<@>	txtAppName.value=txtAppName.value.replace(/(\s*$)/g, ""); 
+51<@>	txtAppName.value=txtAppName.value.split(/\s+/,1);
+67<@>	//txtAppName.value=(txtAppName.value).replace(/(\s)/g, "&nbsp;");
+59<@>         loc += '&AppName=' + encodeURI(txtAppName.value);
+8<@>      }
+40<@>      for (i = 0; i < TOTAL_ROW; i++) {
+133<@>         if (matchPort_s[i].value == "" && matchPort_e[i].value == "" && relatePort_s[i].value == "" && relatePort_e[i].value == "")
+22<@>            continue;
+135<@>         if (matchPort_s[i].value == "" || matchPort_e[i].value == "" || relatePort_s[i].value == "" || relatePort_e[i].value == "") {
+31<@>            alert(RE_ALL_MSG);
+20<@>            return;
+11<@>         }
+8<@>      }
+20<@>      if (i == 0) {
+28<@>         alert(RE_ALL_MSG);
+17<@>         return;
+8<@>      }
+24<@>      if (i > remain) {
+30<@>         remain = i - remain;
+33<@>         alert('xxxx' + remain);
+22<@>         remain = 31;
+17<@>         return;
+12<@>      }    
+36<@>      tProtoLoc = '&triggerProto=';
+35<@>      tStartLoc = '&matchPort_s=';
+33<@>      tEndLoc = '&matchPort_e=';
+33<@>      oProtoLoc = '&openProto=';
+36<@>      oStartLoc = '&relatePort_s=';
+34<@>      oEndLoc = '&relatePort_e=';
+36<@>   //   snatTypeLoc = '&snatType=';
+36<@>   //   dnatTypeLoc = '&dnatType=';
+31<@>   //natTypeLoc = '&natType=';
+24<@>      dirLoc = '&dir=';
+22<@>      eCount = i;    
+37<@>      for (i = 0; i < eCount; i++) {

@@ -1,0 +1,1100 @@
+13<@>&&*&&tw**&**
+27<@>     pppoe_acname.focus();
+19<@>     return false;
+6<@>    }
+5<@>   }
+33<@>   if (pppoe_staticip.value!="")
+5<@>   {
+50<@>    if ( !validateIP(pppoe_staticip,"IP 地址"))
+6<@>    {
+35<@>           pppoe_staticip.focus();
+19<@>     return false;
+6<@>    }
+10<@>        }
+4<@>  }
+68<@>  if((wantype.value==0 || (wantype.value>0 && dns_ctrl[1].checked))
+4<@>  )
+4<@>  {
+45<@>   if ( !validateIP(wan_dns1,"DNS 1地址"))
+5<@>   {
+22<@>    wan_dns1.focus();
+19<@>     return false;
+5<@>   }
+66<@>   if(wantype.value == 0 && wan_dns1.value == staip_ipaddr.value)
+5<@>   {
+49<@>    alert("DNS IP 和 WAN IP 不可以相同!");
+22<@>    wan_dns1.focus();
+19<@>     return false;
+5<@>   }
+62<@>   if (Lan1EqLan2(wan_dns1.value, lanmask, lanip, lanmask)) {
+58<@>    alert("DNS IP and LAN IP 必須在不同的網路!");
+22<@>    wan_dns1.focus();
+19<@>     return false;
+5<@>   }
+28<@>   if(wan_dns2.value == "")
+5<@>   {
+32<@>    wan_dns2.value = "0.0.0.0";
+5<@>   }
+33<@>   if(wan_dns2.value!="0.0.0.0")
+5<@>   {
+46<@>    if ( !validateIP(wan_dns2,"DNS 2地址"))
+6<@>    {
+23<@>     wan_dns2.focus();
+20<@>      return false;
+6<@>    }
+41<@>    if(wan_dns2.value == wan_dns1.value)
+6<@>    {
+45<@>     alert("DNS 2和DNS 1不可以相同!");
+23<@>     wan_dns2.focus();
+20<@>      return false;
+6<@>    }
+67<@>    if(wantype.value == 0 && wan_dns2.value == staip_ipaddr.value)
+6<@>    {
+50<@>     alert("DNS IP 和 WAN IP 不可以相同!");
+23<@>     wan_dns2.focus();
+20<@>      return false;
+6<@>    }
+63<@>    if (Lan1EqLan2(wan_dns2.value, lanmask, lanip, lanmask)) {
+57<@>     alert("DNS IP和LAN IP 必須在不同的網路!");
+23<@>     wan_dns2.focus();
+20<@>      return false;
+6<@>    }
+5<@>   }
+28<@>   if(wan_dns3.value == "")
+5<@>   {
+32<@>    wan_dns3.value = "0.0.0.0";
+5<@>   }
+33<@>   if(wan_dns3.value!="0.0.0.0")
+5<@>   {
+46<@>    if ( !validateIP(wan_dns3,"DNS 3地址"))
+6<@>    {
+23<@>     wan_dns3.focus();
+20<@>      return false;
+6<@>    }
+41<@>    if(wan_dns3.value == wan_dns1.value)
+6<@>    {
+45<@>     alert("DNS 3和DNS 1不可以相同!");
+23<@>     wan_dns3.focus();
+20<@>      return false;
+6<@>    }
+41<@>    if(wan_dns3.value == wan_dns2.value)
+6<@>    {
+45<@>     alert("DNS 3和DNS 2不可以相同!");
+23<@>     wan_dns3.focus();
+20<@>      return false;
+6<@>    }
+67<@>    if(wantype.value == 0 && wan_dns3.value == staip_ipaddr.value)
+6<@>    {
+50<@>     alert("DNS IP 和 WAN IP 不可以相同!");
+23<@>     wan_dns3.focus();
+20<@>      return false;
+6<@>    }
+63<@>    if (Lan1EqLan2(wan_dns3.value, lanmask, lanip, lanmask)) {
+57<@>     alert("DNS IP和LAN IP 必須在不同的網路!");
+23<@>     wan_dns3.focus();
+20<@>      return false;
+6<@>    }
+5<@>   }
+4<@>  }
+3<@> }
+51<@> wan_connection_type = document.wan.wantype.value;
+39<@> if(document.wan.mac_clone[2].checked)
+3<@> {
+61<@>  if(!checkFormatUnicastMac(document.wan.mac_clone_value,1))
+4<@>  {
+17<@>   return false;
+4<@>  }
+3<@> }
+14<@> return true;
+2<@>}
+22<@>function resetClick()
+2<@>{
+16<@>  disableAll();
+42<@>  if (document.wan.wanconn_type.value==0)
+4<@>  {
+20<@> displayStaticIp();
+4<@>  }
+46<@>  else if(document.wan.wanconn_type.value==1)
+4<@>  {
+22<@> displayDhcpClient();
+4<@>  }
+47<@>  else if(document.wan.wanconn_type.value ==2)
+4<@>  {
+49<@> document.wan.localTimeAbs.value = GetTimeAbs();
+17<@> displayPppoe();
+4<@>  }
+48<@>  if(document.wan.mac_clone_display.value == 1)
+4<@>  {
+43<@> enableRadioGroup(document.wan.mac_clone);
+4<@>  }
+7<@>  else
+4<@>  {
+44<@> disableRadioGroup(document.wan.mac_clone);
+49<@> disableTextField(document.wan.mac_clone_value);
+4<@>  }
+2<@>}
+27<@>function idleTimeEnabled()
+2<@>{
+64<@>  document.getElementById('idletime_label').style.display = '';
+63<@>  document.getElementById('idletime_text').style.display = '';
+2<@>}
+28<@>function idleTimeDisabled()
+2<@>{
+68<@>  document.getElementById('idletime_label').style.display = 'none';
+67<@>  document.getElementById('idletime_text').style.display = 'none';
+2<@>}
+27<@>function staticIpEnabled()
+2<@>{
+69<@>  document.getElementById('staticIp_block').style.display = 'block';
+2<@>}
+28<@>function staticIpDisabled()
+2<@>{
+68<@>  document.getElementById('staticIp_block').style.display = 'none';
+2<@>}
+29<@>function dhcpClientEnabled()
+2<@>{
+71<@>  document.getElementById('dhcpClient_block').style.display = 'block';
+2<@>}
+30<@>function dhcpClientDisabled()
+2<@>{
+70<@>  document.getElementById('dhcpClient_block').style.display = 'none';
+2<@>}
+24<@>function pppoeEnabled()
+2<@>{
+66<@>  document.getElementById('pppoe_block').style.display = 'block';
+2<@>}
+25<@>function pppoeDisabled()
+2<@>{
+65<@>  document.getElementById('pppoe_block').style.display = 'none';
+2<@>}
+22<@>function dnsEnabled()
+2<@>{
+64<@>  document.getElementById('dns_block').style.display = 'block';
+2<@>}
+23<@>function dnsDisabled()
+2<@>{
+63<@>  document.getElementById('dns_block').style.display = 'none';
+2<@>}
+24<@>function dnsipEnabled()
+2<@>{
+67<@>  document.getElementById('dns_ip_block').style.display = 'block';
+2<@>}
+25<@>function dnsipDisabled()
+2<@>{
+66<@>  document.getElementById('dns_ip_block').style.display = 'none';
+2<@>}
+27<@>function maccloneEnabled()
+2<@>{
+63<@>  document.getElementById('macclone').style.display = 'block';
+2<@>}
+28<@>function maccloneDisabled()
+2<@>{
+62<@>  document.getElementById('macclone').style.display = 'none';
+2<@>}
+24<@>function dnsSelection()
+2<@>{
+39<@> if (document.wan.dns_ctrl[0].checked)
+3<@> {
+43<@>  disableTextField(document.wan.wan_dns1);
+43<@>  disableTextField(document.wan.wan_dns2);
+43<@>  disableTextField(document.wan.wan_dns3);
+3<@> }
+6<@> else
+3<@> {
+42<@>  enableTextField(document.wan.wan_dns1);
+42<@>  enableTextField(document.wan.wan_dns2);
+43<@>  enableRadioGroup(document.wan.wan_dns3);
+3<@> }
+2<@>}
+24<@>function macSelection()
+2<@>{
+40<@> if (document.wan.mac_clone[0].checked)
+3<@> {
+77<@>  document.wan.mac_clone_value.value = document.wan.mac_default_value.value;
+50<@>  disableTextField(document.wan.mac_clone_value);
+3<@> }
+45<@> else if (document.wan.mac_clone[1].checked)
+3<@> {
+76<@>  document.wan.mac_clone_value.value = document.wan.mac_client_value.value;
+50<@>  disableTextField(document.wan.mac_clone_value);
+3<@> }
+45<@> else if (document.wan.mac_clone[2].checked)
+3<@> {
+77<@>  document.wan.mac_clone_value.value = document.wan.mac_default_value.value;
+49<@>  enableTextField(document.wan.mac_clone_value);
+3<@> }
+2<@>}
+28<@>function displayStaticIp(){
+42<@>  enableTextField(document.wan.wan_dns1);
+42<@>  enableTextField(document.wan.wan_dns2);
+42<@>  enableTextField(document.wan.wan_dns3);
+22<@>   staticIpEnabled();
+19<@>   dnsipEnabled();
+22<@>   maccloneEnabled();
+2<@>}
+30<@>function displayDhcpClient(){
+17<@> dnsSelection();
+25<@>    dhcpClientEnabled();
+17<@>   dnsEnabled();
+19<@>   dnsipEnabled();
+22<@>   maccloneEnabled();
+2<@>}
+25<@>function displayPppoe(){
+17<@> dnsSelection();
+19<@>   pppoeEnabled();
+17<@>   dnsEnabled();
+19<@>   dnsipEnabled();
+22<@>   maccloneEnabled();
+44<@> if (document.wan.pppoe_contype.value == 0)
+3<@> {
+22<@>  idleTimeDisabled();
+3<@> }
+48<@> else if(document.wan.pppoe_contype.value == 1)
+3<@> {
+21<@>  idleTimeEnabled();
+48<@>  enableTextField(document.wan.pppoe_idletime);
+47<@>  if(document.wan.pppoe_idletime.value == "0")
+4<@>  {
+44<@>   document.wan.pppoe_idletime.value = "5";
+4<@>  }
+3<@> }
+48<@> else if(document.wan.pppoe_contype.value == 2)
+3<@> {
+22<@>  idleTimeDisabled();
+3<@> }
+2<@>}
+30<@>function pppoe_contypechang()
+2<@>{
+20<@> with(document.wan)
+3<@> {
+31<@>  if(pppoe_contype.value == 0)
+4<@>  {
+34<@>    pppoe_cntbtn.disabled = true;
+37<@>    pppoe_discntbtn.disabled = true;
+24<@>    idleTimeDisabled();
+4<@>  }
+36<@>  else if(pppoe_contype.value == 1)
+4<@>  {
+34<@>    pppoe_cntbtn.disabled = true;
+37<@>    pppoe_discntbtn.disabled = true;
+23<@>    idleTimeEnabled();
+37<@>    enableTextField(pppoe_idletime);
+36<@>    if(pppoe_idletime.value == "0")
+6<@>    {
+33<@>     pppoe_idletime.value = "5";
+6<@>    }
+4<@>  }
+36<@>  else if(pppoe_contype.value == 2)
+4<@>  {
+40<@>    if(wanPPPoeConnection.value == 0) {
+37<@>        pppoe_cntbtn.disabled=false;
+39<@>        pppoe_discntbtn.disabled=true;
+7<@>     }
+11<@>    else {
+36<@>        pppoe_cntbtn.disabled=true;
+40<@>        pppoe_discntbtn.disabled=false;
+7<@>     }
+24<@>    idleTimeDisabled();
+4<@>  }
+3<@> }
+2<@>}
+29<@>function pppoe_btn_Connect()
+2<@>{
+20<@> with(document.wan)
+3<@> {
+32<@>  pppoe_cntbtn.disabled = true;
+36<@>  pppoe_discntbtn.disabled = false;
+3<@> }
+2<@>}
+32<@>function pppoe_btn_Disconnect()
+2<@>{
+20<@> with(document.wan)
+3<@> {
+33<@>  pppoe_cntbtn.disabled = false;
+35<@>  pppoe_discntbtn.disabled = true;
+3<@> }
+2<@>}
+23<@>function updateState()
+2<@>{
+2<@>}
+22<@>function disableAll()
+2<@>{
+21<@> staticIpDisabled();
+23<@> dhcpClientDisabled();
+18<@> pppoeDisabled();
+16<@> dnsDisabled();
+18<@> dnsipDisabled();
+21<@> maccloneDisabled();
+2<@>}
+24<@>function wantypechang()
+2<@>{
+15<@> disableAll();
+36<@> if (document.wan.wantype.value==0)
+3<@> {
+23<@>    displayStaticIp();
+3<@> }
+73<@> else if(document.wan.wantype.value==1 || document.wan.wantype.value==7)
+3<@> {
+23<@>  displayDhcpClient();
+3<@> }
+75<@> else if(document.wan.wantype.value >=2 && document.wan.wantype.value <=6)
+3<@> {
+50<@>  document.wan.localTimeAbs.value = GetTimeAbs();
+18<@>  displayPppoe();
+3<@> }
+2<@>}
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+21<@> TabHeader="設定";
+28<@> SideItem="Internet設定";
+19<@> HelpItem="wanif";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@> <tr>
+44<@>  <td class="topheader">Internet設定</td>
+7<@> </tr>
+6<@> <tr>
+23<@>  <td class="content">
+127<@>   <p>您可以在此設定網際網路連線設定，將網際網路連線設定為固定IP、DHCP或PPPoE連線方式。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+52<@><form method=POST Action="form2Wan.cgi" name="wan">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@> <tr>
+44<@>  <td class="topheader">Internet設定</td>
+7<@> </tr>
+6<@> <tr>
+36<@>  <td class="content" align="left">
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+54<@>    <VWS_FUNCTION (void*) showWanpppoe_connection();>
+9<@>    <tr>
+54<@>     <td class="form_label_left">WAN存取類型</td>
+32<@>     <td style="display:none;">
+79<@>     <input type="text" name="localTimeAbs" size="12" maxlength="12" value="">
+26<@>                    </td>
+54<@>     <input type="hidden" name="wanconn_type" value="
+49<@>      <VWS_FUNCTION (void*)WebGetWanConnType();>
+8<@>     ">
+35<@>     <td class="form_label_right">
+65<@>      <select size="1" name="wantype" onChange="wantypechang()">
+59<@>                      <VWS_SCREEN (char*) xscrnWanType[];>
+16<@>      </select>
+26<@>                    </td>
+10<@>    </tr>
+12<@>   </table>
+125<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500" id="staticIp_block" style="display:block">
+9<@>    <tr>
+48<@>     <td class="form_label_left">IP位址:</td>
+35<@>     <td class="form_label_right">
+77<@>      <input type="text" name="staip_ipaddr" size="15" maxlength="15" value=
+45<@><VWS_SCREEN (char*) xscrnWanstaip_ipaddr[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+9<@>    <tr>
+55<@>     <td class="form_label_left">子網路遮罩:</td>
+35<@>     <td class="form_label_right">
+78<@>      <input type="text" name="staip_netmask" size="15" maxlength="15" value=
+46<@><VWS_SCREEN (char*) xscrnWanstaip_netmask[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+9<@>    <tr>
+52<@>     <td class="form_label_left">預設閘道:</td>
+35<@>     <td class="form_label_right">
+78<@>      <input type="text" name="staip_gateway" size="15" maxlength="15" value=
+46<@><VWS_SCREEN (char*) xscrnWanstaip_gateway[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+9<@>    <tr>
+49<@>     <td class="form_label_left">MTU大小:</td>
+35<@>     <td class="form_label_right">
+76<@>      <input type="text" name="staip_mtusize" size="6" maxlength="6" value=
+46<@><VWS_SCREEN (char*) xscrnWanstaip_mtusize[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+12<@>   </table>
+127<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500" id="dhcpClient_block" style="display:block">
+9<@>    <tr>
+52<@>     <td class="form_label_left">主機名稱:</td>
+35<@>     <td class="form_label_right">
+78<@>     <input type="text" name="dhcpc_hostname" size="15" maxlength="15" value=
+47<@><VWS_SCREEN (char*) xscrnWandhcpc_hostname[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+9<@>    <tr>
+49<@>     <td class="form_label_left">MTU大小:</td>
+35<@>     <td class="form_label_right">
+75<@>     <input type="text" name="dhcpc_mtusize" size="6" maxlength="6" value=
+46<@><VWS_SCREEN (char*) xscrnWandhcpc_mtusize[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+12<@>   </table>
+122<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500" id="pppoe_block" style="display:block">
+9<@>    <tr>
+55<@>     <td class="form_label_left">使用者名稱:</td>
+35<@>     <td class="form_label_right">
+79<@>      <input type="text" name="pppoe_usrname" size="32" maxlength="256" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_username[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+9<@>    <tr>
+46<@>     <td class="form_label_left">密碼:</td>
+35<@>     <td class="form_label_right">
+82<@>      <input type="password" name="pppoe_psword" size="32" maxlength="256" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_password[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+9<@>    <tr>
+52<@>     <td class="form_label_left">服務名稱:</td>
+35<@>     <td class="form_label_right">
+78<@>      <input type="text" name="pppoe_sername" size="32" maxlength="32" value=
+49<@><VWS_SCREEN (char*) xscrnWanpppoe_servername[];>
+81<@>>(選擇性的。此名稱應該要與PPPoE伺服器的設定相符或空白。)
+26<@>                    </td>
+10<@>    </tr>
+30<@>    <tr style="display:none">
+49<@>     <td class="form_label_left">AC 名稱:</td>
+35<@>     <td class="form_label_right">
+77<@>      <input type="text" name="pppoe_acname" size="15" maxlength="15" value=
+45<@><VWS_SCREEN (char*) xscrnWanpppoe_acname[];>
+2<@>>
+26<@>                    </td>
+10<@>    </tr>
+9<@>    <tr>
+94<@>     <td class="form_label_left" id="idletime_label" style="display:none;">閒置時間:</td>
+76<@>     <td class="form_label_right" id="idletime_text" style="display:none;">
+53<@>      <VWS_SCREEN (char*) xscrnWanpppoe_idletime[];>
+25<@>                   </td>
+10<@>    </tr>
+9<@>    <tr>
+49<@>     <td class="form_label_left">MTU大小:</td>
+35<@>     <td class="form_label_right">
+76<@>      <input type="text" name="pppoe_mtusize" size="6" maxlength="6" value=
+46<@><VWS_SCREEN (char*) xscrnWanpppoe_mtusize[];>
+2<@>>
+25<@>                   </td>
+10<@>    </tr>
+9<@>    <tr>
+54<@>     <td class="form_label_left">静态IP地址:</td>
+35<@>     <td class="form_label_right">
+79<@>      <input type="text" name="pppoe_staticip" size="15" maxlength="15" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_staticip[];>
+2<@>>
+25<@>                   </td>
+10<@>    </tr>
+9<@>    <tr>
+52<@>     <td class="form_label_left">連線類型:</td>
+35<@>     <td class="form_label_right">
+68<@>      <select name="pppoe_contype" onChange="pppoe_contypechang()">
+53<@>      <VWS_FUNCTION (void*) showWanpppoe_contype();>
+40<@>      </select>&nbsp;&nbsp;&nbsp;&nbsp;
+59<@>      <VWS_FUNCTION (void*) showWanpppoe_connetcButton();>
+11<@>     </td>
+10<@>    </tr>
+12<@>   </table>
+120<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500" id="dns_block" style="display:block">
+9<@>    <tr>
+55<@>     <td class="form_label_left">自動取得DNS:</td>
+35<@>     <td class="form_label_right">
+52<@>      <VWS_FUNCTION (void*) showWanDns_contype0();>
+11<@>     </td>
+121<@>     <td class="form_label_right">(若有更改DNS設定，請將電腦的區域/無線網路連線停用再啟用)</td>
+10<@>    </tr>
+9<@>    <tr>
+55<@>     <td class="form_label_left">手動設定DNS:</td>
+35<@>     <td class="form_label_right">
+52<@>      <VWS_FUNCTION (void*) showWanDns_contype1();>
+11<@>     </td>
+10<@>    </tr>
+12<@>   </table>
+123<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500" id="dns_ip_block" style="display:block">
+9<@>    <tr>
+53<@>     <td class="form_label_left">DNS伺服器1:</td>
+35<@>     <td class="form_label_right">
+52<@>      <VWS_SCREEN (char*) xscrnWanpppoe_dsndns1[];>
+11<@>     </td>
+10<@>    </tr>
+9<@>    <tr>
+53<@>     <td class="form_label_left">DNS伺服器2:</td>
+35<@>     <td class="form_label_right">
+52<@>      <VWS_SCREEN (char*) xscrnWanpppoe_dsndns2[];>
+21<@>      &nbsp;(可選)
+11<@>     </td>
+10<@>    </tr>
+30<@>    <tr style="display:none">
+53<@>     <td class="form_label_left">DNS伺服器3:</td>
+35<@>     <td class="form_label_right">
+52<@>      <VWS_SCREEN (char*) xscrnWanpppoe_dsndns3[];>
+11<@>     </td>
+10<@>    </tr>
+12<@>   </table>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+42<@><div id="wanspeed" style="display:block">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@> <tr>
+45<@>  <td class="topheader">WAN端口速率</td>
+7<@> </tr>
+6<@> <tr>
+36<@>  <td class="content" align="left">
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>    <tr>
+55<@>     <td class="form_label_left">WAN端口速率:</td>
+35<@>     <td class="form_label_right">
+40<@>      <select size="1" name="wanspeed">
+60<@>                      <VWS_SCREEN (char*) xscrnWanSpeed[];>
+16<@>      </select>
+26<@>                    </td>
+10<@>    </tr>
+12<@>   </table>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+7<@></div>
+42<@><div id="macclone" style="display:block">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@> <tr>
+51<@>  <td class="topheader">複製MAC位址設定</td>
+7<@> </tr>
+6<@> <tr>
+36<@>  <td class="content" align="left">
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>    <tr>
+63<@>     <td class="form_label_left">使用預設的MAC位址</td>
+35<@>     <td class="form_label_right">
+54<@>      <VWS_FUNCTION (void*) showMacclone_contype0();>
+11<@>     </td>
+10<@>    </tr>
+9<@>    <tr>
+66<@>     <td class="form_label_left">從電腦端複製MAC位址</td>
+35<@>     <td class="form_label_right">
+54<@>      <VWS_FUNCTION (void*) showMacclone_contype1();>
+11<@>     </td>
+10<@>    </tr>
+9<@>    <tr>
+60<@>     <td class="form_label_left">手動設定MAC位址</td>
+35<@>     <td class="form_label_right">
+54<@>      <VWS_FUNCTION (void*) showMacclone_contype2();>
+11<@>     </td>
+10<@>    </tr>
+12<@>   </table>
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>    <tr>
+39<@>     <td class="form_label_left"></td>
+35<@>     <td class="form_label_right">
+49<@>      <VWS_SCREEN (char*) xscrnMacclone_text[];>
+11<@>     </td>
+10<@>    </tr>
+9<@>    <tr>
+32<@>     <td style="display:none;">
+52<@>      <VWS_SCREEN (char*) xscrnMacvalue_default[];>
+11<@>     </td>
+32<@>     <td style="display:none;">
+51<@>      <VWS_SCREEN (char*) xscrnMacvalue_client[];>
+11<@>     </td>
+10<@>    </tr>
+12<@>   </table>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+7<@></div>
+5<@><br>
+17<@><p align=center>
+91<@><INPUT TYPE="hidden" NAME="submit.htm?wan.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+92<@><input type="submit" value="套用" name="save" onClick="return saveChanges()">&nbsp;&nbsp;
+72<@><input type="reset" value="取消" name="reset" onClick="resetClick()">
+1<@>
+5<@></p>
+9<@> </form>
+32<@><script type="text/javascript">
+17<@>   resetClick();
+10<@></script>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+21<@>&*#@pptp.htm@#*&6115
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+34<@><title>PPTP Configuration</title>
+1<@>
+9<@><SCRIPT>
+27<@>function checkTextStr(str)
+2<@>{
+35<@>	for (var i=0; i<str.length; i++) 
+3<@>	{
+121<@>		if ( str.charAt(i) == '%' || str.charAt(i) =='&' ||str.charAt(i) =='\\' || str.charAt(i) =='?' || str.charAt(i)=='"') 
+20<@>			return false;			
+3<@>	}
+14<@>	return true;
+2<@>}
+22<@>function resetapply()
+2<@>{
+39<@>	    if(!document.pptp.enable.checked)
+20<@>	      return true;
+34<@>		document.pptp.server.value=="";
+36<@>		document.pptp.username.value=="";
+40<@>		document.pptp.compress.checked=false;
+40<@>		document.pptp.defaultgw.checked=true;
+2<@>}
+21<@>function pptpapply()
+2<@>{
+38<@>    if(!document.pptp.enable.checked)
+17<@>	   return true;
+39<@>	if (document.pptp.server.value=="") {
+43<@>		alert("請輸入PPTP伺服器地址 !");
+32<@>		document.pptp.server.focus();
+16<@>		return false;
+3<@>	}
+47<@>	if(!checkTextStr(document.pptp.server.value))
+3<@>	{
+35<@>		alert("伺服器地址無效!");
+32<@>		document.pptp.server.focus();
+18<@>		return false;		
+3<@>	}
+2<@>	
+40<@>		if (document.pptp.username.value=="")
+4<@>		{
+46<@>			alert("請輸入PPTP客戶端用戶名!");
+35<@>			document.pptp.username.focus();
+16<@>		return false;
+3<@>	}
+50<@>		if(!checkTextStr(document.pptp.username.value))
+4<@>		{
+30<@>			alert("用戶名無效!");
+35<@>			document.pptp.username.focus();
+19<@>			return false;		
+4<@>		}
+42<@>		if (document.pptp.password.value=="") {
+43<@>			alert("請輸入PPTP客戶端密碼!");
+35<@>			document.pptp.password.focus();
+17<@>		 return false;
+3<@>	}
+50<@>		if(!checkTextStr(document.pptp.password.value))
+4<@>		{
+27<@>			alert("密碼無效!");
+35<@>			document.pptp.password.focus();
+19<@>			return false;		
+5<@>		}	
+15<@>	 return true;
+2<@>}
+1<@>
+1<@>
+23<@>function updateState()
+2<@>{
+47<@>    if(document.pptp.enable.checked == false){
+60<@>		document.getElementById('pptppara').style.display="none";
+64<@>		document.getElementById('pptpstatus').style.display="none";		
+8<@>	}else{
+56<@>		document.getElementById('pptppara').style.display="";
+58<@>		document.getElementById('pptpstatus').style.display="";
+3<@>	}
+2<@>}
+1<@>
+10<@></SCRIPT>
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+21<@>	TabHeader="設定";
+18<@>	SideItem="PPTP";
+18<@>	HelpItem="pptp";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+34<@>		<td class="topheader">PPTP</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+89<@>			<p>此頁面用來配置VPN PPTP客戶端, 你可以在此頁面設置PPTP參數.</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+54<@><form action="form2PPTP.cgi" method=POST name="pptp">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+40<@>		<td class="topheader">PPTP設定</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+46<@>					<td class="form_label_left">啟用:</td>
+35<@>					<td class="form_label_right">
+76<@>						<input type="checkbox" name="enable" onclick="return updateState();">
+26<@>                    </td>
+10<@>				</tr>
+12<@>			</table>
+97<@>			<table id="pptppara" class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+55<@>					<td class="form_label_left">伺服器位址:</td>
+35<@>					<td class="form_label_right">
+66<@>						<input type="text" name="server" size="32" maxlength="256">
+26<@>                    </td>
+10<@>				</tr>
+9<@>				<tr>
+52<@>					<td class="form_label_left">認證類型:</td>
+35<@>					<td class="form_label_right">
+28<@>						<select name="auth" >
+39<@>							<option value="0">auto</option>
+38<@>							<option value="1">PAP</option>
+39<@>							<option value="2">CHAP</option>
+8<@>							
+16<@>						</select>
+11<@>					</td>
+12<@>				</tr>  
+9<@>				<tr>
+49<@>					<td class="form_label_left">用戶名:</td>
+35<@>					<td class="form_label_right">
+67<@>						<input type="text" name="username" size="32" maxlength="35">
+11<@>					</td>
+11<@>				</tr> 
+9<@>				<tr>
+46<@>					<td class="form_label_left">密碼:</td>
+35<@>					<td class="form_label_right">
+67<@>						<input type="text" name="password" size="32" maxlength="35">
+11<@>					</td>
+10<@>				</tr>
+1<@>
+9<@>				<tr>
+52<@>					<td class="form_label_left">預設閘道:</td>
+35<@>					<td class="form_label_right">
+47<@>						<input type="checkbox" name="defaultgw">
+11<@>					</td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+9<@><br><br>
+17<@><p align=center>
+93<@>	<input type="submit" value="套用" name="addacc" onClick="return pptpapply()">&nbsp;&nbsp;
+93<@>	<input type="reset" value="取消" name="delacc" onClick="return pptpreset()">&nbsp;&nbsp; 
+94<@>	<input type="hidden" NAME="submit.htm?pptp.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>> 
+5<@></p>
+1<@>
+9<@><br><br>
+22<@><div id="pptpstatus">
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+39<@>			<td class=topheader>PPTP列表</td>
+8<@>		</tr>
+7<@>		<tr>
+22<@>			<td class=content>
+39<@>				<table class=formlisting border=0>
+10<@>					<tr>
+20<@>						<font size=1>
+64<@>						<td align=center width="5%" bgcolor="#808080">接口</td>
+64<@>						<td align=center width="5%" bgcolor="#808080">狀態</td>
+64<@>						<td align=center width="8%" bgcolor="#808080">位址</td>
+64<@>						<td align=center width="8%" bgcolor="#808080">閘道</td>
+14<@>						</font>
+11<@>					</tr>
+45<@>					<VWS_FUNCTION (void*)showPptpStatus();>
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+7<@></div>
+10<@><script> 
+38<@><VWS_FUNCTION (void*)showPptpInfo();>
+15<@>updateState();
+12<@></script>  
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+21<@>&*#@l2tp.htm@#*&9055
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+34<@><title>L2TP Configuration</title>
+9<@><script>
+22<@>function authchange()
+2<@>{
+41<@>	if(document.l2tp.auth.selectedIndex==3)
+3<@>	{
+40<@>		document.l2tp.username.disabled=true;
+40<@>		document.l2tp.password.disabled=true;
+8<@>	}else{
+41<@>		document.l2tp.username.disabled=false;
+41<@>		document.l2tp.password.disabled=false;
+3<@>	}
+2<@>}
+23<@>function ctypechange()
+2<@>{
+42<@>	if(document.l2tp.ctype.selectedIndex==1)
+3<@>	{
+41<@>		document.l2tp.idletime.disabled=false;
+8<@>	}else{
+40<@>		document.l2tp.idletime.disabled=true;
+3<@>	}
+2<@>}
+22<@>function applyclick()
+2<@>{
+34<@>	if(document.l2tp.name.value=="")
+3<@>	{
+35<@>		alert("會話名不可為空!");
+30<@>		document.l2tp.name.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+32<@>	if(document.l2tp.ip.value=="")
+3<@>	{
+35<@>		alert("LNS位址不可為空!");
+28<@>		document.l2tp.ip.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+34<@>	if(document.l2tp.port.value=="")
+3<@>	{
+35<@>		alert("LNS端口不可為空!");
+30<@>		document.l2tp.port.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+38<@>	if(document.l2tp.username.value=="")
+3<@>	{
+35<@>		alert("用戶名不可為空!");
+34<@>		document.l2tp.username.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+2<@>	
+44<@>	if (includeSpace(document.l2tp.name.value)
+41<@>		|| (document.l2tp.name.value.length<1)
+42<@>		|| (document.l2tp.name.value.length>7))
+3<@>	{
+59<@>		alert("會話名無效! 字符串長度不可超過7.");
+30<@>		document.l2tp.name.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+2<@>	
+35<@>	if (checkIP(document.l2tp.ip)==0)
+3<@>	{
+30<@>//		alert("IP位址無效.");
+3<@>		
+28<@>		document.l2tp.ip.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+2<@>	
+63<@>	if ( !checkDigitRange(document.l2tp.port.value,1,1,65535) ) {
+62<@>		alert('端口無效! 端口範圍應該在1-65535之間.');
+30<@>		document.l2tp.port.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+2<@>	
+43<@>	if( document.l2tp.auth.selectedIndex!=3 )
+3<@>	{
+3<@>		
+42<@>		if (document.l2tp.username.value=="") {
+36<@>			alert('用戶名不可為空!');
+35<@>			document.l2tp.username.focus();
+17<@>			return false;
+4<@>		}
+52<@>		if (includeSpace(document.l2tp.username.value)) {
+57<@>			alert('Cannot accept space character in User Name.');
+35<@>			document.l2tp.username.focus();
+17<@>			return false;
+4<@>		}
+56<@>		if (checkString(document.l2tp.username.value) == 0) {
+30<@>			alert('用戶名無效.');
+35<@>			document.l2tp.username.focus();
+17<@>			return false;
+4<@>		}
+3<@>		
+3<@>		
+42<@>		if (document.l2tp.password.value=="") {
+33<@>			alert('密碼不可為空!');
+35<@>			document.l2tp.password.focus();
+17<@>			return false;
+4<@>		}
+52<@>		if (includeSpace(document.l2tp.password.value)) {
+56<@>			alert('Cannot accept space character in Password.');
+35<@>			document.l2tp.password.focus();
+17<@>			return false;
+4<@>		}
+56<@>		if (checkString(document.l2tp.password.value) == 0) {
+27<@>			alert('密碼無效.');
+35<@>			document.l2tp.password.focus();
+17<@>			return false;
+4<@>		}
+3<@>	}
+1<@>
+3<@>		
+46<@>	if (document.l2tp.ctype.selectedIndex == 1) 
+3<@>	{
+3<@>		
+53<@>		if( checkDigit(document.l2tp.idletime.value)==0 ||
+41<@>		    document.l2tp.idletime.value<=0 ) 
+4<@>		{
+33<@>			alert('空閒時間無效.');
+35<@>			document.l2tp.idletime.focus();
+17<@>			return false;
+4<@>		}
+3<@>	}
+1<@>
+2<@>	
+35<@>	if(document.l2tp.mtu.value != "")
+3<@>	{
+48<@>		if(validateKey(document.l2tp.mtu.value) == 0)
+4<@>		{
+47<@>			alert("MTU值無效! 应该由0-9组成.");
+30<@>			document.l2tp.mtu.focus();
+17<@>			return false;
+4<@>		}
+61<@>		if(!checkDigitRange(document.l2tp.mtu.value, 1, 65, 1500))
+4<@>		{
+57<@>			alert("MTU值無效! MTU值範圍在65-1500之間.");
+30<@>			document.l2tp.mtu.focus();
+17<@>			return false;
+4<@>		}
+3<@>	}
+6<@>	else
+3<@>	{
+32<@>		alert("MTU值不可為空!");
+29<@>		document.l2tp.mtu.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+14<@>	return true;
+2<@>}
+1<@>
+59<@>function submitL2tpStatusModify(form,session_name,connect)
+2<@>{
+41<@>	form.session_name.value = session_name;
+33<@>	form.connect.value = connect;		
+16<@>	form.submit();
+2<@>}
+10<@></script>
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+21<@>	TabHeader="設定";
+18<@>	SideItem="L2TP";
+18<@>	HelpItem="l2tp";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+34<@>		<td class="topheader">L2TP</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+43<@>			<p>此頁面用來設置L2TP參數.</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+54<@><form method=POST Action="form2L2tp.cgi" name="l2tp">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+40<@>		<td class="topheader">L2TP設定</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+46<@>					<td class="form_label_left">會話:</td>
+35<@>					<td class="form_label_right">
+46<@>						<VWS_SCREEN (char*) xscrnL2tpEnable[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+46<@>					<td class="form_label_left">名稱:</td>
+35<@>					<td class="form_label_right">
+44<@>						<VWS_SCREEN (char*) xscrnL2tpName[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+52<@>					<td class="form_label_left">LNS IP位址:</td>
+35<@>					<td class="form_label_right">
+42<@>						<VWS_SCREEN (char*) xscrnL2tpIp[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+49<@>					<td class="form_label_left">LNS端口:</td>
+35<@>					<td class="form_label_right">
+44<@>						<VWS_SCREEN (char*) xscrnL2tpPort[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+52<@>					<td class="form_label_left">認證類型:</td>
+35<@>					<td class="form_label_right">
+44<@>						<VWS_SCREEN (char*) xscrnL2tpAuth[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+49<@>					<td class="form_label_left">用戶名:</td>
+35<@>					<td class="form_label_right">
+43<@>						<VWS_SCREEN (char*) xscrnL2tpUsr[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+46<@>					<td class="form_label_left">密碼:</td>
+35<@>					<td class="form_label_right">
+43<@>						<VWS_SCREEN (char*) xscrnL2tpPwd[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+52<@>					<td class="form_label_left">連接類型:</td>

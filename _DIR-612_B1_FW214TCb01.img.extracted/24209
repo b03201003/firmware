@@ -1,0 +1,268 @@
+13<@>&&*&&tw**&**
+35<@>					<td class="form_label_right">
+47<@>						<VWS_SCREEN (char*) xscrnL2tpConType[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+57<@>					<td class="form_label_left">空閒時間(min):</td>
+35<@>					<td class="form_label_right">
+44<@>						<VWS_SCREEN (char*) xscrnL2tpIdle[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+44<@>					<td class="form_label_left">NAPT:</td>
+35<@>					<td class="form_label_right">
+44<@>						<VWS_SCREEN (char*) xscrnL2tpNapt[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+52<@>					<td class="form_label_left">預設閘道:</td>
+35<@>					<td class="form_label_right">
+43<@>						<VWS_SCREEN (char*) xscrnL2tpDgw[];>
+14<@>				    </td>
+10<@>				</tr>
+9<@>				<tr>
+43<@>					<td class="form_label_left">MTU:</td>
+35<@>					<td class="form_label_right">
+43<@>						<VWS_SCREEN (char*) xscrnL2tpMtu[];>
+14<@>				    </td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+9<@><script>
+14<@>authchange();
+15<@>ctypechange();
+10<@></script>
+17<@><p align=center>
+68<@>	<input type="submit" value="套用" onClick="return applyclick()">
+85<@>	<INPUT TYPE="RESET" NAME="reset" VALUE="取消" onClick="window.location.reload()">
+93<@>	<INPUT TYPE="hidden" NAME="submit.htm?l2tp.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+5<@></p>
+8<@></form>
+1<@>
+5<@><br>
+1<@>
+68<@><form action="form2L2tpStatusModify.cgi" method=POST name="status">
+51<@><INPUT TYPE="HIDDEN" NAME="session_name" VALUE="">
+46<@><INPUT TYPE="HIDDEN" NAME="connect" VALUE="">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+38<@>		<td class=topheader>L2TP列表</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+38<@>			<table class=formlisting border=0>
+9<@>				<tr>
+64<@>					<td align=center width="10%" bgcolor="#808080">名稱</td>
+64<@>					<td align=center width="10%" bgcolor="#808080">接口</td>
+66<@>					<td align=center width="15%" bgcolor="#808080">IP位址</td>
+64<@>					<td align=center width="15%" bgcolor="#808080">閘道</td>
+64<@>					<td align=center width="10%" bgcolor="#808080">狀態</tr>
+10<@>				</tr>
+48<@>				<VWS_FUNCTION (void*)showL2tpStateTable();>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+17<@><p align=center>
+92<@><input type="hidden" name="submit.htm?l2tp.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+52<@><input type="submit" value="刷新" name="refresh">
+5<@></p>
+5<@><br>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+23<@>&*#@fw-dmz.htm@#*&5609
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+25<@><title>DMZ主機</title>
+9<@><script>
+20<@>function IP2Num(ip)
+2<@>{
+17<@>    var num = 0;
+24<@>    ip = ip.split(".");
+109<@>    num = Number(ip[0]) * 256 * 256 * 256 + Number(ip[1]) * 256 * 256 + Number(ip[2]) * 256 + Number(ip[3]);
+21<@>    num = num >>> 0;
+16<@>    return num;
+2<@>}
+21<@>function saveClick()
+2<@>{
+45<@>      if (!document.formDMZ.enabled.checked)
+16<@>   return true;
+39<@>  if (document.formDMZ.ip.value=="") {
+40<@> alert("DMZ主機地址不能為空.");
+63<@> document.formDMZ.ip.value = document.formDMZ.ip.defaultValue;
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+4<@>  }
+57<@>  if ( validateKey( document.formDMZ.ip.value ) == 0 ) {
+64<@> alert("主機地址格式無效. 必須由數字(0-9)構成");
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+4<@>  }
+37<@>  var str=document.formDMZ.ip.value;
+15<@>  var count=0;
+35<@>  for (var i=0; i<str.length; i++)
+3<@> {
+29<@>   if (str.charAt(i) == '.')
+4<@>  {
+12<@>   count++;
+4<@>  }
+2<@>}
+13<@>if(count!=3)
+2<@>{
+82<@> alert("主機地址格式無效. 必須為 xxx.xxx.xxx.xxx形式的數字串.");
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+2<@>}
+63<@>  if ( !checkDigitRange(document.formDMZ.ip.value,1,1,223) ) {
+60<@>       alert('IP地址第一個數字段必須為 1-223.');
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+4<@>  }
+47<@>  if( IsLoopBackIP(document.formDMZ.ip.value))
+4<@>  {
+30<@>    alert('非法IP地址.');
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+4<@>  }
+63<@>  if ( !checkDigitRange(document.formDMZ.ip.value,2,0,255) ) {
+59<@>       alert('IP地址第二個數字段必須為1-254.');
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+4<@>  }
+63<@>  if ( !checkDigitRange(document.formDMZ.ip.value,3,0,255) ) {
+59<@>       alert('IP地址第三個數字段必須為1-254.');
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+4<@>  }
+63<@>  if ( !checkDigitRange(document.formDMZ.ip.value,4,1,254) ) {
+59<@>       alert('IP地址第四個數字段必須為1-254.');
+30<@> document.formDMZ.ip.focus();
+15<@> return false;
+4<@>  }
+45<@> var ip = IP2Num(document.formDMZ.ip.value);
+55<@> var gw = IP2Num(document.formDMZ.gateway_addr.value);
+57<@> var mask = IP2Num(document.formDMZ.gateway_mask.value);
+14<@> if(ip == gw)
+3<@> {
+63<@>       alert('DMZ主機IP地址不能與網關地址相同.');
+31<@>  document.formDMZ.ip.focus();
+16<@>  return false;
+3<@> }
+32<@> if((ip & mask) != (gw & mask))
+3<@> {
+75<@>       alert('DMZ主機IP地址必須與網關地址處於同一網段.');
+31<@>  document.formDMZ.ip.focus();
+16<@>  return false;
+3<@> }
+15<@>  return true;
+2<@>}
+23<@>function updateState()
+2<@>{
+42<@>  if (document.formDMZ.enabled.checked) {
+40<@>  enableTextField(document.formDMZ.ip);
+4<@>  }
+9<@>  else {
+41<@>  disableTextField(document.formDMZ.ip);
+4<@>  }
+2<@>}
+10<@></script>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+27<@> TabHeader="進階設定";
+17<@> SideItem="DMZ";
+17<@> HelpItem="Dmz";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@> <tr>
+39<@>  <td class="topheader">DMZ配置</td>
+7<@> </tr>
+6<@> <tr>
+23<@>  <td class="content">
+174<@>   <p>DMZ用來指定一台區域網路中的電腦向網際網路提供服務。典型的DMZ為Web伺服器、FTP伺服器、SMTP電子郵件伺服器和DNS伺服器。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+56<@><form action="form2Dmz.cgi" method=POST name="formDMZ">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@> <tr>
+40<@>  <td class="topheader">DMZ 配置</td>
+7<@> </tr>
+6<@> <tr>
+36<@>  <td class="content" align="left">
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>    <tr>
+34<@>     <td class="form_label_left">
+54<@>      <input type="checkbox" name="enabled" value="1"
+47<@>       <VWS_SCREEN (char*) xscrnDmzEnabled[];>
+37<@>       onclick="updateState()"></td>
+50<@>     <td class="form_label_right">啟用 DMZ</td>
+10<@>    </tr>
+9<@>    <tr>
+57<@>     <td class="form_label_left">DMZ主機IP地址:</td>
+35<@>     <td class="form_label_right">
+67<@>      <input type="text" name="ip" size="15" maxlength="15" value=
+37<@><VWS_SCREEN (char*) xscrnDmzHost[];>
+7<@>></td>
+10<@>    </tr>
+21<@>                <tr>
+10<@>     <td>
+99<@>      <input style="display:none;" type="text" name="gateway_addr" size="15" maxlength="15" value=
+35<@><VWS_SCREEN (char*)xscrnGwAddr[];>
+2<@>>
+99<@>      <input style="display:none;" type="text" name="gateway_mask" size="15" maxlength="15" value=
+35<@><VWS_SCREEN (char*)xscrnGwMask[];>
+2<@>>
+11<@>     </td>
+22<@>                </tr>
+12<@>   </table>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+94<@><INPUT TYPE="hidden" NAME="submit.htm?fw-dmz.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+111<@><input class="input_submit" type="submit" value="套用" name="save" onClick="return saveClick()">&nbsp;&nbsp;
+69<@><input class="input_reset" type="reset" value="取消" name="reset">
+5<@></p>
+1<@>
+9<@><script>
+15<@>updateState();
+10<@></script>
+8<@></form>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>

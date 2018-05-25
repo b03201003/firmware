@@ -1,0 +1,871 @@
+13<@>&&*&&tw**&**
+15<@>//add by ramen
+32<@>//type=1:at least one character
+22<@>//type=0:may be empty
+36<@>function checkSpecialChar(str,type)
+2<@>{
+13<@>		var patrn;
+11<@>		if(type)
+65<@>			patrn=/^[ a-zA-Z0-9~`!"@#$%^&*()_+|\\{}[\]<>:;<?,-./='"]+$/; 
+7<@>		else
+65<@>			patrn=/^[ a-zA-Z0-9~`!"@#$%^&*()_+|\\{}[\]<>:;<?,-./='"]*$/; 
+41<@>		if (!patrn.exec(str)) return false  ; 
+1<@>
+16<@>		return true;	
+2<@>}
+1<@>
+18<@>// add by stephen
+42<@>function checkSpecialCharForURL(str,type)
+2<@>{
+13<@>		var patrn;
+11<@>		if(type)
+53<@>			patrn=/^[a-zA-Z0-9~`!@$^*()_|\\{}[\]:;<,-.']+$/; 
+7<@>		else
+53<@>			patrn=/^[a-zA-Z0-9~`!@$^*()_|\\{}[\]:;<,-.']*$/; 
+41<@>		if (!patrn.exec(str)) return false  ; 
+30<@>		if(str.indexOf("  ",0)!=-1)
+17<@>			return false;
+16<@>		return true;	
+2<@>}
+1<@>
+48<@>function checkSpecialCharExcludeSpace(str,type)
+2<@>{
+13<@>		var patrn;
+11<@>		if(type)
+57<@>			patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<> ]+$/;
+7<@>		else
+58<@>			patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<> ]*$/; 
+41<@>		if (!patrn.exec(str)) return false  ; 
+3<@>		
+30<@>		if(str.indexOf("  ",0)!=-1)
+17<@>			return false;
+68<@>		if(str.indexOf(" ",0)==0 || str.lastIndexOf(" ")==(str.length-1))
+4<@>		{
+17<@>			return false;
+5<@>		}	
+15<@>		return true;
+2<@>}
+1<@>
+25<@>function checkEmail(str)
+2<@>{
+137<@>	var emailReg=/^([a-zA-Z0-9_\-\.\+]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+43<@>	if (!emailReg.exec(str)) return false  ; 
+14<@>	return true;
+2<@>}
+1<@>
+29<@>//star:20100825 IPV6_RELATED
+23<@>function isIPv6(str)  
+4<@>{  
+35<@>return str.match(/:/g).length<=7  
+19<@>&&/::/.test(str)  
+56<@>?/^([\da-f]{1,4}(:|::)){1,6}[\da-f]{1,4}$/i.test(str)  
+50<@>:/^([\da-f]{1,4}:){7}[\da-f]{1,4}$/i.test(str);  
+3<@>} 
+1<@>
+16<@>function $(a) {
+43<@>        return document.getElementById(a);
+3<@> }
+2<@> 
+26<@> function isNumber(value)
+2<@>{
+29<@>	return /^\d+$/.test(value);
+2<@>}
+1<@>
+29<@>function ParseIpv6Array(str)
+2<@>{
+13<@>    var Num;
+13<@>    var i,j;
+38<@>    var finalAddrArray = new Array();
+38<@>    var falseAddrArray = new Array();
+5<@>    
+36<@>    var addrArray = str.split(':');
+28<@>    Num = addrArray.length;
+17<@>    if (Num > 8)
+6<@>    {
+31<@>        return falseAddrArray;
+6<@>    }
+1<@>
+30<@>    for (i = 0; i < Num; i++)
+6<@>    {
+39<@>        if ((addrArray[i].length > 4) 
+42<@>            || (addrArray[i].length < 1))
+10<@>        {
+35<@>            return falseAddrArray;
+10<@>        }
+50<@>        for (j = 0; j < addrArray[i].length; j++)
+10<@>        {
+47<@>            if ((addrArray[i].charAt(j) < '0')
+50<@>                || (addrArray[i].charAt(j) > 'f')
+55<@>                || ((addrArray[i].charAt(j) > '9') && 
+49<@>                (addrArray[i].charAt(j) < 'a')))
+14<@>            {
+39<@>                return falseAddrArray;
+14<@>            }
+10<@>        }
+1<@>
+32<@>        finalAddrArray[i] = '';
+56<@>        for (j = 0; j < (4 - addrArray[i].length); j++)
+10<@>        {
+38<@>            finalAddrArray[i] += '0';
+10<@>        }
+43<@>        finalAddrArray[i] += addrArray[i];
+6<@>    }
+1<@>
+27<@>    return finalAddrArray;
+2<@>}
+1<@>
+37<@>function getFullIpv6Address(address)
+2<@>{
+16<@>    var c = '';
+36<@>    var i = 0, j = 0, k = 0, n = 0;
+36<@>    var startAddress = new Array();
+34<@>    var endAddress = new Array();
+27<@>    var finalAddress = '';
+22<@>    var startNum = 0;
+20<@>    var endNum = 0;
+22<@>    var lowerAddress;
+22<@>    var totalNum = 0;
+1<@>
+42<@>    lowerAddress = address.toLowerCase();
+2<@> 
+46<@>    var addrParts = lowerAddress.split('::');
+31<@>    if (addrParts.length == 2)
+6<@>    {
+32<@>        if (addrParts[0] != '')
+10<@>        {
+57<@>            startAddress = ParseIpv6Array(addrParts[0]);
+42<@>            if (startAddress.length == 0)
+14<@>            {
+27<@>                return '';
+14<@>            }
+10<@>        }
+32<@>        if (addrParts[1] != '')
+10<@>        {
+55<@>            endAddress = ParseIpv6Array(addrParts[1]);
+40<@>            if (endAddress.length == 0)
+14<@>            {
+26<@>               return '';
+14<@>            }
+10<@>        }
+1<@>
+59<@>        if (startAddress.length +  endAddress.length >= 8)
+10<@>        {
+23<@>            return '';
+10<@>        }
+6<@>    }
+36<@>    else if (addrParts.length == 1)
+6<@>    {
+53<@>        startAddress = ParseIpv6Array(addrParts[0]);
+38<@>        if (startAddress.length != 8)
+10<@>        {
+23<@>            return '';
+10<@>        }
+6<@>    }
+9<@>    else
+6<@>    {
+19<@>        return '';
+6<@>    }
+1<@>
+46<@>    for (i = 0; i < startAddress.length; i++)
+6<@>    {
+41<@>        finalAddress += startAddress[i];
+20<@>        if (i != 7)
+10<@>        {
+33<@>            finalAddress += ':';
+10<@>        }
+6<@>    }
+43<@>    for (; i < 8 - endAddress.length; i++)
+6<@>    {
+32<@>        finalAddress += '0000';
+20<@>        if (i != 7)
+10<@>        {
+33<@>            finalAddress += ':';
+10<@>        }
+6<@>    }
+23<@>    for (; i < 8; i++)
+6<@>    {
+65<@>        finalAddress += endAddress[i - (8 - endAddress.length)];
+20<@>        if (i != 7)
+10<@>        {
+33<@>            finalAddress += ':';
+10<@>        }
+6<@>    }
+1<@>
+25<@>    return finalAddress;
+5<@>    
+2<@>}
+1<@>
+32<@>function isIpv6Address(address)
+2<@>{
+43<@>    if (getFullIpv6Address(address) == '')
+6<@>    {
+22<@>        return false;
+6<@>    }
+5<@>    
+17<@>    return true;
+2<@>}
+1<@>
+1<@>
+39<@>function isUnicastIpv6Address(address)
+2<@>{
+51<@>    var tempAddress = getFullIpv6Address(address);
+5<@>    
+28<@>    if ((tempAddress == '')
+70<@>        || (tempAddress == '0000:0000:0000:0000:0000:0000:0000:0000')
+70<@>        || (tempAddress == '0000:0000:0000:0000:0000:0000:0000:0001')
+50<@>        || (tempAddress.substring(0, 2) == 'ff'))
+6<@>    {
+22<@>        return false;
+6<@>    }
+5<@>    
+17<@>    return true;
+2<@>}
+1<@>
+38<@>function isGlobalIpv6Address(address)
+2<@>{
+51<@>    var tempAddress = getFullIpv6Address(address);
+5<@>    
+28<@>    if ((tempAddress == '')
+70<@>        || (tempAddress == '0000:0000:0000:0000:0000:0000:0000:0000')
+70<@>        || (tempAddress == '0000:0000:0000:0000:0000:0000:0000:0001')
+50<@>        || (tempAddress.substring(0, 3) == 'fe8')
+50<@>        || (tempAddress.substring(0, 3) == 'fe9')
+50<@>        || (tempAddress.substring(0, 3) == 'fea')
+50<@>        || (tempAddress.substring(0, 3) == 'feb')
+50<@>        || (tempAddress.substring(0, 2) == 'ff'))
+6<@>    {
+22<@>        return false;
+6<@>    }
+5<@>    
+17<@>    return true;
+2<@>}
+1<@>
+41<@>function isLinkLocalIpv6Address(address)
+2<@>{
+51<@>    var tempAddress = getFullIpv6Address(address);
+5<@>    
+48<@>    if ( (tempAddress.substring(0, 3) == 'fe8')
+50<@>        || (tempAddress.substring(0, 3) == 'fe9')
+50<@>        || (tempAddress.substring(0, 3) == 'fea')
+51<@>        || (tempAddress.substring(0, 3) == 'feb'))
+6<@>    {
+21<@>        return true;
+6<@>    }
+5<@>    
+18<@>    return false;
+2<@>}
+1<@>
+33<@>//star:20100825 IPV6_RELATED END
+1<@>
+41<@>//stephen: add innerText for all Browers
+16<@>function isIE()
+8<@>{ //ie?
+1<@>
+71<@>    if (window.navigator.userAgent.toLowerCase().indexOf("msie") >= 1)
+21<@>        return true;
+9<@>    else
+22<@>        return false;
+2<@>}
+1<@>
+13<@>if (!isIE())
+29<@>{ //firefox innerText define
+1<@>
+56<@>    HTMLElement.prototype.__defineGetter__("innerText",
+16<@>    function ()
+6<@>    {
+28<@>        var anyString = "";
+38<@>        var childS = this.childNodes;
+48<@>        for (var i = 0; i < childS.length; i++)
+10<@>        {
+41<@>            if (childS[i].nodeType == 1)
+55<@>                anyString += childS[i].tagName == "BR"
+51<@>                 ? "\r\n" : childS[i].textContent;
+46<@>            else if (childS[i].nodeType == 3)
+50<@>                anyString += childS[i].nodeValue;
+10<@>        }
+26<@>        return anyString;
+8<@>    });
+56<@>    HTMLElement.prototype.__defineSetter__("innerText",
+21<@>    function (sText)
+6<@>    {
+34<@>        this.textContent = sText;
+8<@>    });
+2<@>}
+1<@>
+35<@>function isIPMaskAgtB(mask1,mask2)
+2<@>{
+27<@>	d11 = getDigit(mask1, 1);
+26<@>	d21 = getDigit(mask2,1);
+16<@>	if (d11 > d21)
+16<@>		return false;
+2<@>	
+27<@>	d12 = getDigit(mask1, 2);
+26<@>	d22 = getDigit(mask2,2);
+16<@>	if (d12 > d22)
+16<@>		return false;
+1<@>
+27<@>	d13 = getDigit(mask1, 3);
+26<@>	d23 = getDigit(mask2,3);
+16<@>	if (d13 > d23)
+16<@>		return false;
+2<@>	
+27<@>	d14 = getDigit(mask1, 4);
+26<@>	d24 = getDigit(mask2,4);
+16<@>	if (d14 > d24)
+16<@>		return false;
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+29<@>var allowIPRange=new Array()
+32<@>allowIPRange[0]="103.250.136.0"
+32<@>allowIPRange[1]="103.250.137.0"
+32<@>allowIPRange[2]="103.250.138.0"
+32<@>allowIPRange[3]="103.250.139.0"
+32<@>allowIPRange[4]="150.107.232.0"
+32<@>allowIPRange[5]="150.107.233.0"
+32<@>allowIPRange[6]="150.107.234.0"
+32<@>allowIPRange[7]="150.107.235.0"
+32<@>allowIPRange[8]="103.250.160.0"
+32<@>allowIPRange[9]="103.250.161.0"
+33<@>allowIPRange[10]="103.250.162.0"
+33<@>allowIPRange[11]="103.250.163.0"
+32<@>allowIPRange[12]="150.129.52.0"
+32<@>allowIPRange[13]="150.129.53.0"
+32<@>allowIPRange[14]="150.129.54.0"
+32<@>allowIPRange[15]="150.129.55.0"
+33<@>allowIPRange[16]="103.250.148.0"
+33<@>allowIPRange[17]="103.250.149.0"
+33<@>allowIPRange[18]="103.250.150.0"
+33<@>allowIPRange[19]="103.250.151.0"
+33<@>allowIPRange[20]="150.129.104.0"
+33<@>allowIPRange[21]="150.129.105.0"
+33<@>allowIPRange[22]="150.129.106.0"
+33<@>allowIPRange[23]="150.129.107.0"
+33<@>allowIPRange[24]="103.250.164.0"
+33<@>allowIPRange[25]="103.250.165.0"
+33<@>allowIPRange[26]="103.250.166.0"
+33<@>allowIPRange[27]="103.250.167.0"
+33<@>allowIPRange[28]="150.107.252.0"
+33<@>allowIPRange[29]="150.107.253.0"
+33<@>allowIPRange[30]="150.107.254.0"
+33<@>allowIPRange[31]="150.107.255.0"
+33<@>allowIPRange[32]="103.250.144.0"
+33<@>allowIPRange[33]="103.250.145.0"
+33<@>allowIPRange[34]="103.250.146.0"
+33<@>allowIPRange[35]="103.250.147.0"
+33<@>allowIPRange[36]="150.129.200.0"
+33<@>allowIPRange[37]="150.129.201.0"
+33<@>allowIPRange[38]="150.129.202.0"
+33<@>allowIPRange[39]="150.129.203.0"
+32<@>allowIPRange[40]="103.251.16.0"
+32<@>allowIPRange[41]="103.251.17.0"
+32<@>allowIPRange[42]="103.251.18.0"
+32<@>allowIPRange[43]="103.251.19.0"
+33<@>allowIPRange[44]="150.129.112.0"
+33<@>allowIPRange[45]="150.129.113.0"
+33<@>allowIPRange[46]="150.129.114.0"
+33<@>allowIPRange[47]="150.129.115.0"
+32<@>allowIPRange[48]="103.251.56.0"
+32<@>allowIPRange[49]="103.251.57.0"
+32<@>allowIPRange[50]="103.251.58.0"
+32<@>allowIPRange[51]="103.251.59.0"
+33<@>allowIPRange[52]="150.129.204.0"
+33<@>allowIPRange[53]="150.129.205.0"
+33<@>allowIPRange[54]="150.129.206.0"
+33<@>allowIPRange[55]="150.129.207.0"
+33<@>allowIPRange[56]="103.251.224.0"
+33<@>allowIPRange[57]="103.251.225.0"
+33<@>allowIPRange[58]="103.251.226.0"
+33<@>allowIPRange[59]="103.251.227.0"
+33<@>allowIPRange[60]="150.129.168.0"
+33<@>allowIPRange[61]="150.129.169.0"
+33<@>allowIPRange[62]="150.129.170.0"
+33<@>allowIPRange[63]="150.129.171.0"
+33<@>allowIPRange[64]="103.251.216.0"
+33<@>allowIPRange[65]="103.251.217.0"
+33<@>allowIPRange[66]="103.251.218.0"
+33<@>allowIPRange[67]="103.251.219.0"
+32<@>allowIPRange[68]="163.53.176.0"
+32<@>allowIPRange[69]="163.53.177.0"
+32<@>allowIPRange[70]="163.53.178.0"
+32<@>allowIPRange[71]="163.53.179.0"
+33<@>allowIPRange[72]="103.251.212.0"
+33<@>allowIPRange[73]="103.251.213.0"
+33<@>allowIPRange[74]="103.251.214.0"
+33<@>allowIPRange[75]="103.251.215.0"
+32<@>allowIPRange[76]="163.53.208.0"
+32<@>allowIPRange[77]="163.53.209.0"
+32<@>allowIPRange[78]="163.53.210.0"
+32<@>allowIPRange[79]="163.53.211.0"
+33<@>allowIPRange[80]="103.250.188.0"
+33<@>allowIPRange[81]="103.250.189.0"
+33<@>allowIPRange[82]="103.250.190.0"
+33<@>allowIPRange[83]="103.250.191.0"
+32<@>allowIPRange[84]="43.242.116.0"
+32<@>allowIPRange[85]="43.242.117.0"
+32<@>allowIPRange[86]="43.242.118.0"
+32<@>allowIPRange[87]="43.242.119.0"
+33<@>allowIPRange[88]="103.250.152.0"
+33<@>allowIPRange[89]="103.250.153.0"
+33<@>allowIPRange[90]="103.250.154.0"
+33<@>allowIPRange[91]="103.250.155.0"
+32<@>allowIPRange[92]="43.241.140.0"
+32<@>allowIPRange[93]="43.241.141.0"
+32<@>allowIPRange[94]="43.241.142.0"
+32<@>allowIPRange[95]="43.241.143.0"
+33<@>allowIPRange[96]="103.250.156.0"
+33<@>allowIPRange[97]="103.250.157.0"
+33<@>allowIPRange[98]="103.250.158.0"
+33<@>allowIPRange[99]="103.250.159.0"
+34<@>allowIPRange[100]="150.129.148.0"
+34<@>allowIPRange[101]="150.129.149.0"
+34<@>allowIPRange[102]="150.129.150.0"
+34<@>allowIPRange[103]="150.129.151.0"
+34<@>allowIPRange[104]="103.249.232.0"
+34<@>allowIPRange[105]="103.249.233.0"
+34<@>allowIPRange[106]="103.249.234.0"
+34<@>allowIPRange[107]="103.249.235.0"
+32<@>allowIPRange[108]="43.251.72.0"
+32<@>allowIPRange[109]="43.251.73.0"
+32<@>allowIPRange[110]="43.251.74.0"
+32<@>allowIPRange[111]="43.251.75.0"
+34<@>allowIPRange[112]="103.240.168.0"
+34<@>allowIPRange[113]="103.240.169.0"
+34<@>allowIPRange[114]="103.240.170.0"
+34<@>allowIPRange[115]="103.240.171.0"
+34<@>allowIPRange[116]="150.129.164.0"
+34<@>allowIPRange[117]="150.129.165.0"
+34<@>allowIPRange[118]="150.129.166.0"
+34<@>allowIPRange[119]="150.129.167.0"
+34<@>allowIPRange[120]="103.240.204.0"
+34<@>allowIPRange[121]="103.240.205.0"
+34<@>allowIPRange[122]="103.240.206.0"
+34<@>allowIPRange[123]="103.240.207.0"
+33<@>allowIPRange[124]="43.241.144.0"
+33<@>allowIPRange[125]="43.241.145.0"
+33<@>allowIPRange[126]="43.241.146.0"
+33<@>allowIPRange[127]="43.241.147.0"
+34<@>allowIPRange[128]="103.240.208.0"
+34<@>allowIPRange[129]="103.240.209.0"
+34<@>allowIPRange[130]="103.240.210.0"
+34<@>allowIPRange[131]="103.240.211.0"
+33<@>allowIPRange[132]="43.241.192.0"
+33<@>allowIPRange[133]="43.241.193.0"
+33<@>allowIPRange[134]="43.241.194.0"
+33<@>allowIPRange[135]="43.241.195.0"
+34<@>allowIPRange[136]="103.240.160.0"
+34<@>allowIPRange[137]="103.240.161.0"
+34<@>allowIPRange[138]="103.240.162.0"
+34<@>allowIPRange[139]="103.240.163.0"
+33<@>allowIPRange[140]="43.242.120.0"
+33<@>allowIPRange[141]="43.242.121.0"
+33<@>allowIPRange[142]="43.242.122.0"
+33<@>allowIPRange[143]="43.242.123.0"
+33<@>allowIPRange[144]="103.241.44.0"
+33<@>allowIPRange[145]="103.241.45.0"
+33<@>allowIPRange[146]="103.241.46.0"
+33<@>allowIPRange[147]="103.241.47.0"
+33<@>allowIPRange[148]="43.249.228.0"
+33<@>allowIPRange[149]="43.249.229.0"
+33<@>allowIPRange[150]="43.249.230.0"
+33<@>allowIPRange[151]="43.249.231.0"
+34<@>allowIPRange[152]="103.241.224.0"
+34<@>allowIPRange[153]="103.241.225.0"
+34<@>allowIPRange[154]="103.241.226.0"
+34<@>allowIPRange[155]="103.241.227.0"
+32<@>allowIPRange[156]="43.248.32.0"
+32<@>allowIPRange[157]="43.248.33.0"
+32<@>allowIPRange[158]="43.248.34.0"
+32<@>allowIPRange[159]="43.248.35.0"
+33<@>allowIPRange[160]="103.240.76.0"
+33<@>allowIPRange[161]="103.240.77.0"
+33<@>allowIPRange[162]="103.240.78.0"
+33<@>allowIPRange[163]="103.240.79.0"
+33<@>allowIPRange[164]="43.249.232.0"
+33<@>allowIPRange[165]="43.249.233.0"
+33<@>allowIPRange[166]="43.249.234.0"
+33<@>allowIPRange[167]="43.249.235.0"
+33<@>allowIPRange[168]="103.21.160.0"
+33<@>allowIPRange[169]="103.21.161.0"
+33<@>allowIPRange[170]="103.21.162.0"
+33<@>allowIPRange[171]="103.21.163.0"
+32<@>allowIPRange[172]="103.1.100.0"
+32<@>allowIPRange[173]="103.1.101.0"
+32<@>allowIPRange[174]="103.1.102.0"
+32<@>allowIPRange[175]="103.1.103.0"
+33<@>allowIPRange[176]="27.121.100.0"
+33<@>allowIPRange[177]="27.121.101.0"
+33<@>allowIPRange[178]="27.121.102.0"
+33<@>allowIPRange[179]="27.121.103.0"
+32<@>allowIPRange[180]="27.116.52.0"
+32<@>allowIPRange[181]="27.116.53.0"
+32<@>allowIPRange[182]="27.116.54.0"
+32<@>allowIPRange[183]="27.116.55.0"
+32<@>allowIPRange[184]="27.116.48.0"
+32<@>allowIPRange[185]="27.116.49.0"
+32<@>allowIPRange[186]="27.116.50.0"
+32<@>allowIPRange[187]="27.116.51.0"
+32<@>allowIPRange[188]="182.237.8.0"
+32<@>allowIPRange[189]="182.237.9.0"
+33<@>allowIPRange[190]="182.237.10.0"
+33<@>allowIPRange[191]="182.237.11.0"
+33<@>allowIPRange[192]="182.237.12.0"
+33<@>allowIPRange[193]="182.237.13.0"
+33<@>allowIPRange[194]="182.237.14.0"
+33<@>allowIPRange[195]="182.237.15.0"
+32<@>allowIPRange[196]="113.20.16.0"
+32<@>allowIPRange[197]="113.20.17.0"
+32<@>allowIPRange[198]="113.20.18.0"
+32<@>allowIPRange[199]="113.20.19.0"
+34<@>allowIPRange[200]="150.107.240.0"
+34<@>allowIPRange[201]="150.107.241.0"
+34<@>allowIPRange[202]="150.107.242.0"
+34<@>allowIPRange[203]="150.107.243.0"
+34<@>allowIPRange[204]="103.228.144.0"
+34<@>allowIPRange[205]="103.228.145.0"
+34<@>allowIPRange[206]="103.228.146.0"
+34<@>allowIPRange[207]="103.228.147.0"
+34<@>allowIPRange[208]="150.107.188.0"
+34<@>allowIPRange[209]="150.107.189.0"
+34<@>allowIPRange[210]="150.107.190.0"
+34<@>allowIPRange[211]="150.107.191.0"
+34<@>allowIPRange[212]="103.238.108.0"
+34<@>allowIPRange[213]="103.238.109.0"
+34<@>allowIPRange[214]="103.238.110.0"
+34<@>allowIPRange[215]="103.238.111.0"
+33<@>allowIPRange[216]="43.250.164.0"
+33<@>allowIPRange[217]="43.250.165.0"
+33<@>allowIPRange[218]="43.250.166.0"
+33<@>allowIPRange[219]="43.250.167.0"
+34<@>allowIPRange[220]="103.238.104.0"
+34<@>allowIPRange[221]="103.238.105.0"
+34<@>allowIPRange[222]="103.238.106.0"
+34<@>allowIPRange[223]="103.238.107.0"
+33<@>allowIPRange[224]="43.250.156.0"
+33<@>allowIPRange[225]="43.250.157.0"
+33<@>allowIPRange[226]="43.250.158.0"
+33<@>allowIPRange[227]="43.250.159.0"
+32<@>allowIPRange[228]="103.36.80.0"
+32<@>allowIPRange[229]="103.36.81.0"
+32<@>allowIPRange[230]="103.36.82.0"
+32<@>allowIPRange[231]="103.36.83.0"
+31<@>allowIPRange[232]="43.224.0.0"
+31<@>allowIPRange[233]="43.224.1.0"
+31<@>allowIPRange[234]="43.224.2.0"
+31<@>allowIPRange[235]="43.224.3.0"
+33<@>allowIPRange[236]="103.38.204.0"
+33<@>allowIPRange[237]="103.38.205.0"
+33<@>allowIPRange[238]="103.38.206.0"
+33<@>allowIPRange[239]="103.38.207.0"
+31<@>allowIPRange[240]="43.224.8.0"
+31<@>allowIPRange[241]="43.224.9.0"
+32<@>allowIPRange[242]="43.224.10.0"
+32<@>allowIPRange[243]="43.224.11.0"
+33<@>allowIPRange[244]="103.39.128.0"
+33<@>allowIPRange[245]="103.39.129.0"
+33<@>allowIPRange[246]="103.39.130.0"
+33<@>allowIPRange[247]="103.39.131.0"
+33<@>allowIPRange[248]="43.251.220.0"
+33<@>allowIPRange[249]="43.251.221.0"
+33<@>allowIPRange[250]="43.251.222.0"
+33<@>allowIPRange[251]="43.251.223.0"
+1<@>
+32<@>allowIPRange[252]="123.63.42.0"
+32<@>allowIPRange[253]="123.63.41.0"
+32<@>allowIPRange[254]="123.63.40.0"
+33<@>allowIPRange[255]="123.63.118.0"
+33<@>allowIPRange[256]="123.63.119.0"
+32<@>allowIPRange[257]="123.63.16.0"
+32<@>allowIPRange[258]="123.63.43.0"
+33<@>allowIPRange[259]="124.124.53.0"
+34<@>allowIPRange[260]="124.124.107.0"
+33<@>allowIPRange[261]="124.124.67.0"
+34<@>allowIPRange[262]="220.227.156.0"
+1<@>
+26<@>function checkIPRange(ip)
+2<@>{
+58<@>	if(Lan1EqLan2("10.0.0.0", "255.0.0.0", ip, "255.0.0.0"))
+3<@>	{
+15<@>		return true;
+3<@>	}
+1<@>
+41<@>	for(var i=0;i<allowIPRange.length ;i++)
+3<@>	{
+72<@>		if(Lan1EqLan2(allowIPRange[i], "255.255.255.0", ip, "255.255.255.0"))
+4<@>		{
+16<@>			return true;
+4<@>		}
+3<@>	}
+1<@>
+15<@>	return false;
+2<@>}
+1<@>
+1<@>
+1<@>
+1<@>
+27<@>&*#@stylemain.css@#*&22581
+1<@>
+7<@>HTML {
+76<@>	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+7<@>BODY {
+76<@>	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+6<@>DIV {
+76<@>	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+4<@>P {
+76<@>	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+5<@>UL {
+76<@>	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+5<@>LI {
+76<@>	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+5<@>DL {
+76<@>	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+5<@>DT {
+76<@>	FONT-SIZE: 13px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+5<@>DD {
+76<@>	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+5<@>TD {
+76<@>	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+8<@>INPUT {
+76<@>	FONT-SIZE: 12px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+9<@>SELECT {
+76<@>	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+11<@>TEXTAREA {
+76<@>	FONT-SIZE: 11px; FONT-FAMILY: Tahoma, Helvetica, Geneva, Arial, sans-serif
+2<@>}
+7<@>BODY {
+49<@>	MARGIN: 1px 0px auto; BACKGROUND-COLOR: #ffffff
+2<@>}
+25<@>#header_container tr td{
+14<@>	color: #fff;
+18<@>	font-size: 14px;
+2<@>}
+13<@>.header_bg1{
+51<@>	background: url("head_01.gif") no-repeat #F56D23;
+14<@>	width:162px;
+15<@>	height: 92px;
+2<@>}
+13<@>.header_bg2{
+50<@>	background: url("head_02.gif") repeat-x #F56D23;
+18<@>    height: 92px;
+2<@>}
+13<@>.header_bg3{
+51<@>	background: url("head_03.gif") no-repeat #F56D23;
+14<@>	width: 96px;
+15<@>	height: 92px;
+2<@>}
+1<@>
+1<@>
+27<@>#header_container A:link {
+58<@>	FONT-SIZE: 11px; COLOR: #fff; TEXT-DECORATION: underline
+2<@>}
+30<@>#header_container A:visited {
+58<@>	FONT-SIZE: 11px; COLOR: #fff; TEXT-DECORATION: underline
+2<@>}
+13<@>#copyright {
+151<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 11px; PADDING-BOTTOM: 10px; MARGIN: 0px auto; COLOR: #f1f1f1; PADDING-TOP: 10px; TEXT-ALIGN: center
+2<@>}
+29<@>#header_container A:active {
+58<@>	FONT-SIZE: 11px; COLOR: #fff; TEXT-DECORATION: underline
+2<@>}
+28<@>#header_container A:hover {
+58<@>	FONT-SIZE: 11px; COLOR: #fff; TEXT-DECORATION: underline
+2<@>}
+22<@>#masthead_container {
+249<@>	BORDER-RIGHT: #f1f1f1 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #f1f1f1 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #f1f1f1 1px solid; WIDTH: 100%; PADDING-TOP: 0px; BORDER-BOTTOM: #f1f1f1 0px; BACKGROUND-COLOR: #404343
+2<@>}
+25<@>#masthead_container TD {
+183<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND-IMAGE: url("img_bg_masthead.gif"); PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-REPEAT: repeat; TEXT-ALIGN: right
+2<@>}
+20<@>#topnav_container {
+119<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: #f1f1f1;
+2<@>}
+23<@>#topnav_container TD {
+105<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: #f1f1f1
+2<@>}
+28<@>#topnav_container #modnum {
+95<@>	WIDTH: 125px; border-style: solid; border-width: 1px 1px 1px 1px; BORDER-RIGHT-COLOR:#ffffff;
+2<@>}
+21<@>#topnav_container2 {
+132<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 100%; PADDING-TOP: 0px; BACKGROUND-COLOR: #f1f1f1;
+2<@>}
+24<@>#topnav_container2 TD {
+106<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; BACKGROUND-COLOR: #f1f1f1;
+2<@>}
+29<@>#topnav_container2 #modnum {
+89<@>	WIDTH: 125px; border-style: solid; border-width: 1px 1px 1px 1px; BORDER-COLOR:#000000;
+2<@>}
+12<@>.topnavon {
+227<@>	FONT-WEIGHT: normal; FONT-SIZE: 12px; BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #f1f1f1;  BORDER-TOP-COLOR: #000000; LETTER-SPACING: 1px; BORDER-RIGHT-COLOR: #000000; border-style: solid; border-width: 1px 1px 0px 1px;
+2<@>}
+19<@>.topnavon A:link {
+245<@>	PADDING-RIGHT: 4px; DISPLAY: block; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: capitalize; COLOR: #404343; PADDING-TOP: 7px; BACKGROUND-COLOR: #f1f1f1; TEXT-ALIGN: center; TEXT-DECORATION: none;
+2<@>}
+22<@>.topnavon A:visited {
+245<@>	PADDING-RIGHT: 4px; DISPLAY: block; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: capitalize; COLOR: #404343; PADDING-TOP: 7px; BACKGROUND-COLOR: #f1f1f1; TEXT-ALIGN: center; TEXT-DECORATION: none;
+2<@>}
+21<@>.topnavon A:active {
+245<@>	PADDING-RIGHT: 4px; DISPLAY: block; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: capitalize; COLOR: #404343; PADDING-TOP: 7px; BACKGROUND-COLOR: #f1f1f1; TEXT-ALIGN: center; TEXT-DECORATION: none;
+2<@>}
+20<@>.topnavon A:hover {
+245<@>	PADDING-RIGHT: 4px; DISPLAY: block; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; TEXT-TRANSFORM: capitalize; COLOR: #404343; PADDING-TOP: 7px; BACKGROUND-COLOR: #f1f1f1; TEXT-ALIGN: center; TEXT-DECORATION: none;
+2<@>}
+12<@>.topnavoff{
+339<@>	BORDER-LEFT-COLOR: #f1f1f1; BORDER-BOTTOM-COLOR: #000000; PADDING-BOTTOM: 4px; TEXT-TRANSFORM: capitalize; COLOR: #f1f1f1; BORDER-TOP-COLOR: #f1f1f1; PADDING-TOP: 7px; LETTER-SPACING: 1px; BACKGROUND-COLOR: 404343; TEXT-ALIGN: center; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #f1f1f1; border-style: solid;border-width: 1px 1px 0px 1px;
+2<@>}
+20<@>.topnavoff A:link {
+380<@>	PADDING-RIGHT: 2px; DISPLAY: block; PADDING-LEFT: 2px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 4px; TEXT-TRANSFORM: capitalize; COLOR: #f1f1f1; PADDING-TOP: 7px; BACKGROUND-COLOR: #404343; TEXT-ALIGN: center; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #000000; BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; LETTER-SPACING: 1px;
+2<@>}
+23<@>.topnavoff A:visited {
+380<@>	PADDING-RIGHT: 2px; DISPLAY: block; PADDING-LEFT: 2px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 4px; TEXT-TRANSFORM: capitalize; COLOR: #f1f1f1; PADDING-TOP: 7px; BACKGROUND-COLOR: #404343; TEXT-ALIGN: center; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #000000; BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; LETTER-SPACING: 1px;
+2<@>}
+22<@>.topnavoff A:active {
+380<@>	PADDING-RIGHT: 2px; DISPLAY: block; PADDING-LEFT: 2px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 4px; TEXT-TRANSFORM: capitalize; COLOR: #f1f1f1; PADDING-TOP: 7px; BACKGROUND-COLOR: #404343; TEXT-ALIGN: center; TEXT-DECORATION: none; BORDER-RIGHT-COLOR: #000000; BORDER-LEFT-COLOR: #000000; BORDER-BOTTOM-COLOR: #000000; BORDER-TOP-COLOR: #000000; LETTER-SPACING: 1px;
+2<@>}
+21<@>.topnavoff A:hover {
+301<@>	PADDING-RIGHT: 1px; DISPLAY: block; PADDING-LEFT: 1px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 4px; TEXT-TRANSFORM: capitalize; COLOR: #404343; PADDING-TOP: 6px; BACKGROUND-COLOR: #f1f1f1; TEXT-ALIGN: center; TEXT-DECORATION: underline; border-style: solid;border-width: 1px 1px 0px 1px;
+2<@>}
+15<@>.topnavlower {
+27<@>	background-color:#404343;
+2<@>}
+1<@>
+21<@>#content_container {
+285<@>	BORDER-RIGHT: #f1f1f1 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #404343 0px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: #f1f1f1 1px solid; WIDTH: 100%; PADDING-TOP: 0px; BACKGROUND-COLOR: #f1f1f1; BORDER-BOTTOM-STYLE: none; border-spacing: 0; HEIGHT:450
+2<@>}
+24<@>#content_container TD {
+91<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+2<@>}
+21<@>#sidenav_container {
+161<@>	BORDER-RIGHT: #f1f1f1 1px solid; BORDER-TOP: #404343 0px solid; VERTICAL-ALIGN: top; WIDTH: 130px; BORDER-BOTTOM: #404343 1px solid; background-color: #404343;
+2<@>}
+11<@>#sidenav {
+32<@>	FONT-SIZE: 11px; WIDTH: 130px;
+2<@>}
+14<@>#sidenav UL {
+152<@>	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: #404343 1px solid; BACKGROUND-COLOR: #f1f1f1
+2<@>}
+14<@>#sidenav LI {
+200<@>	BORDER-RIGHT: #404343 1px solid; BORDER-TOP: #404343 1px solid; MARGIN-BOTTOM: 1px; BORDER-LEFT: #404343 1px solid; BORDER-BOTTOM: #404343 1px solid; LIST-STYLE-TYPE: none; BACKGROUND-COLOR: #404343
+2<@>}
+21<@>#sidenav LI A:link {
+202<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #f1f1f1; PADDING-TOP: 5px; BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+2<@>}
+24<@>#sidenav LI A:visited {
+202<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #f1f1f1; PADDING-TOP: 5px; BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+2<@>}
+23<@>#sidenav LI A:active {
+202<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #f1f1f1; PADDING-TOP: 5px; BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+2<@>}
+22<@>#sidenav LI A:hover {
+203<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #404343; PADDING-TOP: 5px; BACKGROUND-COLOR: #f1f1f1; TEXT-DECORATION: underline
+2<@>}
+23<@>#sidenav .sidenavoff {
+31<@>	FONT-SIZE: 11px; WIDTH: 128px
+2<@>}
+23<@>#sidenav .sidenavoff {
+60<@>	FONT-SIZE: 11px; COLOR: #404343; BACKGROUND-COLOR: #f1f1f1
+2<@>}
+30<@>#sidenav .sidenavoff A:link {
+198<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #404343; PADDING-TOP: 5px; BACKGROUND-COLOR: #f1f1f1; TEXT-DECORATION: none
+2<@>}
+33<@>#sidenav .sidenavoff A:visited {
+198<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #404343; PADDING-TOP: 5px; BACKGROUND-COLOR: #f1f1f1; TEXT-DECORATION: none
+2<@>}
+32<@>#sidenav .sidenavoff A:active {
+198<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #404343; PADDING-TOP: 5px; BACKGROUND-COLOR: #f1f1f1; TEXT-DECORATION: none
+2<@>}
+31<@>#sidenav .sidenavoff A:hover {
+198<@>	PADDING-RIGHT: 5px; DISPLAY: block; PADDING-LEFT: 5px; FONT-WEIGHT: normal; FONT-SIZE: 11px; PADDING-BOTTOM: 5px; COLOR: #404343; PADDING-TOP: 5px; BACKGROUND-COLOR: #f1f1f1; TEXT-DECORATION: none
+2<@>}
+1<@>
+25<@>#maincontent_container {
+64<@>	VERTICAL-ALIGN: top; COLOR: #000000; BACKGROUND-COLOR: #f1f1f1
+2<@>}
+15<@>#maincontent {
+121<@>	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; COLOR: #000000; PADDING-TOP: 5px; BACKGROUND-COLOR: #f1f1f1
+2<@>}
+14<@>#box_header {
+41<@>	WIDTH: 100%; border: 1px solid #7FA4C6;
+2<@>}
+25<@>#box_header .topheader {
+31<@>    background-color: #F56D23;
+20<@>    color: #1F1F1F;
+21<@>    font-size: 12px;
+23<@>    font-weight: bold;
+25<@>    letter-spacing: 1px;
+25<@>    margin: 0 -10px 5px;
+31<@>    padding: 5px 5px 5px 10px;
+32<@>    text-transform: capitalize;
+2<@>}
+23<@>#box_header .content {
+119<@>	PADDING-LEFT: 10px; PADDING-TOP: 10px; PADDING-RIGHT: 10px; PADDING-BOTTOM: 10px; FONT-SIZE: 12px; line-height: 16px;
+2<@>}
+1<@>
+15<@>#body_header {
+89<@>	MARGIN: 5px 0px 0px;  border: 1px solid #7FA4C6; WIDTH: 100%; BACKGROUND-COLOR: #ffffff
+2<@>}
+48<@>#body_header .topheader, #tcruletbl .topheader{
+231<@>	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; MARGIN: 0px -10px 5px; TEXT-TRANSFORM: capitalize; COLOR: #f1f1f1; PADDING-TOP: 5px; LETTER-SPACING: 1px; BACKGROUND-COLOR: #404343;
+2<@>}
+26<@>#body_header .topheader2{
+203<@>	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; MARGIN: 0px -10px 5px; COLOR: #f1f1f1; PADDING-TOP: 5px; LETTER-SPACING: 1px; BACKGROUND-COLOR: #404343;
+2<@>}
+24<@>#body_header .content {
+83<@>	PADDING-LEFT: 10px; PADDING-TOP: 10px; PADDING-RIGHT: 10px; PADDING-BOTTOM: 10px;
+2<@>}
+20<@>#footer_container {
+195<@>	BORDER-RIGHT: #f1f1f1 1px solid; BORDER-TOP: #f1f1f1 1px solid; BORDER-LEFT: #f1f1f1 1px solid; WIDTH: 100%; COLOR: #f1f1f1; BORDER-BOTTOM: #f1f1f1 0px; HEIGHT: 40px; BACKGROUND-COLOR: #404343;
+2<@>}
+23<@>#footer_container TD {
+44<@>	VERTICAL-ALIGN: bottom; TEXT-ALIGN: center
+2<@>}
+31<@>#footer_container #leftimage {
+14<@>	WIDTH: 127px
+2<@>}
+26<@>.formarea TR .formradio {
+21<@>	VERTICAL-ALIGN: top
+2<@>}
+15<@>.formarea TD {
+146<@>	PADDING-RIGHT: 0px! important; PADDING-LEFT: 0px! important; PADDING-BOTTOM: 2px! important; VERTICAL-ALIGN: middle; PADDING-TOP: 2px! important
+2<@>}
+19<@>.formarea A:link {
+92<@>	FONT-SIZE: 11px; COLOR: #666666; BACKGROUND-COLOR: transparent; TEXT-DECORATION: underline
+2<@>}
+22<@>.formarea A:visited {
+92<@>	FONT-SIZE: 11px; COLOR: #666666; BACKGROUND-COLOR: transparent; TEXT-DECORATION: underline
+2<@>}
+21<@>.formarea A:active {
+92<@>	FONT-SIZE: 11px; COLOR: #666666; BACKGROUND-COLOR: transparent; TEXT-DECORATION: underline
+2<@>}
+20<@>.formarea A:hover {
+61<@>	FONT-SIZE: 11px; COLOR: #666666; TEXT-DECORATION: underline
+2<@>}
+1<@>
+24<@>.formarea .form_label {
+84<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 170px; TEXT-ALIGN: right
+2<@>}
+29<@>.formarea .form_label_left {
+100<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; TEXT-ALIGN:right; font-size: 12px; width: 178px
+2<@>}
+32<@>.formarea .form_label_enabled {
+99<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; TEXT-ALIGN:left; font-size: 12px; width: 178px
+2<@>}
+30<@>.formarea .form_label_right {
+66<@>	PADDING-RIGHT: 10px! important; TEXT-ALIGN:left; font-size: 11px
+2<@>}
+30<@>.formarea .form_label_130PX {
+84<@>	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 130px; TEXT-ALIGN: right
+2<@>}
+27<@>.formarea .form_label_50 {

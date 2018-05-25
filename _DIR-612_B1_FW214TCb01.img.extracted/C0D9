@@ -1,0 +1,955 @@
+13<@>&&*&&tw**&**
+47<@>    <VWS_FUNCTION (void*)showWanStateTable();>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+1<@>
+94<@><input type="hidden" name="submit.htm?status.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+17<@><p align=center>
+52<@><input type="submit" value="刷新" name="refresh">
+5<@></p>
+5<@><br>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+1<@>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+24<@>&*#@version.htm@#*&7057
+123<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+45<@><html xmlns="http://www.w3.org/1999/xhtml">
+8<@><head>
+69<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+24<@><title>Version</title>
+25<@><style type="text/css">
+2<@>
+71<@> 	body{background:#757575;font: 12px/1.4 Arial, sans-serif, Verdana;}
+4<@>  
+60<@> 	a{font-size:12px; color:#FFFFFF; text-decoration:none; }
+64<@>	a:link{font-size:12px; color:#FFFFFF; text-decoration:none; }
+28<@>	a:active{font-size:12px;}
+50<@>	a:hover{font-size:12px; text-decoration:none;}	
+86<@>	.input02{border:1px solid #bbb;background:#fff;height:21px;width:200px;color:#555;}
+2<@>
+149<@>	.login {position:absolute;left:50%;margin-left:-421px !important;margin-left:-421px;width:842px;height:526px;text-align:left; background:#ffffff;}
+58<@>	.td01{text-align:center;height:25px;padding-left:40px;}
+50<@>	.productInfo{ background:#404343; height:31px;}
+51<@>	.productInfo td{font-size: 14px;color: #FFFFFF;}
+147<@>	.loginTable {border-collapse:collapse;width:550px;height:300px;margin-top:30px; margin-left:150px; background:#f1f1f1;border:1px solid #FF6F00;}
+35<@>	.loginTable td{text-align:left;}
+52<@>	.loginInfo{ font-weight:bold;margin-left:135px; }
+36<@>	.loginInfo td{text-align:center;}
+193<@>	.loginBut{margin-top:0px;margin-left:5px;border: 0px #ccc solid;background: url(/html/skin/loginBut.gif);width:63px;height:30px;line-height:30px;color:#000;cursor:pointer;padding:0 0 0 0px;}
+3<@>	
+63<@>	.copywright{font-size: 14px;text-align:center; height:30px;}
+2<@>
+11<@>.link_bg{
+21<@>	padding: 2px 10px;
+3<@>}
+2<@>
+12<@>.letterBg{
+24<@>	background: #f36d23; 
+20<@>	text-align: left;
+21<@>	font-weight: bold;
+22<@>	padding: 0 0 0 5px;
+13<@>	margin: 0;
+16<@>	height: 25px;
+21<@>	line-height: 25px;
+3<@>}
+2<@>
+17<@>.versionBottom{
+46<@>	background:url(loginbottom.gif) no-repeat; 
+16<@>	height:41px; 
+19<@>	margin-top:33px;
+3<@>}
+11<@>.Table1 {
+246<@>	BORDER-BOTTOM: #ff6f00 1px solid; BORDER-LEFT: #ff6f00 1px solid; MARGIN-TOP: 30px; WIDTH: 550px; BORDER-COLLAPSE: collapse; BACKGROUND: #f1f1f1; HEIGHT: 270px; MARGIN-LEFT: 150px; BORDER-TOP: #ff6f00 1px solid; BORDER-RIGHT: #ff6f00 1px solid
+3<@>}
+20<@>.Table1 TD.lable {
+60<@>	FONT: bold 9pt Arial,Helvetica,sans-serif; COLOR: #003366
+3<@>}
+10<@></style>
+10<@><script>
+43<@><VWS_FUNCTION (void*)WebShowModemName();>
+45<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+45<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+42<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+26<@>function uipostGoIndex()
+3<@>{
+60<@>	document.location.href = "http://" + lanip + "/index.htm"
+3<@>}
+11<@></script>
+9<@></head>
+2<@>
+24<@><body id="login_body">
+21<@><div class="login">
+88<@>   <table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+8<@>		<tr>
+102<@>			<td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面: 
+10<@><script>
+29<@>		document.write(ModemVer);
+11<@></script>
+10<@>			</td>
+78<@>			<td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+10<@><script>
+32<@>		document.write(HardwareVer);
+13<@></script>		
+40<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本: 
+10<@><script>
+32<@>		document.write(FirmwareVer);
+11<@></script>
+29<@>			&nbsp;&nbsp;&nbsp;&nbsp;
+10<@>			</td>
+9<@>		</tr>
+11<@>	</table>
+66<@>	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+8<@>		<tr>
+127<@>			<td id="top_l" align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+62<@>			<td id="top_m" background="head_02.gif" width="600"></td>
+62<@>			<td id="top_r" align="right"><img src="head_03.gif"></td>
+9<@>		</tr>
+11<@>	</table>
+24<@><table class="Table1">
+2<@>
+12<@>  	<tbody>
+7<@>	<tr>
+36<@>		<td class="letterBg">&nbsp;</td>
+8<@>	</tr>
+7<@>	<tr>
+21<@>		<td height="240">
+12<@>			<table>
+13<@>				<tbody>
+11<@>					<tr>
+79<@>						<td width="250" nowrap="" class="lable">Firmware External Version:</td>
+57<@>						<td nowrap="" class="lable" id="extemal_version">
+51<@><VWS_FUNCTION (void*)getExternalVersionString();>
+12<@></td></tr>
+11<@>					<tr>
+79<@>						<td width="250" nowrap="" class="lable">Firmware Internal Version:</td>
+57<@>						<td nowrap="" class="lable" id="intemal_version">
+51<@><VWS_FUNCTION (void*)getInternalVersionString();>
+12<@></td></tr>
+11<@>					<tr>
+67<@>						<td width="250" nowrap="" class="lable">KernelVersion:</td>
+56<@>						<td nowrap="" class="lable" id="Kernel_Version">
+59<@>						<VWS_FUNCTION (void*)getHideVersionKernelString();>
+13<@>						</td>
+12<@>					</tr>
+11<@>					<tr>
+58<@>						<td width="250" nowrap="" class="lable">Date:</td>
+52<@>						<td nowrap="" class="lable" id="input_date">
+57<@>						<VWS_FUNCTION (void*)getHideVersionDateString();>
+13<@>						</td>
+12<@>					</tr>
+11<@>					<tr>
+62<@>						<td width="250" nowrap="" class="lable">Checksum:</td>
+56<@>						<td nowrap="" class="lable" id="input_checksum">
+61<@>						<VWS_FUNCTION (void*)getHideVersionChecksumString();>
+13<@>						</td>
+13<@>						</tr>
+11<@>					<tr>
+61<@>						<td width="250" nowrap="" class="lable">LAN MAC:</td>
+49<@>						<td nowrap="" class="lable" id="lan_mac">
+59<@>						<VWS_FUNCTION (void*)getHideVersionLanMacString();>
+13<@>						</td>
+12<@>					</tr>
+11<@>					<tr>
+61<@>						<td width="250" nowrap="" class="lable">WAN MAC:</td>
+49<@>						<td nowrap="" class="lable" id="wan_mac">
+59<@>						<VWS_FUNCTION (void*)getHideVersionWanMacString();>
+13<@>						</td>
+12<@>					</tr>
+11<@>					<tr>
+62<@>						<td width="250" nowrap="" class="lable">WLAN MAC:</td>
+50<@>						<td nowrap="" class="lable" id="wlan_mac">
+60<@>						<VWS_FUNCTION (void*)getHideVersionWlanMacString();>
+13<@>						</td>
+12<@>					</tr>
+11<@>					<tr>
+63<@>						<td width="250" nowrap="" class="lable">WLAN SSID:</td>
+52<@>						<td nowrap="" class="lable" id="wlan0_ssid">
+48<@>						<VWS_SCREEN (char*)xscrnShowWlanSSID[];>
+13<@>						</td>
+12<@>					</tr>
+11<@>					<tr>
+65<@>						<td width="250" nowrap="" class="lable">WLAN DOMAIN:</td>
+53<@>						<td nowrap="" class="lable" id="wlan_domain">
+50<@>						<VWS_SCREEN (char*)xscrnShowWlanDomain[];>
+13<@>						</td>
+12<@>					</tr>
+14<@>				</tbody>
+13<@>			</table>
+9<@>		</td>
+8<@>	</tr>
+7<@>	<tr>
+8<@>		<td>
+12<@>			<table>
+13<@>				<tbody>
+11<@>					<tr>
+12<@>						<td>
+103<@>							<input type="button" name="submit" value="繼續" onclick="uipostGoIndex()" id="uipostSubmit">
+13<@>						</td>
+12<@>					</tr>
+14<@>				</tbody>
+13<@>			</table>
+9<@>		</td>
+8<@>	</tr>
+2<@>
+11<@>	</tbody>
+10<@></table>
+37<@>	<div class="versionBottom"> </div>
+47<@>	<div id="lang_copyright" class="copywright">
+43<@><VWS_FUNCTION (void*)WebShowCopyright();>
+8<@></div>
+81<@>	<form name="uiPostForm" id="uiPostForm" method="post" action="webproc"></form>
+8<@></div>
+15<@></body></html>
+1<@>
+21<@>&*#@ddns.htm@#*&6478
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+25<@><title>動態DNS</title>
+1<@>
+9<@><SCRIPT>
+27<@>function checkTextStr(str)
+2<@>{
+34<@> for (var i=0; i<str.length; i++)
+3<@> {
+120<@>  if ( str.charAt(i) == '%' || str.charAt(i) =='&' ||str.charAt(i) =='\\' || str.charAt(i) =='?' || str.charAt(i)=='"')
+17<@>   return false;
+3<@> }
+14<@> return true;
+2<@>}
+20<@>function addClick()
+2<@>{
+41<@> if (document.ddns.hostname.value=="") {
+47<@>  alert("請輸入此帳戶的主機名稱!");
+34<@>  document.ddns.hostname.focus();
+16<@>  return false;
+3<@> }
+56<@> if(!checkSpecialChar(document.ddns.hostname.value, 1))
+3<@> {
+35<@>  alert("無效的主機名稱!");
+34<@>  document.ddns.hostname.focus();
+16<@>  return false;
+3<@> }
+1<@>
+158<@> if((document.ddns.ddnsProv.value=="0") || (document.ddns.ddnsProv.value=="1") || (document.ddns.ddnsProv.value=="2") || (document.ddns.ddnsProv.value=="3"))
+3<@> {
+40<@>  if (document.ddns.username.value=="")
+4<@>  {
+51<@>   alert("請輸入此帳戶的使用者名稱!");
+35<@>   document.ddns.username.focus();
+17<@>   return false;
+4<@>  }
+57<@>  if(!checkSpecialChar(document.ddns.username.value, 1))
+4<@>  {
+39<@>   alert("無效的使用者名稱!");
+35<@>   document.ddns.username.focus();
+17<@>   return false;
+4<@>  }
+42<@>  if (document.ddns.password.value=="") {
+42<@>   alert("請輸入此帳戶的密碼!");
+35<@>   document.ddns.password.focus();
+17<@>   return false;
+4<@>  }
+57<@>  if(!checkSpecialChar(document.ddns.password.value, 1))
+4<@>  {
+30<@>   alert("無效的密碼!");
+35<@>   document.ddns.password.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+1<@>
+14<@> return true;
+2<@>}
+1<@>
+1<@>
+23<@>function updateState()
+2<@>{
+1<@>
+2<@>}
+1<@>
+69<@>function postDdns(state, provider,hostname,username,password,ifname)
+2<@>{
+30<@> isChecked = parseInt(state);
+15<@> if(isChecked)
+37<@>  document.ddns.enable.checked=true;
+6<@> else
+38<@>  document.ddns.enable.checked=false;
+1<@>
+26<@> if(provider == 'dyndns')
+36<@>  document.ddns.ddnsProv.value = 0;
+28<@> else if(provider == 'tzo')
+36<@>  document.ddns.ddnsProv.value = 1;
+31<@> else if(provider == 'phddns')
+36<@>  document.ddns.ddnsProv.value = 2;
+41<@> else if (provider == 'dlinkddns(Free)')
+36<@>  document.ddns.ddnsProv.value = 3;
+6<@> else
+36<@>  document.ddns.ddnsProv.value = 0;
+1<@>
+42<@> document.ddns.hostname.value = hostname;
+42<@> document.ddns.username.value = username;
+42<@> document.ddns.password.value = password;
+2<@>}
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+27<@> TabHeader="進階設定";
+23<@> SideItem="動態DNS";
+18<@> HelpItem="Ddns";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@> <tr>
+39<@>  <td class="topheader">動態DNS</td>
+7<@> </tr>
+6<@> <tr>
+23<@>  <td class="content">
+148<@>   <p>本頁面用來配置在dlinkddns.com(Free), DynDNS.org, TZO和Oray上的動態DNS地址. 您可以通過添加/刪除來配置動態DNS.</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+53<@><form action="form2Ddns.cgi"method=POST name="ddns">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@> <tr>
+45<@>  <td class="topheader">動態DNS設定</td>
+7<@> </tr>
+6<@> <tr>
+36<@>  <td class="content" align="left">
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>    <tr>
+46<@>     <td class="form_label_left">啟用:</td>
+77<@>     <td class="form_label_right"><input type="checkbox" name="enable"></td>
+10<@>    </tr>
+9<@>    <tr>
+59<@>     <td class="form_label_left">DDNS服務提供者:</td>
+35<@>     <td class="form_label_right">
+65<@>      <select size="1" name="ddnsProv" onChange='updateState()'>
+45<@>       <option value="0">DynDNS.org</option>
+38<@>       <option value="1">TZO</option>
+43<@>       <VWS_SCREEN (char*) PhDNSOption[];>
+57<@>       <option selected value="3">dlinkddns.com</option>
+16<@>      </select>
+29<@>                       </td>
+10<@>    </tr>
+9<@>    <tr>
+52<@>     <td class="form_label_left">主機名稱:</td>
+101<@>     <td class="form_label_right"><input type="text" name="hostname" size="35" maxlength="128"></td>
+10<@>    </tr>
+12<@>   </table>
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+64<@>    <tr><td colspan="2"><hr size=1 noshade align=top></td></tr>
+96<@>    <tr><td colspan="2" class="form_label_left" style="text-align:left">帳戶設定:</td></tr>
+9<@>    <tr>
+55<@>     <td class="form_label_left">使用者名稱:</td>
+100<@>     <td class="form_label_right"><input type="text" name="username" size="35" maxlength="63"></td>
+10<@>    </tr>
+9<@>    <tr>
+46<@>     <td class="form_label_left">密碼:</td>
+104<@>     <td class="form_label_right"><input type="password" name="password" size="35" maxlength="63"></td>
+10<@>    </tr>
+12<@>   </table>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+91<@><input type="submit" value="新增" name="addacc" onClick="return addClick()">&nbsp;&nbsp;
+63<@><input type="submit" value="刪除" name="delacc">&nbsp;&nbsp;
+5<@></p>
+52<@><table id="body_header" border="0" cellspacing="0">
+6<@> <tr>
+48<@>     <td class="topheader">動態DNS清單</td>
+10<@>    </tr>
+9<@>    <tr>
+39<@>     <td class="content" align="left">
+92<@>         <table class="formlisting" border="0" cellpadding="0" cellspacing="0" width="500">
+41<@>             <tr class="form_label_row">
+56<@>                 <td class="form_label_col">選擇</td>
+59<@>                    <td class="form_label_col">狀態</td>
+59<@>                    <td class="form_label_col">服務</td>
+65<@>                    <td class="form_label_col">主機名稱</td>
+68<@>                    <td class="form_label_col">使用者名稱</td>
+1<@>
+22<@>                </tr>
+43<@>    <VWS_FUNCTION (void*)showDdnsTable();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+92<@><input type="hidden" NAME="submit.htm?ddns.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+34<@><script> updateState(); </script>
+8<@></form>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+24<@>&*#@dhcptbl.htm@#*&2693
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+41<@><meta http-equiv="refresh" content="60">
+40<@><title>活動中的用戶清單</title>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+32<@><script type='text/javascript'>
+21<@>	TabHeader="狀態";
+38<@>	SideItem="活動中的用戶清單";
+24<@>	HelpItem="dhcpclient";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+54<@>		<td class="topheader">活動中的用戶清單</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+80<@>			<p>此頁面顯示目前連上路由器的有線和無線裝置資料。</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+62<@><form action="form2WebRefresh.cgi" method=POST name="status">
+52<@><table id="body_header" border="0" cellspacing="0">
+6<@>	<tr>
+51<@>    	<td class="topheader">有線設備列表</td>
+10<@>    </tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+76<@>        	<table class="formlisting" border="0" cellpadding="0" width="500">
+41<@>            	<tr class="form_label_row">
+68<@>                	<td class="form_label_col" width="30%">名稱</td>
+73<@>                    <td class="form_label_col" width="30%">IP位址</td>
+74<@>                    <td class="form_label_col" width="40%">MAC位址</td>
+22<@>                </tr>
+51<@>				<VWS_FUNCTION (void*)showWiredDhcpBindingX();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+6<@>	<tr>
+51<@>    	<td class="topheader">無線設備列表</td>
+10<@>    </tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+76<@>        	<table class="formlisting" border="0" cellpadding="0" width="500">
+41<@>            	<tr class="form_label_row">
+68<@>                	<td class="form_label_col" width="30%">名稱</td>
+73<@>                    <td class="form_label_col" width="30%">IP位址</td>
+74<@>                    <td class="form_label_col" width="40%">MAC位址</td>
+22<@>                </tr>
+54<@>				<VWS_FUNCTION (void*)showWirelessDhcpBindingX();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+100<@><input type="button" value="更新資料" onClick="window.location.href='dhcptbl.htm'">&nbsp;&nbsp;
+5<@></p>
+1<@>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+30<@>&*#@url_nokeyword.htm@#*&3482
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+25<@><title>URL封鎖</title>
+9<@><SCRIPT>
+34<@>function checkUrlKeywordChar(str)
+2<@>{
+31<@> var patrn=/^[a-zA-Z0-9-.]+$/;
+38<@> if (!patrn.exec(str)) return false ;
+14<@> return true;
+2<@>}
+20<@>function addClick()
+2<@>{
+54<@> if(!checkUrlKeywordChar(document.url.urlFQDN.value))
+3<@> {
+32<@>  alert("無效的關鍵字!");
+32<@>  document.url.urlFQDN.focus();
+16<@>  return false;
+3<@> }
+35<@> var y=document.url.urlFQDN.value;
+45<@> document.url.urlFQDN.value=y.toLowerCase();
+14<@> return true;
+2<@>}
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+27<@> TabHeader="進階設定";
+23<@> SideItem="URL封鎖";
+17<@> HelpItem="Url";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@> <tr>
+39<@>  <td class="topheader">URL封鎖</td>
+7<@> </tr>
+6<@> <tr>
+23<@>  <td class="content">
+98<@>   <p>此頁面是用來設定過濾關鍵字，您可以新增或刪除過濾的關鍵字。</p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+52<@><form action="form2url.cgi" method=POST name="url">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@> <tr>
+45<@>  <td class="topheader">URL封鎖功能</td>
+7<@> </tr>
+6<@> <tr>
+36<@>  <td class="content" align="left">
+83<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>    <tr>
+55<@>     <td class="form_label_left">URL封鎖功能:</td>
+35<@>     <td class="form_label_right">
+120<@>     <input type="radio" value="0" name="urlcap" >停用&nbsp;&nbsp;<input type="radio" value="1" name="urlcap" >啟用
+26<@>                    </td>
+10<@>    </tr>
+12<@>   </table>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+50<@><input type="submit" value="套用" >&nbsp;&nbsp;
+5<@></p>
+5<@><br>
+52<@><table id="body_header" border="0" cellspacing="0">
+6<@> <tr>
+42<@>     <td class="topheader">關鍵字</td>
+10<@>    </tr>
+9<@>    <tr>
+39<@>     <td class="content" align="left">
+71<@>   <table class="formarea" border="0" cellpadding="0" cellspacing="0">
+9<@>    <tr>
+49<@>     <td class="form_label_left">關鍵字:</td>
+35<@>     <td class="form_label_right">
+66<@>      <input type="text" name="urlFQDN" size="32" maxlength="32">
+11<@>     </td>
+10<@>    </tr>
+12<@>   </table>
+8<@>   <br>
+20<@>   <p align=center>
+104<@>   <input type="submit" value="增加關鍵字" name="addFQDN" onClick="return addClick()">&nbsp;&nbsp;
+82<@>   <input type="submit" value="刪除所選關鍵字" name="delFQDN">&nbsp;&nbsp;
+8<@>   </p>
+8<@>   <br>
+8<@>   <br>
+52<@>   <font size="2"><b>URL封鎖清單</b></font><br>
+86<@>   <table class="formlisting" border="0" cellpadding="0" cellspacing="0" width="500">
+1<@>
+42<@>    <VWS_FUNCTION (void*)showURLTable();>
+12<@>   </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+101<@><input type="hidden" NAME="submit.htm?url_nokeyword.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+9<@><script>
+37<@><VWS_FUNCTION (void*)urlinitpage();>
+10<@></script>
+8<@></form>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+21<@>&*#@acl.htm@#*&23990
+1<@>
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+28<@><title>存取控制</title>
+9<@><script>
+35<@>var retPort=/^([0-9]|[:]){1,15}$/;
+28<@>var retNum=/^[0-9]{1,15}$/;
+1<@>
+47<@>function portInfo(startPort, endPort, srvName)
+2<@>{
+29<@>	this.startPort = startPort;
+25<@>	this.endPort = endPort;
+25<@>	this.srvName = srvName;
+2<@>}
+37<@>function lanAclip(selectindex,order)
+2<@>{
+32<@>	 this.selectindex=selectindex;
+20<@>	 this.order=order;
+2<@>}
+29<@>var lanAclips = new Array();
+1<@>
+43<@>function checkOpenPort(startport, endport)
+2<@>{
+2<@>	
+2<@>}
+1<@>
+25<@>function checkPort(port)
+2<@>{
+29<@>	portValue = parseInt(port);
+46<@>	if ((portValue > 65535) || (portValue <= 0))
+3<@>	{
+16<@>		return false;
+3<@>	}
+6<@>	else
+3<@>	{
+15<@>		return true;
+3<@>	}
+2<@>}
+37<@>function checkIpRange(startIp,endIp)
+2<@>{
+44<@>	if(getDigit(startIp,1)!=getDigit(endIp,1))
+16<@>		return false;
+44<@>	if(getDigit(startIp,2)!=getDigit(endIp,2))
+16<@>		return false;
+44<@>	if(getDigit(startIp,3)!=getDigit(endIp,3))
+16<@>		return false;
+43<@>	if(getDigit(startIp,4)>getDigit(endIp,4))
+16<@>		return false;
+14<@>	return true;
+2<@>}
+1<@>
+23<@>function OnHelp( page)
+2<@>{
+153<@>    HelpWin= window.open(page,"Help","toolbar=no,location=no,directories=no,   status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=500");
+2<@>}
+20<@>function addClick()
+2<@>{
+157<@>   if (document.getElementById ("fromwanipid").style.display==""&&(document.formFilterEdit.aclIP.value!="0.0.0.0"&&!checkIP(document.formFilterEdit.aclIP)))
+4<@>  {
+41<@>		document.formFilterEdit.aclIP.focus();
+16<@>		return false;
+5<@>   }
+54<@>    if (document.formFilterEdit.aclIPend.value != "")
+7<@>	    {
+59<@>	       if(document.formFilterEdit.aclIP.value=="0.0.0.0")
+12<@>	       		{
+58<@>	       		alert("任何IP位址! 請清除結束的IP!");
+24<@>	       		return false;
+12<@>	       		}
+57<@>	       if ( !checkIP(document.formFilterEdit.aclIPend))
+28<@>	         return false;    
+102<@>	       if(!checkIpRange(document.formFilterEdit.aclIP.value,document.formFilterEdit.aclIPend.value))
+10<@>	       {
+72<@>	       	alert("在IP範圍內的起始IP必須小於結束IP位址!");
+23<@>	       	return false;
+10<@>	       }
+3<@>	}
+2<@>	
+56<@>   if(document.formFilterEdit.interface.value == "lan")
+17<@>    return true;
+27<@>	var tcpPort=new Array(3);
+10<@>	var i=0;
+51<@>  if(document.formFilterEdit.localAcl_web.checked)
+4<@>  {
+106<@>		if (document.formFilterEdit.webport.value == '' || !retNum.test(document.formFilterEdit.webport.value) 
+67<@>			|| false == checkPort(document.formFilterEdit.webport.value)) {
+69<@>			msg = 'web' + document.formFilterEdit.webport.value + ' 非法!';
+15<@>			alert(msg);
+17<@>			return false;
+3<@>	}
+53<@>	tcpPort[i++]=document.formFilterEdit.webport.value;
+2<@>}
+56<@>		if(document.formFilterEdit.localAcl_telnet.checked) {
+111<@>		if (document.formFilterEdit.telnetport.value == '' || !retNum.test(document.formFilterEdit.telnetport.value)
+67<@>		|| false == checkPort(document.formFilterEdit.telnetport.value))
+3<@>		
+4<@>		{
+66<@>			msg = 'telnet' + formFilterEdit.telnetport.value + ' 非法!';
+15<@>			alert(msg);
+17<@>			return false;
+6<@>  		}
+57<@>		tcpPort[i++]=document.formFilterEdit.telnetport.value;
+6<@>  		}
+53<@>		if(document.formFilterEdit.localAcl_tftp.checked){
+109<@>			if (document.formFilterEdit.tftpport.value == '' || !retNum.test(document.formFilterEdit.tftpport.value) 
+66<@>			|| false == checkPort(document.formFilterEdit.tftpport.value))
+5<@>			{
+67<@>				msg = 'tftp' + formFilterEdit.tftpport.value + ' is invalid!';
+16<@>				alert(msg);
+18<@>				return false;
+7<@>	 		 }
+6<@>  		}
+52<@>		if(document.formFilterEdit.localAcl_ftp.checked){
+107<@>			if (document.formFilterEdit.ftpport.value == '' || !retNum.test(document.formFilterEdit.ftpport.value) 
+67<@>			|| false == checkPort(document.formFilterEdit.ftpport.value))		
+5<@>			{
+61<@>				msg = 'ftp' + formFilterEdit.ftpport.value + ' 非法!';
+16<@>				alert(msg);
+18<@>				return false;
+7<@>	 		 }
+54<@>		tcpPort[i++]=document.formFilterEdit.ftpport.value;
+6<@>  		}
+54<@>		if(document.formFilterEdit.localAcl_snmp.checked) {
+107<@>		if (document.formFilterEdit.snmpport.value == '' || !retNum.test(document.formFilterEdit.snmpport.value)
+65<@>		|| false == checkPort(document.formFilterEdit.snmpport.value))
+4<@>		{
+62<@>			msg = 'snmp' + formFilterEdit.snmpport.value + ' 非法!';
+15<@>			alert(msg);
+17<@>			return false;
+6<@>  		}
+4<@>  }
+26<@>  //add by ramen 20090618
+24<@>  //check tcp services 
+11<@>  var m=0;
+19<@>  for(m=0;m<i;m++)
+4<@>  {
+13<@>    var t=0;
+20<@>	for(t=m+1;t<i;t++)
+6<@>	   {
+30<@>			if(tcpPort[t]==tcpPort[m])
+9<@>			    {
+86<@>				  alert("無效的服務埠! 有一個以上的服務使用相同的服務埠!");
+20<@>				  return false;
+6<@>				}
+6<@>	   }
+4<@>  }
+21<@>//check udp services
+98<@>	if(document.formFilterEdit.localAcl_tftp.checked&&document.formFilterEdit.localAcl_snmp.checked)
+3<@>	{
+85<@>		if(document.formFilterEdit.snmpport.value==document.formFilterEdit.tftpport.value)
+7<@>		   {
+85<@>					alert("無效的服務埠! 有一個以上的服務使用相同的服務埠!");
+19<@>					return false;
+7<@>		   }
+3<@>	}
+15<@>  return true;
+2<@>}
+25<@>function onClickAnyBtn()
+2<@>{
+56<@>	var objDiv = document.getElementById ("serviceTable");
+56<@>	if(document.formFilterEdit.localAcl_any.checked==true)
+3<@>	{
+34<@>		objDiv.style.display = "none"; 
+7<@>	}else
+35<@>	  objDiv.style.display = "";  	  
+62<@>	document.formFilterEdit.localAcl_web.checked=false;         
+56<@>	document.formFilterEdit.localAcl_telnet.checked=false;
+63<@>	document.formFilterEdit.localAcl_tftp.checked=false;         
+53<@>	document.formFilterEdit.localAcl_ftp.checked=false;
+54<@>	document.formFilterEdit.localAcl_snmp.checked=false;
+59<@>	document.formFilterEdit.localAcl_web.checked=false;      
+56<@>	document.formFilterEdit.localAcl_ping.checked=false; 	
+2<@>}
+25<@>function OnClickWebChk()
+2<@>{
+55<@>	var objDiv = document.getElementById ("webporttext");
+104<@>	if(document.formFilterEdit.localAcl_web.checked==true&&document.formFilterEdit.interface.value=="wan")
+3<@>	{
+30<@>		objDiv.style.display = ""; 
+7<@>	}else
+36<@>	  objDiv.style.display = "none";  
+11<@>	         
+2<@>}
+28<@>function OnClickTelnetChk()
+2<@>{
+58<@>	var objDiv = document.getElementById ("telnetporttext");
+107<@>	if(document.formFilterEdit.localAcl_telnet.checked==true&&document.formFilterEdit.interface.value=="wan")
+3<@>	{
+30<@>		objDiv.style.display = ""; 
+7<@>	}else
+36<@>	  objDiv.style.display = "none";  
+11<@>	         
+2<@>}
+26<@>function OnClickTftpChk()
+2<@>{
+56<@>	var objDiv = document.getElementById ("tftpporttext");
+105<@>	if(document.formFilterEdit.localAcl_tftp.checked==true&&document.formFilterEdit.interface.value=="wan")
+3<@>	{
+30<@>		objDiv.style.display = ""; 
+7<@>	}else
+36<@>	  objDiv.style.display = "none";  
+11<@>	         
+2<@>}
+25<@>function OnClickFtpChk()
+2<@>{
+54<@>	var objDiv = document.getElementById("ftpporttext");
+107<@>	if (document.formFilterEdit.localAcl_ftp.checked==true && document.formFilterEdit.interface.value=="wan")
+3<@>	{
+29<@>		objDiv.style.display = "";
+8<@>	} else
+33<@>		objDiv.style.display = "none";
+2<@>}
+26<@>function OnClickSnmpChk()
+2<@>{
+56<@>	var objDiv = document.getElementById ("snmpporttext");
+105<@>	if(document.formFilterEdit.localAcl_snmp.checked==true&&document.formFilterEdit.interface.value=="wan")
+3<@>	{
+30<@>		objDiv.style.display = ""; 
+7<@>	}else
+36<@>	  objDiv.style.display = "none";  
+11<@>	         
+2<@>}
+31<@>function SelectInterface(type)
+2<@>{
+61<@>	if(document.formFilterEdit.interface.selectedIndex==0)//lan
+3<@>	{
+67<@>	 document.getElementById ("wanitfselectid").style.display="none";
+67<@>   	 document.getElementById ("fromwanipid").style.display="";   	
+68<@>   	 document.getElementById ("wansettingid").style.display="none";
+61<@>   	 document.getElementById ("localanyid").style.display=""
+67<@>   	 document.getElementById ("serviceTable").style.display="none"
+69<@>   	 if(type==1) document.formFilterEdit.localAcl_any.checked=true; 
+13<@>	}else //wan
+3<@>	{
+63<@>	 document.getElementById ("wanitfselectid").style.display="";
+67<@>   	 document.getElementById ("fromwanipid").style.display="none";
+64<@>   	 document.getElementById ("wansettingid").style.display="";
+65<@>   	 document.getElementById ("localanyid").style.display="none"
+63<@>   	 document.getElementById ("serviceTable").style.display=""
+59<@>   	 document.formFilterEdit.localAcl_any.checked=false; 	
+1<@>
+3<@>	}
+22<@>	  if(type==1)       
+16<@>	            	{
+54<@>	            	document.formFilterEdit.aclIP.value='';
+62<@>	            	document.getElementById ("webport").value = "";
+72<@>	            	document.getElementById ("localAcl_web").checked = false;
+78<@>	            	document.getElementById ("webporttext").style.display = "none";
+1<@>
+65<@>	            	document.getElementById ("telnetport").value = "";
+75<@>	            	document.getElementById ("localAcl_telnet").checked = false;
+81<@>	            	document.getElementById ("telnetporttext").style.display = "none";
+1<@>
+63<@>	            	document.getElementById ("tftpport").value = "";
+73<@>	            	document.getElementById ("localAcl_tftp").checked = false;
+79<@>	            	document.getElementById ("tftpporttext").style.display = "none";
+1<@>
+62<@>	            	document.getElementById ("ftpport").value = "";
+72<@>	            	document.getElementById ("localAcl_ftp").checked = false;
+78<@>	            	document.getElementById ("ftpporttext").style.display = "none";
+1<@>
+63<@>	            	document.getElementById ("snmpport").value = "";
+73<@>	            	document.getElementById ("localAcl_snmp").checked = false;
+82<@>	            	document.getElementById ("snmpporttext").style.display = "none";	  
+1<@>
+73<@>	            	document.getElementById ("localAcl_ping").checked = false;
+16<@>	            	}
+20<@>	                  
+13<@>	           
+2<@>}
+28<@>function wansettingchange()
+2<@>{
+71<@>    if(document.formFilterEdit.wansetting.selectedIndex==0)//interface
+6<@>    {
+65<@>    document.getElementById ("wanitfselectid").style.display="";
+66<@>    document.getElementById ("fromwanipid").style.display="none";
+2<@> 
+2<@>	
+79<@>    } else if(document.formFilterEdit.wansetting.selectedIndex==1)//ip address
+6<@>    {
+69<@>    document.getElementById ("wanitfselectid").style.display="none";
+62<@>    document.getElementById ("fromwanipid").style.display="";
+72<@>    document.getElementById ("iprangesecondip").style.display="inline";
+6<@>     
+6<@>    }
+4<@>   
+2<@>}
+1<@>
+44<@>//#ifdef CONFIG_ALLOW_IP_MARK_LAN_INTERFACE
+28<@>function lansettingchange()
+2<@>{
+72<@>	    if(document.formFilterEdit.lansetting.selectedIndex==1)//interface
+7<@>	    {
+67<@>		    document.getElementById ("lanitfselectid").style.display="";
+68<@>		    document.getElementById ("fromwanipid").style.display="none";
+4<@>		 
+3<@>		
+80<@>	    } else if(document.formFilterEdit.lansetting.selectedIndex==0)//ip address
+7<@>	    {
+71<@>		    document.getElementById ("lanitfselectid").style.display="none";
+64<@>		    document.getElementById ("fromwanipid").style.display="";
+7<@>	    }
+4<@>   
+2<@>}
+9<@>//#endif
+1<@>
+31<@>function localAclEnableCheck()
+2<@>{
+77<@>if(lanAclips.length<1&&document.formFilterEnable.aclEnable[0].checked==true)
+2<@>{
+104<@> alert("抱歉! 必須有一個以上從lan端來的IP或一個lan端介面被允許存取數據機!");
+54<@> document.formFilterEnable.aclEnable[1].checked=true;
+15<@> return false;
+2<@>}
+13<@>return true;
+2<@>}
+1<@>
+27<@>function LanWan(direction)
+2<@>{
+23<@>  if(direction == "0")
+4<@>  {
+15<@>    //LAN side
+64<@>    document.getElementById("lanaclswitchid").style.display="";
+51<@>    document.formFilterEdit.interface.value="lan";
+45<@> //#ifdef CONFIG_ALLOW_IP_MARK_LAN_INTERFACE
+48<@>    if(document.getElementById("lansettingid"))
+67<@>         document.getElementById("lansettingid").style.display="";
+50<@>    if(document.getElementById("lanitfselectid"))
+73<@>         document.getElementById("lanitfselectid").style.display="none";
+9<@>//#endif
+63<@>    document.getElementById("fromwanipid").style.display="";  
+60<@>   	document.getElementById("localanyid").style.display="";
+68<@>   	document.getElementById("wanitfselectid").style.display="none";
+66<@>   	document.getElementById("wansettingid").style.display="none";

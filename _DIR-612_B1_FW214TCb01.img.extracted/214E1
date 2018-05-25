@@ -1,0 +1,934 @@
+13<@>&&*&&tw**&**
+31<@><script language="javascript">
+23<@>function updateChanX()
+2<@>{
+70<@> document.getElementById("id_checkpppoeuser").style.display = 'none';
+58<@> if(document.getElementById("connect_select").value=="0")
+3<@> {
+68<@>  document.getElementById("connect_PPPoE").style.display = 'block';
+68<@>  document.getElementById("connect_static").style.display = 'none';
+58<@>  document.getElementById("wantype").innerText = 'PPPoE';
+72<@>  document.getElementById("id_checkpppoeuser").style.display = 'block';
+3<@> }
+63<@> else if(document.getElementById("connect_select").value=="2")
+3<@> {
+69<@>  document.getElementById("connect_static").style.display = 'block';
+67<@>  document.getElementById("connect_PPPoE").style.display = 'none';
+59<@>  document.getElementById("wantype").innerText = 'Static';
+3<@> }
+6<@> else
+3<@> {
+67<@>  document.getElementById("connect_PPPoE").style.display = 'none';
+68<@>  document.getElementById("connect_static").style.display = 'none';
+57<@>  document.getElementById("wantype").innerText = 'DHCP';
+3<@> }
+2<@>}
+22<@>function updateChan()
+2<@>{
+33<@> if(statuscheckpppoeuser == '0')
+3<@> {
+61<@>  document.getElementById("connect_select").selectedIndex=1;
+3<@> }
+16<@> updateChanX();
+2<@>}
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+31<@>function validateIP(ip, msg) {
+23<@> if (ip.value == "") {
+85<@>  alert(msg + ' 不可以空白! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+21<@> var str = ip.value;
+16<@> var count = 0;
+40<@> for (var i = 0; i < str.length; i++) {
+64<@>  if ((str.charAt(i) >= '0' && str.charAt(i) <= '9')) continue;
+30<@>  if (str.charAt(i) == '.') {
+12<@>   count++;
+13<@>   continue;
+4<@>  }
+81<@>  alert('無效的 '+ msg+'數值 ! 數值應該是十進位的數字(0-9)。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+19<@> if (count != 3) {
+94<@>  alert('無效的 '+ msg+'數值 ! 數值應該輸入像 xxx.xxx.xxx.xxx 的4個數字。');
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+36<@> if (IsLoopBackIP(ip.value) == 1) {
+28<@>  alert(msg + '無效。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+46<@> if (!checkDigitRange(ip.value, 1, 1, 223)) {
+74<@>  alert(msg + '第1位的IP位址範圍無效! 範圍應該在1-233。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+46<@> if (!checkDigitRange(ip.value, 2, 0, 255)) {
+74<@>  alert(msg + '第2位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+46<@> if (!checkDigitRange(ip.value, 3, 0, 255)) {
+74<@>  alert(msg + '第3位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+46<@> if (!checkDigitRange(ip.value, 4, 1, 254)) {
+74<@>  alert(msg + '第4位的IP位址範圍無效! 範圍應該在1-254。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+14<@> return true;
+2<@>}
+27<@>function includeSpace(str)
+2<@>{
+37<@>  for (var i=0; i<str.length; i++) {
+33<@>   if ( str.charAt(i) == ' ' ) {
+16<@>   return true;
+3<@> }
+4<@>  }
+16<@>  return false;
+2<@>}
+32<@>function includeSpecialKey(str)
+2<@>{
+37<@>  for (var i=0; i<str.length; i++) {
+58<@>   if (( str.charAt(i)== ' ' ) || ( str.charAt(i)== '%' )
+57<@> || ( str.charAt(i)== '\\' ) || ( str.charAt(i)== '\'' )
+30<@>   || ( str.charAt(i)== '?' )
+63<@>        ||( str.charAt(i)== '&' ) ||( str.charAt(i)== '"' )) {
+16<@>   return true;
+3<@> }
+4<@>  }
+16<@>  return false;
+2<@>}
+29<@>function includeChinese(str)
+2<@>{
+36<@> for (var i=0; i<str.length; i++) {
+33<@>  if (str.charCodeAt(i) > 128) {
+16<@>   return true;
+4<@>  }
+3<@> }
+15<@> return false;
+2<@>}
+23<@>function saveChanges()
+2<@>{
+33<@> with(document.form2WizardSetup)
+3<@> {
+59<@>  if(document.getElementById("connect_select").value=="2")
+4<@>  {
+48<@>   if (!validateIP(staip_ipaddr, "IP地址")) {
+26<@>    staip_ipaddr.focus();
+18<@>    return false;
+5<@>   }
+66<@>   if (Lan1EqLan2(staip_ipaddr.value, lanmask, lanip, lanmask)) {
+58<@>    alert("WAN IP and LAN IP 必須在不同的網路!");
+26<@>    staip_ipaddr.focus();
+18<@>    return false;
+5<@>   }
+36<@>   if (staip_netmask.value != "") {
+37<@>    if (!checkMask(staip_netmask)) {
+28<@>     staip_netmask.focus();
+19<@>     return false;
+6<@>    }
+43<@>    d1 = getDigit(staip_netmask.value, 1);
+43<@>    d2 = getDigit(staip_netmask.value, 2);
+43<@>    d3 = getDigit(staip_netmask.value, 3);
+43<@>    d4 = getDigit(staip_netmask.value, 4);
+98<@>    if ((d1 == 0) || (d4 == 254) || ((d1 == 255) && (d2 == 255) && (d3 == 255) && (d4 == 255))) {
+46<@>     alert("無效的IP網路遮罩位址!");
+28<@>     staip_netmask.focus();
+19<@>     return false;
+6<@>    }
+5<@>   }
+59<@>   if (!validateIP(staip_gateway, "預設路由位址")) {
+27<@>    staip_gateway.focus();
+18<@>    return false;
+5<@>   }
+105<@>   if (!Lan1EqLan2(staip_ipaddr.value, staip_netmask.value, staip_gateway.value, staip_netmask.value)) {
+55<@>    alert("WAN 和 閘道 必須在同一個網路!");
+27<@>    staip_gateway.focus();
+18<@>    return false;
+5<@>   }
+52<@>   if (staip_ipaddr.value == staip_gateway.value) {
+46<@>    alert("WAN 和 閘道 不可以相同!");
+27<@>    staip_gateway.focus();
+18<@>    return false;
+5<@>   }
+47<@>   if (!validateIP(wan_dns1, "DNS 1地址")) {
+22<@>    wan_dns1.focus();
+18<@>    return false;
+5<@>   }
+47<@>   if (wan_dns1.value == staip_ipaddr.value) {
+49<@>    alert("DNS IP 和 WAN IP 不可以相同!");
+22<@>    wan_dns1.focus();
+18<@>    return false;
+5<@>   }
+62<@>   if (Lan1EqLan2(wan_dns1.value, lanmask, lanip, lanmask)) {
+58<@>    alert("DNS IP and LAN IP 必須在不同的網路!");
+22<@>    wan_dns1.focus();
+18<@>    return false;
+5<@>   }
+38<@>   if (wan_dns2.value != "0.0.0.0") {
+48<@>    if (!validateIP(wan_dns2, "DNS 2地址")) {
+23<@>     wan_dns2.focus();
+19<@>     return false;
+6<@>    }
+44<@>    if (wan_dns2.value == wan_dns1.value) {
+56<@>     alert("主要DNS 和 次要DNS 不可以相同!");
+23<@>     wan_dns2.focus();
+19<@>     return false;
+6<@>    }
+48<@>    if (wan_dns2.value == staip_ipaddr.value) {
+50<@>     alert("DNS IP 和 WAN IP 不可以相同!");
+23<@>     wan_dns2.focus();
+19<@>     return false;
+6<@>    }
+63<@>    if (Lan1EqLan2(wan_dns2.value, lanmask, lanip, lanmask)) {
+59<@>     alert("DNS IP and LAN IP 必須在不同的網路!");
+23<@>     wan_dns2.focus();
+19<@>     return false;
+6<@>    }
+5<@>   }
+4<@>  }
+64<@>  else if(document.getElementById("connect_select").value=="0")
+4<@>  {
+39<@>   if(pppoe_usrname.value.length == 0)
+5<@>   {
+66<@>    alert('使用者名稱不可以空白，請再試一次。');
+27<@>    pppoe_usrname.focus();
+18<@>    return false;
+5<@>   }
+8<@>   else
+5<@>   {
+50<@>    if(!checkSpecialChar(pppoe_usrname.value, 1))
+6<@>    {
+41<@>     alert('無效的使用者名稱!');
+28<@>     pppoe_usrname.focus();
+19<@>     return false;
+6<@>    }
+5<@>   }
+38<@>   if(pppoe_psword.value.length == 0)
+5<@>   {
+57<@>    alert('密碼不可以空白，請再試一次。');
+26<@>    pppoe_psword.focus();
+18<@>    return false;
+5<@>   }
+8<@>   else
+5<@>   {
+49<@>    if(!checkSpecialChar(pppoe_psword.value, 1))
+6<@>    {
+32<@>     alert('無效的密碼!');
+27<@>     pppoe_psword.focus();
+19<@>     return false;
+6<@>    }
+5<@>   }
+4<@>  }
+63<@>  if(!checkSpecialCharExcludeSpace(wizardstep4_ssid.value, 1))
+4<@>  {
+72<@>   alert('無效的SSID! 不可以使用像 \\\'" 的特殊字元。');
+29<@>   wizardstep4_ssid.focus();
+17<@>   return false;
+4<@>  }
+38<@>  var str = wizardstep4_pskpwd.value;
+34<@>  if(str.length == 0)return true;
+24<@>  if (str.length != 64)
+4<@>  {
+23<@>   if (str.length < 8)
+5<@>   {
+59<@>    alert('Pre-Shared金鑰必須為8個字元以上。');
+32<@>    wizardstep4_pskpwd.focus();
+18<@>    return false;
+5<@>   }
+24<@>   if (str.length > 63)
+5<@>   {
+60<@>    alert('Pre-Shared金鑰必須為63個字元以內。');
+32<@>    wizardstep4_pskpwd.focus();
+18<@>    return false;
+5<@>   }
+30<@>   if(!isValidWPAPasswd(str))
+5<@>   {
+86<@>    alert('預共享金鑰中含有無效字符.不應該包含 \\\'" 特殊字符');
+18<@>    return false;
+5<@>   }
+34<@>   wizardstep4_pskFormat.value=0;
+4<@>  }
+7<@>  else
+4<@>  {
+36<@>   for (var i=0; i<str.length; i++)
+5<@>   {
+158<@>    if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') || (str.charAt(i) >= 'a' && str.charAt(i) <= 'f') || (str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+6<@>    {
+15<@>     continue;
+6<@>    }
+75<@>    alert("無效的Pre-Shared金鑰格式! 格式必須為0-9或a-f。");
+32<@>    wizardstep4_pskpwd.focus();
+18<@>    return false;
+5<@>   }
+34<@>   wizardstep4_pskFormat.value=1;
+4<@>  }
+3<@> }
+14<@> return true;
+2<@>}
+11<@>var wtime;
+22<@>function timerStart()
+2<@>{
+17<@> if (wtime >= 0)
+3<@> {
+84<@>  document.form2WizardSetup.checkpppoeuser.value = '檢測中, 剩余'+wtime+'秒';
+63<@>        document.form2WizardSetup.connecttype.disabled = true;
+65<@>        document.form2WizardSetup.pppoe_usrname.disabled = true;
+64<@>        document.form2WizardSetup.pppoe_psword.disabled = true;
+68<@>        document.form2WizardSetup.wizardstep4_ssid.disabled = true;
+70<@>        document.form2WizardSetup.wizardstep4_pskpwd.disabled = true;
+66<@>        document.form2WizardSetup.checkpppoeuser.disabled = true;
+50<@>  document.form2WizardSetup.save.disabled = true;
+11<@>  wtime--;
+35<@>  setTimeout("timerStart()",1000);
+3<@> }
+6<@> else
+3<@> {
+64<@>        document.form2WizardSetup.connecttype.disabled = false;
+66<@>        document.form2WizardSetup.pppoe_usrname.disabled = false;
+65<@>        document.form2WizardSetup.pppoe_psword.disabled = false;
+69<@>        document.form2WizardSetup.wizardstep4_ssid.disabled = false;
+71<@>        document.form2WizardSetup.wizardstep4_pskpwd.disabled = false;
+61<@>  document.form2WizardSetup.checkpppoeuser.disabled = false;
+51<@>  document.form2WizardSetup.save.disabled = false;
+67<@>  document.form2WizardSetup.checkpppoeuser.value = "帳號檢測";
+62<@>  document.form2WizardSetup.statuscheckpppoeuser.value = "2";
+38<@>  document.form2WizardSetup.submit();
+3<@> }
+2<@>}
+28<@>function pppoeSaveChanges()
+2<@>{
+63<@> if(document.form2WizardSetup.pppoe_usrname.value.length == 0)
+3<@> {
+55<@>  alert("密碼不可以空白，請再試一次。");
+51<@>  document.form2WizardSetup.pppoe_usrname.focus();
+16<@>  return false;
+3<@> }
+6<@> else
+3<@> {
+74<@>  if(!checkSpecialChar(document.form2WizardSetup.pppoe_usrname.value, 1))
+4<@>  {
+39<@>   alert('無效的使用者名稱!');
+52<@>   document.form2WizardSetup.pppoe_usrname.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+62<@> if(document.form2WizardSetup.pppoe_psword.value.length == 0)
+3<@> {
+55<@>  alert('密碼不可以空白，請再試一次。');
+50<@>  document.form2WizardSetup.pppoe_psword.focus();
+16<@>  return false;
+3<@> }
+6<@> else
+3<@> {
+73<@>  if(!checkSpecialChar(document.form2WizardSetup.pppoe_psword.value, 1))
+4<@>  {
+30<@>   alert('無效的密碼!');
+51<@>   document.form2WizardSetup.pppoe_psword.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+14<@> return true;
+2<@>}
+33<@>function onClickCheckPppoeUser()
+2<@>{
+32<@> if(true == pppoeSaveChanges())
+3<@> {
+62<@>  document.form2WizardSetup.statuscheckpppoeuser.value = "1";
+38<@>  document.form2WizardSetup.submit();
+15<@>  return true;
+3<@> }
+6<@> else
+3<@> {
+16<@>  return false;
+3<@> }
+2<@>}
+20<@>function postload()
+2<@>{
+65<@> if('1' == document.form2WizardSetup.statuscheckpppoeuser.value)
+3<@> {
+14<@>  wtime = 10;
+16<@>  timerStart();
+3<@> }
+71<@> else if('11' == document.form2WizardSetup.statuscheckpppoeuser.value)
+3<@> {
+69<@>  document.getElementById("id_noconnected").style.display = 'block';
+3<@> }
+71<@> else if('12' == document.form2WizardSetup.statuscheckpppoeuser.value)
+3<@> {
+63<@>  document.getElementById("id_noack").style.display = 'block';
+3<@> }
+71<@> else if('13' == document.form2WizardSetup.statuscheckpppoeuser.value)
+3<@> {
+65<@>  document.getElementById("id_notpass").style.display = 'block';
+3<@> }
+71<@> else if('14' == document.form2WizardSetup.statuscheckpppoeuser.value)
+3<@> {
+65<@>  document.getElementById("id_wanclass").className = 'image_02';
+62<@>  document.getElementById("id_pass").style.display = 'block';
+3<@> }
+6<@> else
+3<@> {
+62<@>  document.form2WizardSetup.statuscheckpppoeuser.value = "0";
+3<@> }
+70<@> var internetip = document.getElementById("id_internetip").innerText;
+40<@> if(internetip.indexOf("0.0.0.0") < 0 )
+3<@> {
+65<@>  document.getElementById("id_wanclass").className = 'image_02';
+72<@>  document.getElementById("id_wanclass_global").className = 'image_06';
+3<@> }
+6<@> else
+3<@> {
+65<@>  document.getElementById("id_wanclass").className = 'image_04';
+72<@>  document.getElementById("id_wanclass_global").className = 'image_05';
+3<@> }
+2<@>}
+10<@></script>
+8<@></head>
+29<@><body onload="updateChan()">
+26<@><div class="wizard_step">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+12<@>    <tbody>
+9<@>    <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+21<@>            <script>
+42<@>                document.write(ModemVer);
+22<@>            </script>
+14<@>        </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+21<@>            <script>
+45<@>                document.write(FirmwareVer);
+22<@>            </script>
+37<@>            &nbsp;&nbsp;&nbsp;&nbsp;
+14<@>        </td>
+10<@>    </tr>
+13<@>    </tbody>
+9<@></table>
+86<@><table border="0" cellpadding="0" cellspacing="0" width="100%" class="class_noframe">
+12<@>    <tbody>
+9<@>    <tr>
+120<@>        <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+55<@>        <td background="head_02.gif" width="600"></td>
+55<@>        <td align="right"><img src="head_03.gif"></td>
+10<@>    </tr>
+13<@>    </tbody>
+9<@></table>
+26<@><div class="wizard_main">
+60<@>    <h2>NET WORK <span>Map</span><img src="line.jpg"/></h2>
+74<@> <form action="form2WizardSetup.cgi" method=POST name="form2WizardSetup">
+41<@>     <table class="setting_table_local">
+14<@>         <tr>
+94<@>             <td align="center" width="134" class="setting_client" height="30">用戶端</td>
+42<@>    <td align="center" width="114"> </td>
+59<@>             <td align="center" width="136">路由器</td>
+42<@>    <td align="center" width="114"> </td>
+58<@>             <td align="center" width="136">Internet</td>
+15<@>         </tr>
+14<@>     </table>
+41<@>     <table class="setting_table_local">
+14<@>         <tr>
+40<@>             <td class="image_01"></td>
+40<@>             <td class="image_02"></td>
+40<@>             <td class="image_03"></td>
+57<@>             <td id="id_wanclass" class="image_04"></td>
+64<@>             <td id="id_wanclass_global" class="image_05"></td>
+15<@>         </tr>
+14<@>     </table>
+41<@>     <table class="setting_table_local">
+14<@>         <tr>
+76<@>             <td class="setting_client" width="280" height="30">路由器IP
+39<@><VWS_SCREEN (char*) xscrnLanIPAddr[];>
+6<@></td>
+60<@>             <td id="id_internetip" width="300">Internet IP
+50<@><VWS_FUNCTION (void*)WebShowSimpleWizardWanIP();>
+6<@></td>
+41<@>             <td id="wantype">PPPOE</td>
+15<@>         </tr>
+14<@>     </table>
+7<@>  <br>
+85<@>     <table width="500" cellpadding="0" cellspacing="0" class="setting_table_local">
+14<@>         <tr>
+54<@>             <td class="setting_title">Wan設定</td>
+15<@>         </tr>
+14<@>         <tr>
+38<@>             <td class="wizard_main">
+77<@>                 <table width="490" border="0" align="center" class="space">
+26<@>                     <tr>
+30<@>                         <br>
+42<@>                         <td width="105">
+43<@>                             連線類型:
+31<@>                         </td>
+30<@>                         <td>
+116<@>                             <select size="1" name="connecttype" onchange="updateChanX(this);" id="connect_select">
+92<@>                                 <option value="0">PPPoE(使用者名稱和密碼)</option>
+73<@>                                 <option value="1">DHCP動態IP</option>
+75<@>                                 <option value="2">固定IP位址</option>
+39<@>                             </select>
+31<@>                         </td>
+27<@>                     </tr>
+26<@>                 </table>
+118<@>                 <table width="490" border="0" align="center" class="space" id="connect_PPPoE" style="display:block">
+26<@>                     <tr>
+42<@>                         <td width="105">
+46<@>                             使用者名稱:
+31<@>                         </td>
+30<@>                         <td>
+81<@>        <input type="text" name="pppoe_usrname" maxlength="256" size="25" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_username[];>
+2<@>>
+31<@>                         </td>
+27<@>                     </tr>
+26<@>                     <tr>
+30<@>                         <td>
+37<@>                             密碼:
+31<@>                         </td>
+30<@>                         <td>
+84<@>        <input type="password" name="pppoe_psword" maxlength="256" size="25" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_password[];>
+2<@>>
+31<@>                         </td>
+27<@>                     </tr>
+14<@>     </table>
+75<@>     <table width="490" border="0" align="center" id="id_checkpppoeuser" >
+32<@>      <tr style="display:none">
+12<@>       <td>
+17<@>        <script>
+145<@>        document.writeln('<input type=\"text\" name=\"statuscheckpppoeuser\" maxlength=\"64\" size=\"25\" value=\"'+statuscheckpppoeuser+'\">');
+18<@>        </script>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+12<@>       <td>
+114<@>        <input type="submit" name="checkpppoeuser" value="帳號檢測" onClick="return onClickCheckPppoeUser()">
+13<@>       </td>
+53<@>       <td id="id_noconnected" style="display:none">
+30<@>        <p style="color:red">
+120<@>        WAN埠沒有正確的連接，請確認WAN埠已插上網路線，且路由器上的網路指示燈有亮起。
+13<@>        </p>
+13<@>       </td>
+47<@>       <td id="id_noack" style="display:none">
+30<@>        <p style="color:red">
+89<@>        PPPoE伺服器沒有回應，請確認WAN埠是否有連接到您ISP的網路。
+13<@>        </p>
+13<@>       </td>
+49<@>       <td id="id_notpass" style="display:none">
+30<@>        <p style="color:red">
+119<@>        帳戶或密碼錯誤，請輸入正確的Internet連線帳號和密碼，或聯絡您的ISP以確認資料。
+13<@>        </p>
+13<@>       </td>
+46<@>       <td id="id_pass" style="display:none">
+30<@>        <p style="color:red">
+45<@>        有效的使用者名稱和密碼。
+13<@>        </p>
+13<@>       </td>
+12<@>      </tr>
+14<@>     </table>
+137<@>                 <table width="500" cellspacing="0" cellpadding="0" border="0" align="center" id="connect_static" style="display:none;">
+26<@>                     <tr>
+42<@>                         <td colspan="2">
+92<@>                             <table width="500" cellspacing="0" cellpadding="0" border="0">
+38<@>                                 <tr>
+54<@>                                     <td colspan="2">
+101<@>                                         <table width="490" align="center" border="0" class="space">
+50<@>                                             <tr>
+66<@>                                                 <td width="105">
+63<@>                                                     IP位址:
+55<@>                                                 </td>
+54<@>                                                 <td>
+85<@>              <input type="text" name="staip_ipaddr" maxlength="15" size="16" value=
+45<@><VWS_SCREEN (char*) xscrnWanstaip_ipaddr[];>
+2<@>>
+55<@>                                                 </td>
+51<@>                                             </tr>
+50<@>                                             <tr>
+54<@>                                                 <td>
+70<@>                                                     子網路遮罩:
+55<@>                                                 </td>
+54<@>                                                 <td>
+86<@>              <input type="text" name="staip_netmask" maxlength="15" size="16" value=
+46<@><VWS_SCREEN (char*) xscrnWanstaip_netmask[];>
+2<@>>
+55<@>                                                 </td>
+51<@>                                             </tr>
+50<@>                                             <tr>
+54<@>                                                 <td>
+67<@>                                                     預設閘道:
+55<@>                                                 </td>
+54<@>                                                 <td>
+86<@>              <input type="text" name="staip_gateway" maxlength="15" size="16" value=
+46<@><VWS_SCREEN (char*) xscrnWanstaip_gateway[];>
+2<@>>
+55<@>                                                 </td>
+51<@>                                             </tr>
+50<@>                                             <tr>
+66<@>                                                 <td height="21">
+64<@>                                                     主要DNS:
+55<@>                                                 </td>
+54<@>                                                 <td>
+46<@><VWS_SCREEN (char*) xscrnWanpppoe_dsndns1[];>
+55<@>                                                 </td>
+51<@>                                             </tr>
+50<@>                                             <tr>
+54<@>                                                 <td>
+64<@>                                                     次要DNS:
+55<@>                                                 </td>
+54<@>                                                 <td>
+46<@><VWS_SCREEN (char*) xscrnWanpppoe_dsndns2[];>
+15<@>&nbsp;(可選)
+55<@>                                                 </td>
+51<@>                                             </tr>
+50<@>                                         </table>
+46<@>                                         <br>
+43<@>                                     </td>
+39<@>                                 </tr>
+38<@>                             </table>
+31<@>                         </td>
+27<@>                     </tr>
+26<@>                 </table>
+19<@>             </td>
+15<@>         </tr>
+14<@>     </table>
+7<@>  <br>
+97<@>  <table width="500" cellspacing="0" cellpadding="0" class="setting_table_local setting_bottom">
+14<@>         <tr>
+57<@>             <td class="setting_title">無線設定</td>
+15<@>         </tr>
+14<@>         <tr>
+38<@>             <td class="wizard_main">
+22<@>                 <br>
+118<@>                 <table width="490" border="0" align="center" style="display:block" id="connect_PPPoE" class="space">
+26<@>                     <tr>
+42<@>                         <td width="105">
+49<@>                             無線網路名稱:
+31<@>                         </td>
+30<@>                         <td>
+98<@>                             <input type="text" maxlength="118" size="25" name="wizardstep4_ssid"
+40<@><VWS_SCREEN (char*) webShowWlanSSID[];>
+2<@>>
+31<@>                         </td>
+27<@>                     </tr>
+26<@>                     <tr>
+30<@>                         <td>
+37<@>                             金鑰:
+31<@>                         </td>
+30<@>                         <td>
+98<@>                             <input type=text maxlength="118" size="25" name="wizardstep4_pskpwd"
+39<@><VWS_SCREEN (char*) webShowWlanPSK[];>
+20<@>>(WPA/WPA2-PSK AES)
+31<@>                         </td>
+27<@>                     </tr>
+32<@>      <tr style="display:none">
+56<@>       <td class=form_label_left>Pre-Shared金鑰:</td>
+81<@>       <td class=form_label_right><select size="1" name="wizardstep4_pskFormat">
+40<@>        <option value=0 >ASCII</option>
+49<@>        <option value=1 >Hex(64 字元)</option>
+18<@>        </select>
+13<@>       </td>
+12<@>      </tr>
+26<@>                     <tr>
+39<@>                         <td><br></td>
+27<@>                     </tr>
+26<@>                 </table>
+10<@>    </td>
+9<@>   </tr>
+11<@>  </table>
+81<@>  <table width="500" cellspacing="0" cellpadding="0" class="setting_table_save">
+8<@>   <tr>
+36<@>                <td width=25%></td>
+19<@>    <td width=50%>
+91<@>     <input type="submit" name="save" value="儲存設定" onClick="return saveChanges()">
+98<@>     <input type="hidden" name="submit.htm?login.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+10<@>    </td>
+80<@>    <td width=25%><a href="wan.htm"><font size="1">進階設定</font></a></td>
+9<@>   </tr>
+11<@>  </table>
+9<@> </form>
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+9<@><script>
+53<@>enableTextField(document.form2WizardSetup.wan_dns1);
+53<@>enableTextField(document.form2WizardSetup.wan_dns2);
+12<@>postload();
+10<@></script>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+21<@>&*#@wan.htm@#*&27550
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+30<@><title>Internet設定</title>
+9<@><SCRIPT>
+1<@>
+1<@>
+1<@>
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+22<@>function GetTimeAbs()
+2<@>{
+10<@>   var d;
+19<@>   d = new Date();
+65<@>   return Math.round(d.getTime()/1000)-d.getTimezoneOffset()*60;
+2<@>}
+26<@>function validateKey(str)
+2<@>{
+38<@>   for (var i=0; i<str.length; i++) {
+57<@>    if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9'))
+13<@>   continue;
+11<@> return 0;
+4<@>  }
+12<@>  return 1;
+2<@>}
+1<@>
+1<@>
+28<@>function validateIP(ip,msg)
+2<@>{
+21<@> if (ip.value=="") {
+62<@>  alert(msg+'不可以空白. 應該是 xxx.xxx.xxx.xxx。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+19<@> var str=ip.value;
+14<@> var count=0;
+34<@> for (var i=0; i<str.length; i++)
+3<@> {
+56<@>  if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') )
+13<@>   continue;
+28<@>  if (str.charAt(i) == '.')
+4<@>  {
+12<@>   count++;
+13<@>   continue;
+4<@>  }
+69<@>  alert('無效的 '+ msg+'數值 ! 數值應該是數字(0-9)。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+14<@> if(count!=3)
+3<@> {
+53<@>  alert(msg+'無效，應該是xxx.xxx.xxx.xxx。');
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+36<@> if( IsLoopBackIP( ip.value)==1 ) {
+26<@>  alert(msg+'無效。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+45<@> if ( !checkDigitRange(ip.value,1,1,223) ) {
+53<@>  alert(msg+'的第1個數字應該介於1-223。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+45<@> if ( !checkDigitRange(ip.value,2,0,255) ) {
+53<@>  alert(msg+'的第2個數字應該介於0-255。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+45<@> if ( !checkDigitRange(ip.value,3,0,255) ) {
+53<@>  alert(msg+'的第3個數字應該介於0-255。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+45<@> if ( !checkDigitRange(ip.value,4,1,254) ) {
+53<@>  alert(msg+'的第4個數字應該介於1-254。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+14<@> return true;
+2<@>}
+1<@>
+23<@>function saveChanges()
+2<@>{
+20<@> with(document.wan)
+3<@> {
+49<@>  enableTextField(document.wan.mac_clone_value);
+1<@>
+25<@>  if(wantype.value == 0)
+4<@>  {
+1<@>
+51<@>       if ( !validateIP(staip_ipaddr,"IP 地址"))
+9<@>       {
+31<@>         staip_ipaddr.focus();
+1<@>
+24<@>          return false;
+9<@>       }
+68<@>       if (Lan1EqLan2(staip_ipaddr.value, lanmask, lanip, lanmask))
+9<@>       {
+61<@>         alert("WAN IP和LAN IP 必須在不同的網路!");
+31<@>         staip_ipaddr.focus();
+23<@>         return false;
+9<@>       }
+38<@>       if (staip_netmask.value != "")
+9<@>       {
+41<@>          if (!checkMask(staip_netmask))
+12<@>          {
+36<@>             staip_netmask.focus();
+27<@>             return false;
+12<@>          }
+41<@>   d1 = getDigit(staip_netmask.value,1);
+41<@>   d2 = getDigit(staip_netmask.value,2);
+41<@>   d3 = getDigit(staip_netmask.value,3);
+41<@>   d4 = getDigit(staip_netmask.value,4);
+88<@>   if((d1 == 0) || (d4 == 254) || ((d1 == 255)&&(d2 == 255)&&(d3 == 255)&&(d4 == 255)))
+5<@>   {
+54<@>             alert('無效的IP網路遮罩位址!');
+36<@>             staip_netmask.focus();
+22<@>        return false;
+5<@>   }
+9<@>       }
+56<@>  if ( !validateIP(staip_gateway,"默認路由地址"))
+4<@>  {
+26<@>   staip_gateway.focus();
+25<@>           return false;
+9<@>       }
+103<@>   if (!Lan1EqLan2(staip_ipaddr.value, staip_netmask.value, staip_gateway.value, staip_netmask.value))
+5<@>   {
+53<@>    alert("WAN 和閘道必須在同一個網路!");
+27<@>    staip_gateway.focus();
+19<@>     return false;
+5<@>   }
+50<@>   if (staip_ipaddr.value == staip_gateway.value)
+5<@>   {
+44<@>    alert("WAN 和閘道不可以相同!");
+27<@>    staip_gateway.focus();
+19<@>     return false;
+5<@>   }
+36<@>     if (staip_mtusize.value != "")
+7<@>     {
+53<@>      if ( validateKey(staip_mtusize.value) == 0 ) {
+65<@>    alert("無效的MTU數值 ! 數值應該是數字(0-9)。");
+27<@>    staip_mtusize.focus();
+18<@>    return false;
+5<@>   }
+63<@>      if (!checkDigitRange(staip_mtusize.value, 1, 616, 1500))
+8<@>      {
+61<@>       alert('無效的MTU大小!有效范圍為616-1500.');
+30<@>       staip_mtusize.focus();
+21<@>       return false;
+8<@>      }
+7<@>     }
+4<@>  }
+47<@>  if(wantype.value == 1 || wantype.value == 7)
+4<@>  {
+49<@>   if(!checkSpecialChar(dhcpc_hostname.value,0))
+5<@>   {
+43<@>    alert('無效的主機名稱字元!');
+28<@>    dhcpc_hostname.focus();
+21<@>       return false;
+5<@>   }
+34<@>   if (dhcpc_mtusize.value != "")
+8<@>      {
+54<@>       if ( validateKey(dhcpc_mtusize.value) == 0 ) {
+66<@>     alert("無效的MTU數值 ! 數值應該是數字(0-9)。");
+28<@>     dhcpc_mtusize.focus();
+19<@>     return false;
+6<@>    }
+64<@>       if (!checkDigitRange(dhcpc_mtusize.value, 1, 616, 1500))
+9<@>       {
+62<@>        alert('無效的MTU大小!有效范圍為616-1500.');
+31<@>        dhcpc_mtusize.focus();
+22<@>        return false;
+9<@>       }
+8<@>      }
+4<@>  }
+47<@>  if(wantype.value >= 2 && wantype.value <= 6)
+4<@>  {
+32<@>   if (pppoe_usrname.value=="")
+5<@>   {
+51<@>    alert('pppoe使用者名稱不可以空白!');
+27<@>    pppoe_usrname.focus();
+18<@>    return false;
+5<@>   }
+48<@>   if(!checkSpecialChar(pppoe_usrname.value,1))
+5<@>   {
+55<@>     alert("pppoe使用者名稱存在非法字符!");
+28<@>     pppoe_usrname.focus();
+19<@>     return false;
+5<@>   }
+31<@>   if (pppoe_psword.value=="")
+5<@>   {
+42<@>    alert('pppoe密碼不可以空白!');
+26<@>    pppoe_psword.focus();
+18<@>    return false;
+5<@>   }
+55<@>   if(!checkSpecialCharAllSpace(pppoe_psword.value,1))
+5<@>   {
+48<@>    alert('pppoe密碼中存在非法字符!');
+26<@>    pppoe_psword.focus();
+18<@>    return false;
+5<@>   }
+35<@>   if (pppoe_idletime.value != "")
+8<@>      {
+42<@>    if(validateKey(pppoe_idletime.value))
+6<@>    {
+94<@>        if (!checkDigitRange(pppoe_idletime.value, 1, 1, 1000) && (pppoe_contype.value == 1))
+10<@>        {
+41<@>         alert('無效的閒置時間');
+33<@>         pppoe_idletime.focus();
+23<@>         return false;
+10<@>        }
+6<@>    }
+9<@>    else
+6<@>    {
+64<@>        alert('閒置時間值非法. 必須是數字 (0-9).');
+32<@>        pppoe_idletime.focus();
+22<@>        return false;
+6<@>    }
+8<@>      }
+34<@>   if (pppoe_mtusize.value != "")
+8<@>      {
+41<@>    if(validateKey(pppoe_mtusize.value))
+6<@>    {
+65<@>        if (!checkDigitRange(pppoe_mtusize.value, 1, 616, 1492))
+10<@>        {
+39<@>         alert('無效的MTU大小!');
+32<@>         pppoe_mtusize.focus();
+23<@>         return false;
+10<@>        }
+9<@>       }
+12<@>       else
+9<@>       {
+57<@>      alert("無效的MTU大小!應該是數字(0-9).");
+29<@>      pppoe_mtusize.focus();
+20<@>      return false;
+9<@>       }
+8<@>      }
+32<@>   if (pppoe_sername.value!="")
+5<@>   {
+49<@>    if(!checkSpecialChar(pppoe_sername.value,1))
+6<@>    {
+52<@>     alert('pppoe服務名中存在非法字符!');
+28<@>     pppoe_sername.focus();
+19<@>     return false;
+6<@>    }
+143<@>    if ( !confirm('請確認是否需要輸入服務名稱，如果輸入的服務名稱與服務器的不同，將導致撥號不成功！'))
+6<@>    {

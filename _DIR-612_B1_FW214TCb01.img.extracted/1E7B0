@@ -1,0 +1,973 @@
+13<@>&&*&&tw**&**
+57<@>		enableTextField(document.formNatmappingSetting.lowip);
+60<@>  		enableTextField(document.formNatmappingSetting.highip);
+66<@>  		enableTextField(document.formNatmappingSetting.mappinglowip);
+75<@>  		enableTextField(document.formNatmappingSetting.mappinghighip); 				 		
+84<@>  	} else if ( document.formNatmappingSetting.addressMapType.selectedIndex == 3 ) {
+43<@>		//alert('You select Many One-to-Many.');
+57<@>		enableTextField(document.formNatmappingSetting.lowip);
+61<@>  		disableTextField(document.formNatmappingSetting.highip);
+66<@>  		enableTextField(document.formNatmappingSetting.mappinglowip);
+75<@>  		enableTextField(document.formNatmappingSetting.mappinghighip); 				 		
+5<@>  	}
+3<@>  
+2<@>}
+10<@></script>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+30<@><body onLoad="checkState();">
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+23<@>	TabHeader="Advanced";
+17<@>	SideItem="NAT";
+27<@>//	HelpItem="Device Info";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+42<@>		<td class=topheader>NAT IP MAPPING</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+104<@>			<p>Entries in this table allow you to config one IP pool for specified source ip address from lan,so
+113<@> one packet which's source ip is in range of the specified address will select one IP address from pool for NAT.
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+77<@><form action="form2natmapping.cgi" method=POST name="formNatmappingSetting">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+35<@>		<td class=topheader>Setting</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+85<@>  			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+12<@>    			<tr>
+49<@>                    <td class='form_label_left'>
+25<@>                    Type
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+84<@>                    <select size="1" name="addressMapType" onChange="checkState()">
+56<@>                    <option value=1>One-to-One</option>
+57<@>                    <option value=2>Many-to-One</option>
+58<@>                    <option value=3>Many-to-Many</option>
+57<@>                    <option value=4>One-to-Many</option>
+30<@>                    </select>
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+35<@>                    Local Start IP
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+88<@>                    <INPUT TYPE="TEXT" NAME="lowip" SIZE="15" MAXLENGTH="15" VALUE="" >
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+33<@>                    Local End IP
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+89<@>                    <INPUT TYPE="TEXT" NAME="highip" SIZE="15" MAXLENGTH="15" VALUE="" >
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+36<@>                    Global Start IP
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+95<@>                    <INPUT TYPE="TEXT" NAME="mappinglowip" SIZE="15" MAXLENGTH="15" VALUE="" >
+26<@>                    </td>
+22<@>                </tr>
+21<@>                <tr>
+49<@>                    <td class='form_label_left'>
+34<@>                    Global End IP
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+96<@>                    <INPUT TYPE="TEXT" NAME="mappinghighip" SIZE="15" MAXLENGTH="15" VALUE="" >
+26<@>                    </td>
+22<@>                </tr>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+84<@><input type="submit" value="Apply Changes" onClick="return addClick()">&nbsp;&nbsp;
+60<@><input type="reset" value="Reset" name="reset">&nbsp;&nbsp;
+71<@><input type="hidden" name="submit.htm?fw-natmapping.htm" VALUE="Send">
+8<@></form>
+1<@>
+77<@><form method=POST Action="form2natmappingdel.cgi" name="form2natmappingdel">
+51<@>	<INPUT TYPE="HIDDEN" NAME="actiontype" VALUE="" >
+2<@>	
+46<@>	<INPUT TYPE="HIDDEN" NAME="state" VALUE="" >
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+56<@>		<td class=topheader>Current NAT IP MAPPING Table</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+40<@>  			<table class=formlisting border=0>
+34<@>    			<tr class=form_label_row >
+49<@>                    <td class='form_label_col' >
+35<@>                    Local Start IP
+26<@>                    </td>
+49<@>                    <td class='form_label_col' >
+33<@>                    Local End IP
+26<@>                    </td>
+49<@>                    <td class='form_label_col' >
+36<@>                    Global Start IP
+26<@>                    </td>
+49<@>                    <td class='form_label_col' >
+34<@>                    Global End IP
+26<@>                    </td>
+49<@>                    <td class='form_label_col' >
+27<@>                    Action
+26<@>                    </td>
+22<@>                </tr>
+61<@>                <VWS_FUNCTION (void*)showNatMappingTable();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+51<@><INPUT TYPE="HIDDEN" NAME="deleteindex" VALUE="" >
+76<@><input type="submit" value="Delete Selected" onClick="deleteSelectClick()">
+98<@><INPUT onClick="return deleteAllClick()" type=submit value="Delete All" name=deleteAllAddressMap>
+72<@><INPUT TYPE="HIDDEN" NAME="submit.htm?fw-natmapping.htm" VALUE="Send" >
+8<@></form>
+31<@><script language="JavaScript">
+5<@><!--
+29<@>function deleteSelectClick()
+2<@>{
+17<@>	with(document){
+53<@>		var deleteindexobj=form2natmappingdel.deleteindex;
+11<@>		var i=0;
+12<@>		while(1){
+27<@>			var objname='select'+i;
+32<@>			if(!getElementById(objname))
+11<@>				break;
+39<@>			if(getElementById(objname).checked)
+5<@>			{
+36<@>				if(deleteindexobj.value.length)
+54<@>					deleteindexobj.value=deleteindexobj.value+','+i;
+9<@>				else
+29<@>					deleteindexobj.value=i;
+5<@>			}
+8<@>			i++;
+5<@>		 }
+3<@>	}
+2<@>}
+59<@>function natActionFunc( form , actiontype, natcmd, state){
+37<@>  form.elements[0].value=actiontype;
+33<@>  form.elements[1].value=natcmd;
+32<@>  form.elements[2].value=state;
+17<@>  form.submit();
+2<@>}
+6<@>//-->
+10<@></script>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+1<@>
+1<@>
+35<@>&*#@wizard_step0_start.htm@#*&3506
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+55<@><script type="text/javascript" src="util.js"></script>
+56<@><script type="text/javascript" src="share.js"></script>
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> 無線路由器
+9<@></title>
+1<@>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+10<@></script>
+8<@></head>
+7<@><body>
+20<@><div class="login">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+28<@>  document.write(ModemVer);
+10<@></script>
+8<@>  </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+31<@>  document.write(FirmwareVer);
+10<@></script>
+27<@>  &nbsp;&nbsp;&nbsp;&nbsp;
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+64<@><table border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+5<@><br>
+5<@><br>
+73<@><form action="form2WizardStep1.cgi" method=POST name="form2WizardStep1">
+78<@><table border="0" cellpadding="0" cellspacing="0" width="502" align="center">
+9<@> <tbody>
+7<@>  <tr>
+70<@>   <td class="wizard_title" align="left" valign="middle" width="500">
+28<@>    &nbsp;&nbsp快速設定
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+20<@>   <td colspan="2">
+78<@>    <table class="setting_table" cellpadding="0" cellspacing="0" width="502">
+13<@>     <tbody>
+11<@>      <tr>
+24<@>       <td width="500">
+13<@>        <br>
+86<@>        <table border="0" cellpadding="0" cellspacing="0" align="center" width="410">
+17<@>         <tbody>
+15<@>          <tr>
+16<@>           <td>
+190<@>            本安裝精靈可幫您設定網際網路所需要的基本網路設定，請點“下一步”繼續。若要詳細設定某項功能或參數，請點選“手動設定”。
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+13<@>        <br>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+74<@>       <td class="wizard_tail" align="right" height="30" nowrap="nowrap">
+15<@>        &nbsp;
+75<@>        <input type="submit" name="wizardstep0_back" value="手動設定">
+15<@>        &nbsp;
+72<@>        <input type="submit" name="wizardstep1_next" value="下一步">
+15<@>        &nbsp;
+114<@>        <input type="hidden" name="submit.htm?wizard_step1_start.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+13<@>       </td>
+12<@>      </tr>
+14<@>     </tbody>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </tbody>
+9<@></table>
+8<@></form>
+5<@><br>
+5<@><br>
+5<@><br>
+26<@><div class="loginBottom">
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+35<@>&*#@wizard_step1_start.htm@#*&2318
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+22<@><title>精靈</title>
+1<@>
+9<@><script>
+10<@></script>
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@> TabHeader="設定";
+26<@> SideItem="設定精靈";
+20<@> HelpItem="wizard";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+1<@>
+5<@><br>
+5<@><br>
+5<@><br>
+1<@>
+73<@><form action="form2WizardStep1.cgi" method=POST name="form2WizardStep1">
+100<@><table border="0" cellpadding="0" cellspacing="0" width="502" align="center" class="setting_table">
+9<@> <tbody>
+7<@>  <tr>
+70<@>   <td class="wizard_title" align="left" valign="middle" width="500">
+28<@>    &nbsp;&nbsp快速設定
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+20<@>   <td colspan="2">
+67<@>    <table border="0" cellpadding="0" cellspacing="0" width="502">
+13<@>     <tbody>
+11<@>      <tr>
+24<@>       <td width="500">
+13<@>        <br>
+86<@>        <table border="0" cellpadding="0" cellspacing="0" align="center" width="410">
+17<@>         <tbody>
+15<@>          <tr>
+16<@>           <td>
+172<@>            此精靈可協助您完成網際網路的基本設定，請按「下一步」來開始設定。若要設定更詳細的資料，請按下「手動設定」。
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+13<@>        <br>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+74<@>       <td class="wizard_tail" align="right" height="30" nowrap="nowrap">
+15<@>        &nbsp;
+75<@>        <input type="submit" name="wizardstep1_back" value="手動設定">
+15<@>        &nbsp;
+72<@>        <input type="submit" name="wizardstep1_next" value="下一步">
+15<@>        &nbsp;
+114<@>        <input type="hidden" name="submit.htm?wizard_step1_start.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+13<@>       </td>
+12<@>      </tr>
+14<@>     </tbody>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </tbody>
+9<@></table>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+36<@>&*#@wizard_step2_select.htm@#*&4618
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+55<@><script type="text/javascript" src="util.js"></script>
+56<@><script type="text/javascript" src="share.js"></script>
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> 無線路由器
+9<@></title>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+10<@></script>
+8<@></head>
+7<@><body>
+20<@><div class="login">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+28<@>  document.write(ModemVer);
+10<@></script>
+8<@>  </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+31<@>  document.write(FirmwareVer);
+10<@></script>
+27<@>  &nbsp;&nbsp;&nbsp;&nbsp;
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+64<@><table border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+5<@><br>
+5<@><br>
+73<@><form action="form2WizardStep2.cgi" method=POST name="form2WizardStep2">
+100<@><table width="502" cellspacing="0" cellpadding="0" border="0" align="center" class="setting_table">
+9<@> <tbody>
+7<@>  <tr>
+70<@>   <td width="500" valign="middle" align="left" class="wizard_title">
+55<@>    &nbsp;&nbsp快速設定 - 網際網路連線類型
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+20<@>   <td colspan="2">
+67<@>    <table width="502" cellspacing="0" cellpadding="0" border="0">
+13<@>     <tbody>
+11<@>      <tr>
+24<@>       <td width="500">
+13<@>        <br>
+85<@>        <table width="430" align="center" cellspacing="0" cellpadding="0" border="0"
+23<@>        class="space">
+17<@>         <tbody>
+15<@>          <tr>
+16<@>           <td>
+168<@>            本精靈提供三種最常見的網際網路連線方式供您選擇。若是您使用其他網路連線，請至“設定”內的“Internet設定”。
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+85<@>        <table width="430" align="center" cellspacing="0" cellpadding="0" border="0"
+23<@>        class="space">
+17<@>         <tbody>
+15<@>          <tr>
+28<@>           <td class="clk">
+78<@>            <input type="radio" value="2" name="wizardstep2_wantype" checked>
+118<@>            PPPoE - ADSL數據機通常是屬於此類型，您將會需要由ISP提供的使用者名稱和密碼。
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+28<@>           <td class="clk">
+70<@>            <input type="radio" value="1" name="wizardstep2_wantype">
+134<@>            動態IP - Cable數據機通常是屬於此類型，路由器將可以自動由ISP的DHCP伺服器取得一組IP位址。
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+28<@>           <td class="clk">
+70<@>            <input type="radio" value="0" name="wizardstep2_wantype">
+115<@>            固定IP位址 (網路業者有提供固定IP位址，且需要設定此組IP才能連上網際網路)
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+13<@>        <br>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+58<@>       <td height="30" align="right" class="wizard_tail">
+15<@>        &nbsp;
+72<@>        <input type="submit" name="wizardstep2_back" value="上一步">
+15<@>        &nbsp;
+72<@>        <input type="submit" name="wizardstep2_next" value="下一步">
+15<@>        &nbsp;
+115<@>        <input type="hidden" name="submit.htm?wizard_step2_select.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+13<@>       </td>
+12<@>      </tr>
+14<@>     </tbody>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </tbody>
+9<@></table>
+8<@></form>
+5<@><br>
+5<@><br>
+5<@><br>
+26<@><div class="loginBottom">
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+36<@>&*#@wizard_step3_pppoe.htm@#*&10439
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+55<@><script type="text/javascript" src="util.js"></script>
+56<@><script type="text/javascript" src="share.js"></script>
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> 無線路由器
+9<@></title>
+1<@>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+27<@>function includeSpace(str)
+2<@>{
+37<@>  for (var i=0; i<str.length; i++) {
+33<@>   if ( str.charAt(i) == ' ' ) {
+16<@>   return true;
+3<@> }
+4<@>  }
+16<@>  return false;
+2<@>}
+32<@>function includeSpecialKey(str)
+2<@>{
+37<@>  for (var i=0; i<str.length; i++) {
+58<@>   if (( str.charAt(i)== ' ' ) || ( str.charAt(i)== '%' )
+57<@> || ( str.charAt(i)== '\\' ) || ( str.charAt(i)== '\'' )
+30<@>   || ( str.charAt(i)== '?' )
+63<@>        ||( str.charAt(i)== '&' ) ||( str.charAt(i)== '"' )) {
+16<@>   return true;
+3<@> }
+4<@>  }
+16<@>  return false;
+2<@>}
+29<@>function includeChinese(str)
+2<@>{
+36<@> for (var i=0; i<str.length; i++) {
+33<@>  if (str.charCodeAt(i) > 128) {
+16<@>   return true;
+4<@>  }
+3<@> }
+15<@> return false;
+2<@>}
+23<@>function saveChanges()
+2<@>{
+68<@> if(document.form2WizardStep3Pppoe.pppoe_usrname.value.length == 0)
+3<@> {
+64<@>  alert('使用者名稱不可以空白，請再試一次。');
+56<@>  document.form2WizardStep3Pppoe.pppoe_usrname.focus();
+16<@>  return false;
+3<@> }
+6<@> else
+3<@> {
+79<@>  if(!checkSpecialChar(document.form2WizardStep3Pppoe.pppoe_usrname.value, 1))
+4<@>  {
+40<@>   alert('無效的使用者名稱! ');
+57<@>   document.form2WizardStep3Pppoe.pppoe_usrname.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+67<@> if(document.form2WizardStep3Pppoe.pppoe_psword.value.length == 0)
+3<@> {
+55<@>  alert('密碼不可以空白，請再試一次。');
+55<@>  document.form2WizardStep3Pppoe.pppoe_psword.focus();
+16<@>  return false;
+3<@> }
+6<@> else
+3<@> {
+78<@>  if(!checkSpecialChar(document.form2WizardStep3Pppoe.pppoe_psword.value, 1))
+4<@>  {
+31<@>   alert('無效的密碼! ');
+56<@>   document.form2WizardStep3Pppoe.pppoe_psword.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+104<@> if (document.form2WizardStep3Pppoe.pppoe_psword.value != document.form2WizardStep3Pppoe.confirm.value)
+3<@> {
+105<@>  alert('密碼不相符。請在\'密碼\' 和 \'確認密碼\' 的欄位內輸入相同的密碼。');
+55<@>  document.form2WizardStep3Pppoe.pppoe_psword.focus();
+16<@>  return false;
+3<@> }
+14<@> return true;
+2<@>}
+53<@><VWS_FUNCTION (void*)WebShowStatusCheckPppoeUser();>
+11<@>var wtime;
+22<@>function timerStart()
+2<@>{
+17<@> if (wtime >= 0)
+3<@> {
+89<@>  document.form2WizardStep3Pppoe.checkpppoeuser.value = '檢測中, 剩余'+wtime+'秒';
+65<@>  document.form2WizardStep3Pppoe.checkpppoeuser.disabled = true;
+72<@>  document.form2WizardStep3Pppoe.wizardstep3pppoe_back.disabled = true;
+72<@>  document.form2WizardStep3Pppoe.wizardstep3pppoe_next.disabled = true;
+11<@>  wtime--;
+35<@>  setTimeout("timerStart()",1000);
+3<@> }
+6<@> else
+3<@> {
+66<@>  document.form2WizardStep3Pppoe.checkpppoeuser.disabled = false;
+73<@>  document.form2WizardStep3Pppoe.wizardstep3pppoe_back.disabled = false;
+73<@>  document.form2WizardStep3Pppoe.wizardstep3pppoe_next.disabled = false;
+78<@>  document.form2WizardStep3Pppoe.checkpppoeuser.value = "連線帳號測試";
+67<@>  document.form2WizardStep3Pppoe.statuscheckpppoeuser.value = "2";
+43<@>  document.form2WizardStep3Pppoe.submit();
+3<@> }
+2<@>}
+33<@>function onClickCheckPppoeUser()
+2<@>{
+27<@> if(true == saveChanges())
+3<@> {
+67<@>  document.form2WizardStep3Pppoe.statuscheckpppoeuser.value = "1";
+43<@>  document.form2WizardStep3Pppoe.submit();
+15<@>  return true;
+3<@> }
+6<@> else
+3<@> {
+16<@>  return false;
+3<@> }
+2<@>}
+20<@>function postload()
+2<@>{
+70<@> if('1' == document.form2WizardStep3Pppoe.statuscheckpppoeuser.value)
+3<@> {
+14<@>  wtime = 10;
+16<@>  timerStart();
+3<@> }
+76<@> else if('11' == document.form2WizardStep3Pppoe.statuscheckpppoeuser.value)
+3<@> {
+69<@>  document.getElementById("id_noconnected").style.display = 'block';
+3<@> }
+76<@> else if('12' == document.form2WizardStep3Pppoe.statuscheckpppoeuser.value)
+3<@> {
+63<@>  document.getElementById("id_noack").style.display = 'block';
+3<@> }
+76<@> else if('13' == document.form2WizardStep3Pppoe.statuscheckpppoeuser.value)
+3<@> {
+65<@>  document.getElementById("id_notpass").style.display = 'block';
+3<@> }
+76<@> else if('14' == document.form2WizardStep3Pppoe.statuscheckpppoeuser.value)
+3<@> {
+62<@>  document.getElementById("id_pass").style.display = 'block';
+3<@> }
+6<@> else
+3<@> {
+67<@>  document.form2WizardStep3Pppoe.statuscheckpppoeuser.value = "0";
+3<@> }
+2<@>}
+10<@></script>
+8<@></head>
+7<@><body>
+20<@><div class="login">
+84<@><table class="productInfo" border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+99<@>  <td align="left" height="30" bgcolor="#404343" colspan="1">&nbsp;&nbsp;&nbsp;&nbsp;產品頁面:
+9<@><script>
+28<@>  document.write(ModemVer);
+10<@></script>
+8<@>  </td>
+76<@>  <td align="right" height="30" bgcolor="#404343" colspan="2">硬體版本:
+9<@><script>
+31<@>  document.write(HardwareVer);
+10<@></script>
+38<@>&nbsp;&nbsp;&nbsp;&nbsp;韌體版本:
+9<@><script>
+31<@>  document.write(FirmwareVer);
+10<@></script>
+27<@>  &nbsp;&nbsp;&nbsp;&nbsp;
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+64<@><table border="0" cellpadding="0" cellspacing="0" width="100%">
+6<@> <tr>
+114<@>  <td align="left"><a href="http://www.dlink.com.tw/" target="_blank"><img src="head_01.gif" border="0"></a></td>
+49<@>  <td background="head_02.gif" width="600"></td>
+49<@>  <td align="right"><img src="head_03.gif"></td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+5<@><br>
+5<@><br>
+83<@><form action="form2WizardStep3Pppoe.cgi" method=POST name="form2WizardStep3Pppoe">
+100<@><table width="502" cellspacing="0" cellpadding="0" border="0" align="center" class="setting_table">
+9<@> <tbody>
+7<@>  <tr>
+70<@>   <td width="500" valign="middle" align="left" class="wizard_title">
+36<@>    &nbsp;&nbsp快速設定 - PPPoE
+9<@>   </td>
+8<@>  </tr>
+7<@>  <tr>
+20<@>   <td colspan="2">
+67<@>    <table width="502" cellspacing="0" cellpadding="0" border="0">
+13<@>     <tbody>
+11<@>      <tr>
+24<@>       <td width="500">
+13<@>        <br>
+85<@>        <table width="400" align="center" cellspacing="0" cellpadding="0" border="0"
+23<@>        class="space">
+17<@>         <tbody>
+15<@>          <tr>
+16<@>           <td>
+73<@>            請輸入由您ISP提供的帳戶使用者名稱和密碼。
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+68<@>        <table width="400" align="center" border="0" class="space">
+17<@>         <tbody>
+15<@>          <tr>
+27<@>           <td width="86">
+31<@>            使用者名稱：
+17<@>           </td>
+28<@>           <td width="304">
+107<@>            <input type="text" maxlength="256" size="25" id="acc" class="text" name="pppoe_usrname" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_username[];>
+2<@>>
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <td>
+22<@>            密碼：
+17<@>           </td>
+16<@>           <td>
+110<@>            <input type="password" maxlength="256" size="25" id="psw" class="text" name="pppoe_psword" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_password[];>
+2<@>>
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <td>
+28<@>            確認密碼：
+17<@>           </td>
+16<@>           <td>
+109<@>            <input type="password" maxlength="256" size="25" id="confirm" class="text" name="confirm" value=
+47<@><VWS_SCREEN (char*) xscrnWanpppoe_password[];>
+2<@>>
+17<@>           </td>
+16<@>          </tr>
+33<@>          <tr><td><br></td></tr>
+36<@>          <tr style="display:none">
+16<@>           <td>
+21<@>            <script>
+149<@>            document.writeln('<input type=\"text\" name=\"statuscheckpppoeuser\" maxlength=\"64\" size=\"25\" value=\"'+statuscheckpppoeuser+'\">');
+22<@>            </script>
+17<@>           </td>
+16<@>          </tr>
+15<@>          <tr>
+16<@>           <td>
+124<@>            <input type="submit" name="checkpppoeuser" value="連線帳號測試" onClick="return onClickCheckPppoeUser()">
+17<@>           </td>
+57<@>           <td id="id_noconnected" style="display:none">
+34<@>            <p style="color:red">
+121<@>            檢測到WAN口沒有正確連結，請重新確認WAN口網線已經插好，并確認WAN口燈是亮的。
+17<@>            </p>
+17<@>           </td>
+51<@>           <td id="id_noack" style="display:none">
+34<@>            <p style="color:red">
+105<@>            PPPOE伺服器無響應，請您確認WAN口是否連結到您網絡服務商的網絡中。
+17<@>            </p>
+17<@>           </td>
+53<@>           <td id="id_notpass" style="display:none">
+34<@>            <p style="color:red">
+118<@>            帳號或口令錯誤，請您輸入正確的上網帳號和口令，如遺忘請咨詢網絡服務商。
+17<@>            </p>
+17<@>           </td>
+50<@>           <td id="id_pass" style="display:none">
+34<@>            <p style="color:red">
+49<@>            有效的使用者名稱和密碼。
+17<@>            </p>
+17<@>           </td>
+16<@>          </tr>
+18<@>         </tbody>
+17<@>        </table>
+13<@>        <br>
+13<@>       </td>
+12<@>      </tr>
+11<@>      <tr>
+58<@>       <td height="30" align="right" class="wizard_tail">
+77<@>        <input type="submit" name="wizardstep3pppoe_back" value="上一步">
+15<@>        &nbsp;
+108<@>        <input type="submit" name="wizardstep3pppoe_next" value="下一步" onClick="return saveChanges()">
+15<@>        &nbsp;
+13<@>       </td>
+12<@>      </tr>
+14<@>     </tbody>
+13<@>    </table>
+9<@>   </td>
+8<@>  </tr>
+10<@> </tbody>
+9<@></table>
+106<@><input type="hidden" name="submit.htm?wizard_step3_pppoe.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+5<@><br>
+5<@><br>
+5<@><br>
+26<@><div class="loginBottom">
+7<@></div>
+25<@><div class="copywright">
+42<@><VWS_FUNCTION (void*)WebShowCopyright();>
+7<@></div>
+7<@></div>
+9<@><script>
+12<@>postload();
+10<@></script>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+36<@>&*#@wizard_step3_static.htm@#*&9919
+122<@><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+44<@><html xmlns="http://www.w3.org/1999/xhtml">
+7<@><head>
+46<@><meta HTTP-EQUIV="Pragma" CONTENT="no-cache">
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+55<@><script type="text/javascript" src="util.js"></script>
+56<@><script type="text/javascript" src="share.js"></script>
+61<@><link rel="stylesheet" type="text/css" href="stylemain.css">
+8<@><title>
+17<@> 無線路由器
+9<@></title>
+1<@>
+9<@><script>
+42<@><VWS_FUNCTION (void*)WebShowModemName();>
+44<@><VWS_FUNCTION (void*)WebShowHardwareVer();>
+44<@><VWS_FUNCTION (void*)WebShowFirmwareVer();>
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+31<@>function validateIP(ip, msg) {
+23<@> if (ip.value == "") {
+85<@>  alert(msg + ' 不可以空白! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+21<@> var str = ip.value;
+16<@> var count = 0;
+40<@> for (var i = 0; i < str.length; i++) {
+64<@>  if ((str.charAt(i) >= '0' && str.charAt(i) <= '9')) continue;
+30<@>  if (str.charAt(i) == '.') {
+12<@>   count++;
+13<@>   continue;
+4<@>  }
+81<@>  alert('無效的 '+ msg+'數值 ! 數值應該是十進位的數字(0-9)。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+19<@> if (count != 3) {
+85<@>  alert(msg + ' 不可以空白! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。');
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+36<@> if (IsLoopBackIP(ip.value) == 1) {
+26<@>  alert(msg + '無效.');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+46<@> if (!checkDigitRange(ip.value, 1, 1, 223)) {
+74<@>  alert(msg + '第1位的IP位址範圍無效! 範圍應該在1-233。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+46<@> if (!checkDigitRange(ip.value, 2, 0, 255)) {
+74<@>  alert(msg + '第2位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+46<@> if (!checkDigitRange(ip.value, 3, 0, 255)) {
+74<@>  alert(msg + '第3位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+46<@> if (!checkDigitRange(ip.value, 4, 1, 254)) {
+74<@>  alert(msg + '第4位的IP位址範圍無效! 範圍應該在1-254。');
+30<@>  ip.value = ip.defaultValue;
+14<@>  ip.focus();
+16<@>  return false;
+3<@> }
+1<@>
+14<@> return true;
+2<@>}
+1<@>
+23<@>function saveChanges()
+2<@>{
+39<@> with(document.form2WizardStep3Static)
+3<@> {
+48<@>  if (!validateIP(staip_ipaddr, "IP 地址")) {
+25<@>   staip_ipaddr.focus();
+17<@>   return false;
+4<@>  }
+65<@>  if (Lan1EqLan2(staip_ipaddr.value, lanmask, lanip, lanmask)) {
+57<@>   alert("WAN IP and LAN IP 必須在不同的網路!");
+25<@>   staip_ipaddr.focus();
+17<@>   return false;
+4<@>  }
+35<@>  if (staip_netmask.value != "") {
+36<@>   if (!checkMask(staip_netmask)) {
+27<@>    staip_netmask.focus();
+18<@>    return false;
+5<@>   }
+42<@>   d1 = getDigit(staip_netmask.value, 1);
+42<@>   d2 = getDigit(staip_netmask.value, 2);
+42<@>   d3 = getDigit(staip_netmask.value, 3);
+42<@>   d4 = getDigit(staip_netmask.value, 4);
+97<@>   if ((d1 == 0) || (d4 == 254) || ((d1 == 255) && (d2 == 255) && (d3 == 255) && (d4 == 255))) {
+45<@>    alert('無效的IP網路遮罩位址!');
+27<@>    staip_netmask.focus();
+18<@>    return false;
+5<@>   }
+4<@>  }
+58<@>  if (!validateIP(staip_gateway, "默認路由地址")) {
+26<@>   staip_gateway.focus();
+17<@>   return false;
+4<@>  }
+104<@>  if (!Lan1EqLan2(staip_ipaddr.value, staip_netmask.value, staip_gateway.value, staip_netmask.value)) {
+54<@>   alert("WAN 和 閘道 必須在同一個網路!");
+26<@>   staip_gateway.focus();
+17<@>   return false;
+4<@>  }
+51<@>  if (staip_ipaddr.value == staip_gateway.value) {
+45<@>   alert("WAN 和 閘道 不可以相同!");
+26<@>   staip_gateway.focus();
+17<@>   return false;
+4<@>  }
+46<@>  if (!validateIP(wan_dns1, "DNS 1地址")) {
+21<@>   wan_dns1.focus();
+17<@>   return false;
+4<@>  }
+68<@>  if (wantype.value == 0 && wan_dns1.value == staip_ipaddr.value) {
+48<@>   alert("DNS IP 和 WAN IP 不可以相同!");
+21<@>   wan_dns1.focus();
+17<@>   return false;
+4<@>  }
+61<@>  if (Lan1EqLan2(wan_dns1.value, lanmask, lanip, lanmask)) {
+57<@>   alert("DNS IP and LAN IP 必須在不同的網路!");
+21<@>   wan_dns1.focus();
+17<@>   return false;
+4<@>  }
+37<@>  if (wan_dns2.value != "0.0.0.0") {
+47<@>   if (!validateIP(wan_dns2, "DNS 2地址")) {
+22<@>    wan_dns2.focus();
+18<@>    return false;
+5<@>   }
+43<@>   if (wan_dns2.value == wan_dns1.value) {

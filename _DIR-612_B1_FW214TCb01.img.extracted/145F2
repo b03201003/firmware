@@ -1,0 +1,1027 @@
+13<@>&&*&&tw**&**
+47<@>	<table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+23<@>		<td class=topheader>
+20<@>			WPS連線方式:
+8<@>		</td>
+7<@>	</tr>
+6<@>	<tr>
+34<@>		<td class=content align=center>
+81<@>			<table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>	
+9<@>				<tr>
+10<@>					<td>
+75<@>						<input type="radio" value="enable" name="pinmode" checked>PIN模式 
+11<@>					</td>
+10<@>				</tr>
+9<@>				<tr>
+129<@>					<td width="60%" style="padding-left:25px;">若您的無線網卡支援WPS功能，請在此輸入網卡端的PIN碼。</td>
+10<@>					<td>
+45<@>                        &nbsp&nbsp&nbsp&nbsp
+11<@>					</td>
+10<@>					<td>
+45<@>						<span>輸入無線網卡的PIN:</span>
+74<@>						<input type="text" name="peerPin" size="12" maxlength="8" value="">
+11<@>					</td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+10<@>	</table>
+1<@>
+18<@>	<p align=center>
+111<@>	<input type="submit" value="開始PIN連線" name="setPIN"  onClick="return setPinClicked(document.formWsc)">
+6<@>	</p>
+100<@>	<INPUT TYPE="hidden" NAME="submit.htm?wlwps_step1.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+3<@>  
+8<@></form>
+1<@>
+9<@><script>
+48<@><VWS_SCREEN (char*) webShowWlanPeerPin_INIT[];>
+10<@></script>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+11<@>	Footer();
+17<@>	mainTableEnd();
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+27<@>&*#@wlwps_step3.htm@#*&978
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+33<@><title>Wi-Fi保護設置</title>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+31<@><script language="JavaScript">
+21<@>	TabHeader="無線";
+23<@>	SideItem="WPS設定";
+19<@>	HelpItem="wlwps";
+10<@></script>
+32<@><script type='text/javascript'>
+18<@>mainTableStart();
+8<@>logo();
+10<@>TopNav();
+17<@>ThirdRowStart();
+21<@>Write_Item_Images();
+17<@>mainBodyStart();
+10<@></script>
+1<@>
+5<@><h3>
+43<@><VWS_FUNCTION (void*)GetWpsSettingInfo();>
+6<@></h3>
+7<@><form>
+53<@><input onclick="history.go (-2)" value="&nbsp;&nbsp;
+44<@><VWS_FUNCTION (void*)GetUploadErrorBack();>
+41<@>&nbsp;&nbsp;" name="Back" type="button">
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+11<@>	Footer();
+17<@>	mainTableEnd();
+10<@></script>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+28<@>&*#@userconfig.htm@#*&20091
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+31<@><title>使用者帳戶</title>
+1<@>
+1<@>
+29<@><script language=javascript>
+17<@>var hexcase = 0;
+17<@>var b64pad = "";
+69<@>function hex_md5(s) { return rstr2hex(rstr_md5(str2rstr_utf8(s))); }
+69<@>function b64_md5(s) { return rstr2b64(rstr_md5(str2rstr_utf8(s))); }
+75<@>function any_md5(s, e) { return rstr2any(rstr_md5(str2rstr_utf8(s)), e); }
+28<@>function hex_hmac_md5(k, d)
+74<@>  { return rstr2hex(rstr_hmac_md5(str2rstr_utf8(k), str2rstr_utf8(d))); }
+28<@>function b64_hmac_md5(k, d)
+74<@>  { return rstr2b64(rstr_hmac_md5(str2rstr_utf8(k), str2rstr_utf8(d))); }
+31<@>function any_hmac_md5(k, d, e)
+77<@>  { return rstr2any(rstr_hmac_md5(str2rstr_utf8(k), str2rstr_utf8(d)), e); }
+23<@>function md5_vm_test()
+2<@>{
+77<@>  return hex_md5("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
+2<@>}
+21<@>function rstr_md5(s)
+2<@>{
+58<@>  return binl2rstr(binl_md5(rstr2binl(s), s.length * 8));
+2<@>}
+34<@>function rstr_hmac_md5(key, data)
+2<@>{
+29<@>  var bkey = rstr2binl(key);
+62<@>  if(bkey.length > 16) bkey = binl_md5(bkey, key.length * 8);
+42<@>  var ipad = Array(16), opad = Array(16);
+30<@>  for(var i = 0; i < 16; i++)
+4<@>  {
+36<@>    ipad[i] = bkey[i] ^ 0x36363636;
+36<@>    opad[i] = bkey[i] ^ 0x5C5C5C5C;
+4<@>  }
+76<@>  var hash = binl_md5(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
+60<@>  return binl2rstr(binl_md5(opad.concat(hash), 512 + 128));
+2<@>}
+25<@>function rstr2hex(input)
+2<@>{
+42<@>  try { hexcase } catch(e) { hexcase=0; }
+67<@>  var hex_tab = hexcase ? "0123456789ABCDEF" : "0123456789abcdef";
+19<@>  var output = "";
+9<@>  var x;
+40<@>  for(var i = 0; i < input.length; i++)
+4<@>  {
+29<@>    x = input.charCodeAt(i);
+47<@>    output += hex_tab.charAt((x >>> 4) & 0x0F)
+40<@>           + hex_tab.charAt( x & 0x0F);
+4<@>  }
+17<@>  return output;
+2<@>}
+25<@>function rstr2b64(input)
+2<@>{
+41<@>  try { b64pad } catch(e) { b64pad=''; }
+80<@>  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+19<@>  var output = "";
+26<@>  var len = input.length;
+34<@>  for(var i = 0; i < len; i += 3)
+4<@>  {
+46<@>    var triplet = (input.charCodeAt(i) << 16)
+65<@>                | (i + 1 < len ? input.charCodeAt(i+1) << 8 : 0)
+61<@>                | (i + 2 < len ? input.charCodeAt(i+2) : 0);
+31<@>    for(var j = 0; j < 4; j++)
+6<@>    {
+61<@>      if(i * 8 + j * 6 > input.length * 8) output += b64pad;
+63<@>      else output += tab.charAt((triplet >>> 6*(3-j)) & 0x3F);
+6<@>    }
+4<@>  }
+17<@>  return output;
+2<@>}
+35<@>function rstr2any(input, encoding)
+2<@>{
+33<@>  var divisor = encoding.length;
+28<@>  var i, j, q, x, quotient;
+53<@>  var dividend = Array(Math.ceil(input.length / 2));
+39<@>  for(i = 0; i < dividend.length; i++)
+4<@>  {
+80<@>    dividend[i] = (input.charCodeAt(i * 2) << 8) | input.charCodeAt(i * 2 + 1);
+4<@>  }
+49<@>  var full_length = Math.ceil(input.length * 8 /
+80<@>                                    (Math.log(encoding.length) / Math.log(2)));
+39<@>  var remainders = Array(full_length);
+35<@>  for(j = 0; j < full_length; j++)
+4<@>  {
+24<@>    quotient = Array();
+11<@>    x = 0;
+41<@>    for(i = 0; i < dividend.length; i++)
+6<@>    {
+35<@>      x = (x << 16) + dividend[i];
+35<@>      q = Math.floor(x / divisor);
+24<@>      x -= q * divisor;
+39<@>      if(quotient.length > 0 || q > 0)
+39<@>        quotient[quotient.length] = q;
+6<@>    }
+23<@>    remainders[j] = x;
+25<@>    dividend = quotient;
+4<@>  }
+19<@>  var output = "";
+46<@>  for(i = remainders.length - 1; i >= 0; i--)
+46<@>    output += encoding.charAt(remainders[i]);
+17<@>  return output;
+2<@>}
+30<@>function str2rstr_utf8(input)
+2<@>{
+19<@>  var output = "";
+14<@>  var i = -1;
+12<@>  var x, y;
+28<@>  while(++i < input.length)
+4<@>  {
+29<@>    x = input.charCodeAt(i);
+60<@>    y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
+65<@>    if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
+6<@>    {
+57<@>      x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
+11<@>      i++;
+6<@>    }
+18<@>    if(x <= 0x7F)
+40<@>      output += String.fromCharCode(x);
+24<@>    else if(x <= 0x7FF)
+64<@>      output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
+57<@>                                    0x80 | ( x & 0x3F));
+25<@>    else if(x <= 0xFFFF)
+64<@>      output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
+64<@>                                    0x80 | ((x >>> 6 ) & 0x3F),
+57<@>                                    0x80 | ( x & 0x3F));
+27<@>    else if(x <= 0x1FFFFF)
+64<@>      output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
+64<@>                                    0x80 | ((x >>> 12) & 0x3F),
+64<@>                                    0x80 | ((x >>> 6 ) & 0x3F),
+57<@>                                    0x80 | ( x & 0x3F));
+4<@>  }
+17<@>  return output;
+2<@>}
+33<@>function str2rstr_utf16le(input)
+2<@>{
+19<@>  var output = "";
+40<@>  for(var i = 0; i < input.length; i++)
+63<@>    output += String.fromCharCode( input.charCodeAt(i) & 0xFF,
+71<@>                                  (input.charCodeAt(i) >>> 8) & 0xFF);
+17<@>  return output;
+2<@>}
+33<@>function str2rstr_utf16be(input)
+2<@>{
+19<@>  var output = "";
+40<@>  for(var i = 0; i < input.length; i++)
+70<@>    output += String.fromCharCode((input.charCodeAt(i) >>> 8) & 0xFF,
+64<@>                                   input.charCodeAt(i) & 0xFF);
+17<@>  return output;
+2<@>}
+26<@>function rstr2binl(input)
+2<@>{
+41<@>  var output = Array(input.length >> 2);
+41<@>  for(var i = 0; i < output.length; i++)
+19<@>    output[i] = 0;
+47<@>  for(var i = 0; i < input.length * 8; i += 8)
+64<@>    output[i>>5] |= (input.charCodeAt(i / 8) & 0xFF) << (i%32);
+17<@>  return output;
+2<@>}
+26<@>function binl2rstr(input)
+2<@>{
+19<@>  var output = "";
+48<@>  for(var i = 0; i < input.length * 32; i += 8)
+70<@>    output += String.fromCharCode((input[i>>5] >>> (i % 32)) & 0xFF);
+17<@>  return output;
+2<@>}
+26<@>function binl_md5(x, len)
+2<@>{
+39<@>  x[len >> 5] |= 0x80 << ((len) % 32);
+43<@>  x[(((len + 64) >>> 9) << 4) + 14] = len;
+22<@>  var a = 1732584193;
+22<@>  var b = -271733879;
+23<@>  var c = -1732584194;
+21<@>  var d = 271733878;
+40<@>  for(var i = 0; i < x.length; i += 16)
+4<@>  {
+18<@>    var olda = a;
+18<@>    var oldb = b;
+18<@>    var oldc = c;
+18<@>    var oldd = d;
+53<@>    a = md5_ff(a, b, c, d, x[i+ 0], 7 , -680876936);
+53<@>    d = md5_ff(d, a, b, c, x[i+ 1], 12, -389564586);
+52<@>    c = md5_ff(c, d, a, b, x[i+ 2], 17, 606105819);
+54<@>    b = md5_ff(b, c, d, a, x[i+ 3], 22, -1044525330);
+53<@>    a = md5_ff(a, b, c, d, x[i+ 4], 7 , -176418897);
+53<@>    d = md5_ff(d, a, b, c, x[i+ 5], 12, 1200080426);
+54<@>    c = md5_ff(c, d, a, b, x[i+ 6], 17, -1473231341);
+52<@>    b = md5_ff(b, c, d, a, x[i+ 7], 22, -45705983);
+53<@>    a = md5_ff(a, b, c, d, x[i+ 8], 7 , 1770035416);
+54<@>    d = md5_ff(d, a, b, c, x[i+ 9], 12, -1958414417);
+49<@>    c = md5_ff(c, d, a, b, x[i+10], 17, -42063);
+54<@>    b = md5_ff(b, c, d, a, x[i+11], 22, -1990404162);
+53<@>    a = md5_ff(a, b, c, d, x[i+12], 7 , 1804603682);
+52<@>    d = md5_ff(d, a, b, c, x[i+13], 12, -40341101);
+54<@>    c = md5_ff(c, d, a, b, x[i+14], 17, -1502002290);
+53<@>    b = md5_ff(b, c, d, a, x[i+15], 22, 1236535329);
+53<@>    a = md5_gg(a, b, c, d, x[i+ 1], 5 , -165796510);
+54<@>    d = md5_gg(d, a, b, c, x[i+ 6], 9 , -1069501632);
+52<@>    c = md5_gg(c, d, a, b, x[i+11], 14, 643717713);
+53<@>    b = md5_gg(b, c, d, a, x[i+ 0], 20, -373897302);
+53<@>    a = md5_gg(a, b, c, d, x[i+ 5], 5 , -701558691);
+51<@>    d = md5_gg(d, a, b, c, x[i+10], 9 , 38016083);
+53<@>    c = md5_gg(c, d, a, b, x[i+15], 14, -660478335);
+53<@>    b = md5_gg(b, c, d, a, x[i+ 4], 20, -405537848);
+52<@>    a = md5_gg(a, b, c, d, x[i+ 9], 5 , 568446438);
+54<@>    d = md5_gg(d, a, b, c, x[i+14], 9 , -1019803690);
+53<@>    c = md5_gg(c, d, a, b, x[i+ 3], 14, -187363961);
+53<@>    b = md5_gg(b, c, d, a, x[i+ 8], 20, 1163531501);
+54<@>    a = md5_gg(a, b, c, d, x[i+13], 5 , -1444681467);
+52<@>    d = md5_gg(d, a, b, c, x[i+ 2], 9 , -51403784);
+53<@>    c = md5_gg(c, d, a, b, x[i+ 7], 14, 1735328473);
+54<@>    b = md5_gg(b, c, d, a, x[i+12], 20, -1926607734);
+50<@>    a = md5_hh(a, b, c, d, x[i+ 5], 4 , -378558);
+54<@>    d = md5_hh(d, a, b, c, x[i+ 8], 11, -2022574463);
+53<@>    c = md5_hh(c, d, a, b, x[i+11], 16, 1839030562);
+52<@>    b = md5_hh(b, c, d, a, x[i+14], 23, -35309556);
+54<@>    a = md5_hh(a, b, c, d, x[i+ 1], 4 , -1530992060);
+53<@>    d = md5_hh(d, a, b, c, x[i+ 4], 11, 1272893353);
+53<@>    c = md5_hh(c, d, a, b, x[i+ 7], 16, -155497632);
+54<@>    b = md5_hh(b, c, d, a, x[i+10], 23, -1094730640);
+52<@>    a = md5_hh(a, b, c, d, x[i+13], 4 , 681279174);
+53<@>    d = md5_hh(d, a, b, c, x[i+ 0], 11, -358537222);
+53<@>    c = md5_hh(c, d, a, b, x[i+ 3], 16, -722521979);
+51<@>    b = md5_hh(b, c, d, a, x[i+ 6], 23, 76029189);
+53<@>    a = md5_hh(a, b, c, d, x[i+ 9], 4 , -640364487);
+53<@>    d = md5_hh(d, a, b, c, x[i+12], 11, -421815835);
+52<@>    c = md5_hh(c, d, a, b, x[i+15], 16, 530742520);
+53<@>    b = md5_hh(b, c, d, a, x[i+ 2], 23, -995338651);
+53<@>    a = md5_ii(a, b, c, d, x[i+ 0], 6 , -198630844);
+53<@>    d = md5_ii(d, a, b, c, x[i+ 7], 10, 1126891415);
+54<@>    c = md5_ii(c, d, a, b, x[i+14], 15, -1416354905);
+52<@>    b = md5_ii(b, c, d, a, x[i+ 5], 21, -57434055);
+53<@>    a = md5_ii(a, b, c, d, x[i+12], 6 , 1700485571);
+54<@>    d = md5_ii(d, a, b, c, x[i+ 3], 10, -1894986606);
+51<@>    c = md5_ii(c, d, a, b, x[i+10], 15, -1051523);
+54<@>    b = md5_ii(b, c, d, a, x[i+ 1], 21, -2054922799);
+53<@>    a = md5_ii(a, b, c, d, x[i+ 8], 6 , 1873313359);
+52<@>    d = md5_ii(d, a, b, c, x[i+15], 10, -30611744);
+54<@>    c = md5_ii(c, d, a, b, x[i+ 6], 15, -1560198380);
+53<@>    b = md5_ii(b, c, d, a, x[i+13], 21, 1309151649);
+53<@>    a = md5_ii(a, b, c, d, x[i+ 4], 6 , -145523070);
+54<@>    d = md5_ii(d, a, b, c, x[i+11], 10, -1120210379);
+52<@>    c = md5_ii(c, d, a, b, x[i+ 2], 15, 718787259);
+53<@>    b = md5_ii(b, c, d, a, x[i+ 9], 21, -343485551);
+27<@>    a = safe_add(a, olda);
+27<@>    b = safe_add(b, oldb);
+27<@>    c = safe_add(c, oldc);
+27<@>    d = safe_add(d, oldd);
+4<@>  }
+28<@>  return Array(a, b, c, d);
+2<@>}
+35<@>function md5_cmn(q, a, b, x, s, t)
+2<@>{
+75<@>  return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s),b);
+2<@>}
+37<@>function md5_ff(a, b, c, d, x, s, t)
+2<@>{
+55<@>  return md5_cmn((b & c) | ((~b) & d), a, b, x, s, t);
+2<@>}
+37<@>function md5_gg(a, b, c, d, x, s, t)
+2<@>{
+55<@>  return md5_cmn((b & d) | (c & (~d)), a, b, x, s, t);
+2<@>}
+37<@>function md5_hh(a, b, c, d, x, s, t)
+2<@>{
+44<@>  return md5_cmn(b ^ c ^ d, a, b, x, s, t);
+2<@>}
+37<@>function md5_ii(a, b, c, d, x, s, t)
+2<@>{
+49<@>  return md5_cmn(c ^ (b | (~d)), a, b, x, s, t);
+2<@>}
+24<@>function safe_add(x, y)
+2<@>{
+41<@>  var lsw = (x & 0xFFFF) + (y & 0xFFFF);
+49<@>  var msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+39<@>  return (msw << 16) | (lsw & 0xFFFF);
+2<@>}
+27<@>function bit_rol(num, cnt)
+2<@>{
+46<@>  return (num << cnt) | (num >>> (32 - cnt));
+2<@>}
+10<@></script>
+1<@>
+1<@>
+9<@><SCRIPT>
+44<@><VWS_FUNCTION (void*)webGetLanAdminName();>
+12<@>selected=0;
+1<@>
+27<@>function includeSpace(str)
+2<@>{
+37<@>  for (var i=0; i<str.length; i++) {
+33<@>   if ( str.charAt(i) == ' ' ) {
+16<@>   return true;
+3<@> }
+4<@>  }
+16<@>  return false;
+2<@>}
+1<@>
+32<@>function includeSpecialKey(str)
+2<@>{
+37<@>  for (var i=0; i<str.length; i++) {
+58<@>   if (( str.charAt(i)== ' ' ) || ( str.charAt(i)== '%' )
+57<@> || ( str.charAt(i)== '\\' ) || ( str.charAt(i)== '\'' )
+30<@>   || ( str.charAt(i)== '?' )
+63<@>        ||( str.charAt(i)== '&' ) ||( str.charAt(i)== '"' )) {
+16<@>   return true;
+3<@> }
+4<@>  }
+1<@>
+16<@>  return false;
+2<@>}
+1<@>
+29<@>function includeChinese(str)
+2<@>{
+36<@> for (var i=0; i<str.length; i++) {
+33<@>  if (str.charCodeAt(i) > 128) {
+16<@>   return true;
+4<@>  }
+3<@> }
+1<@>
+15<@> return false;
+2<@>}
+1<@>
+1<@>
+25<@>function passwdEncrypt()
+2<@>{
+51<@> if(document.userconfig.oldpass.disabled == false)
+82<@>  document.userconfig.oldpass.value = hex_md5(document.userconfig.oldpass.value);
+81<@> document.userconfig.newpass.value = hex_md5(document.userconfig.newpass.value);
+83<@> document.userconfig.confpass.value = hex_md5(document.userconfig.confpass.value);
+2<@>}
+1<@>
+1<@>
+23<@>function saveChanges()
+2<@>{
+52<@> if(document.userconfig.username.value.length == 0)
+3<@> {
+67<@>  alert('使用者名稱不可以是空白，請再試一次。');
+40<@>  document.userconfig.username.focus();
+16<@>  return false;
+3<@> }
+6<@> else
+3<@> {
+60<@>  if(!checkSpecialChar(document.userconfig.username.value))
+4<@>  {
+76<@>   alert('無效的使用者名稱! 不可以使用特殊字元，如。');
+41<@>   document.userconfig.username.focus();
+17<@>   return false;
+4<@>  }
+1<@>
+57<@>  if(includeChinese(document.userconfig.username.value))
+4<@>  {
+63<@>   alert('無效的使用者名稱,不可以包含漢字。');
+41<@>   document.userconfig.username.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+1<@>
+1<@>
+51<@> if(document.userconfig.newpass.value.length == 0)
+3<@> {
+58<@>  alert('密碼不可以是空白，請再試一次。');
+39<@>  document.userconfig.newpass.focus();
+16<@>  return false;
+3<@> }
+56<@> else if(document.userconfig.newpass.value.length > 29)
+3<@> {
+69<@>  alert('新密碼長度不能超過30個字符, 請重新輸入.');
+39<@>  document.userconfig.newpass.focus();
+16<@>  return false;
+3<@> }
+6<@> else
+3<@> {
+67<@>  if(!checkSpecialCharAllSpace(document.userconfig.newpass.value))
+4<@>  {
+61<@>   alert('無效的密碼! 不可以使用特殊字元。');
+40<@>   document.userconfig.newpass.focus();
+17<@>   return false;
+4<@>  }
+1<@>
+56<@>  if(includeChinese(document.userconfig.newpass.value))
+4<@>  {
+51<@>   alert('無效的密碼,不可以包含漢字');
+40<@>   document.userconfig.newpass.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+1<@>
+78<@> if (document.userconfig.newpass.value != document.userconfig.confpass.value)
+3<@> {
+57<@>  alert('新密碼和確認密碼不一樣,請確認.');
+39<@>  document.userconfig.newpass.focus();
+16<@>  return false;
+3<@> }
+1<@>
+1<@>
+18<@> passwdEncrypt();
+1<@>
+1<@>
+14<@> return true;
+2<@>}
+1<@>
+23<@>function modifyClick()
+2<@>{
+18<@> if (!selected) {
+44<@>  alert("請選擇一個項目來修改!");
+16<@>  return false;
+3<@> }
+1<@>
+23<@> return saveChanges();
+2<@>}
+1<@>
+20<@>function delClick()
+2<@>{
+15<@> if(!selected)
+3<@> {
+44<@>  alert("請選擇一個項目來刪除!");
+16<@>  return false;
+3<@> }
+53<@> if(document.userconfig.username.value == adminName)
+3<@> {
+42<@>  alert("不可以刪除"+adminName+"!");
+16<@>  return false;
+3<@> }
+14<@> return true;
+2<@>}
+1<@>
+26<@>function postEntry(index)
+2<@>{
+61<@> document.userconfig.privilege.value = arrayPriority[index];
+49<@> document.userconfig.privilege.disabled = false;
+47<@> document.userconfig.oldpass.disabled = false;
+60<@> document.userconfig.username.value = arrayUsername[index];
+15<@> selected = 1;
+2<@>}
+1<@>
+23<@>function disablePriv()
+2<@>{
+42<@> document.userconfig.privilege.value = 0;
+48<@> document.userconfig.privilege.disabled = true;
+2<@>}
+1<@>
+23<@>function resetConfig()
+2<@>{
+1<@>
+42<@> document.userconfig.privilege.value = 0;
+49<@> document.userconfig.privilege.disabled = false;
+46<@> document.userconfig.oldpass.disabled = true;
+2<@>}
+1<@>
+23<@>function checkAction()
+2<@>{
+1<@>
+1<@>
+16<@> if (!selected)
+47<@>  document.userconfig.oldpass.disabled = true;
+2<@>}
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><BODY>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@> TabHeader="維護";
+29<@> SideItem="使用者帳戶";
+22<@> HelpItem="password";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@> mainTableStart();
+9<@> logo();
+11<@> TopNav();
+18<@> ThirdRowStart();
+22<@> Write_Item_Images();
+18<@> mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@> <tr>
+43<@>  <td class=topheader>使用者帳戶</td>
+7<@> </tr>
+6<@> <tr>
+21<@>  <td class=content>
+142<@>   <p>此頁面是用來新增使用者帳戶來存取無線路由器的網頁管理介面，使用者名稱或密碼不可以是空白的。
+17<@>            </p>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+66<@><form action="form2userconfig.cgi" method=POST name="userconfig">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+34<@>  <td class=topheader>設定</td>
+7<@> </tr>
+9<@>    <tr>
+36<@>  <td class="content" align="left">
+85<@>     <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+12<@>       <tr>
+49<@>        <td class='form_label_left' width="20%">
+37<@>                    使用者名稱:
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+81<@>                    <input type="text" name="username" size="20" maxlength="29">
+26<@>                    </td>
+13<@>       </tr>
+21<@>                <tr>
+49<@>        <td class='form_label_left' width="20%">
+28<@>                    權限:
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+55<@>                    <select size="1" name="privilege">
+65<@>                    <VWS_FUNCTION (void*)showPrivilegeTable(); >
+30<@>                    </select>
+26<@>                    </td>
+13<@>       </tr>
+21<@>                <tr>
+49<@>        <td class='form_label_left' width="20%">
+31<@>                    舊密碼:
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+84<@>                    <input type="password" name="oldpass" size="20" maxlength="29">
+26<@>                    </td>
+13<@>       </tr>
+21<@>                <tr>
+49<@>        <td class='form_label_left' width="20%">
+31<@>                    新密碼:
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+84<@>                    <input type="password" name="newpass" size="20" maxlength="29">
+26<@>                    </td>
+13<@>       </tr>
+21<@>                <tr>
+49<@>        <td class='form_label_left' width="20%">
+34<@>                    確認密碼:
+26<@>                    </td>
+50<@>                    <td class='form_label_right'>
+85<@>                    <input type="password" name="confpass" size="20" maxlength="29">
+26<@>                    </td>
+13<@>       </tr>
+12<@>   </table>
+8<@>  </td>
+7<@> </tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+83<@><input type="submit" value="增加" name="adduser" onClick="return saveChanges()">
+82<@><input type="submit" value="修改" name="modify" onClick="return modifyClick()">
+80<@><input type="submit" value="刪除" name="deluser" onClick="return delClick()">
+73<@><input type="reset" value="取消" name="reset" onClick="resetConfig()">
+5<@></p>
+1<@>
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@> <tr>
+49<@>  <td class=topheader>使用者帳戶清單</td>
+7<@> </tr>
+9<@>    <tr>
+27<@>        <td class=content>
+40<@>     <table class=formlisting border=0>
+42<@>                <tr class=form_label_row>
+60<@>                    <td class='form_label_col' width="20%">
+27<@>                    選擇
+26<@>                    </td>
+60<@>                    <td class='form_label_col' width="50%">
+36<@>                    使用者名稱
+26<@>                    </td>
+60<@>                    <td class='form_label_col' width="30%">
+27<@>                    權利
+26<@>                    </td>
+22<@>                </tr>
+56<@>                <VWS_FUNCTION (void*)showUserTable(); >
+56<@>                <VWS_FUNCTION (void*)showPostEntry(); >
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+40<@><input type="hidden" name="hiddenpass">
+98<@><input type="hidden" NAME="submit.htm?userconfig.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+9<@><script>
+16<@> checkAction();
+10<@></script>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@> mainBodyEnd();
+16<@> ThirdRowEnd();
+10<@> Footer()
+16<@> mainTableEnd()
+10<@></script>
+1<@>
+13<@><blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+43<@>&*#@dhcpvendortbl_withoutcheck.htm@#*&7374
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+36<@><title>Vendor IP Range Set </title>
+9<@><SCRIPT>
+19<@>var pool_ipprefix;
+1<@>
+60<@>function postsetting(devname, startip, endip, gwip, option)
+2<@>{
+40<@>	document.ipRange.name.value = devname;
+39<@>	document.ipRange.sIp.value = startip;
+37<@>	document.ipRange.dIp.value = endip;
+44<@>        document.ipRange.gwIp.value = gwip;
+11<@>	while(1){
+41<@>	    var option=option.replace("+"," ");
+43<@>	    for (var i=0; i<option.length; i++) {
+37<@>	      if ( option.charAt(i) == "+")
+12<@>	  		break;
+7<@>	    }
+26<@>	    if(i>=option.length)
+14<@>	      break;
+3<@>	}
+40<@>	document.ipRange.Opt60.value = option;
+2<@>}
+1<@>
+30<@>function checkInputIP(client)
+2<@>{
+34<@>	var pool_ip, mask,ipstart,ipend;
+48<@>	var i, mask_d, ip_d, pool_d,ipstart_d,ipend_d;
+26<@>	var pool_ip_d, client_d;
+2<@>	
+42<@>	pool_ip = document.ipRange.lan_ip.value;
+41<@>	mask = document.ipRange.lan_mask.value;
+54<@>	ipstart = document.ipRange.lan_dhcpRangeStart.value;
+50<@>	ipend = document.ipRange.lan_dhcpRangeEnd.value;
+2<@>	
+22<@>	for( i=1;i<5;i++ ) {
+30<@>		mask_d = getDigit(mask, i);
+36<@>		pool_ip_d = getDigit(pool_ip, i);
+34<@>		client_d = getDigit(client, i);
+36<@>		ipstart_d = getDigit(ipstart, i);
+32<@>		ipend_d = getDigit(ipend, i);
+1<@>
+55<@>		if( (pool_ip_d & mask_d) != (client_d & mask_d ) ) {
+17<@>			return false;
+4<@>		}
+3<@>	}
+1<@>
+56<@>	if( (ipstart_d > client_d) || (ipend_d < client_d) ) {
+17<@>			return false;
+3<@>	}
+3<@>		
+14<@>	return true;
+2<@>}
+1<@>
+21<@>function addClick() 
+2<@>{
+54<@>	ipstart = document.ipRange.lan_dhcpRangeStart.value;
+50<@>	ipend = document.ipRange.lan_dhcpRangeEnd.value;
+1<@>
+40<@>	if (document.ipRange.name.value=="") {
+38<@>		alert("設備名稱不能為空!");
+33<@>		document.ipRange.name.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+39<@>	if (!checkIP(document.ipRange.sIp)) {
+32<@>		document.ipRange.sIp.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+39<@>	if (!checkIP(document.ipRange.dIp)) {
+32<@>		document.ipRange.dIp.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+40<@>	if (document.ipRange.gwIp.value=="") {
+60<@>   	   	alert("請輸入DHCP IP地址池的默認網關.");
+33<@>		document.ipRange.dfgw.focus();
+16<@>		return false;
+3<@>	}
+41<@>	if (!checkIP( document.ipRange.gwIp)) {
+33<@>		document.ipRange.dfgw.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+41<@>	if (document.ipRange.Opt60.value=="") {
+34<@>		alert("選項60不能為空!");
+34<@>		document.ipRange.Opt60.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+58<@>	if(!checkNetwork(ipstart, document.ipRange.sIp.value)) {
+73<@>		alert('非法的IP地址池的起始地址.必須在IP池范圍內.');
+32<@>		document.ipRange.sIp.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+55<@>	if(!checkNetwork(document.ipRange.dIp.value,ipend)) {
+74<@>		alert('I非法的IP地址池的終止地址.必須在IP池范圍內.');
+32<@>		document.ipRange.dIp.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+77<@>	if(!checkNetwork(document.ipRange.sIp.value, document.ipRange.dIp.value)) {
+61<@>		alert('終止IP地址必須大於或等於起始地址.');
+32<@>		document.ipRange.dIp.focus();
+16<@>		return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+1<@>
+7<@><body>
+13<@><blockquote>
+39<@><div id=maincontent style="width:500">
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+70<@>		<td class="topheader">基於設備類型的 IP 地址池列表</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+66<@>			<p>您可以根據設備類型配置相應的IP 地址池.</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+59<@><form action="formIpRange.cgi" method=POST name="ipRange">
+1<@>
+42<@><input type="hidden" name="lan_ip" value=
+39<@><VWS_SCREEN (char*) xscrnLanIPAddr[];>
+2<@>>
+44<@><input type="hidden" name="lan_mask" value=
+43<@><VWS_SCREEN (char*) xscrnLanSubnetMask[];>
+2<@>>
+54<@><input type="hidden" name="lan_dhcpRangeStart" value=
+46<@><VWS_SCREEN (char*) xscrnDhcpdHostStartIp[];>
+2<@>>
+52<@><input type="hidden" name="lan_dhcpRangeEnd" value=
+44<@><VWS_SCREEN (char*) xscrnDhcpdHostEndIp[];>
+2<@>>
+54<@><input type="hidden" name="lan_dhcpSubnetMask" value=
+43<@><VWS_SCREEN (char*) xscrnLanSubnetMask[];>
+2<@>>
+41<@><input type="hidden" name="ltime" value=
+40<@><VWS_SCREEN (char*) xscrnDhcpdLease[];>
+2<@>>
+1<@>
+41<@><input type="hidden" name="dname" value=
+41<@><VWS_SCREEN (char*) xscrnDhcpdDomain[];>
+2<@>>
+1<@>
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+64<@>		<td class="topheader">基於設備類型的 IP 地址池</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="450">
+9<@>				<tr>
+49<@>					<td class="form_label_left">設備名:</td>
+35<@>					<td class="form_label_right">
+78<@>                    	<input type="text" name="name" size="20" maxlength="20">
+26<@>                    </td>
+10<@>				</tr>
+1<@>
+9<@>				<tr>
+52<@>					<td class="form_label_left">起始地址:</td>
+35<@>					<td class="form_label_right">
+77<@>                    	<input type="text" name="sIp" size="20" maxlength="15">
+26<@>                    </td>
+10<@>				</tr>
+1<@>
+9<@>				<tr>
+52<@>					<td class="form_label_left">結束地址:</td>
+35<@>					<td class="form_label_right">
+77<@>                    	<input type="text" name="dIp" size="20" maxlength="15">
+26<@>                    </td>
+10<@>				</tr>
+1<@>
+55<@>				<VWS_SCREEN (char*) xscrnDhcpdSPDefaultGateway[];>
+1<@>
+9<@>				<tr>
+48<@>					<td class="form_label_left">option60:</td>
+35<@>					<td class="form_label_right">
+79<@>                    	<input type="text" name="Opt60" size="20" maxlength="20">
+26<@>                    </td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+90<@><input type="submit" value=" 添加 " name="add" onClick="return addClick()">&nbsp;&nbsp;
+62<@><input type="submit" value=" 刪除 " name="del">&nbsp;&nbsp;
+90<@><input type="submit" value=" 修改 " name="mod" onClick="return addClick()">&nbsp;&nbsp;
+90<@><input type="button" value=" 關閉 " name="close" onClick="javascript: window.close();">
+5<@><br>
+52<@><table id="body_header" border="0" cellspacing="0">
+6<@>	<tr>
+51<@>    	<td class="topheader">IP 地址池列表</td>
+10<@>    </tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+92<@>        	<table class="formlisting" border="0" cellpadding="0" cellspacing="0" width="500">
+41<@>            	<tr class="form_label_row">
+56<@>                	<td class="form_label_col">選擇</td>
+62<@>                    <td class="form_label_col">設備名</td>
+65<@>                    <td class="form_label_col">起始地址</td>
+65<@>                    <td class="form_label_col">結束地址</td>
+65<@>                    <td class="form_label_col">默認路由</td>
+61<@>                    <td class="form_label_col">option60</td>
+22<@>                </tr>
+50<@>				<VWS_FUNCTION (void*)showVendorClassTable();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+114<@><INPUT TYPE="hidden" NAME="submit.htm?dhcpvendortbl_withoutcheck.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+9<@><script>
+2<@>	
+10<@></script>
+8<@></form>
+1<@>
+7<@></div>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+28<@>&*#@wlan_basic.htm@#*&29703
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+33<@><title>WLAN 基本設定</title>
+8<@><style>
+17<@>.on {display:on}
+20<@>.off {display:none}
+9<@></style>
+9<@><SCRIPT>
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+21<@>var PreambleValue=0;
+45<@><VWS_FUNCTION (void*)webGetPreambleValue();>
+1<@>
+64<@>var regDomain, defaultChan, lastBand=0, lastMode=0, WiFiTest=0;
+1<@>
+33<@>var regDomainList = new Array();
+1<@>
+39<@><VWS_FUNCTION (void*)webGetWepKeys();>
+1<@>
+32<@> function isValidWPAPasswd(str)
+2<@>{
+1<@>
+156<@> var patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>]{1}[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>\x20]{6,62}[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>]{1}$/;
+38<@> if (!patrn.exec(str)) return false ;
+1<@>
+29<@> if(str.indexOf("  ") != -1)
+16<@>  return false;
+1<@>
+14<@> return true;
+2<@>}
+1<@>
+34<@>function validateWepKey(idx, str)
+2<@>{
+84<@> if (document.wlanBasicSetup.defaultTxKeyId[idx].checked ==true && str.length==0) {
+9<@>  idx++;
+71<@>  alert('您選擇的加密金鑰'+ idx + '不可以是空白的。');
+12<@>  return 0;
+3<@> }
+21<@> if (str.length ==0)
+12<@>  return 1;
+1<@>
+13<@> var keylen;
+56<@> if(document.wlanBasicSetup.length.selectedIndex == 0){
+1<@>
+26<@>  if ( str.length == 5) {
+1<@>
+45<@>   document.wlanBasicSetup.format.value = 1;
+15<@>   keylen = 5;
+33<@>  }else if ( str.length == 10) {
+1<@>
+45<@>   document.wlanBasicSetup.format.value = 2;
+16<@>   keylen = 10;
+10<@>  }else {
+10<@>   idx++;
+85<@>   alert('無效的金鑰' + idx + '長度。長度應該是5個或10個字元。');
+13<@>   return 0;
+4<@>  }
+8<@> }else{
+1<@>
+27<@>  if ( str.length == 13) {
+1<@>
+45<@>   document.wlanBasicSetup.format.value = 1;
+16<@>   keylen = 13;
+33<@>  }else if ( str.length == 26) {
+1<@>
+45<@>   document.wlanBasicSetup.format.value = 2;
+16<@>   keylen = 26;
+10<@>  }else {
+10<@>   idx++;
+86<@>   alert('無效的金鑰' + idx + '長度。長度應該是13個或26個字元。');
+13<@>   return 0;
+4<@>  }
+3<@> }
+1<@>
+24<@> if ( str == "*****" ||
+25<@>  str == "**********" ||
+28<@>  str == "*************" ||
+40<@>  str == "**************************" )
+12<@>  return 1;
+1<@>
+48<@> if (document.wlanBasicSetup.format.value == 1)
+3<@> {
+1<@>
+149<@>  var patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>]{1}[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>\x20]*[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>]{1}$/;
+1<@>
+26<@>  if (!patrn.exec(str)) {
+75<@>   alert('無效的字元! 不可以使用像\\\'“?的特殊字元。');
+14<@>   return 0 ;
+4<@>  }
+30<@>  if(str.indexOf("  ",0)!=-1)
+4<@>  {
+63<@>   alert("金鑰內不應該有一個以上連續的空白!");
+13<@>   return 0;
+4<@>  }
+1<@>
+12<@>  return 1;
+3<@> }
+1<@>

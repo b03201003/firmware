@@ -1,0 +1,1234 @@
+13<@>&&*&&tw**&**
+1<@>
+29<@>&*#@wan_collision.htm@#*&921
+7<@><html>
+7<@><head>
+8<@></head>
+1<@>
+7<@><body>
+66<@>	<table border="0" cellpadding="3" cellspacing="0"  width="100%">
+7<@>		<tr>
+8<@>			<td>
+13<@>				<center>
+30<@>					<h1>重要的更新</h1>
+14<@>				</center>
+9<@>			</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+8<@>			<td>
+101<@>				<p>為了避免和您的網絡提供商IP地址發生沖突, 路由器的IP地址已經更新到
+42<@>				<VWS_SCREEN (char*)xscrnDhcpLanIP[];>
+12<@>				。</p>
+9<@>			</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+8<@>			<td>
+57<@>				<p>您下次設置本界面請鍵入<a href='http://
+42<@>				<VWS_SCREEN (char*)xscrnDhcpLanIP[];>
+7<@>				'>
+42<@>				<VWS_SCREEN (char*)xscrnDhcpLanIP[];>
+16<@>				</a>。</p>
+9<@>			</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+8<@>			<td>
+112<@>				<p>你必須更新路由器設置中所有與IP地址相關服務的IP地址，例如端口映射等。</p>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+8<@></body>
+8<@></html>
+1<@>
+22<@>&*#@index.htm@#*&1566
+64<@><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+7<@><html>
+7<@><head>
+68<@><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+46<@><META HTTP-EQUIV="pragma" CONTENT="no-cache">
+28<@><title>無線路由</title>
+54<@><script language="javascript" src="util.js"></script>
+9<@><script>
+1<@>
+66<@>//Frederick, 060605 Add function to close window without warning{
+24<@>function closeWindow(){
+1<@>
+18<@>	var currBrowser;
+31<@>	currBrowser = GetBrowserOS();
+1<@>
+21<@>	switch(currBrowser)
+3<@>	{
+31<@>		case "msiewin": //ie windows
+27<@>		case "msiemac": //ie mac
+34<@>		case "netslin": //mozilla linux
+26<@>				window.opener = self;
+20<@>				window.close();
+11<@>				break;
+37<@>		case "netswin": //netscape windows
+34<@>		case "firelin": //firefox linux
+36<@>		case "firewin": //firefox windows
+32<@>		case "firemac": //firefox mac
+34<@>				window.open('','_parent','');
+20<@>				window.close();
+11<@>				break;
+11<@>		default:
+26<@>				window.opener = self;
+20<@>				window.close();
+11<@>				break;
+3<@>	}
+1<@>
+2<@>}
+21<@>//Frederick, 060605}
+1<@>
+17<@>function op() {}
+10<@></script>
+1<@>
+8<@></head>
+13<@><blockquote>
+55<@><frameset rows="0,*" frameborder="0" framespacing="0">
+81<@>  <frame name="fPanel" src="" scrolling="auto" marginwidth="0" marginheight="0">
+43<@>  <VWS_FUNCTION (void*)createMainframe();>
+13<@>  <noframes>
+27<@>  <body bgcolor="#008080">
+71<@>  <p>This page uses frames, but your browser doesn't support them.</p>
+10<@>  </body>
+14<@>  </noframes>
+12<@></frameset>
+14<@></blockquote>
+8<@></html>
+1<@>
+1<@>
+22<@>&*#@share.js@#*&49009
+1<@>
+1<@>
+36<@>function disableTextField (field) {
+46<@>	if (document.all || document.getElementById)
+25<@>		field.disabled = true;
+8<@>	else {
+36<@>		field.oldOnFocus = field.onfocus;
+24<@>		field.onfocus = skip;
+3<@>	}
+2<@>}
+35<@>function enableTextField (field) {
+46<@>	if (document.all || document.getElementById)
+26<@>		field.disabled = false;
+8<@>	else {
+36<@>		field.onfocus = field.oldOnFocus;
+3<@>	}
+2<@>}
+13<@>///ql_xu add
+45<@>function Lan1NeqLan2(ip1, mask1, ip2, mask2)
+2<@>{
+30<@>	d11 = getDigit(ip1.value,1);
+33<@>	d12 = getDigit(mask1.value, 1);
+30<@>	d21 = getDigit(ip2.value,1);
+32<@>	d22 = getDigit(mask2.value,1);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+15<@>		return true;
+2<@>	
+30<@>	d11 = getDigit(ip1.value,2);
+33<@>	d12 = getDigit(mask1.value, 2);
+30<@>	d21 = getDigit(ip2.value,2);
+32<@>	d22 = getDigit(mask2.value,2);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+15<@>		return true;
+1<@>
+30<@>	d11 = getDigit(ip1.value,3);
+33<@>	d12 = getDigit(mask1.value, 3);
+30<@>	d21 = getDigit(ip2.value,3);
+32<@>	d22 = getDigit(mask2.value,3);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+15<@>		return true;
+1<@>
+30<@>	d11 = getDigit(ip1.value,4);
+33<@>	d12 = getDigit(mask1.value, 4);
+30<@>	d21 = getDigit(ip2.value,4);
+32<@>	d22 = getDigit(mask2.value,4);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+15<@>		return true;
+1<@>
+15<@>	return false;
+2<@>}
+1<@>
+1<@>
+44<@>function Lan1EqLan2(ip1, mask1, ip2, mask2)
+2<@>{
+24<@>	d11 = getDigit(ip1,1);
+27<@>	d12 = getDigit(mask1, 1);
+24<@>	d21 = getDigit(ip2,1);
+26<@>	d22 = getDigit(mask2,1);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+16<@>		return false;
+2<@>	
+24<@>	d11 = getDigit(ip1,2);
+27<@>	d12 = getDigit(mask1, 2);
+24<@>	d21 = getDigit(ip2,2);
+26<@>	d22 = getDigit(mask2,2);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+16<@>		return false;
+1<@>
+24<@>	d11 = getDigit(ip1,3);
+27<@>	d12 = getDigit(mask1, 3);
+24<@>	d21 = getDigit(ip2,3);
+26<@>	d22 = getDigit(mask2,3);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+16<@>		return false;
+1<@>
+24<@>	d11 = getDigit(ip1,4);
+27<@>	d12 = getDigit(mask1, 4);
+24<@>	d21 = getDigit(ip2,4);
+26<@>	d22 = getDigit(mask2,4);
+17<@>	d1 = d11 & d12;
+17<@>	d2 = d21 & d22;
+15<@>	if (d1 != d2)
+16<@>		return false;
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+46<@>function disableRadioGroup (radioArrOrButton)
+2<@>{
+67<@>  if (radioArrOrButton.type && radioArrOrButton.type == "radio") {
+44<@>        var radioButton = radioArrOrButton;
+61<@>        var radioArray = radioButton.form[radioButton.name];
+4<@>  }
+7<@>  else
+43<@>        var radioArray = radioArrOrButton;
+36<@>        radioArray.disabled = true;
+54<@>        for (var b = 0; b < radioArray.length; b++) {
+37<@>        if (radioArray[b].checked) {
+59<@>                radioArray.checkedElement = radioArray[b];
+23<@>                break;
+10<@>        }
+4<@>  }
+48<@>  for (var b = 0; b < radioArray.length; b++) {
+39<@>        radioArray[b].disabled = true;
+66<@>        radioArray[b].checkedElement = radioArray.checkedElement;
+4<@>  }
+2<@>}
+1<@>
+45<@>function enableRadioGroup (radioArrOrButton)
+2<@>{
+67<@>  if (radioArrOrButton.type && radioArrOrButton.type == "radio") {
+44<@>        var radioButton = radioArrOrButton;
+61<@>        var radioArray = radioButton.form[radioButton.name];
+4<@>  }
+7<@>  else
+43<@>        var radioArray = radioArrOrButton;
+1<@>
+31<@>  radioArray.disabled = false;
+36<@>  radioArray.checkedElement = null;
+48<@>  for (var b = 0; b < radioArray.length; b++) {
+40<@>        radioArray[b].disabled = false;
+45<@>        radioArray[b].checkedElement = null;
+4<@>  }
+2<@>}
+1<@>
+38<@>function disableCheckBox (checkBox) {
+28<@>  if (!checkBox.disabled) {
+30<@>    checkBox.disabled = true;
+53<@>    if (!document.all && !document.getElementById) {
+48<@>      checkBox.storeChecked = checkBox.checked;
+46<@>      checkBox.oldOnClick = checkBox.onclick;
+35<@>      checkBox.onclick = preserve;
+6<@>    }
+4<@>  }
+2<@>}
+1<@>
+35<@>function enableCheckBox (checkBox)
+2<@>{
+27<@>  if (checkBox.disabled) {
+31<@>    checkBox.disabled = false;
+51<@>    if (!document.all && !document.getElementById)
+46<@>      checkBox.onclick = checkBox.oldOnClick;
+4<@>  }
+2<@>}
+1<@>
+1<@>
+42<@>function check_wps_enc(enc, radius, auth)
+2<@>{
+36<@>        if (enc == 0 || enc == 1) {
+33<@>                if (radius != 0)
+34<@>                        return 2;
+10<@>        }
+15<@>        else {
+30<@>                if (auth & 1)
+34<@>                        return 2;
+10<@>        }
+18<@>        return 0;
+2<@>}
+1<@>
+38<@>function check_wps_wlanmode(mo, type)
+2<@>{
+23<@>        if (mo == 2) {
+26<@>                return 1;
+10<@>        }
+36<@>        if (mo == 1 && type != 0) {
+26<@>                return 1;
+10<@>        }
+18<@>        return 0;
+2<@>}
+1<@>
+1<@>
+28<@>function getDigit(str, num)
+2<@>{
+7<@>  i=1;
+20<@>  if ( num != 1 ) {
+37<@>  	while (i!=num && str.length!=0) {
+32<@>		if ( str.charAt(0) == '.' ) {
+8<@>			i++;
+4<@>		}
+26<@>		str = str.substring(1);
+5<@>  	}
+17<@>  	if ( i!=num )
+15<@>  		return -1;
+4<@>  }
+33<@>  for (i=0; i<str.length; i++) {
+33<@>  	if ( str.charAt(i) == '.' ) {
+29<@>		str = str.substring(0, i);
+9<@>		break;
+3<@>	}
+4<@>  }
+24<@>  if ( str.length == 0)
+14<@>  	return -1;
+25<@>  d = parseInt(str, 10);
+12<@>  return d;
+2<@>}
+1<@>
+34<@>function getDigitforMac(str, num)
+2<@>{
+7<@>  i=1;
+20<@>  if ( num != 1 ) {
+37<@>  	while (i!=num && str.length!=0) {
+32<@>		if ( str.charAt(0) == '-' ) {
+8<@>			i++;
+4<@>		}
+26<@>		str = str.substring(1);
+5<@>  	}
+17<@>  	if ( i!=num )
+15<@>  		return -1;
+4<@>  }
+33<@>  for (i=0; i<str.length; i++) {
+33<@>  	if ( str.charAt(i) == '-' ) {
+29<@>		str = str.substring(0, i);
+9<@>		break;
+3<@>	}
+4<@>  }
+24<@>  if ( str.length == 0)
+14<@>  	return -1;
+25<@>  d = parseInt(str, 10);
+12<@>  return d;
+2<@>}
+1<@>
+26<@>function validateKey(str)
+2<@>{
+38<@>   for (var i=0; i<str.length; i++) {
+59<@>    if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+32<@>    		(str.charAt(i) == '.' ) )
+13<@>			continue;
+11<@>	return 0;
+4<@>  }
+12<@>  return 1;
+2<@>}
+1<@>
+28<@>function validateDigit(str)
+2<@>{
+83<@>	if ((str.charAt(0) == '0') && ((str.charAt(1) == 'x') || (str.charAt(1) == 'X')))
+8<@>	{//hex
+35<@>		for (var i=2; i<str.length; i++)
+4<@>		{
+59<@>			if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') || 
+53<@>				(str.charAt(i) >= 'A' && str.charAt(i) <= 'F')||
+53<@>				(str.charAt(i) >= 'a' && str.charAt(i) <= 'f') )
+14<@>				continue;
+13<@>			return 0;
+4<@>		}
+17<@>	} else {//octet
+35<@>		for (var i=2; i<str.length; i++)
+4<@>		{
+54<@>			if ( str.charAt(i) >= '0' && str.charAt(i) <= '9')
+14<@>				continue;
+13<@>			return 0;
+4<@>		}
+3<@>	}
+11<@>	return 1;
+2<@>}
+1<@>
+35<@>function validateDecimalDigit(str)
+2<@>{
+34<@>	for (var i=0; i<str.length; i++)
+3<@>	{
+53<@>		if ( str.charAt(i) >= '0' && str.charAt(i) <= '9')
+13<@>			continue;
+12<@>		return 0;
+3<@>	}
+11<@>	return 1;
+2<@>}
+1<@>
+33<@>function getDigitFromString(str)
+2<@>{
+8<@>	var d;
+2<@>	
+23<@>	if ( str.length == 0)
+13<@>		return -1;
+1<@>
+83<@>	if ((str.charAt(0) == '0') && ((str.charAt(1) == 'x') || (str.charAt(1) == 'X')))
+25<@>		d = parseInt(str, 16);
+6<@>	else
+25<@>		d = parseInt(str, 10);
+2<@>	
+11<@>	return d;
+2<@>}
+1<@>
+1<@>
+27<@>function validateKey2(str)
+2<@>{
+38<@>   for (var i=0; i<str.length; i++) {
+59<@>    if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+34<@>    		(str.charAt(i) == '-' ) || 
+55<@>    		(str.charAt(i) >= 'A' && str.charAt(i) <= 'F')||
+55<@>    		(str.charAt(i) >= 'a' && str.charAt(i) <= 'f') )
+13<@>			continue;
+11<@>	return 0;
+4<@>  }
+12<@>  return 1;
+2<@>}
+1<@>
+27<@>function IsLoopBackIP(str)
+2<@>{
+22<@>	d = getDigit(str,1);
+12<@>	if(d==127)
+12<@>		return 1;
+11<@>	return 0;
+2<@>}
+1<@>
+45<@>function checkDigitRange(str, num, min, max)
+2<@>{
+25<@>  d = getDigit(str,num);
+28<@>  if ( d > max || d < min )
+21<@>      	return false;
+15<@>  return true;
+2<@>}
+1<@>
+51<@>function checkDigitRangeforMac(str, num, min, max)
+4<@>{  
+31<@>  d = getDigitforMac(str,num);
+28<@>  if ( d > max || d < min )
+21<@>      	return false;
+15<@>  return true;
+2<@>}
+1<@>
+21<@>function checkIP(ip)
+2<@>{
+21<@>	if (ip.value=="") {
+88<@>		alert("IP位址不可以空白! IP位址應該像 xxx.xxx.xxx.xxx 的4個數字。");
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+46<@>	//This is modified by wangrong at 2007-12-27
+19<@>	var str=ip.value;
+14<@>	var count=0;
+35<@>	for (var i=0; i<str.length; i++) 
+3<@>	{
+56<@>		if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') )
+13<@>			continue;
+28<@>		if (str.charAt(i) == '.')
+4<@>		{
+12<@>			count++;
+13<@>			continue;
+4<@>		}
+75<@>		alert("無效的IP位址! IP位址應該是十進位的數字(0-9)。");
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+14<@>	if(count!=3)
+3<@>	{
+88<@>		alert("IP位址不可以空白! IP位址應該像 xxx.xxx.xxx.xxx 的4個數字。");
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+36<@>	if( IsLoopBackIP( ip.value)==1 ) {
+31<@>		alert("無效的IP位址!");
+78<@>		ip.value = ip.defaultValue;	// Jenny,  Buglist B058, backward default value
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+45<@>	if ( !checkDigitRange(ip.value,1,1,223) ) {
+68<@>		alert('第1位的IP位址範圍無效! 範圍應該在1-233。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,2,0,255) ) {
+68<@>		alert('第2位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,3,0,255) ) {
+68<@>		alert('第3位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,4,1,254) ) {
+68<@>		alert('第4位的IP位址範圍無效! 範圍應該在1-254。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+34<@>function checkIPNotZeroHeaded(ip)
+2<@>{
+21<@>	if (ip.value=="") {
+88<@>		alert("IP位址不可以空白! IP位址應該像 xxx.xxx.xxx.xxx 的4個數字。");
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+46<@>	//This is modified by wangrong at 2007-12-27
+19<@>	var str=ip.value;
+14<@>	var count=0;
+10<@>	var j=0;
+35<@>	for (var i=0; i<str.length; i++) 
+3<@>	{
+14<@>		//alert(j);
+11<@>		if(j==0)
+4<@>		{
+56<@>			if ( (str.charAt(i) > '0' && str.charAt(i) <= '9') )
+5<@>			{
+9<@>				j++;
+14<@>				continue;
+5<@>			}
+62<@>			alert("無效的IP位址! 第1個字元不可以是0。");
+31<@>			ip.value = ip.defaultValue;
+15<@>			ip.focus();
+17<@>			return false;
+4<@>		}
+7<@>		else
+4<@>		{
+57<@>			if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') )
+5<@>			{
+9<@>				j++;
+14<@>				continue;
+6<@>			}	
+4<@>		}
+28<@>		if (str.charAt(i) == '.')
+4<@>		{
+12<@>			count++;
+10<@>			//j=0;
+13<@>			continue;
+4<@>		}
+75<@>		alert("無效的IP位址! IP位址應該是十進位的數字(0-9)。");
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+14<@>	if(count!=3)
+3<@>	{
+88<@>		alert("IP位址不可以空白! IP位址應該像 xxx.xxx.xxx.xxx 的4個數字。");
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+36<@>	if( IsLoopBackIP( ip.value)==1 ) {
+31<@>		alert("無效的IP位址!");
+78<@>		ip.value = ip.defaultValue;	// Jenny,  Buglist B058, backward default value
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+45<@>	if ( !checkDigitRange(ip.value,1,1,223) ) {
+68<@>		alert('第1位的IP位址範圍無效! 範圍應該在1-233。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,2,0,255) ) {
+68<@>		alert('第2位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,3,0,255) ) {
+68<@>		alert('第3位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,4,0,254) ) {
+68<@>		alert('第4位的IP位址範圍無效! 範圍應該在1-254。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+29<@>function checkNotEmptyIP(ip)
+2<@>{
+21<@>	if (ip.value=="") {
+3<@>		
+15<@>		return true;
+3<@>	}
+46<@>	//This is modified by wangrong at 2007-12-27
+19<@>	var str=ip.value;
+14<@>	var count=0;
+35<@>	for (var i=0; i<str.length; i++) 
+3<@>	{
+56<@>		if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') )
+13<@>			continue;
+28<@>		if (str.charAt(i) == '.')
+4<@>		{
+12<@>			count++;
+13<@>			continue;
+4<@>		}
+75<@>		alert("無效的IP位址! IP位址應該是十進位的數字(0-9)。");
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+14<@>	if(count!=3)
+3<@>	{
+88<@>		alert("IP位址不可以空白! IP位址應該像 xxx.xxx.xxx.xxx 的4個數字。");
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+36<@>	if( IsLoopBackIP( ip.value)==1 ) {
+31<@>		alert("無效的IP位址!");
+78<@>		ip.value = ip.defaultValue;	// Jenny,  Buglist B058, backward default value
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+45<@>	if ( !checkDigitRange(ip.value,1,1,223) ) {
+68<@>		alert('第1位的IP位址範圍無效! 範圍應該在1-233。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,2,0,255) ) {
+68<@>		alert('第2位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,3,0,255) ) {
+68<@>		alert('第3位的IP位址範圍無效! 範圍應該在0-255。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+45<@>	if ( !checkDigitRange(ip.value,4,1,254) ) {
+68<@>		alert('第4位的IP位址範圍無效! 範圍應該在1-254。');
+30<@>		ip.value = ip.defaultValue;
+14<@>		ip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+14<@>	return true;
+2<@>}
+1<@>
+66<@>//check if ip1 and ip2 is in the same network and ip1 is less ip2
+31<@>function checkNetwork(ip1,ip2)
+2<@>{
+27<@>  ip_n = getDigit(ip1, 1);
+27<@>  ip1_1 = getDigit(ip1,1);
+27<@>  ip1_2 = getDigit(ip1,2);
+27<@>  ip1_3 = getDigit(ip1,3);
+27<@>  ip1_4 = getDigit(ip1,4);
+27<@>  ip2_1 = getDigit(ip2,1);
+27<@>  ip2_2 = getDigit(ip2,2);
+27<@>  ip2_3 = getDigit(ip2,3);
+27<@>  ip2_4 = getDigit(ip2,4);
+28<@>  if(ip_n>=1 && ip_n<=126) 
+4<@>  {
+118<@>  	if(ip1_1 != ip2_1 || ip1_2>ip2_2 || (ip1_2==ip2_2 && ip1_3>ip2_3) ||(ip1_2==ip2_2 && ip1_3==ip2_3 && ip1_4>ip2_4))
+18<@>  		return false;
+4<@>  }
+34<@>  else if(ip_n>=128 && ip_n<=191)
+4<@>  {
+84<@>  	if(ip1_1!=ip2_1 || ip1_2!=ip2_2 || ip1_3>ip2_3 || (ip1_3==ip2_3 && ip1_4>ip2_4))
+18<@>  		return false;
+4<@>  }
+34<@>  else if(ip_n>=192 && ip_n<=223)
+5<@>   {
+67<@>  	if(ip1_1!=ip2_1 || ip1_2!=ip2_2 || ip1_3!=ip2_3 || ip1_4>ip2_4)
+18<@>  		return false;
+4<@>  }
+7<@>  else
+22<@>        return false;
+1<@>
+15<@>  return true;
+2<@>}
+1<@>
+33<@>function ipaddrCompare(ip1, ip2)
+2<@>{
+26<@>	ip1_1 = getDigit(ip1,1);
+26<@>	ip1_2 = getDigit(ip1,2);
+26<@>	ip1_3 = getDigit(ip1,3);
+26<@>	ip1_4 = getDigit(ip1,4);
+66<@>	ipaddr1 = ip1_1*256*256*256 + ip1_2*256*256 + ip1_3*256 + ip1_4;
+1<@>
+26<@>	ip2_1 = getDigit(ip2,1);
+26<@>	ip2_2 = getDigit(ip2,2);
+26<@>	ip2_3 = getDigit(ip2,3);
+26<@>	ip2_4 = getDigit(ip2,4);
+66<@>	ipaddr2 = ip2_1*256*256*256 + ip2_2*256*256 + ip2_3*256 + ip2_4;
+1<@>
+1<@>
+21<@>	if(ipaddr1<ipaddr2)
+3<@>	{
+15<@>		return true;
+3<@>	}
+1<@>
+15<@>	return false;
+2<@>}
+1<@>
+46<@>// confirm that destination ip is not network
+39<@>function checkIpNetwork(netip,netmask)
+2<@>{
+23<@>	var ip = netip.value;
+28<@>	var ip1 = getDigit(ip, 1);
+28<@>	var ip2 = getDigit(ip, 2);
+28<@>	var ip3 = getDigit(ip, 3);
+28<@>	var ip4 = getDigit(ip, 4);
+1<@>
+27<@>	var mask = netmask.value;
+32<@>	var mask1 = getDigit(mask, 1);
+32<@>	var mask2 = getDigit(mask, 2);
+32<@>	var mask3 = getDigit(mask, 3);
+32<@>	var mask4 = getDigit(mask, 4);
+2<@>	
+82<@>	if((ip1&mask1)==ip1 && (ip2&mask2)==ip2 && (ip3&mask3)==ip3 && (ip4&mask4)==ip4)
+3<@>	{
+49<@>		alert("無效的IP位址或子網路遮罩!");
+17<@>		netip.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+14<@>	return true;
+2<@>}
+1<@>
+28<@>function checkMask(netmask)
+2<@>{
+80<@> 	 var str = new Array("", "第一個", "地二個", "第三個", "第四個");
+11<@>	var i, d;
+10<@>	var s,m;
+26<@>	if (netmask.value=="") {
+93<@>		alert("子網路遮罩不可以空白! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。");
+40<@>		netmask.value = netmask.defaultValue;
+19<@>		netmask.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+46<@>	//This is modified by wangrong at 2007-12-27
+25<@>	var str2=netmask.value;
+14<@>	var count=0;
+32<@>	for (i=0; i<str2.length; i++) 
+3<@>	{
+59<@>		if ( (str2.charAt(i) >= '0' && str2.charAt(i) <= '9')  )
+13<@>			continue;
+29<@>		if (str2.charAt(i) == '.')
+4<@>		{
+12<@>			count++;
+13<@>			continue;
+4<@>		}
+84<@>		alert("子網路遮罩無效! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。");
+20<@>			netmask.focus();
+17<@>			return false;
+4<@>		}
+14<@>	if(count!=3)
+3<@>	{
+84<@>		alert("子網路遮罩無效! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。");
+19<@>		netmask.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+23<@>	for (i=1; i<=4; i++) 
+3<@>	{
+35<@>		d = getDigit(netmask.value,i);		
+98<@>		if( !(d==0 || d==128 || d==192 || d==224 || d==240 || d==248 || d==252 || d==254 || d==255 )) {
+112<@>			alert('無效的子網路遮罩 '+str[i]+' 無效.\n遮罩應該是0, 128, 192, 224, 240, 248, 252 或254');
+20<@>			netmask.focus();
+17<@>			return false;
+4<@>		}
+13<@>		if(d!=255)
+5<@>		{	
+23<@>			for(m=i+1;m<=4;m++)
+5<@>			{
+33<@>				s=getDigit(netmask.value,m);
+13<@>				if(s!=0)
+6<@>				{
+35<@>					alert('子網掩碼無效!');
+22<@>					netmask.focus();
+19<@>					return false;
+6<@>				}
+5<@>			}
+16<@>			return true;
+4<@>		}
+3<@>		
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+36<@>function checkMaskSpecial(netmask) 
+2<@>{
+79<@>	 var str = new Array("", "第一個", "第二個", "第三個", "第四個");
+26<@>	 var str2=netmask.value;
+12<@>	 var i, d;
+12<@>	  var s,m;
+16<@>	  var count=0;
+20<@>	  var d1,d2,d3,d4;
+28<@>	  if (netmask.value=="") {
+87<@>		alert("無效的子網路遮罩! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。");
+40<@>		netmask.value = netmask.defaultValue;
+19<@>		netmask.focus();
+16<@>		return false;
+3<@>	}
+32<@>	for (i=0; i<str2.length; i++) 
+3<@>	{
+59<@>		if ( (str2.charAt(i) >= '0' && str2.charAt(i) <= '9')  )
+13<@>			continue;
+29<@>		if (str2.charAt(i) == '.')
+4<@>		{
+12<@>			count++;
+13<@>			continue;
+4<@>		}
+87<@>		alert("無效的子網路遮罩! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。");
+20<@>			netmask.focus();
+17<@>			return false;
+4<@>		}
+14<@>	if(count!=3)
+3<@>	{
+87<@>		alert("無效的子網路遮罩! 應該輸入像 xxx.xxx.xxx.xxx 的4個數字。");
+19<@>		netmask.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+33<@>	d1 = getDigit(netmask.value,1);
+33<@>	d2 = getDigit(netmask.value,2);
+33<@>	d3 = getDigit(netmask.value,3);
+33<@>	d4 = getDigit(netmask.value,4);
+40<@>	if((d1==0)&&(d2==0)&&(d3==0)&&(d4==0))
+4<@>	{	
+48<@>		alert("子網路遮罩不可以為0.0.0.0.");
+19<@>		netmask.focus();
+16<@>		return false;
+3<@>	}
+48<@>	if((d1==255)&&(d2==255)&&(d3==255)&&(d4==255))
+4<@>	{	
+56<@>		alert("子網路遮罩不可以為255.255.255.255.");
+19<@>		netmask.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+23<@>	for (i=1; i<=4; i++) 
+3<@>	{
+35<@>		d = getDigit(netmask.value,i);		
+98<@>		if( !(d==0 || d==128 || d==192 || d==224 || d==240 || d==248 || d==252 || d==254 || d==255 )) {
+106<@>			alert('子網路遮罩 '+str[i]+' 無效.\n遮罩應該是0, 128, 192, 224, 240, 248, 252 或254');			
+20<@>			netmask.focus();
+17<@>			return false;
+4<@>		}
+3<@>		
+13<@>		if(d!=255)
+5<@>		{	
+23<@>			for(m=i+1;m<=4;m++)
+5<@>			{
+33<@>				s=getDigit(netmask.value,m);
+13<@>				if(s!=0)
+6<@>				{
+42<@>					alert('無效的子網路遮罩! ');
+22<@>					netmask.focus();
+19<@>					return false;
+6<@>				}
+5<@>			}
+16<@>			return true;
+4<@>		}
+3<@>		
+3<@>	}
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+27<@>function includeSpace(str)
+2<@>{
+37<@>  for (var i=0; i<str.length; i++) {
+33<@>  	if ( str.charAt(i) == ' ' ) {
+16<@>	  return true;
+3<@>	}
+4<@>  }
+16<@>  return false;
+2<@>}
+1<@>
+26<@>function checkString(str)
+2<@>{
+36<@>	for (var i=0; i<str.length; i++) {
+156<@>		if ((str.charAt(i) >= '0' && str.charAt(i) <= '9') || (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') || (str.charAt(i) >= 'a' && str.charAt(i) <= 'z') ||
+185<@>		   (str.charAt(i) == '.') || (str.charAt(i) == ':') || (str.charAt(i) == '-') || (str.charAt(i) == '_') || (str.charAt(i) == ' ') || (str.charAt(i) == '/') || (str.charAt(i) == '@'))
+13<@>			continue;
+12<@>		return 0;
+3<@>	}
+11<@>	return 1;
+2<@>}
+1<@>
+23<@>function deleteClick()
+2<@>{
+42<@>	if ( !confirm('確定要刪除嗎?') ) {
+16<@>		return false;
+3<@>	}
+6<@>	else
+15<@>		return true;
+2<@>}
+9<@>        
+26<@>function deleteAllClick()
+2<@>{
+54<@>	if ( !confirm('確定要刪除所有項目嗎?') ) {
+16<@>		return false;
+3<@>	}
+6<@>	else
+15<@>		return true;
+2<@>}
+1<@>
+25<@>function delClick(index)
+2<@>{
+42<@>	if ( !confirm('確定要刪除嗎?') ) {
+16<@>		return false;
+3<@>	}
+2<@>	
+37<@>	document.actionForm.action.value=0;
+38<@>	document.actionForm.idx.value=index;
+31<@>	document.actionForm.submit();
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+33<@>function delClick2(index,connid)
+2<@>{
+42<@>	if ( !confirm('確定要刪除嗎?') ) {
+16<@>		return false;
+3<@>	}
+2<@>	
+37<@>	document.actionForm.action.value=0;
+38<@>	document.actionForm.idx.value=index;
+43<@>	document.actionForm.connid.value=connid; 
+31<@>	document.actionForm.submit();
+14<@>	return true;
+2<@>}
+1<@>
+1<@>
+26<@>function editClick(index)
+2<@>{
+37<@>	document.actionForm.action.value=1;
+38<@>	document.actionForm.idx.value=index;
+31<@>	document.actionForm.submit();
+14<@>	return true;
+2<@>}
+35<@>function editClick2(index, connid)
+2<@>{
+41<@>     document.actionForm.action.value=1;
+42<@>     document.actionForm.idx.value=index;
+47<@>     document.actionForm.connid.value=connid; 
+35<@>     document.actionForm.submit();
+18<@>     return true;
+1<@>
+2<@>}
+1<@>
+27<@>function verifyBrowser() {
+48<@>	var ms = navigator.appVersion.indexOf("MSIE");
+78<@>	ie4 = (ms>0) && (parseInt(navigator.appVersion.substring(ms+5, ms+6)) >= 4);
+49<@>	var ns = navigator.appName.indexOf("Netscape");
+68<@>	ns= (ns>=0) && (parseInt(navigator.appVersion.substring(0,1))>=4);
+10<@>	if (ie4)
+16<@>		return "ie4";
+6<@>	else
+9<@>		if(ns)
+16<@>			return "ns";
+7<@>		else
+17<@>			return false;
+2<@>}
+1<@>
+26<@>function isBrowser(b,v) {
+20<@>	browserOk = false;
+20<@>	versionOk = false;
+2<@>	
+51<@>	browserOk = (navigator.appName.indexOf(b) != -1);
+31<@>	if (v == 0) versionOk = true;
+58<@>	else  versionOk = (v <= parseInt(navigator.appVersion));
+32<@>	return browserOk && versionOk;
+2<@>}
+1<@>
+34<@>function disableButton (button) {
+47<@>  if (document.all || document.getElementById)
+28<@>    button.disabled = true;
+21<@>  else if (button) {
+40<@>    button.oldOnClick = button.onclick;
+27<@>    button.onclick = null;
+36<@>    button.oldValue = button.value;
+31<@>    button.value = 'DISABLED';
+4<@>  }
+2<@>}
+1<@>
+36<@>function disableButtonIB (button) {
+31<@>	if (isBrowser('Netscape', 0))
+3<@>	{
+26<@>		button.disabled = true;
+10<@>		return;
+3<@>	}
+46<@>	if (document.all || document.getElementById)
+26<@>		button.disabled = true;
+20<@>	else if (button) {
+38<@>		button.oldOnClick = button.onclick;
+25<@>		button.onclick = null;
+34<@>		button.oldValue = button.value;
+29<@>		button.value = 'DISABLED';
+3<@>	}
+2<@>}
+1<@>
+36<@>function disableButtonVB (button) {
+31<@>  if (verifyBrowser() == "ns")
+11<@>  	return;
+47<@>  if (document.all || document.getElementById)
+28<@>    button.disabled = true;
+21<@>  else if (button) {
+40<@>    button.oldOnClick = button.onclick;
+27<@>    button.onclick = null;
+36<@>    button.oldValue = button.value;
+31<@>    button.value = 'DISABLED';
+4<@>  }
+2<@>}
+1<@>
+33<@>function enableButton (button) {
+47<@>  if (document.all || document.getElementById)
+29<@>    button.disabled = false;
+21<@>  else if (button) {
+40<@>    button.onclick = button.oldOnClick;
+36<@>    button.value = button.oldValue;
+4<@>  }
+2<@>}
+1<@>
+35<@>function enableButtonVB (button) {
+31<@>  if (verifyBrowser() == "ns")
+11<@>  	return;
+47<@>  if (document.all || document.getElementById)
+29<@>    button.disabled = false;
+21<@>  else if (button) {
+40<@>    button.onclick = button.oldOnClick;
+36<@>    button.value = button.oldValue;
+4<@>  }
+2<@>}
+1<@>
+35<@>function enableButtonIB (button) {
+31<@>	if (isBrowser('Netscape', 4))
+28<@>	{	button.disabled = false;
+10<@>		return;
+3<@>	}
+46<@>	if (document.all || document.getElementById)
+27<@>		button.disabled = false;
+20<@>	else if (button) {
+38<@>		button.onclick = button.oldOnClick;
+34<@>		button.value = button.oldValue;
+3<@>	}
+2<@>}
+1<@>
+44<@>//This function is added by jim at 20090626
+40<@>function checkFormatUnicastMac(macaddr)
+2<@>{
+26<@>	var str = macaddr.value;
+23<@>	if ( str.length < 17)
+3<@>	{
+70<@>		alert("輸入的MAC位址不完整，例如 xx:xx:xx:xx:xx:xx。");
+19<@>		macaddr.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+32<@>	if(str == "00:00:00:00:00:00")
+3<@>	{
+74<@>	        alert("無效的MAC位址! MAC位址不可以都是「0」。");
+23<@>	        return false;
+4<@>	 }
+14<@>	var count=0;
+35<@>	for (var i=0; i<str.length; i++) 
+3<@>	{
+57<@>		if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+53<@>			(str.charAt(i) >= 'a' && str.charAt(i) <= 'f') ||
+52<@>			(str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+13<@>			continue;
+28<@>		if (str.charAt(i) == ':')
+4<@>		{
+12<@>			count++;
+13<@>			continue;
+4<@>		}
+101<@>		alert("無效的MAC位址! MAC位址應該是hex字元(0-9或a-f)，例如 xx:xx:xx:xx:xx:xx。");
+19<@>		macaddr.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+14<@>	if(count!=5)
+3<@>	{
+101<@>		alert("無效的MAC位址! MAC位址應該是hex字元(0-9或a-f)，例如 xx:xx:xx:xx:xx:xx。");
+19<@>		macaddr.focus();
+16<@>		return false;
+3<@>	}
+97<@>// shenhuiye 20121121: fix bug that multicast/broadcast mac such as FF:FF:FF:FF:FF:FF is allowed
+23<@>	//if(str.charAt(1)&1)
+35<@>	if(parseInt(str.charAt(1), 16)&1)
+3<@>	{
+46<@>		alert("無效的廣播/組播MAC位址! ");
+19<@>		macaddr.focus();
+16<@>		return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+51<@>//This function is added by wangrong at 2007-12-25
+27<@>function checkMac(macaddr)
+2<@>{
+26<@>	var str = macaddr.value;
+23<@>	if ( str.length < 17)
+3<@>	{
+70<@>		alert("輸入的MAC位址不完整，例如 xx:xx:xx:xx:xx:xx。");
+19<@>		macaddr.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+32<@>	if(str == "00:00:00:00:00:00")
+3<@>	{
+74<@>	        alert("無效的MAC位址! MAC位址不可以都是「0」。");
+16<@>		return false;
+3<@>	}
+14<@>	var count=0;
+35<@>	for (var i=0; i<str.length; i++) 
+3<@>	{
+57<@>		if ( (str.charAt(i) >= '0' && str.charAt(i) <= '9') ||
+53<@>			(str.charAt(i) >= 'a' && str.charAt(i) <= 'f') ||
+52<@>			(str.charAt(i) >= 'A' && str.charAt(i) <= 'F') )
+13<@>			continue;
+28<@>		if (str.charAt(i) == ':')
+4<@>		{
+12<@>			count++;
+13<@>			continue;
+3<@>	}
+102<@>		alert("M無效的MAC位址! MAC位址應該是hex字元(0-9或a-f)，例如 xx:xx:xx:xx:xx:xx。");
+19<@>		macaddr.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+14<@>	if(count!=5)
+3<@>	{
+101<@>		alert("無效的MAC位址! MAC位址應該是hex字元(0-9或a-f)，例如 xx:xx:xx:xx:xx:xx。");
+19<@>		macaddr.focus();
+16<@>		return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+61<@>//modified by ramen 20090605-exclude the broadcast&multicast
+51<@>function checkMacWithoutColon(macAddr, checkEmpty)
+2<@>{
+22<@>	var i, macdigit = 0;
+1<@>
+53<@>	if (checkEmpty == 1 && macAddr.value.length == 0) {
+36<@>		//alert("MAC地址不能為空");
+16<@>		return false;
+3<@>	}
+45<@>	if(!checkEmpty&& macAddr.value.length == 0)
+15<@>		return true;
+46<@>	//tony 20111202 add: all zero mac is invalid
+35<@>	var allZeroPattern = /^[0]{12}$/;
+58<@>	if (allZeroPattern.exec(macAddr.value)) return false  ; 
+21<@>	//tony 20111202 end
+67<@>	var macPattern=/^[0-9a-fA-F]{1}[02468aAcCeE]{1}[0-9a-fA-F]{10}$/;
+55<@>	if (!macPattern.exec(macAddr.value)) return false  ; 
+36<@>	var broadcastpattern=/^[fF]{12}$/;
+60<@>	if (broadcastpattern.exec(macAddr.value)) return false  ; 
+14<@>	return true;
+2<@>}
+25<@>function routeClick(url)
+2<@>{
+15<@>	var wide=600;
+15<@>	var high=400;
+19<@>	if (document.all)
+49<@>		var xMax = screen.width, yMax = screen.height;
+27<@>	else if (document.layers)
+59<@>		var xMax = window.outerWidth, yMax = window.outerHeight;
+6<@>	else
+30<@>	   var xMax = 640, yMax=480;
+32<@>	var xOffset = (xMax - wide)/2;
+32<@>	var yOffset = (yMax - high)/3;
+1<@>
+213<@>	var settings = 'width='+wide+',height='+high+',screenX='+xOffset+',screenY='+yOffset+',top='+yOffset+',left='+xOffset+', resizable=yes, toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes';
+1<@>
+43<@>	window.open( url, 'RouteTbl', settings );
+2<@>}
+29<@>// Get bytes of UTF-8 string
+33<@>function getStringByteCount(str)
+2<@>{
+16<@>	var total = 0;
+12<@>	var i = 0;
+14<@>	var len = 0;
+19<@>	var charCode = 0;
+2<@>	
+47<@>    for(i = 0, len = str.length; i < len; i++)
+3<@>	{
+38<@>        charCode = str.charCodeAt(i);
+32<@>        if(charCode <= 0x007f) 
+4<@>		{
+24<@>            total += 1;
+10<@>        }
+30<@>		else if(charCode <= 0x07ff)
+4<@>		{
+24<@>            total += 2;
+10<@>        }
+30<@>		else if(charCode <= 0xffff)
+4<@>		{
+24<@>            total += 3;
+10<@>        }
+7<@>		else
+4<@>		{
+24<@>            total += 4;
+10<@>        }
+6<@>    }
+18<@>    return total;
+2<@>}
+1<@>
+44<@>function checkSpecialCharAllSpace(str,type)
+2<@>{
+12<@>	var patrn;
+10<@>	if(type)
+64<@>		patrn=/^[ a-zA-Z0-9~`!"@#$%^&*()_+|\\{}[\]<>:;<?,-./='"]+$/; 
+6<@>	else
+64<@>		patrn=/^[ a-zA-Z0-9~`!"@#$%^&*()_+|\\{}[\]<>:;<?,-./='"]*$/; 
+40<@>	if (!patrn.exec(str)) return false  ; 
+16<@>		return true;	
+2<@>}
+1<@>

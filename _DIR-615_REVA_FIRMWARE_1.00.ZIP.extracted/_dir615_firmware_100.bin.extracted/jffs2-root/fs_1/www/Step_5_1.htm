@@ -1,0 +1,248 @@
+<html>
+<head>
+
+<link rel="STYLESHEET" type="text/css" href="css_router.css">
+<script language="JavaScript" src="public.js"></script>
+<script language="JavaScript">
+	function show_save_button(){
+		var is_edit = <!-- insert name=ac_edit -->;
+		
+		if (is_edit > -1){
+			get_by_id("save").disabled = false;
+			
+		}
+			
+	}
+</script>
+
+<title>D-LINK SYSTEMS, INC | WIRELESS ROUTER | HOME</title>
+
+</head>
+
+<body topmargin="1" leftmargin="0" rightmargin="0" bgcolor="#757575">
+	<table id="header_container" border="0" cellpadding="5" cellspacing="0" width="838" align="center">
+      <tr>
+        <td width="100%">Product Page: <a href="http://support.dlink.com/">WBR-2310</a></td>
+        <td align="right" nowrap>Hardware Version: A1 &nbsp;</td>
+        <td align="right" nowrap>Firmware Version: 1.01</td>
+      </tr>
+    </table>
+	<table id="topnav_container" border="0" cellpadding="0" cellspacing="0" width="838" align="center">
+		<tr>
+			<td align="center" valign="middle"><img src="wlan_masthead.gif" width="836" height="92"></td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="2" cellspacing="1" width="838" align="center" bgcolor="#FFFFFF">
+		<tr id="topnav_container">
+			<td height="29"><img src="short_modnum.gif" width="125" height="25"></td>
+			<td id="topnavoff"><a href="index.htm">Setup</a></td>
+			<td id="topnavon"><a href="adv_virtual.htm">Advanced</a></td>
+			<td id="topnavoff"><a href="tools_admin.htm">Tools</a></td>
+			<td id="topnavoff"><a href="st_device.html">Status</a></td>
+			<td id="topnavoff"><a href="support_men.htm">Support</a></td>
+		</tr>
+	</table>
+	<table border="1" cellpadding="2" cellspacing="0" width="838" height="100%" align="center" bgcolor="#FFFFFF" bordercolordark="#FFFFFF">
+		<tr>
+			<td id="sidenav_container" valign="top" width="125" align="right">
+				<table cellSpacing=0 cellPadding=0 border=0>
+                  <tbody>
+                    <tr>
+                      <td id=sidenav_container>
+                        <div id=sidenav>
+                          
+                          <UL>
+                            <LI>
+                              <div><a href="adv_virtual.htm">Port Forwarding</a></div>
+                            <LI>
+                              <div><a href="adv_appl.htm">Application Rules</a></div>
+                            <LI>
+                              <div><a href="adv_filters_mac.htm">Network Filter</a></div>
+<LI>
+							 <div id=sidenavoff>Access control</div>
+                            <LI>
+                              <div><a href="adv_filters_url.htm">Website Filter</a></div>
+                            <LI>
+                              <div><a href="adv_dmz.htm">Firewall Settings</a></div>
+                            <LI>
+                              <div><a href="adv_wlan_perform.htm">advanced Wireless</a></div>
+                            <LI>
+                              <div><a href="adv_network.htm">advanced Network</a></div>
+                            </LI>
+                          </UL>
+                          
+                      </div></td>
+                    </tr>
+                  </tbody>
+                </table></td>
+<form id="form1" name="form1" method="post" action="step5_1.cgi">
+			<td valign="top" id="maincontent_container">
+				<div id=maincontent>
+				       
+                            <div class=box> 
+          <h2>Step 5: Port Filte</h2>
+		  <p><strong>Add Port Filters Rules.</strong></p>
+		  <P>Specify rules to prohibit access to specific IP addresses and ports.</P>
+		  <table width="525" border=0 cellPadding=0 cellSpacing=0 class=formlisting>
+            <tbody>
+              <tr>
+                <td>Enable</td>
+                <td>Name</td>
+                <td>Dest IP<br>Start</td>
+                <td>Dest IP<br>End</td>
+                <td>Protocol</td>
+                <td>Dest Port<br>Start</td>
+                <td>Dest Port<br>End</TH></tr>
+              <tr>
+                <td><input name="enabled_1" type=checkbox id="enabled_1"></td>
+                <td><input name="name_1" id="name_1" maxlength="12" size="12"></td>
+                <td><input name="start_ip_1" id="start_ip_1" maxLength="12" size="12"></td>
+                <td><input name="end_ip_1" id="end_ip_1" maxLength="12" size="12"></td>
+                <td><select name="protocol_1" id="protocol_1">
+                    <option value=0 selected >BOTH</option>
+                    <option value=6>TCP</option>
+                    <option value=17>UDP</option>
+                  </select>
+                </td>
+                <td><input name="start_port_1" id="start_port_1" maxLength="12" size="12"></td>
+                <td><input name="end_port_1" id="end_port_1" maxLength="12" size="12"></td>
+              </tr>
+              <tr>
+                <td><input name="enabled_2" type=checkbox id="enabled_2"></td>
+                <td><input name="name_2" id="name_2" maxLength="12" size="12"></td>
+                <td><input name="start_ip_2" id="start_ip_2" maxLength="12" size="12"></td>
+                <td><input name="end_ip_2" id="end_ip_2" maxLength="12" size="12"></td>
+                <td><select name="protocol_2" id="protocol_2">
+                    <option value=0 selected >BOTH</option>
+                    <option value=6>TCP</option>
+                    <option value=17>UDP</option>
+                  </select>
+                </td>
+                <td><input name="start_port_2" id="start_port_2" maxLength="12" size="12"></td>
+                <td><input name="end_port_2" id="end_port_2" maxLength="12" size="12"></td>
+              </tr>
+              <tr>
+                <td><input name="enabled_3" type=checkbox id="enabled_3"></td>
+                <td><input name="name_3" id="name_3" maxLength="12" size="12"></td>
+                <td><input name="start_ip_3" id="start_ip_3" maxLength="12" size="12"></td>
+                <td><input name="end_ip_3" id="end_ip_3" maxLength="12" size="12"></td>
+                <td><select name="protocol_3" id="protocol_3">
+                    <option value=0 selected >BOTH</option>
+                    <option value=6>TCP</option>
+                    <option value=17>UDP</option>
+                  </select>
+                </td>
+                <td><input name="start_port_3" id="start_port_3" maxLength="12" size="12"></td>
+                <td><input name="end_port_3" id="end_port_3" maxLength="12" size="12"></td>
+              </tr>
+              <tr>
+                <td><input name="enabled_4" type=checkbox id="enabled_4"></td>
+                <td><input name="name_4" id="name_4" maxLength="12" size="12"></td>
+                <td><input name="start_ip_4" id="start_ip_4" maxLength="12" size="12"></td>
+                <td><input name="end_ip_4" id="end_ip_4" maxLength="12" size="12"></td>
+                <td><select name="protocol_4" id="protocol_4">
+                    <option value=0 selected >BOTH</option>
+                    <option value=6>TCP</option>
+                    <option value=17>UDP</option>
+                  </select>
+                </td>
+                <td><input name="start_port_4" id="start_port_4" maxLength="12" size="12"></td>
+                <td><input name="end_port_4" id="end_port_4" maxLength="12" size="12"></td>
+              </tr>
+              <tr>
+                <td><input name="enabled_5" type=checkbox id="enabled_5"></td>
+                <td><input name="name_5" id="name_5" maxLength="12" size="12"></td>
+                <td><input name="start_ip_5" id="start_ip_5" maxLength="12" size="12"></td>
+                <td><input name="end_ip_5" id="end_ip_5" maxLength="12" size="12"></td>
+                <td><select name="protocol_5" id="protocol_5">
+                    <option value=0 selected >BOTH</option>
+                    <option value=6>TCP</option>
+                    <option value=17>UDP</option>
+                  </select>
+                </td>
+                <td><input name="start_port_5" id="start_port_5" maxLength="12" size="12"></td>
+                <td><input name="end_port_5" id="end_port_5" maxLength="12" size="12"></td>
+              </tr>
+              <tr>
+                <td><input name="enabled_6" type=checkbox id="enabled_6"></td>
+                <td><input name="name_6" id="name_6" maxLength="12" size="12"></td>
+                <td><input name="start_ip_6" id="start_ip_6" maxLength="12" size="12"></td>
+                <td><input name="end_ip_6" id="end_ip_6" maxLength="12" size="12"></td>
+                <td><select name="protocol_6" id="protocol_6">
+                    <option value=0 selected >BOTH</option>
+                    <option value=6>TCP</option>
+                    <option value=17>UDP</option>
+                  </select>
+                </td>
+                <td><input name="start_port_6" id="start_port_6" maxLength="12" size="12"></td>
+                <td><input name="end_port_6" id="end_port_6" maxLength="12" size="12"></td>
+              </tr>
+              <tr>
+                <td><input name="enabled_7" type=checkbox id="enabled_7"></td>
+                <td><input name="name_7" id="name_7" maxLength="12" size="12"></td>
+                <td><input name="start_ip_7" id="start_ip_7" maxLength="12" size="12"></td>
+                <td><input name="end_ip_7" id="end_ip_7" maxLength="12" size="12"></td>
+                <td><select name="protocol_7" id="protocol_7">
+                    <option value=0 selected >BOTH</option>
+                    <option value=6>TCP</option>
+                    <option value=17>UDP</option>
+                  </select>
+                </td>
+                <td><input name="start_port_7" id="start_port_7" maxLength="12" size="12"></td>
+                <td><input name="end_port_7" id="end_port_7" maxLength="12" size="12"></td>
+              </tr>
+              <tr>
+                <td><input name="enabled_8" type=checkbox id="enabled_8"></td>
+                <td><input name="name_8" id="name_8" maxLength="12" size="12"></td>
+                <td><input name="start_ip_8" id="start_ip_8" maxLength="12" size="12"></td>
+                <td><input name="end_ip_8" id="end_ip_8" maxLength="12" size="12"></td>
+                <td><select name="protocol_8" id="protocol_8"> 
+                    <option value=0 selected >BOTH</option> 
+                    <option value=6>TCP</option> 
+                    <option value=17>UDP</option></select> 
+</td>
+                <td><input name="start_port_8" id="start_port_8" maxLength="12" size="12"></td>
+                <td><input name="end_port_8" id="end_port_8" maxLength="12" size="12"></td></tr></tbody></table>
+             <hr>
+            <table width="362" align="center">
+              <td> <div align="center"> 
+                  <input name="perv" type="button" id="perv" value="Perv" onclick="window.location='Step_5.htm';">
+                  &nbsp; 
+                  <input name="next" type="submit" id="next" value="Next">
+                  &nbsp; 
+                  <input name="save" type="submit" id="save" value="Save" disabled>
+                  &nbsp; 
+                  <input name="cancel" type="button" id="cancel" value="Cancel" onclick="window.location='adv_access_control.htm';">
+                </div></td>
+            </table>
+          </div>			
+                          
+        </div></td></form>
+			<td valign="top" width="150" id="sidehelp_container" align="left">
+				<table borderColor=#ffffff cellSpacing=0 borderColorDark=#ffffff 
+      cellPadding=2 bgColor=#ffffff borderColorLight=#ffffff border=0>
+                  <tbody>
+                    <tr>
+                      <td id=help_text><b>Helpful Hints.</b><br>
+                          <br>                          
+                      </td>
+                    </tr>
+                  </tbody>
+                </table></td>
+		</tr>
+	</table>
+	<table id="footer_container" border="0" cellpadding="0" cellspacing="0" width="838" align="center">
+		<tr>
+			<td width="125" align="center">&nbsp;&nbsp;<img src="wireless_bottom.gif" width="114" height="35"></td>
+			<td width="10">&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+<br>
+<div align="center">Copyright &copy; 2004-2005 D-Link Systems, Inc.</div>
+<br>
+</body>
+<script>
+show_save_button();
+</script>
+</html>

@@ -1,0 +1,6 @@
+#! /bin/sh
+
+# do mount
+#/bin/mount -t proc proc /proc
+/bin/mount -a
+rc init &

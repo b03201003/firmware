@@ -1,0 +1,1085 @@
+13<@>&&*&&tw**&**
+67<@>					+getDigit(document.dhcpip.lan_dhcpRangeStart.value,2)*256*256
+63<@>					+getDigit(document.dhcpip.lan_dhcpRangeStart.value,3)*256
+60<@>					+getDigit(document.dhcpip.lan_dhcpRangeStart.value,4);
+1<@>
+81<@>	var poolendip=   getDigit(document.dhcpip.lan_dhcpRangeEnd.value,1)*256*256*256
+65<@>					+getDigit(document.dhcpip.lan_dhcpRangeEnd.value,2)*256*256
+61<@>					+getDigit(document.dhcpip.lan_dhcpRangeEnd.value,3)*256
+58<@>					+getDigit(document.dhcpip.lan_dhcpRangeEnd.value,4);
+55<@>	var setipaddr =  getDigit(ipaddr.value,1)*256*256*256
+39<@>					+getDigit(ipaddr.value,2)*256*256
+35<@>					+getDigit(ipaddr.value,3)*256
+32<@>					+getDigit(ipaddr.value,4);
+46<@>	macaddr.value = macaddr.value.toUpperCase();
+2<@>	
+35<@>	if(DhcpIpTables.length > max_num)
+3<@>	{
+51<@>		alert("DHCP 固定IP規則已達最高限制!");
+18<@>		ipaddr.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+54<@>	if(setipaddr < poolstartip || setipaddr > poolendip)
+3<@>	{
+55<@>		alert("IP位址應該在DHCP ip pool的範圍內!");
+18<@>		ipaddr.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+10<@>	if(!sel)
+3<@>	{
+43<@>		for(var i=0; i<DhcpIpTables.length; i++)
+4<@>		{
+53<@>			if(DhcpIpTables[i].ip4 ==getDigit(ipaddr.value,4)
+53<@>			&& DhcpIpTables[i].ip3 ==getDigit(ipaddr.value,3)
+53<@>			&& DhcpIpTables[i].ip2 ==getDigit(ipaddr.value,2)
+54<@>			&& DhcpIpTables[i].ip1 ==getDigit(ipaddr.value,1))
+5<@>			{
+45<@>				alert("此IP位址已經被使用了!");
+20<@>				ipaddr.focus();
+18<@>				return false;
+6<@>			}	
+43<@>			if(DhcpIpTables[i].mac==macaddr.value )
+5<@>			{
+57<@>				alert("此mac位址已經綁定在其他IP位址!");
+21<@>				macaddr.focus();
+18<@>				return false;
+6<@>			}	
+4<@>		}
+3<@>	}
+1<@>
+14<@>	return true;
+2<@>}
+1<@>
+29<@>function saveDhcpIpChanges()
+2<@>{
+40<@>	 if (!checkIP(document.dhcpip.ipaddr))
+4<@>	 {
+15<@>	return false;
+4<@>  }
+1<@>
+56<@>  	if(!checkMacWithoutColon(document.dhcpip.macaddr,1))
+11<@>         {
+79<@>            alert("無效的mac 位址! 請輸入一個有效的mac 位址!");
+18<@>	   return false;
+4<@>	 }
+3<@>	 
+1<@>
+68<@>	  if(!checkPoolIP(document.dhcpip.ipaddr,document.dhcpip.macaddr))
+5<@>	  {
+18<@>	  	return false;
+5<@>	  }
+2<@> 
+15<@>  return true;
+2<@>}
+23<@>function updateClick()
+2<@>{
+14<@>	//var sel=0;
+1<@>
+35<@>	if(document.dhcpip.select.length)
+3<@>	{
+52<@>	  	for(i=0;i<document.dhcpip.select.length;i++)   
+7<@>	  	{ 
+47<@>	    	if(document.dhcpip.select[i].checked)   
+15<@>	    	sel = 1;
+6<@>	  	}
+7<@>	}else
+3<@>	{
+37<@>		if(document.dhcpip.select.checked)
+15<@>	   		sel = 1;
+3<@>	}
+1<@>
+13<@>	if (!sel) {
+44<@>		alert("請選擇一項規則來更新!");
+16<@>		return false;
+3<@>	}
+1<@>
+39<@>	if (!checkIP(document.dhcpip.ipaddr))
+3<@>	{
+16<@>		return false;
+3<@>	}
+1<@>
+54<@>	if(!checkMacWithoutColon(document.dhcpip.macaddr,1))
+3<@>	{
+73<@>		alert("在啟用介面時允許的MAC位址清單不應該空白！");
+16<@>		return false;
+3<@>	}
+1<@>
+1<@>
+72<@>	if(!updateCheckPoolIP(document.dhcpip.ipaddr,document.dhcpip.macaddr))
+3<@>	{
+16<@>		return false;
+3<@>	}
+1<@>
+14<@>	return true;
+2<@>}
+38<@>function postDhcpIp( ipaddr, macaddr)
+2<@>{
+40<@>	document.dhcpip.ipaddr.value = ipaddr;
+59<@>	document.dhcpip.macaddr.value = macaddr.replace(/:/g,"");
+2<@>}
+1<@>
+10<@></SCRIPT>
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="設定";
+32<@>	SideItem="區域網路設定";
+20<@>	HelpItem="lancfg";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+48<@>		<td class="topheader">區域網路設定</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+69<@>			<p>此頁面可設定路由器IP位址和DHCP伺服器。<br></p>
+283<@>			<p>設備預設使用路由器模式，DHCP伺服器為啟用狀態。您可在此設定DHCP伺服器狀態和IP位址派發的範圍，系統會自動派發IP位址給連上路由器的網路裝置，或是您也可以設定派發固定IP位址給特定MAC位址的裝置。</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+1<@>
+59<@><form action="form2lansetup.cgi" method=POST name="tcpip">
+46<@><table id=body_header border=0 cellSpacing=0>
+6<@>	<tr>
+46<@>		<td class=topheader>區域網路設定</td>
+7<@>	</tr>
+1<@>
+6<@>	<tr>
+32<@>		<td class=content align=left>
+81<@>			<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+1<@>
+9<@>				<tr>
+55<@>					<td class=form_label_left>路由器IP位址:</td>
+93<@>					<td class=form_label_right><input type="text" name="ip" size="15" maxlength="15" value=
+39<@><VWS_SCREEN (char*) xscrnLanIPAddr[];>
+7<@>></td>
+10<@>				</tr>
+1<@>
+9<@>				<tr>
+53<@>					<td class=form_label_left>子網路遮罩:</td>
+95<@>					<td class=form_label_right><input type="text" name="mask" size="15" maxlength="15" value=
+43<@><VWS_SCREEN (char*) xscrnLanSubnetMask[];>
+7<@>></td>
+11<@>				</tr> 
+12<@>			</table>
+39<@>			<VWS_FUNCTION (void*)lansetting();>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+9<@><script>
+39<@><VWS_FUNCTION   (void*)laninitpage();>
+10<@></script>
+17<@><p align=center>
+1<@>
+68<@><input type="submit" value="套用" onClick="return saveChanges()">
+1<@>
+1<@>
+97<@>      <input type="hidden" value=<VWS_FUNCTION (void*)SendKeyCSRF();> name="submit.htm?lan.htm">
+11<@></p>      
+8<@></form>
+1<@>
+56<@><form action="form2Dhcpd.cgi" method=POST name="dhcpd">
+42<@><input type="hidden" name="lan_ip" value=
+39<@><VWS_SCREEN (char*) xscrnLanIPAddr[];>
+2<@>>
+44<@><input type="hidden" name="lan_mask" value=
+43<@><VWS_SCREEN (char*) xscrnLanSubnetMask[];>
+2<@>>
+48<@><table id="body_header" border=0 cellSpacing=0>
+6<@>	<tr>
+50<@>		<td class="topheader">DHCP 伺服器設定</td>
+7<@>	</tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+87<@>        	<table class=formarea border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+53<@>					<td class="form_label_left">DHCP伺服器:</td>
+35<@>					<td class="form_label_right">
+82<@>                    	<select size="1" name="dhcpmode" onChange="dhcpmodechang()">
+45<@>						<VWS_SCREEN (char*) xscrnDhcpdMode[];>
+16<@>						</select>
+11<@>					</td>
+10<@>				</tr>
+21<@>            </table>
+2<@> 
+137<@>            <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500" id="dhcpserver_block"  style="display:block">
+52<@>				<VWS_FUNCTION (void*)showDhcpdInterfaceList();>
+21<@>                <tr>
+72<@>                	<td class="form_label_left">IP位址派發範圍:</td>
+120<@>                    <td class="form_label_right"><input type="text" name="dhcpRangeStart" size="15" maxlength=15 value=
+46<@><VWS_SCREEN (char*) xscrnDhcpdHostStartIp[];>
+107<@>><font face="Arial" size="5">- </font><input type="text" name="dhcpRangeEnd" size="15" maxlength=15 value=
+50<@><VWS_SCREEN (char*) xscrnDhcpdHostEndIp[];>      
+8<@>>&nbsp;
+25<@>                   </td>
+22<@>                </tr>
+53<@>				<VWS_SCREEN (char*) xscrnDhcpdDefaultGateway[];>
+1<@>
+9<@>				<tr>
+58<@>					<td class="form_label_left">最長租約時間:</td>
+35<@>					<td class="form_label_right">
+65<@>						<input type="text" name="ltime" size=10 maxlength=9 value=
+40<@><VWS_SCREEN (char*) xscrnDhcpdLease[];>
+16<@>><b> 分鐘</b>
+11<@>					</td>
+10<@>				</tr>
+1<@>
+9<@>				<tr>
+52<@>					<td class="form_label_left">網域名稱:</td>
+35<@>					<td class="form_label_right">
+66<@>						<input type="text" name="dname" size=22 maxlength=19 value=
+41<@><VWS_SCREEN (char*) xscrnDhcpdDomain[];>
+2<@>>
+11<@>					</td>
+10<@>				</tr>
+1<@>
+9<@>				<tr>
+53<@>					<td class="form_label_left">DNS伺服器1:</td>
+35<@>					<td class="form_label_right">
+65<@>						<input type="text" name="dns1" size=22 maxlength=19 value=
+39<@><VWS_SCREEN (char*) xscrnDhcpddns1[];>
+2<@>>
+11<@>					</td>
+12<@>				</tr>  
+1<@>
+9<@>				<tr>
+53<@>					<td class="form_label_left">DNS伺服器2:</td>
+35<@>					<td class="form_label_right">
+65<@>						<input type="text" name="dns2" size=22 maxlength=19 value=
+39<@><VWS_SCREEN (char*) xscrnDhcpddns2[];>
+2<@>>
+15<@>&nbsp;(可選)
+11<@>					</td>
+10<@>				</tr>
+1<@>
+30<@>				<tr style="display:none">
+53<@>					<td class="form_label_left">DNS伺服器3:</td>
+35<@>					<td class="form_label_right">
+65<@>						<input type="text" name="dns3" size=22 maxlength=19 value=
+39<@><VWS_SCREEN (char*) xscrnDhcpddns3[];>
+2<@>>
+11<@>					</td>
+10<@>				</tr>
+5<@>				
+21<@>            </table>
+13<@>            
+135<@>            <table class="formarea" border="0" cellpadding="0" cellspacing="0" width="600" id="dhcprelay_block" style="display:block">
+9<@>				<tr>
+54<@>					<td class="form_label_left">Relay伺服器:</td>
+35<@>					<td class="form_label_right">
+70<@>						<input type="text" name="relayaddr" size=15 maxlength=15 value=
+42<@><VWS_SCREEN (char*) xscrnDhcpdRelayip[];>
+2<@>>
+11<@>					</td>
+10<@>				</tr>
+12<@>           
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+91<@><INPUT TYPE="hidden" NAME="submit.htm?lan.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+102<@><input type="submit" value="套用" name="save" onClick="return saveDhcpServerChanges()">&nbsp;&nbsp;
+82<@><input type="reset" value="取消" name="reset" onClick="resetDhcpServerClick()">
+5<@></p>
+49<@><VWS_SCREEN (char*) xscrnDhcpdStaticRtButton[];>
+52<@><VWS_SCREEN (char*) xscrnDhcpdVendorClassButton[];>
+49<@><VWS_SCREEN (char*) xscrnDhcpdCUCOpt60Button[];>
+9<@>        
+9<@><SCRIPT>
+50<@>	initDhcpDisable = document.dhcpd.dhcpmode.value;
+25<@>	resetDhcpServerClick();
+10<@></SCRIPT>
+8<@></form>
+1<@>
+58<@><form action="form2Dhcpip.cgi" method=POST name="dhcpip">
+54<@><input type="hidden" name="lan_dhcpRangeStart" value=
+46<@><VWS_SCREEN (char*) xscrnDhcpdHostStartIp[];>
+2<@>>
+52<@><input type="hidden" name="lan_dhcpRangeEnd" value=
+44<@><VWS_SCREEN (char*) xscrnDhcpdHostEndIp[];>
+2<@>>
+48<@><table id="body_header" border=0 cellSpacing=0>
+6<@>	<tr>
+50<@>		<td class="topheader">DHCP 固定IP 設定</td>
+7<@>	</tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+89<@>        	<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+18<@>            	<tr>
+60<@>                	<td class="form_label_left">IP位址:</td>
+129<@>                    <td class="form_label_right"><input type="text" name="ipaddr" size="15" maxlength="15" value="0.0.0.0"></td>
+22<@>                </tr>
+9<@>				<tr>
+49<@>					<td class="form_label_left">MAC位址:</td>
+142<@>					<td class="form_label_right"><input type="text" name="macaddr" size="17" maxlength="17" value="000000000000">(例如: 00E086710502)</td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+86<@><input type="submit" value="新增" onClick="return saveDhcpIpChanges()">&nbsp;&nbsp;
+94<@><input type="submit" value="編輯" name="update" onClick="return updateClick()">&nbsp;&nbsp;
+63<@><input type="submit" value="刪除" name="delete">&nbsp;&nbsp;
+78<@><input type="reset" value="取消" name="reset" onClick="resetDhcpIpClick()">
+5<@></p>
+5<@><br>
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+49<@>		<td class="topheader">DHCP 固定IP清單</td>
+7<@>	</tr>
+6<@>	<tr>
+39<@>    	<td class="content" align="left">
+92<@>        	<table class="formlisting" border="0" cellpadding="0" cellspacing="0" width="500">
+41<@>            	<tr class="form_label_row">
+56<@>                	<td class="form_label_col">選擇</td>
+62<@>                    <td class="form_label_col">IP 位址</td>
+63<@>                    <td class="form_label_col">MAC 位址</td>
+22<@>                </tr>
+51<@>				<VWS_FUNCTION (void*)showDhcpStaticIPTable();>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+91<@><input type="hidden" NAME="submit.htm?lan.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+22<@>&*#@debug.htm@#*&3685
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+38<@><title>Sardebug  & Portmirror</title>
+9<@><script>
+21<@>function saveClick()
+2<@>{
+56<@>   	digit1 = getDigit(document.formdebug.vpi.value, 1);
+56<@>	if ( validateKey(document.formdebug.vpi.value) == 0 ||
+35<@>		(digit1 > 255 || digit1 < 0) ) {
+69<@>		alert("Invalid VPI value! You should set a value between 0-255.");
+34<@>		document.formdebug.vpi.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+53<@>	digit2 = getDigit(document.formdebug.vci.value, 1);
+56<@>	if ( validateKey(document.formdebug.vci.value) == 0 ||
+59<@>		(digit2 > 65535 || ((digit2 != 0) && (digit2 < 32))) ) {
+72<@>		alert("Invalid VCI value! You should set a value between 32-65535.");
+34<@>		document.formdebug.vci.focus();
+16<@>		return false;
+3<@>	}
+18<@>     return true;
+2<@>}
+1<@>
+25<@>function modeselection()
+2<@>{
+50<@>  if (document.formdebug.portmirror[0].checked) {
+40<@> 	document.formdebug.vpi.disabled=true;
+40<@> 	document.formdebug.vci.disabled=true;
+46<@> 	document.formdebug.direction.disabled=true;
+3<@> 	
+4<@>  }
+9<@>  else {
+41<@> 	document.formdebug.vpi.disabled=false;
+41<@> 	document.formdebug.vci.disabled=false;
+47<@> 	document.formdebug.direction.disabled=false;
+4<@>  }
+2<@>}
+1<@>
+10<@></script>
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+61<@><h2><font color="#0000FF">Sardebug  & Portmirror</font></h2>
+1<@>
+57<@><table border=0 width="500" cellspacing=4 cellpadding=0>
+18<@><tr><font size=2>
+1<@>
+75<@>Sardebug feature is used to display the sar rx/tx packets on the CLI. <br>
+82<@>Portmirror feature is used to mirror the rx/tx packets  on specific channel. <br>
+126<@>VPI and VCI is optional, you can specify them or not. If enabled, the duplicated packets will be transfered to your local PC.
+1<@>
+13<@></font></tr>
+1<@>
+39<@><tr><hr size=1 noshade align=top></tr>
+8<@><table>
+60<@><form action="form2debug.cgi" method=POST name="formdebug">
+5<@><tr>
+47<@>	<td><font size=2><b>Sardebug:</b></font></td>
+19<@>	<td><font size=2>
+48<@><input type="radio" name="sardebug" value="0"  
+42<@><VWS_SCREEN (char*)xscrnsardebugIsOFF[];>
+21<@>>Disable&nbsp;&nbsp;
+13<@>	<font></td>
+19<@>	<td><font size=2>
+48<@><input type="radio" name="sardebug" value="1"  
+41<@><VWS_SCREEN (char*)xscrnsardebugIsON[];>
+8<@>>Enable
+14<@>	</font></td>
+6<@></tr>
+9<@></table>
+39<@><tr><hr size=1 noshade align=top></tr>
+8<@><table>
+5<@><tr>
+61<@>	<td><font size=2><b>Portmirror:&nbsp;&nbsp;</b></font></td>
+19<@>	<td><font size=2>
+76<@><input type="radio" name="portmirror" value="0"  onClick="modeselection()" 
+40<@><VWS_SCREEN (char*)xscrnmirrorIsOFF[];>
+21<@>>Disable&nbsp;&nbsp;
+13<@>	<font></td>
+19<@>	<td><font size=2>
+76<@><input type="radio" name="portmirror" value="1"  onClick="modeselection()" 
+39<@><VWS_SCREEN (char*)xscrnmirrorIsON[];>
+8<@>>Enable
+14<@>	</font></td>
+6<@></tr>
+9<@></table>
+40<@><tr><td><font size=2><b>Direction: </b>
+45<@><VWS_SCREEN (char*) xscrnmirrorDirection[];>
+11<@></td></tr>
+1<@>
+9<@><tr><td>
+90<@>	<font size=2><b> VPI: </b><input type ="text" name="vpi" size="5" maxlength="5" value ="
+33<@><VWS_SCREEN (char*) xscrnVPI[];>
+10<@>"></font>
+90<@>	<font size=2><b> VCI: </b><input type ="text" name="vci" size="5" maxlength="5" value ="
+33<@><VWS_SCREEN (char*) xscrnVCI[];>
+10<@>"></font>
+11<@></td></tr>
+1<@>
+9<@><tr><td>
+8<@>   <br>
+68<@>     <INPUT type="hidden" name="submit.htm?debug.htm" value="Send">
+102<@>     <input type="submit" value="Apply Changes" name="save" onClick="return saveClick()">&nbsp;&nbsp;
+56<@>        <input type="reset" value="Reset" name="reset">
+11<@></td></tr>
+8<@></form>
+9<@></table>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+1<@>
+24<@>&*#@routing.htm@#*&9309
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+28<@><title>靜態路由</title>
+1<@>
+9<@><SCRIPT>
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+41<@><VWS_FUNCTION (void*)webGetWanIpMask();>
+20<@>function addClick()
+2<@>{
+1<@>
+53<@>	if ( !checkIPNotZeroHeaded(document.route.destNet))
+3<@>	{
+34<@>		document.route.destNet.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+42<@>	if (document.route.destNet.value==lanip)
+3<@>	{
+65<@>		alert("目的地址和路由器LAN 口IP地址不能相同!");
+34<@>		document.route.destNet.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+49<@>	if ( document.route.subMask.value == '0.0.0.0')
+3<@>	{
+39<@>		alert('子網掩碼不能為全0!');
+34<@>		document.route.subMask.focus();
+16<@>		return false;
+3<@>	}
+2<@>	
+42<@>	if ( !checkMask(document.route.subMask))
+3<@>	{
+34<@>		document.route.subMask.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+46<@>// confirm that destination ip is not network
+72<@>//	if ( !checkIpNetwork(document.route.destNet,document.route.subMask))
+5<@>//	{
+18<@>//		return false;
+5<@>//	}
+2<@>	
+53<@>	if ( !checkIPNotZeroHeaded(document.route.nextHop))
+3<@>	{
+34<@>		document.route.nextHop.focus();
+16<@>		return false;
+3<@>	}
+1<@>
+24<@>	if(wanip == '0.0.0.0')
+3<@>	{
+74<@>		if (!Lan1EqLan2(document.route.nextHop.value, lanmask, lanip, lanmask))
+4<@>		{
+72<@>			alert("下一跳地址和LAN 口IP地址必須在相同網段中!");
+35<@>			document.route.nextHop.focus();
+17<@>			return false;
+4<@>		}
+3<@>	}
+6<@>	else
+3<@>	{
+74<@>		if (!Lan1EqLan2(document.route.nextHop.value, lanmask, lanip, lanmask))
+4<@>		{
+75<@>			if (!Lan1EqLan2(document.route.nextHop.value, wanmask, wanip, wanmask))
+5<@>			{
+83<@>				alert("下一跳地址必須和LAN 口或WAN 口IP地址在相同網段中!");
+36<@>				document.route.nextHop.focus();
+18<@>				return false;
+5<@>			}
+4<@>		}
+3<@>	}
+2<@>	
+23<@>	// check metric value
+49<@>	var ch = document.route.metric.value.charAt(0);
+15<@>	if(ch == '0')
+3<@>	{
+49<@>		alert('跳數取值無效!不能以0開頭.');
+33<@>		document.route.metric.focus();
+16<@>		return false;
+3<@>	}
+91<@>	if (!(ch >= '1' && ch <= '9') || !checkDigitRange(document.route.metric.value, 1, 2, 15))
+3<@>	{
+54<@>		alert('跳數取值無效!必須是數字(2-15).');
+33<@>		document.route.metric.focus();
+16<@>		return false;
+3<@>	}
+14<@>	return true;
+1<@>
+2<@>}
+1<@>
+25<@>function routeClick(url)
+2<@>{
+15<@>	var wide=600;
+15<@>	var high=400;
+19<@>	if (document.all)
+49<@>		var xMax = screen.width, yMax = screen.height;
+27<@>	else if (document.layers)
+59<@>		var xMax = window.outerWidth, yMax = window.outerHeight;
+6<@>	else
+30<@>	   var xMax = 640, yMax=480;
+32<@>	var xOffset = (xMax - wide)/2;
+32<@>	var yOffset = (yMax - high)/3;
+1<@>
+213<@>	var settings = 'width='+wide+',height='+high+',screenX='+xOffset+',screenY='+yOffset+',top='+yOffset+',left='+xOffset+', resizable=yes, toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes';
+1<@>
+43<@>	window.open( url, 'RouteTbl', settings );
+2<@>}
+65<@>function postRouting( state, destip, submask, nextip, cost, itf)
+2<@>{
+17<@>	if (state == 1)
+40<@>		document.route.enable.checked = true;
+6<@>	else
+41<@>		document.route.enable.checked = false;
+40<@>	document.route.destNet.value = destip;
+41<@>	document.route.subMask.value = submask;
+40<@>	document.route.nextHop.value = nextip;
+37<@>	document.route.metric.value = cost;
+41<@>	//document.route.interface.value = itf;
+2<@>}
+1<@>
+25<@>function  delRuleCheck()
+2<@>{
+34<@>	if(document.route.select.length)
+3<@>	{
+51<@>	  	for(i=0;i<document.route.select.length;i++)   
+7<@>	  	{ 
+43<@>	   		if(document.route.select[i].checked)
+29<@>	   			return deleteClick();
+6<@>	  	}
+7<@>	}else
+3<@>	{
+36<@>		if(document.route.select.checked)
+28<@>	   		return deleteClick();
+3<@>	}
+1<@>
+35<@>	alert("請選擇刪除條目!"); 
+16<@>	return false; 
+2<@>}
+1<@>
+23<@>function updateClick()
+2<@>{
+12<@>	var sel=0;
+1<@>
+34<@>	if(document.route.select.length)
+3<@>	{
+51<@>	  	for(i=0;i<document.route.select.length;i++)   
+7<@>	  	{ 
+46<@>	    	if(document.route.select[i].checked)   
+15<@>	    	sel = 1;
+6<@>	  	}
+7<@>	}else
+3<@>	{
+36<@>		if(document.route.select.checked)
+15<@>	   		sel = 1;
+3<@>	}
+1<@>
+13<@>	if (!sel) {
+35<@>		alert("請選擇更新條目!");
+16<@>		return false;
+3<@>	}
+1<@>
+22<@>	return (addClick());
+2<@>}
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="高級";
+26<@>	SideItem="靜態路由";
+21<@>	HelpItem="Routing";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+45<@><table id=box_header border=0 cellSpacing=0>
+6<@>	<tr>
+40<@>		<td class=topheader>靜態路由</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+73<@>			<p>本頁面用來配置路由訊息. 您可以添加/刪除IP路由.
+17<@>            </p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+58<@><form action="form2Routing.cgi" method=POST name="route">
+46<@><table id=body_header border=0 cellSpacing=0>
+9<@>    <tr>
+46<@>		<td class=topheader>靜態路由配置</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+85<@>  			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+12<@>    			<tr>
+37<@>    				<td class='form_label_left'>
+27<@>                    啟用
+26<@>                    </td>
+38<@>    				<td class='form_label_right'>
+74<@>                    <input type="checkbox" name="enable" checked>        
+26<@>                    </td>
+13<@>    			</tr>
+21<@>                <tr>
+37<@>    				<td class='form_label_left'>
+33<@>                    目的地址
+26<@>                    </td>
+38<@>    				<td class='form_label_right'>
+87<@>                    <input type="text" name="destNet" size="15" maxlength="15">       
+26<@>                    </td>
+13<@>    			</tr>
+21<@>                <tr>
+37<@>    				<td class='form_label_left'>
+33<@>                    子網掩碼
+26<@>                    </td>
+38<@>    				<td class='form_label_right'>
+83<@>                    <input type="text" name="subMask" size="15" maxlength="15">   
+26<@>                    </td>
+13<@>    			</tr>
+21<@>                <tr>
+37<@>    				<td class='form_label_left'>
+30<@>                    下一跳
+26<@>                    </td>
+38<@>    				<td class='form_label_right'>
+81<@>                    <input type="text" name="nextHop" size="15" maxlength="15"> 
+26<@>                    </td>
+13<@>    			</tr>
+21<@>                <tr>
+37<@>    				<td class='form_label_left'>
+27<@>                    跳數
+26<@>                    </td>
+38<@>    				<td class='form_label_right'>
+85<@>                    <input type="text" name="metric" value=2 size="5" maxlength="5">
+26<@>                    </td>
+13<@>    			</tr>
+13<@>			</table> 
+8<@>		</td>
+7<@>	</tr>
+11<@></table>  
+5<@><br>
+17<@><p align=center>
+99<@><input type="submit" value="添加路由" name="addRoute" onClick="return addClick()">&nbsp;&nbsp;
+99<@><input type="submit" value="更新" name="updateRoute" onClick="return updateClick()">&nbsp;&nbsp;
+103<@><input type="submit" value="刪除選中" name="delRoute" onClick="return delRuleCheck()">&nbsp;&nbsp;
+103<@><input type="submit" value="刪除全部" name="delAll" onClick="return deleteAllClick()">&nbsp;&nbsp;
+97<@><input type="button" value="顯示路由" name="showRoute" onClick="routeClick('routetbl.htm')">
+5<@></p>
+1<@>
+46<@><table id=body_header border=0 cellSpacing=0>
+9<@>    <tr>
+43<@>		<td class=topheader>靜態路由表</td>
+7<@>	</tr>
+6<@>	<tr>
+21<@>		<td class=content>
+25<@>			<p>最大規則數：
+46<@>			<VWS_FUNCTION (void*)webGetMaxRouteNum();>
+8<@>			</p>
+8<@>		</td>
+8<@>	</tr>	
+6<@>	<tr>
+21<@>		<td class=content>
+40<@>  			<table class=formlisting border=0>
+33<@>    			<tr class=form_label_row>
+72<@>                    <td class='form_label_col' align=center width="5%">
+27<@>                    選擇
+26<@>                    </td>
+72<@>                    <td class='form_label_col' align=center width="5%">
+27<@>                    狀態
+26<@>                    </td>
+72<@>                    <td class='form_label_col' align=center width="8%">
+33<@>                    目的地址
+26<@>                    </td>
+72<@>                    <td class='form_label_col' align=center width="8%">
+33<@>                    子網掩碼
+26<@>                    </td>
+72<@>                    <td class='form_label_col' align=center width="8%">
+30<@>                    下一跳
+26<@>                    </td>
+72<@>                    <td class='form_label_col' align=center width="8%">
+27<@>                    跳數
+26<@>                    </td>
+22<@>                </tr>
+48<@>				<VWS_FUNCTION (void*)showRoutingCfgFunc();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+1<@>
+95<@><input type="hidden" NAME="submit.htm?routing.htm" value=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+25<@>&*#@routetbl.htm@#*&1565
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+27<@><title>IP路由表</title>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+45<@><div id="maincontent" style="width: 500px;">
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+41<@>		<td class="topheader">IP路由表</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+66<@>			<p>下表顯示了本地網絡可以訪問的目的路由.</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+52<@><table id="body_header" border="0" cellspacing="0">
+6<@>	<tr>
+50<@>    	<td class="topheader">當前IP路由表</td>
+10<@>    </tr>
+9<@>    <tr>
+39<@>    	<td class="content" align="left">
+92<@>        	<table class="formlisting" border="0" cellpadding="0" cellspacing="0" width="500">
+41<@>            	<tr class="form_label_row">
+62<@>                	<td class="form_label_col">目的地址</td>
+65<@>                    <td class="form_label_col">子網掩碼</td>
+62<@>                    <td class="form_label_col">下一跳</td>
+22<@>                </tr>
+48<@>				<VWS_FUNCTION (void*)showRoutingTblFunc();>
+21<@>            </table>
+14<@>        </td>
+10<@>    </tr>
+9<@></table>
+5<@><br>
+7<@><form>
+17<@><p align=center>
+84<@>	<input type="button" value="刷新" onClick="window.location.href='routetbl.htm'">
+93<@>  	<input type="button" value=" 關閉 " name="close" onClick="javascript: window.close();">
+5<@></p>
+8<@></form>
+7<@></div>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+23<@>&*#@telnet.htm@#*&2027
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+37<@><title>Telnet Configuration </title>
+1<@>
+9<@><SCRIPT>
+1<@>
+10<@></SCRIPT>
+61<@><link href="stylemain.css" rel="stylesheet" type="text/css">
+8<@></head>
+1<@>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+27<@>	TabHeader="進階設定";
+20<@>	SideItem="Telnet";
+20<@>	HelpItem="Telnet";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+47<@><table id="box_header" border=0 cellSpacing=0>
+6<@>	<tr>
+36<@>		<td class="topheader">Telnet</td>
+7<@>	</tr>
+6<@>	<tr>
+23<@>		<td class="content">
+47<@>			<p>本頁面用來設置Telnet服務。</p>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+1<@>
+1<@>
+58<@><form action="form2Telnet.cgi" method=POST name="Telnet">
+52<@><table id="body_header" border="0" cellSpacing="0">
+6<@>	<tr>
+42<@>		<td class="topheader">Telnet設置</td>
+7<@>	</tr>
+6<@>	<tr>
+36<@>		<td class="content" align="left">
+83<@>			<table class="formarea" border="0" cellpadding="0" cellspacing="0" width="500">
+9<@>				<tr>
+46<@>					<td class="form_label_left">Telnet:</td>
+35<@>					<td class="form_label_right">
+56<@>      					<input type="radio" value="0" name="daemon" 
+40<@><VWS_SCREEN (char*)xscrnTelnetIsOFF[];>
+20<@>>停用&nbsp;&nbsp;
+50<@>					<input type="radio" value="1" name="daemon" 
+39<@><VWS_SCREEN (char*)xscrnTelnetIsON[];>
+8<@>>啟用
+26<@>                    </td>
+10<@>				</tr>
+12<@>			</table>
+8<@>		</td>
+7<@>	</tr>
+9<@></table>
+5<@><br>
+17<@><p align=center>
+49<@><input type="submit" value="套用">&nbsp;&nbsp;
+94<@><input type="hidden" value=<VWS_FUNCTION (void*)SendKeyCSRF();> name="submit.htm?Telnet.htm">
+5<@></p>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+32<@>&*#@ipqostc_gen_ap.htm@#*&17310
+63<@><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+1<@>
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+25<@><TITLE>Qos設定</TITLE>
+22<@><STYLE type=text/css>
+25<@>.STYLE1 {color: #FF0000}
+9<@></STYLE>
+54<@><SCRIPT language="javascript" type="text/javascript">
+41<@><VWS_FUNCTION (void*)webGetLanIpMask();>
+23<@>var numReg=/^[0-9]+$/;
+1<@>
+33<@>function getSumOfUpRateCeiling()
+2<@>{
+56<@>        var qosTbl=document.getElementById('qosTable');
+30<@>        var rows=qosTbl.rows;
+27<@> var sumUpRateCeiling = 0;
+1<@>
+39<@>        for(var i=2;i<rows.length;i++)
+3<@> {
+60<@>  sumUpRateCeiling += parseInt(rows[i].cells[8].innerText);
+10<@>        }
+1<@>
+26<@> return sumUpRateCeiling;
+2<@>}
+1<@>
+35<@>function getSumOfDownRateCeiling()
+2<@>{
+51<@>   var qosTbl=document.getElementById('qosTable');
+30<@>        var rows=qosTbl.rows;
+28<@> var sumDownRateCeling = 0;
+1<@>
+32<@> for(var i=2;i<rows.length;i++)
+3<@> {
+60<@>  sumDownRateCeling += parseInt(rows[i].cells[9].innerText)
+10<@>        }
+1<@>
+27<@> return sumDownRateCeling;
+2<@>}
+1<@>
+30<@>function on_apply_bandwidth()
+2<@>{
+1<@>
+1<@>
+49<@> var total=parseInt(document.qostc.total.value);
+57<@> var downtotal=parseInt(document.qostc.downtotal.value);
+1<@>
+81<@> if (document.qostc.tcauto.checked == false && document.qostc.total.value != "")
+3<@> {
+52<@>  if(getSumOfUpRateCeiling() > total && total != 0)
+4<@>  {
+84<@>   alert("所有規則的上傳最大帶寬總和不應該大於上行總帶寬!");
+33<@>   document.qostc.total.focus();
+17<@>   return false;
+4<@>  }
+1<@>
+3<@> }
+85<@> if (document.qostc.tcauto.checked == false && document.qostc.downtotal.value != "")
+3<@> {
+62<@>  if(getSumOfDownRateCeiling() > downtotal && downtotal != 0)
+4<@>  {
+84<@>   alert("所有規則的下載最大帶寬總和不應該大於下行總帶寬!");
+37<@>   document.qostc.downtotal.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+1<@>
+41<@> if ( document.qostc.total.value!="" ) {
+51<@>  if ( !numReg.exec( document.qostc.total.value ))
+4<@>  {
+36<@>   alert("無效的上傳頻寬!");
+33<@>   document.qostc.total.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+45<@> if ( document.qostc.downtotal.value!="" ) {
+54<@>  if (!numReg.exec( document.qostc.downtotal.value ))
+4<@>  {
+36<@>   alert("無效的下載頻寬!");
+37<@>   document.qostc.downtotal.focus();
+17<@>   return false;
+4<@>  }
+3<@> }
+1<@>
+14<@> return true;
+2<@>}
+1<@>
+21<@>function onSelProt()
+2<@>{
+28<@> with(document.qostcrule) {
+32<@>  if (proto.selectedIndex >= 2)
+4<@>  {
+27<@>   sport.disabled = false;
+27<@>   dport.disabled = false;
+11<@>  } else {
+26<@>   sport.disabled = true;
+26<@>   dport.disabled = true;
+4<@>  }
+3<@> }
+2<@>}
+1<@>
+18<@>function on_Add()
+2<@>{
+31<@> if (document.getElementById){
+61<@>  document.getElementById('tcrule').style.display = 'block';
+10<@> } else {
+34<@>  if (document.layers == false) {
+48<@>   document.all.tcrule.style.display = 'block';
+4<@>  }
+3<@> }
+14<@> onSelProt();
+2<@>}
+1<@>
+24<@>function saveClick(rml)
+2<@>{
+15<@> var lst = '';
+23<@> if (rml.length > 0) {
+37<@>  for (i = 0; i < rml.length; i++) {
+33<@>   if ( rml[i].checked == true )
+31<@>    lst += rml[i].value + ',';
+4<@>  }
+3<@> }
+33<@> else if ( rml.checked == true )
+19<@>  lst = rml.value;
+1<@>
+48<@> document.qostcrule.removeRuleList.value = lst;
+2<@>}
+1<@>
+20<@>function on_apply()
+2<@>{
+49<@> var total=parseInt(document.qostc.total.value);
+57<@> var downtotal=parseInt(document.qostc.downtotal.value);
+1<@>
+26<@> with(document.qostcrule)
+3<@> {
+1<@>
+159<@>  if ((srcip.value=="") && (dstip.value=="") && (srcnetmask.value=="") && (dstnetmask.value=="") &&(sport.value=="") && (dport.value=="") && (proto.value==0))
+4<@>  {
+69<@>   alert("規則資料不完整，請輸入所有相關的資料!");
+17<@>   return false;
+4<@>  }
+1<@>
+25<@>  if ( srcip.value!="" )

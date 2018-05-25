@@ -1,0 +1,432 @@
+/* Copyright 2004 D-Link Systems, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------- */
+
+html, body, div, h1, h2, h3, h4, p, ul, ol, li, dl, dt, dd, td, input, select, textarea
+{
+	font-family: Tahoma, Helvetica, Geneva, Arial, sans-serif;
+	font-size: 12px;
+}
+
+input, select, textarea
+{
+	font-family: Tahoma, Helvetica, Geneva, Arial, sans-serif;
+	font-size: 11px;
+}
+
+#topnav_container
+{
+	background-color: #404343;
+	border-color: #FFFFFF;
+	border-width: 0 1px;
+	border-style: none solid none solid;
+	width: 147px;
+}
+
+#topnavoff
+{
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: 1;
+	/* for IE */
+	width: 147px;
+	border-color: #FFFFFF;
+}
+
+#topnavoff a:link, #topnavoff a:visited, #topnavoff a:active
+{
+	display: block;
+	color: #FFFFFF;
+	background-color: transparent;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	letter-spacing: 1;
+	padding: 5px;
+	text-transform: uppercase;
+	text-align: center;
+	border-color: #FFFFFF;
+}
+
+#topnavoff a:hover
+{
+	display: block;
+	color: #404343;
+	background-color: #F1F1F1;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	padding: 5px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#topnavon
+{
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: 1;
+	/* for IE */
+	width: 147px;
+	border-color: #FFFFFF;
+}
+
+#topnavon a:hover
+{
+	display: block;
+	color: #404343;
+	background-color: #F1F1F1;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: underline;
+	padding: 5px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#topnavon a:link, #topnavon a:visited, #topnavon a:active
+{
+	display: block;
+	color: #404343;
+	background-color: #F1F1F1;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 5px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+#sidenav_basic
+{
+	background-color: #404343;
+	height: 25px;
+}
+
+#sidenav_container
+{
+	background-color: #404343;
+	border-color: #FFFFFF;
+	border-width: 1 1px;
+	border-style: none none none none;
+	width: 125px;
+}
+
+#sidenav
+{
+	font-size: 10px;
+	/* for IE */
+	width: 125px;
+}
+
+#sidenav ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#sidenav li
+{
+	list-style: none;
+	text-transform: uppercase;
+	border-bottom: 1px solid #F1F1F1;
+}
+
+#sidenav li a:link, #sidenav li a:visited, #sidenav li a:active
+{
+	display: block;
+	color: #FFFFFF;
+	background-color: transparent;
+	font-size: 11px;
+	text-decoration: none;
+	padding: 5px;
+}
+
+#sidenav li a:hover
+{
+	display: block;
+	color: #404343;
+	background-color: #F1F1F1;
+	font-size: 11px;
+	text-decoration: underline;
+	padding: 5px;
+}
+
+#sidenavoff
+{
+	font-size: 10px;
+	/* for IE */
+	width: 125px;
+}
+
+#sidenavoff ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#sidenavoff
+{
+	text-transform: uppercase;
+	color: #404343;
+	background-color: #F1F1F1;
+	font-size: 11px;
+	padding: 5px;
+}
+
+#sidehelp_container
+{
+	background-color: #404343;
+	border-color: #FFFFFF;
+	border-width: 1 1px;
+	border-style: none none none none;
+	width: 137px;
+	color: #FFFFFF;
+}
+
+#help_text
+{
+	background-color: #404343;
+	color: #FFFFFF;
+	font-size: 11px;
+}
+
+#maincontent_container
+{
+	color: #000000;
+	background-color: #FFFFFF;
+}
+
+#maincontent
+{
+	color: #000000;
+	background-color: #FFFFFF;
+	padding: 5px;
+}
+
+#box_header
+{
+	BORDER-RIGHT: #ff6f00 1px solid;
+	PADDING-RIGHT: 10px;
+	BORDER-TOP: #ff6f00 1px solid;
+	PADDING-LEFT: 10px;
+	PADDING-BOTTOM: 10px;
+	BORDER-LEFT: #ff6f00 1px solid;
+	PADDING-TOP: 0px;
+	BORDER-BOTTOM: #ff6f00 1px solid;
+	BACKGROUND-COLOR: #DFDFDF;
+}
+
+.box
+{
+	BORDER-RIGHT: #333333 1px solid;
+	PADDING-RIGHT: 10px;
+	BORDER-TOP: #333333 1px solid;
+	PADDING-LEFT: 10px;
+	PADDING-BOTTOM: 10px;
+	MARGIN: 5px 0px 0px;
+	BORDER-LEFT: #333333 1px solid;
+	PADDING-TOP: 0px;
+	BORDER-BOTTOM: #333333 1px solid;
+	BACKGROUND-COLOR: #FFFFFF;
+}
+
+h1
+{
+	color: #000000;
+	background-color: #FF6F00;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin: 0 -10px 5px -10px;
+	padding: 5px 5px 5px 10px;
+}
+
+h2
+{
+	color: #FFFFFF;
+	background-color: #333333;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin: 0 -10px 5px -10px;
+	padding: 5px 5px 5px 10px;
+}
+
+h3
+{
+	margin: 0 0 4px 0;
+	padding: 18px 0 4px 0;
+	color: #13376B;
+	background-color: transparent;
+	font-size: 12px;
+	font-weight: bold;
+	border-bottom: gray;
+	border-width: 0 0 1px 0;
+	border-style: none none solid none;
+}
+
+.red
+{
+	color: #CC0000;
+	background-color: transparent;
+}
+
+#footer_container
+{
+	background-color: #404343;
+	border-color: #FFFFFF;
+	border-width: 0 1px;
+	border-style: none solid none solid;
+	border-bottom: #FFFFFF;
+	height: 40px;
+	color: #FFFFFF;
+}
+
+#header_container
+{
+	background-color: #404343;
+	border-color: #FFFFFF;
+	border-width: 0 1px;
+	border-style: none solid none solid;
+	border-bottom: #FFFFFF;
+	height: 20px;
+	color: white;
+}
+
+#header_container a:link, #header_container a:visited, #header_container a:active
+{
+	color: #FFFFFF;
+	font-size: 10px;
+	text-decoration: none;
+}
+
+#header_container a:hover
+{
+	color: #FFFFFF;
+	font-size: 10px;
+	text-decoration: underline;
+}
+
+.button
+{
+	width: 24; 
+	height: 24
+}
+/*Wizard*/
+#box_header-w
+{
+	border: 1px solid #404343;
+	padding: 0 10px 10px 10px;
+	background-color: #FFFFFF;
+}
+
+.box-w
+{
+	border: 1px solid #333333;
+	margin: 5px 0 0 0;
+	padding: 0 10px 10px 10px;
+	background-color: #FFFFFF;
+}
+.h1-w
+{
+	color: #FFFFFF;
+	background-color: #404343;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin: 0 -10px 5px -10px;
+	padding: 5px 5px 5px 10px;
+	font-family: Tahoma, Helvetica, Geneva, Arial, sans-serif;
+}
+.box_msg-w {
+	FONT-WEIGHT: bold;
+	COLOR: #13376b;
+	BACKGROUND-COLOR: transparent;
+	font-family: Tahoma, Helvetica, Geneva, Arial, sans-serif;
+	font-size: 11px;
+}
+.box_alert-w {
+	FONT-WEIGHT: bold; COLOR: #cc0000; BACKGROUND-COLOR: transparent
+}
+.w11
+{
+	font-size: 11px;
+}
+.w11_bold
+{
+	font-size: 11px;
+	font-weight: bold;
+}
+.formarea TR .formradio {
+	VERTICAL-ALIGN: top
+}
+.formarea TD {
+	PADDING-RIGHT: 0px! important; PADDING-LEFT: 0px! important; PADDING-BOTTOM: 2px! important; VERTICAL-ALIGN: middle; PADDING-TOP: 2px! important
+}
+.formarea A:link {
+	FONT-SIZE: 11px; COLOR: #666666; BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+}
+.formarea A:visited {
+	FONT-SIZE: 11px; COLOR: #666666; BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+}
+.formarea A:active {
+	FONT-SIZE: 11px; COLOR: #666666; BACKGROUND-COLOR: transparent; TEXT-DECORATION: none
+}
+.formarea A:hover {
+	FONT-SIZE: 11px; COLOR: #666666; TEXT-DECORATION: underline
+}
+.formarea .form_label {
+	PADDING-RIGHT: 10px! important; FONT-WEIGHT: bold; WIDTH: 170px; TEXT-ALIGN: right
+}
+.formarea .form_label_top {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; VERTICAL-ALIGN: top; WIDTH: 170px; TEXT-ALIGN: right
+}
+.formarea .form_label_middle {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; VERTICAL-ALIGN: middle; WIDTH: 170px; TEXT-ALIGN: right
+}
+.formarea .form_label_bottom {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; VERTICAL-ALIGN: text-bottom; WIDTH: 170px; TEXT-ALIGN: right
+}
+.formarea .form_label_radio {
+	PADDING-RIGHT: 5px; FONT-WEIGHT: bold; VERTICAL-ALIGN: top; WIDTH: 170px; TEXT-ALIGN: right
+}
+.formarea .form_label_left {
+	PADDING-RIGHT: 8px; FONT-WEIGHT: bold; TEXT-ALIGN: left
+}
+
+DIV.centered {
+	TEXT-ALIGN: center
+}
+P.centered {
+	TEXT-ALIGN: center
+}
+
+.form_label_row {
+	TEXT-ALIGN: center
+}
+
+.form_label {
+	PADDING-RIGHT: 8px; important; FONT-WEIGHT: bold; WIDTH: 170px; TEXT-ALIGN: right
+}
+
+.box_msg {
+	FONT-WEIGHT: bold; COLOR: #13376b; BACKGROUND-COLOR: transparent
+}
+.box_alert {
+	FONT-WEIGHT: bold; COLOR: #cc0000; BACKGROUND-COLOR: transparent
+}
+TABLE.formlisting {
+	MARGIN: 10px 0px 0px; WIDTH: 100%; BACKGROUND-COLOR: #dfdfdf; border-spacing: 1px; empty-cells: show
+}
+.formlisting {
+	TEXT-ALIGN: left
+}
+.formlisting TH {
+	BORDER-RIGHT: white 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: white 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 4px; VERTICAL-ALIGN: middle; BORDER-LEFT: white 1px solid; WIDTH: auto; PADDING-TOP: 2px; BORDER-BOTTOM: white 1px solid; BACKGROUND-COLOR: #dfdfdf; TEXT-ALIGN: left
+}
+.formlisting TD {
+	BORDER-RIGHT: white 1px solid; PADDING-RIGHT: 1px! important; BORDER-TOP: white 1px solid; PADDING-LEFT: 1px! important; PADDING-BOTTOM: 1px! important; VERTICAL-ALIGN: middle; BORDER-LEFT: white 1px solid; WIDTH: auto; PADDING-TOP: 1px! important; BORDER-BOTTOM: white 1px solid; BACKGROUND-COLOR: #dfdfdf
+}

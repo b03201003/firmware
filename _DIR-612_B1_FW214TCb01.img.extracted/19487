@@ -1,0 +1,1012 @@
+13<@>&&*&&tw**&**
+45<@>						onclick="onClickAdvWlanEnable()"></td>
+11<@>					</tr>
+6<@>					
+10<@>					<tr>
+71<@>						<td class=form_label_left>Fragment Threshold(256-2347)  ：</td>
+34<@>						<td class=form_label_right>
+72<@>							<input type="text" name="fragThreshold" size="10" maxlength="4" 
+55<@>				  <VWS_SCREEN (char*) webShowWlanFragThreshold[];>
+8<@>				  >
+12<@>						</td>
+11<@>					</tr>
+5<@>    
+10<@>					<tr>
+64<@>						<td class=form_label_left>RTS Threshold(1-2347)  ：</td>
+97<@>						<td class=form_label_right><input type="text" name="rtsThreshold" size="10" maxlength="4" 
+53<@>			  <VWS_SCREEN (char*) webShowWlanRtsThreshold[];>
+7<@>			  >
+12<@>						</td>
+11<@>					</tr>
+1<@>
+31<@>					<tr style="display:none">
+58<@>						<td class=form_label_left>Beacon Interval  ：</td>
+99<@>						<td class=form_label_right><input type="text" name="beaconInterval" size="10" maxlength="4" 
+55<@>			  <VWS_SCREEN (char*) webShowWlanBeaconInterval[];>
+24<@>			  >(20-1024 ms)</td>
+11<@>					</tr>
+1<@>
+31<@>					<tr style="display:none">
+56<@>						<td class=form_label_left>DTIM Interval  ：</td>
+97<@>						<td class=form_label_right><input type="text" name="dtimInterval" size="10" maxlength="3" 
+53<@>						<VWS_SCREEN (char*) webShowWlanDTIM_PERIOD[];>
+20<@>						>(1-255)</td>
+11<@>					</tr>
+1<@>
+31<@>					<tr style="display:none">
+56<@>						<td class=form_label_left>Data Rate  ：</b></td>
+65<@>						<td class=form_label_right><select size="1" name="txRate">
+15<@>						<SCRIPT>
+48<@>		<VWS_SCREEN (char*) webShowWlanAdvanInit1[];>
+1<@>
+75<@>	rate_mask = [15,1,1,1,1,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,8,8,8,8,8,8,8,8];
+106<@>	rate_name =["Auto","1M","2M","5.5M","11M","6M","9M","12M","18M","24M","36M","48M","54M", "MCS0", "MCS1",
+121<@>		"MCS2", "MCS3", "MCS4", "MCS5", "MCS6", "MCS7", "MCS8", "MCS9", "MCS10", "MCS11", "MCS12", "MCS13", "MCS14", "MCS15"];
+9<@>	mask=0;
+11<@>	if (auto)
+12<@>		txrate=0;
+15<@>	if (band & 1)
+13<@>		mask |= 1;
+27<@>	if ((band&2) || (band&4))
+13<@>		mask |= 2;
+17<@>	if (band & 8) {
+19<@>		if (rf_num == 2)
+16<@>			mask |= 12;	
+7<@>		else
+14<@>			mask |= 4;
+3<@>	}
+11<@>	defidx=0;
+32<@>	for (idx=0, i=0; i<=28; i++) {
+29<@>		if (rate_mask[i] & mask) {
+15<@>			if (i == 0)
+14<@>				rate = 0;
+8<@>			else
+25<@>				rate = (1 << (i-1));
+23<@>			if (txrate == rate)
+18<@>				defidx = idx;
+71<@>			document.write('<option value="' + i + '">' + rate_name[i] + '\n');
+10<@>			idx++;
+4<@>		}
+3<@>	}
+52<@>	document.advanceSetup.txRate.selectedIndex=defidx;
+1<@>
+16<@>						</SCRIPT>
+16<@>						</select>
+12<@>						</td>
+11<@>					</tr>
+6<@>					
+10<@>					<tr>
+58<@>						<td class=form_label_left>Preamble 類型  ：</td>
+34<@>						<td class=form_label_right>
+49<@>							<select name="preamble" size="1">      		
+49<@>							<option value="0">Short Preamble</option>
+54<@>							<option value="1">Long Preamble</option>    		
+22<@>							</select>					
+12<@>						</td>
+11<@>					</tr>
+11<@>										
+10<@>					<tr>
+66<@>						<td class=form_label_left>Radio Power (百分比)  ：</td>
+34<@>						<td class=form_label_right>
+43<@>							<select name="advTxpower" size="1">
+49<@>							<option value="0">100%</option>        		
+39<@>							<option value="1">80%</option> 
+39<@>							<option value="2">50%</option> 
+38<@>							<option value="3">25%</option>
+38<@>							<option value="4">10%</option>
+22<@>							</select>					
+12<@>						</td>
+11<@>					</tr>
+6<@>					
+31<@>					<tr style="display:none">
+53<@>						<td class=form_label_left>SSID廣播  ：</td>
+34<@>						<td class=form_label_right>
+71<@>						<input type="radio" name="hiddenSSID" value=0>啟用&nbsp;&nbsp;
+64<@>						<input type="radio" name="hiddenSSID" value=1>停用</td>
+11<@>					</tr>
+1<@>
+31<@>					<tr style="display:none">
+57<@>						<td class=form_label_left>Relay Blocking  ：</td>
+34<@>						<td class=form_label_right>
+64<@>						<input type="radio" name=block value=1>啟用&nbsp;&nbsp;
+57<@>						<input type="radio" name=block value=0>停用</td>
+11<@>					</tr>
+1<@>
+31<@>					<tr style="display:none">
+76<@>						<td class=form_label_left>封鎖乙太網路到無線網路  ：</td>
+34<@>						<td class=form_label_right>
+71<@>						<input type="radio" name=BlockEth2Wir value=1>啟用&nbsp;&nbsp;
+64<@>						<input type="radio" name=BlockEth2Wir value=0>停用</td>
+11<@>					</tr>
+1<@>
+31<@>					<tr style="display:none">
+68<@>						<td class=form_label_left>Wifi Multicast to Unicast  ：</td>
+34<@>						<td class=form_label_right>
+64<@>						<input type="radio" name=mc2uc value=1>啟用&nbsp;&nbsp;
+57<@>						<input type="radio" name=mc2uc value=0>停用</td>
+11<@>					</tr>
+1<@>
+32<@>					<tr  style="display:none">
+54<@>						<td class=form_label_left>Aggregation  ：</td>
+34<@>						<td class=form_label_right>
+70<@>						<input type="radio" name=aggregation value=1>啟用&nbsp;&nbsp;
+63<@>						<input type="radio" name=aggregation value=0>停用</td>
+11<@>					</tr>
+7<@>			   
+32<@>					<tr  style="display:none">
+51<@>						<td class=form_label_left>Short GI  ：</td>
+34<@>						<td class=form_label_right>
+66<@>						<input type="radio" name=shortGI value=1>啟用&nbsp;&nbsp;
+59<@>						<input type="radio" name=shortGI value=0>停用</td>
+11<@>					</tr>
+1<@>
+34<@>					<tr id="ht2040_coexistence">
+56<@>						<td class=form_label_left>HT20/40共存  ：</td>
+34<@>						<td class=form_label_right>
+70<@>						<input type="radio" name=coexistence value=1>啟用&nbsp;&nbsp;
+63<@>						<input type="radio" name=coexistence value=0>停用</td>
+16<@>					</tr>	    
+13<@>				</table>
+1<@>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+1<@>
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+38<@>			<td class=topheader>WPS設定</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+10<@>					<tr>
+69<@>						<td class=form_label_left>路由器的PIN碼  ：</td>   					
+34<@>						<td class=form_label_right>
+55<@>						<VWS_SCREEN (char*) webShowWlanWSC_LOCAL_PIN[];>
+12<@>						</td>
+11<@>					</tr>
+14<@>					<script>
+53<@>					<VWS_SCREEN (char*) webShowWlanWSC_WLANMODE[];>
+1<@>
+33<@>					if (mode == 0 || mode == 3)
+64<@>						disable_all = check_wps_enc(encrypt, enable1x, wpa_auth);
+47<@>					if (disable_all == 0 && isWPSLimit == 1){
+23<@>						disable_all = 4;
+12<@>					}else{
+56<@>						disable_all = check_wps_wlanmode(mode, is_adhoc);
+7<@>					}
+15<@>					</script>
+10<@>					<tr>
+60<@>						<td class=form_label_left>啟用WPS  ：</td>   					
+78<@>						<td class=form_label_right><input type="checkbox" name="advDisableWPS" 
+55<@>						<VWS_SCREEN (char*) webShowWlanWSC_DISABLED[];> 
+44<@>						onclick="onClickAdvWPSEnable()"></td>
+11<@>					</tr>
+10<@>					<tr>
+60<@>						<td class=form_label_left>停用PIN  ：</td>   					
+78<@>						<td class=form_label_right><input type="checkbox" name="advDisablePIN" 
+59<@>						<VWS_SCREEN (char*) webShowWlanWSC_Pin_DISABLED[];> 
+44<@>						onclick="onClickAdvPinEnable()"></td>
+11<@>					</tr>
+10<@>					<tr>
+72<@>						<td class=form_label_left>保持目前的設定  ：</td>   					
+78<@>						<td class=form_label_right><input type="checkbox" name="advConfigured" 
+53<@>						<VWS_SCREEN (char*) webShowWlanWSC_CONFIG[];> 
+50<@>						onclick="onClickAdvConfigEnable()"></td>			
+12<@>						</td>
+26<@>					</tr>															
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+10<@>	<script>
+21<@>		if (disable_all) {
+40<@>			document.write("<font size=2><em>");
+25<@>			if (disable_all == 1)
+31<@>				document.write(warn_msg1);
+30<@>			else if (disable_all == 2)
+31<@>				document.write(warn_msg2);
+30<@>			else if (disable_all == 4)
+31<@>				document.write(warn_msg4);
+4<@>		}
+11<@>	</script>
+10<@>	</table>
+1<@>
+1<@>
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+47<@>			<td class=topheader>存取控制清單</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+22<@>			<td class=content>
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+10<@>					<tr>
+11<@>						<td>
+100<@>							<input type="button" value="設定存取控制" onclick="jumpToListPage()" name="setupList">
+12<@>						</td>
+32<@>						<td style="display:none">
+58<@>							<input type="text" value="0" name="setupListFlag">
+12<@>						</td>
+12<@>					</tr> 
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+1<@>
+1<@>
+18<@>	<p align=center>
+93<@>	<input type="submit" value="套用" name="save" onClick="return saveChanges()">&nbsp;&nbsp;
+99<@>	<INPUT TYPE="hidden" NAME="submit.htm?wladvanced.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+6<@>	</p>
+10<@>	<script>
+47<@>	<VWS_SCREEN (char*) webShowWlanAdvanInit2[];>
+1<@>
+48<@>	<VWS_SCREEN (char*) webShowWlanAdvTx_Power[];>
+48<@>	<VWS_SCREEN (char*) webShowWlanAdvPreamble[];>
+21<@>	coexistValueInit();
+16<@>	updateState();
+24<@>	onClickAdvWPSEnable();
+11<@>	</script>
+8<@></form>
+1<@>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+1<@>
+8<@></html>
+1<@>
+1<@>
+24<@>&*#@wlactrl.htm@#*&9334
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+34<@><title>無線存取控制</title>
+9<@><script>
+1<@>
+34<@>function skip () { this.blur(); }
+20<@>function addClick()
+2<@>{
+36<@>	if(document.formWlAcAdd.mac.value)
+3<@>	{
+60<@>		if (!checkMacWithoutColon(document.formWlAcAdd.mac, 1))	{
+81<@>		alert("無效的mac位址! 請輸入一個有效的單點廣播mac位址。");
+17<@>			return false;
+5<@>	  }
+80<@>	document.formWlAcAdd.mac.value = document.formWlAcAdd.mac.value.toLowerCase();
+3<@>	}
+49<@>	if(document.formWlAcDel.totalNum.value == '20')
+3<@>	{
+52<@>		alert("ACL規則的筆數不應該超過20筆!");
+16<@>		return false;
+3<@>	}
+14<@>	return true;
+2<@>}
+1<@>
+28<@>function disableDelButton()
+2<@>{
+57<@>	disableButton(document.formWlAcDel.deleteSelFilterMac);
+57<@>	disableButton(document.formWlAcDel.deleteAllFilterMac);
+2<@>}
+1<@>
+20<@>function enableAc()
+2<@>{
+45<@>  enableTextField(document.formWlAcAdd.mac);
+2<@>}
+1<@>
+21<@>function disableAc()
+2<@>{
+46<@>  disableTextField(document.formWlAcAdd.mac);
+2<@>}
+1<@>
+30<@>function onClickUpdateState()
+2<@>{
+51<@>	if(wlanDisabled || wlanMode == 1 || wlanMode ==2)
+3<@>	{
+22<@>		disableDelButton();
+45<@>		disableButton(document.formWlAcAdd.reset);
+52<@>		disableButton(document.formWlAcAdd.addFilterMac);
+55<@>		disableCheckBox(document.formWlAcDel.wlanAcEnabled);
+15<@>		disableAc();
+4<@>	} 
+6<@>	else
+3<@>	{
+58<@>		if (document.formWlAcDel.wlanAcEnabled.checked == true)
+4<@>		{
+51<@>			document.formWlAcDel.wlanAcEnabled.value = "1";
+45<@>			enableButton(document.formWlAcAdd.reset);
+52<@>			enableButton(document.formWlAcAdd.addFilterMac);
+15<@>			enableAc();
+4<@>		}
+7<@>		else
+4<@>		{
+51<@>			document.formWlAcDel.wlanAcEnabled.value = "0";
+46<@>			disableButton(document.formWlAcAdd.reset);
+53<@>			disableButton(document.formWlAcAdd.addFilterMac);
+16<@>			disableAc();
+4<@>		}
+3<@>	}
+2<@>}
+23<@>function updateState()
+2<@>{
+51<@>	if(wlanDisabled || wlanMode == 1 || wlanMode ==2)
+3<@>	{
+22<@>		disableDelButton();
+45<@>		disableButton(document.formWlAcAdd.reset);
+52<@>		disableButton(document.formWlAcAdd.addFilterMac);
+55<@>		disableCheckBox(document.formWlAcDel.wlanAcEnabled);
+15<@>		disableAc();
+4<@>	} 
+6<@>	else
+3<@>	{
+56<@>		if (document.formWlAcDel.wlanAcEnabled.value == "1") 
+4<@>		{
+54<@>			document.formWlAcDel.wlanAcEnabled.checked = true;
+45<@>			enableButton(document.formWlAcAdd.reset);
+52<@>			enableButton(document.formWlAcAdd.addFilterMac);
+15<@>			enableAc();
+4<@>		}
+8<@>		else 
+4<@>		{
+55<@>			document.formWlAcDel.wlanAcEnabled.checked = false;
+46<@>			disableButton(document.formWlAcAdd.reset);
+53<@>			disableButton(document.formWlAcAdd.addFilterMac);
+16<@>			disableAc();
+4<@>		}
+3<@>	}
+2<@>}
+1<@>
+1<@>
+28<@>function delACLEntryCheck()
+2<@>{
+30<@>	if ( deleteClick() == true){
+50<@>		if (document.formWlAcDel.checkWPS2.value == 1){
+104<@>			if (document.formWlAcDel.wlanAcEnabled.checked == true && document.formWlAcDel.totalNum.value == 1){
+133<@>				//if (confirm("If ACL Mode is set to 'Allowed List' and ACL list has no entry, the WPS would be disabled.\nDo you sure?") == 0){
+153<@>				if (confirm("若ACL模式是設定在「允許清單」且ACL清單內沒有資料，則WPS功能將會被停用。\n您確定要執行嗎?") == 0){
+19<@>					return false;
+6<@>				}
+5<@>			}
+4<@>		}
+10<@>	} else {
+16<@>		return false;
+3<@>	}
+2<@>	
+14<@>	return true;
+2<@>}
+1<@>
+26<@>function  delEntryCheck()
+2<@>{
+40<@>	if(document.formWlAcDel.select.length)
+3<@>	{
+57<@>	  	for(i=0;i<document.formWlAcDel.select.length;i++)   
+7<@>	  	{ 
+49<@>	   		if(document.formWlAcDel.select[i].checked)
+31<@>	   			//return deleteClick();
+34<@>	   			return delACLEntryCheck();
+6<@>	  	}
+7<@>	}else
+3<@>	{
+42<@>		if(document.formWlAcDel.select.checked)
+30<@>	   		//return deleteClick();
+33<@>	   		return delACLEntryCheck();
+3<@>	}
+1<@>
+44<@>	alert("請選擇一條規則來刪除!"); 
+16<@>	return false; 
+2<@>}
+1<@>
+29<@>function deleteACLAllClick()
+2<@>{
+49<@>	if (document.formWlAcDel.checkWPS2.value == 1){
+105<@>    	if (document.formWlAcDel.wlanAcEnabled.checked == true && document.formWlAcDel.totalNum.value > 0){
+135<@>    		//if (confirm("If ACL Mode is set to 'Allowed List' and ACL list has no entry, the WPS would be disabled.\nDo you sure?") == 0){
+143<@>    		if (confirm("若您啟用ACL的功能且ACL清單內沒有資料，則WPS功能將會自動被停用。\n您確定要修改嗎?") == 0){
+21<@>    			return false;
+8<@>    		}
+7<@>    	}
+3<@>	}
+1<@>
+26<@>	return deleteAllClick();
+2<@>}
+1<@>
+23<@>function saveChanges()
+2<@>{
+49<@>	if (document.formWlAcDel.checkWPS2.value == 1){
+106<@>    	if (document.formWlAcDel.wlanAcEnabled.checked == true && document.formWlAcDel.totalNum.value == 0){
+135<@>    		//if (confirm("If ACL Mode is set to 'Allowed List' and ACL list has no entry, the WPS would be disabled.\nDo you sure?") == 0){
+155<@>    		if (confirm("若ACL模式是設定在「允許清單」且ACL清單內沒有資料，則WPS功能將會被停用。\n您確定要執行嗎?") == 0){
+21<@>    			return false;
+8<@>    		}
+7<@>    	}
+6<@>    }
+14<@>	return true;
+2<@>}
+10<@></script>
+8<@></head>
+7<@><body>
+13<@><blockquote>
+1<@>
+31<@><script language="JavaScript">
+21<@>	TabHeader="無線";
+26<@>	SideItem="無線進階";
+20<@>	HelpItem="wlctrl";
+10<@></script>
+32<@><script type='text/javascript'>
+19<@>	mainTableStart();
+9<@>	logo();
+11<@>	TopNav();
+18<@>	ThirdRowStart();
+22<@>	Write_Item_Images();
+18<@>	mainBodyStart();
+10<@></script>
+1<@>
+59<@><form action=form2WlAc.cgi method=POST name="formWlAcDel">
+46<@>	<table id=box_header border=0 cellSpacing=0>
+7<@>		<tr>
+24<@>			<td class=topheader>
+23<@>				無線存取控制
+9<@>			</td>
+8<@>		</tr>
+7<@>		<tr>
+22<@>			<td class=content>
+8<@>				<p>
+105<@>					啟用無線存取控制功能後，僅允許清單中列出的MAC位址裝置與路由器連線。
+9<@>				</p>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+47<@>			<td class=topheader>無線存取控制</td>
+8<@>		</tr>
+3<@>		
+7<@>		<tr>
+8<@>			<td>
+77<@>				<br>&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="wlanAcEnabled" 
+49<@>				<VWS_SCREEN (char*) webShowWlanDISABLED[];> 
+60<@>				onclick="onClickUpdateState()">啟用無線存取控制
+9<@>			</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+1<@>
+22<@>			<td class=content>
+39<@>				<table class=formlisting border=0>
+48<@>					<VWS_SCREEN (char*) webShowWlanAC_LIST[];>
+17<@>				</table>				
+9<@>			</td>
+8<@>		</tr>
+11<@>	</table>	
+2<@>	
+6<@>	<br>
+20<@>	<p align="center">
+42<@>	<VWS_SCREEN (char*) webShowWPS2Check[];>
+108<@>	<input type="submit" value="套用"  name="deleteApplySubmit" onClick="return saveChanges();">&nbsp;&nbsp;
+124<@>	<input type="submit" value="刪除選擇的項目" name="deleteSelFilterMac" onClick="return delEntryCheck()">&nbsp;&nbsp;
+134<@>	<input type="submit" value="刪除所有的項目" name="deleteAllFilterMac" onClick="return deleteACLAllClick()">&nbsp;&nbsp;&nbsp;
+6<@>	</p>
+96<@>	<INPUT TYPE="hidden" NAME="submit.htm?wlactrl.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+8<@></form>
+1<@>
+59<@><form action=form2WlAc.cgi method=POST name="formWlAcAdd">
+68<@>	<table id=body_header border=0 cellSpacing=0 style="display:none">
+7<@>		<tr>
+53<@>			<td class=topheader>無線存取控制模式</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+1<@>
+1<@>
+1<@>
+5<@>				
+10<@>					<tr>
+86<@>						<td class=form_label_40>無線存取控制模式: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+73<@>						<td><select size="1" name="wlanAcEnabled" onclick="updateState()">
+40<@>							<option value=0 >停用</option>
+46<@>							<option value=1 >允許清單</option>
+46<@>							<option value=2 >拒絕清單</option>
+17<@>							</select>
+18<@>						</td>						
+11<@>					</tr>
+17<@>				</table>				
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+1<@>
+40<@>	<p align=center  style="display:none">
+71<@>	<input type="submit" value="套用" name="setFilterMode">&nbsp;&nbsp;
+6<@>	</p>
+1<@>
+47<@>	<table id=body_header border=0 cellSpacing=0>
+7<@>		<tr>
+68<@>			<td class=topheader style="display:none">無線存取控制</td>
+8<@>		</tr>
+1<@>
+7<@>		<tr>
+35<@>			<td class=content align=center>
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width="450">
+5<@>				
+10<@>					<tr>
+71<@>						<td class=form_label_40>MAC位址: &nbsp;&nbsp;&nbsp;&nbsp;</td>
+66<@>						<td><input type="text" name="mac" size="15" maxlength="12">
+40<@>     &nbsp;&nbsp;(例如: 00e086710502)
+18<@>						</td>						
+11<@>					</tr>
+6<@>					
+13<@>				</table>
+9<@>			</td>
+8<@>		</tr>
+10<@>	</table>
+1<@>
+18<@>	<p align=center>
+98<@>	<input type="submit" value="添加" name="addFilterMac" onClick="return addClick()">&nbsp;&nbsp;
+68<@>	<input type="reset" value="取消" name="reset">&nbsp;&nbsp;&nbsp;
+96<@>	<INPUT TYPE="hidden" NAME="submit.htm?wlactrl.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+7<@>	</p> 
+8<@></form>
+1<@>
+9<@><script>
+43<@><VWS_SCREEN (char*) webShowWlanAC_INIT[];>
+1<@>
+15<@>updateState();
+10<@></script>
+32<@><script type='text/javascript'>
+16<@>	mainBodyEnd();
+16<@>	ThirdRowEnd();
+10<@>	Footer()
+16<@>	mainTableEnd()
+10<@></script>
+1<@>
+14<@></blockquote>
+8<@></body>
+8<@></html>
+1<@>
+1<@>
+28<@>&*#@wlrepeater.htm@#*&11479
+41<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+40<@><VWS_FUNCTION (void*)SendWebCssStr();>
+35<@><title>無線中繼設定</title>
+10<@><SCRIPT>
+23<@>var InitRepeaterMode;
+24<@>function saveChanges()
+3<@>{
+52<@>	document.wlanSetup.startScanUplinkAp.value = "0";
+120<@>	if((document.wlanSetup.RepeaterMode.checked == true) && (!checkSpecialChar(document.wlanSetup.RepeaterSSID.value,1)))
+4<@>	{
+60<@>		alert('無效的SSID.不可使用特殊字元 \\\'"? ');
+44<@>		document.wlanSetup.RepeaterSSID.focus();
+20<@>		return false;  	
+4<@>	}
+87<@>	if((InitRepeaterMode == false) && (document.wlanSetup.RepeaterMode.checked == true))
+4<@>	{
+116<@>		if (confirm("若啟用中繼模式時，DHCP的功能將會設定為停用。\n確定要啟用中繼嗎?") == 0)
+5<@>		{
+18<@>			return false;
+5<@>		}
+4<@>	}
+2<@>
+15<@>	return true;
+3<@>}
+2<@>
+12<@>var wtime;
+24<@>function timerStart() 
+4<@>{ 
+18<@>	if (wtime >= 0)
+5<@>	{ 
+89<@>		document.wlanSetup.scanUplinkAp.value = '搜尋中，請稍候。剩餘'+wtime+'秒';
+12<@>		wtime--;
+36<@>		setTimeout("timerStart()",1000);
+4<@>	}
+7<@>	else
+4<@>	{
+39<@>		// set flag to '2', and then submit
+59<@>		document.wlanSetup.scanUplinkAp.value = "站點掃描";
+52<@>		enableCheckBox(document.wlanSetup.RepeaterMode);
+50<@>		enableButton(document.wlanSetup.scanUplinkAp);
+42<@>		enableButton(document.wlanSetup.save);
+55<@>		enableTextField(document.wlanSetup.RepeaterSSID);  
+74<@>		document.wlanSetup.startScanUplinkAp.value = "2";//wtime initial value
+55<@>		//window.location = "http://"+lanip+"/wlbasic.htm";
+32<@>		document.wlanSetup.submit();
+4<@>	}
+3<@>}
+75<@>// startScanUplinkAp.value: 1-start scan 2-scan time out 3-next configure
+32<@>function onClickScanUplinkAp()
+3<@>{
+38<@>	// set flag to '1', and then submit
+87<@>	if((InitRepeaterMode == false) && (document.wlanSetup.RepeaterMode.checked == true))
+4<@>	{
+116<@>		if (confirm("若啟用中繼模式時，DHCP的功能將會設定為停用。\n確定要啟用中繼嗎?") == 0)
+5<@>		{
+18<@>			return false;
+5<@>		}
+4<@>	}
+52<@>	document.wlanSetup.startScanUplinkAp.value = "1";
+31<@>	document.wlanSetup.submit();
+15<@>	return true;
+3<@>}
+2<@>
+36<@>function onClickScanUplinkApNext()
+3<@>{
+51<@>	if("" == document.wlanSetup.RepeaterSSID.value) 
+4<@>	{
+34<@>		alert('SSID不可以空白!');
+44<@>		document.wlanSetup.RepeaterSSID.focus();
+17<@>		return false;
+4<@>	}
+74<@>	if(!checkSpecialCharAllSpace(document.wlanSetup.RepeaterSSID.value, 1))
+4<@>	{
+28<@>		alert('無效的SSID!');
+47<@>		document.wlanSetup.RepeaterSSID.value = "";
+44<@>		document.wlanSetup.RepeaterSSID.focus();
+17<@>		return false;
+4<@>	}
+3<@>	
+38<@>	// set flag to '3', and then submit
+87<@>	if((InitRepeaterMode == false) && (document.wlanSetup.RepeaterMode.checked == true))
+4<@>	{
+116<@>		if (confirm("若啟用中繼模式時，DHCP的功能將會設定為停用。\n確定要啟用中繼嗎?") == 0)
+5<@>		{
+18<@>			return false;
+5<@>		}
+4<@>	}
+52<@>	document.wlanSetup.startScanUplinkAp.value = "3";
+31<@>	document.wlanSetup.submit();
+15<@>	return true;
+3<@>}
+2<@>
+27<@>function updateRepeater()
+3<@>{
+52<@>	if(document.wlanSetup.wlanDisabled.value == "ON")
+4<@>	{
+53<@>		disableCheckBox(document.wlanSetup.RepeaterMode);
+51<@>		disableButton(document.wlanSetup.scanUplinkAp);
+43<@>		disableButton(document.wlanSetup.save);
+55<@>		disableTextField(document.wlanSetup.RepeaterSSID); 
+52<@>		if(document.wlanSetup.RepeaterMode.value=="off")
+5<@>		{
+53<@>			document.wlanSetup.RepeaterMode.checked = false;
+5<@>		}
+56<@>		else if(document.wlanSetup.RepeaterMode.value=="on")
+5<@>		{
+52<@>			document.wlanSetup.RepeaterMode.checked = true;
+6<@>		} 
+2<@>
+11<@>		return;
+4<@>	}
+2<@>
+54<@>	// check RepeaterMode and then refresh the checkbox
+51<@>	if(document.wlanSetup.RepeaterMode.value=="off")
+4<@>	{
+52<@>		document.wlanSetup.RepeaterMode.checked = false;
+29<@>		InitRepeaterMode = false;
+56<@>		disableTextField(document.wlanSetup.RepeaterSSID);  
+51<@>		disableButton(document.wlanSetup.scanUplinkAp);
+4<@>	}
+55<@>	else if(document.wlanSetup.RepeaterMode.value=="on")
+4<@>	{
+51<@>		document.wlanSetup.RepeaterMode.checked = true;
+28<@>		InitRepeaterMode = true;
+4<@>	}
+2<@>
+9<@>	// fsm
+56<@>	if('1' == document.wlanSetup.startScanUplinkAp.value)
+4<@>	{
+35<@>		wtime = 5;//wtime initial value
+53<@>		disableCheckBox(document.wlanSetup.RepeaterMode);
+51<@>		disableButton(document.wlanSetup.scanUplinkAp);
+43<@>		disableButton(document.wlanSetup.save);
+56<@>		disableTextField(document.wlanSetup.RepeaterSSID);  
+39<@>		// set flag to '2', and then submit
+17<@>		timerStart();
+4<@>	}
+7<@>	else
+4<@>	{
+22<@>		// set flag to '0'
+53<@>		document.wlanSetup.startScanUplinkAp.value = "0";
+4<@>	}
+3<@>}
+2<@>
+32<@>function clickUpdateRepeater()
+3<@>{
+55<@>	if(document.wlanSetup.RepeaterMode.checked == false)
+4<@>	{
+48<@>		document.wlanSetup.RepeaterMode.value="off";
+52<@>		document.wlanSetup.RepeaterSSID.disabled = true;
+52<@>		document.wlanSetup.scanUplinkAp.disabled = true;
+4<@>	}
+59<@>	else if(document.wlanSetup.RepeaterMode.checked == true)
+4<@>	{
+47<@>		document.wlanSetup.RepeaterMode.value="on";
+53<@>		document.wlanSetup.RepeaterSSID.disabled = false;
+53<@>		document.wlanSetup.scanUplinkAp.disabled = false;
+4<@>	}
+3<@>}
+25<@>function isEmpty(ui)   
+4<@>{ 
+33<@>	return (ui == null||ui == "");
+3<@>}
+24<@>function rightTrim(ui)
+4<@>{ 
+23<@>	var notValid=/\s$/; 
+27<@>	while(notValid.test(ui))
+5<@>	{ 
+31<@>		ui=ui.replace(notValid,"");
+5<@>	} 
+13<@>	return ui;
+3<@>}
+2<@>
+26<@>function postSsid(index)
+3<@>{
+43<@>	var wifiSecurity = arraySecurity[index];
+31<@>	var ssid = arraySsid[index];
+3<@>	
+59<@>	document.wlanSetup.RepeaterSSID.value = rightTrim(ssid);
+58<@>	//document.wlanSetup.WifiSecurity.value = wifiSecurity;
+30<@>	var encryMethod00 = "None";
+29<@>	var encryMethod01 = "WEP";
+42<@>	var encryMethod02 = "WPA[^0-9]*TKIP.*";
+41<@>	var encryMethod03 = "WPA[^0-9]*AES.*";
+38<@>	var encryMethod05 = "WPA2.*TKIP.*";
+37<@>	var encryMethod04 = "WPA2.*AES.*";
+53<@>	var condition = wifiSecurity.match(encryMethod00);
+24<@>	if(condition != null)
+4<@>	{
+48<@>		document.wlanSetup.WifiSecurity.value = "0";
+16<@>		return true;
+4<@>	}
+53<@>	var condition = wifiSecurity.match(encryMethod01);
+24<@>	if(condition != null)
+4<@>	{
+48<@>		document.wlanSetup.WifiSecurity.value = "1";
+16<@>		return true;
+4<@>	}
+53<@>	var condition = wifiSecurity.match(encryMethod02);
+24<@>	if(condition != null)
+4<@>	{
+48<@>		document.wlanSetup.WifiSecurity.value = "2";
+16<@>		return true;
+4<@>	}
+53<@>	var condition = wifiSecurity.match(encryMethod03);
+24<@>	if(condition != null)
+4<@>	{
+48<@>		document.wlanSetup.WifiSecurity.value = "3";
+16<@>		return true;
+4<@>	}
+53<@>	var condition = wifiSecurity.match(encryMethod04);
+24<@>	if(condition != null)
+4<@>	{
+48<@>		document.wlanSetup.WifiSecurity.value = "4";
+16<@>		return true;
+4<@>	}
+53<@>	var condition = wifiSecurity.match(encryMethod05);
+24<@>	if(condition != null)
+4<@>	{
+48<@>		document.wlanSetup.WifiSecurity.value = "5";
+16<@>		return true;
+4<@>	}
+15<@>	return true;
+3<@>}
+11<@></SCRIPT>
+9<@></head>
+2<@>
+8<@><body>
+14<@><blockquote>
+2<@>
+32<@><script language="JavaScript">
+22<@>	TabHeader="無線";
+27<@>	SideItem="無線中繼";
+25<@>	HelpItem="wlrepeater";
+11<@></script>
+33<@><script type='text/javascript'>
+20<@>	mainTableStart();
+10<@>	logo();
+12<@>	TopNav();
+19<@>	ThirdRowStart();
+23<@>	Write_Item_Images();
+19<@>	mainBodyStart();
+11<@></script>
+2<@>
+69<@><form action="form2RepeaterSetup.cgi" method=POST name="wlanSetup">
+47<@>	<table id=box_header border=0 cellSpacing=0>
+8<@>		<tr>
+25<@>			<td class=topheader>
+18<@>				無線中繼
+10<@>			</td>
+9<@>		</tr>
+8<@>		<tr>
+23<@>			<td class=content>
+73<@>				<p>此頁面是用來設定無線中繼模式的相關項目。</p>
+186<@>				<p>第一步: 請於啟用中繼後，選擇“搜尋無線網路”來掃描附近無線網路後，在搜尋後的無線網路列表中選擇您想要中繼的無線網路。</p>
+10<@>			</td>
+9<@>		</tr>
+11<@>	</table>
+2<@>
+48<@>	<table id=body_header border=0 cellSpacing=0>
+8<@>		<tr>
+43<@>			<td class=topheader>無線中繼設定
+10<@>			</td>
+9<@>		</tr>
+2<@>
+8<@>		<tr>
+23<@>			<td class=content>
+119<@>				<table id="basicSetup" class=formarea border="0" cellpadding="0" cellspacing="0" width=100% style="display:none">
+11<@>					<tr>
+66<@>					<td align=right><input type="checkbox" name="wlanDisabled" 
+46<@><VWS_SCREEN (char*) webShowWlanDISABLED[];> 
+8<@>></td>
+60<@>					<td class=form_label_enabled>&nbsp;&nbsp;停用無線
+27<@>     					</td>     					
+12<@>					</tr>
+14<@>				</table>
+10<@>				<br>
+6<@>				
+82<@>				<table class=formarea border="0" cellpadding="0" cellspacing="0" width=100%>
+66<@>					<td align=right><input type="checkbox" name="RepeaterMode" 
+50<@><VWS_SCREEN (char*) webShowWlanRepeaterMode[];> 
+37<@>ONCLICK=clickUpdateRepeater()></td>
+172<@>					<td class=form_label_enabled>&nbsp;&nbsp;啟用中繼(<font style="color:red">若啟用中繼模式時，DHCP的功能將會設定為停用。</font>)</td>     					
+12<@>					</tr>
+11<@>					<tr>
+69<@>					<td class=form_label_40>中繼連線的無線網路名稱</td>
+11<@>					<td>
+69<@>					<input type=text name="RepeaterSSID" size="25" maxlength="32" 
+49<@><VWS_SCREEN (char*) webShowWlanRepeaterSSID[];>
+3<@>>
+59<@>				<input type=hidden name='WifiSecurity' value=''></td>
+12<@>					</tr>
+2<@>
+11<@>					<tr>
+46<@>					<td class=form_label_40></td>     					
+11<@>					<td>
+114<@>					<input type="button" value="搜尋無線網路" name="scanUplinkAp" onClick="return onClickScanUplinkAp()">
+12<@>					</td>
+32<@>					<td style="display:none">
+49<@>					<input type=text name="startScanUplinkAp" 
+54<@><VWS_SCREEN (char*) webShowWlanRepeaterScanState[];>
+18<@>></td>     					
+12<@>					</tr>
+14<@>				</table>
+10<@>			</td>
+9<@>		</tr>
+8<@>		<tr>
+36<@>			<td class=content align=center 
+53<@><VWS_SCREEN (char*) webShowWlanRepeaterDisplay[];> 
+3<@>>
+39<@>			<table class=formlisting border=0>
+31<@>				<tr class=form_label_row>
+38<@>					<td class=form_label_col>#</td>
+41<@>					<td class=form_label_col>SSID</td>
+46<@>					<td class=form_label_col>MAC位址</td>
+43<@>					<td class=form_label_col>頻道</td>
+43<@>					<td class=form_label_col>訊號</td>
+46<@>					<td class=form_label_col>安全性</td>
+44<@>					<td class=form_label_col>選擇</td>	
+11<@>				</tr>
+52<@>				<VWS_SCREEN (char*) webShowWlanSSList[];>					
+13<@>			</table>
+93<@>			<p align=left><font color="red">點選「下一步」來繼續中繼的設定</font></p>
+111<@>			<input type="button" value="下一步" name="scanUplinkApNext" onClick="return onClickScanUplinkApNext()">
+10<@>			</td>
+9<@>		</tr>
+11<@>	</table>
+2<@>
+19<@>	<p align=center>
+94<@>	<input type="submit" value="套用" name="save" onClick="return saveChanges()">&nbsp;&nbsp;
+7<@>	</p>
+100<@>	<INPUT TYPE="hidden" NAME="submit.htm?wlrepeater.htm" VALUE=<VWS_FUNCTION (void*)SendKeyCSRF();>>
+3<@>	
+11<@>	<script>
+20<@>	updateRepeater();
+12<@>	</script>
+10<@> </form>
+2<@>
+33<@><script type='text/javascript'>
+17<@>	mainBodyEnd();
+17<@>	ThirdRowEnd();
+11<@>	Footer()
+17<@>	mainTableEnd()
+11<@></script>
+2<@>
+15<@></blockquote>
+9<@></body>
+2<@>
+9<@></html>
+1<@>
+1<@>
+34<@>&*#@wlrepeater_step2.htm@#*&16258
+40<@><VWS_FUNCTION (void*)SendWebMetaStr();>
+39<@><VWS_FUNCTION (void*)SendWebCssStr();>
+34<@><title>無線中繼設定</title>
+9<@><script>
+35<@> function isValidWPAPasswd(str)   
+5<@>{   
+159<@>	var patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>]{1}[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>\x20]{6,62}[a-zA-Z0-9!#$%&()*+,-./:;=?@[\]^_`{|}~<>]{1}$/;   
+40<@>	if (!patrn.exec(str)) return false  ; 
+1<@>
+29<@>	if(str.indexOf("  ") != -1)
+15<@>	return false;
+2<@>	
+61<@>	if(document.formEncrypt.pskValue.value.indexOf("  ",0)!=-1)
+16<@>		return false;
+15<@>	return true;	
+2<@>}
+39<@><VWS_FUNCTION (void*)webGetWepKeys();>
+34<@>function validateWepKey(idx, str)
+3<@>{	
+80<@>	if (document.formEncrypt.defaultTxKeyId[idx].checked ==true && str.length==0) 
+5<@>	{		
+11<@>		idx++;		
+71<@>		alert('您所選擇的加密金鑰' + idx + '不可以空白。');		
+13<@>		return 0;	
+4<@>	}	
+23<@>	if (str.length ==0)		
+13<@>		return 1;	
+14<@>	var keylen;	
+52<@>	if(document.formEncrypt.length.selectedIndex == 0)
+5<@>	{		
+32<@>		//64 bit, 5 ASCII or 10 Hex		
+25<@>		if ( str.length == 5) 
+7<@>		{			
+14<@>			//ASCII			
+45<@>			document.formEncrypt.format.value = 1;			
+17<@>			keylen = 5;		
+4<@>		}
+8<@>		else 
+26<@>		if ( str.length == 10) 
+7<@>		{			
+12<@>			//Hex			
+45<@>			document.formEncrypt.format.value = 2;			
+18<@>			keylen = 10;		
+4<@>		}
+7<@>		else
+7<@>		{			
+13<@>			idx++;			
+122<@>			alert('無效的密鑰' + idx + '長度。請輸入13個ASCII字符或者26個十六進制數字(0-9 或 a-f)。');			
+15<@>			return 0;		
+6<@>		}		
+3<@>	}
+6<@>	else
+5<@>	{		
+34<@>		//128 bit, 13 ASCII or 26 Hex		
+26<@>		if ( str.length == 13) 
+7<@>		{			
+14<@>			//ASCII			
+45<@>			document.formEncrypt.format.value = 1;			
+18<@>			keylen = 13;		
+4<@>		}
+8<@>		else 
+27<@>			if ( str.length == 26) 
+8<@>			{			
+13<@>				//Hex			
+46<@>				document.formEncrypt.format.value = 2;			
+19<@>				keylen = 26;		
+5<@>			}
+9<@>			else 
+8<@>			{			
+14<@>				idx++;			
+123<@>				alert('無效的密鑰' + idx + '長度。請輸入13個ASCII字符或者26個十六進制數字(0-9 或 a-f)。');			
+16<@>				return 0;		
+6<@>			}	
+4<@>	}	
+113<@>	if ( str == "*****" || str == "**********" || str == "*************" || str == "**************************" )		
+13<@>		return 1;	
+46<@>	if (document.formEncrypt.format.value == 1)	
+5<@>	{		
+33<@>		//add by ramen 20090604     		
+159<@>		var patrn=/^[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>]{1}[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>\x20]*[a-zA-Z0-9!#$%&()*+,-./:;=@[\]^_`{|}~<>]{1}$/;  		   			
+25<@>		if (!patrn.exec(str)) 
+7<@>		{			
+73<@>			alert('Pre-Shared金鑰不可使用特殊字元，如\\\'”。');			
+18<@>			return 0  ; 		
+6<@>		}		
+32<@>		if(str.indexOf("  ",0)!=-1)		
+6<@>		{		

@@ -1,0 +1,5 @@
+root:x:1:root
+user:x:500:
+nobody:x:501:
+nogroup:x:502:
+
